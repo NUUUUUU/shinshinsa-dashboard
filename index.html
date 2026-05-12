@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신신사 일일 경영 브리핑</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --pink:  #E0144C;
+  --lgray: #7F7F7F;
+  --dgray: #404040;
+  --sgray: #7C8FA3;
+  --gold:  #B8A060;
+  --black: #1E1E1E;
+  --bg:    #F3F5F9;
+  --card:  #FFFFFF;
+  --hdr:   #FFFFFF;
+  --txt:   #3A3A3A;
+  --txt2:  #787878;
+  --txt3:  #9DAABA;
+  --bdr:   #E0E5EE;
+  --bdr2:  #C8D2E0;
+  --p-bg:  rgba(224,20,76,.08);  --p-bd: rgba(224,20,76,.28);
+  --g-bg:  rgba(184,160,96,.10); --g-bd: rgba(184,160,96,.35);
+  --s-bg:  rgba(124,143,163,.09);--s-bd: rgba(124,143,163,.32);
+  --imp-bg:rgba(184,160,96,.07); --imp-brd:#B8A060;
+  --pos:   #0A7C56;
+  --neg:   var(--pink);
+}
+html,body{height:100vh;overflow:hidden;}
+body{
+  font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--txt);font-size:13px;line-height:1.5;
+  display:flex;flex-direction:column;
+}
+/* HEADER */
+.hdr{background:var(--hdr);border-bottom:2px solid var(--pink);padding:0 22px;height:50px;
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.hdr-left{display:flex;align-items:center;gap:14px;}
+.hdr-title{font-size:16px;font-weight:600;color:var(--dgray);letter-spacing:-.2px;}
+.hdr-date{font-size:13px;color:var(--txt2);padding-left:14px;border-left:1px solid var(--bdr2);}
+.conf{font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;letter-spacing:.7px;
+  background:var(--p-bg);color:var(--pink);border:1px solid var(--p-bd);}
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:10px 22px;
+  background:var(--hdr);border-bottom:1px solid var(--bdr);flex-shrink:0;}
+.kpi{background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:10px 14px;}
+.kpi.pos{border-left:3px solid var(--pos);}
+.kpi.neg{border-left:3px solid var(--neg);}
+.kpi.gld{border-left:3px solid var(--gold);}
+.kpi.inf{border-left:3px solid var(--sgray);}
+.kl{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px;}
+.kv{font-size:22px;font-weight:700;color:var(--dgray);line-height:1.15;}
+.kv sub{font-size:13px;font-weight:400;color:var(--txt2);vertical-align:baseline;}
+.kc{font-size:12px;margin-top:2px;}
+.kc.pos{color:var(--pos);} .kc.neg{color:var(--neg);}
+.ks{font-size:11px;color:var(--txt3);margin-top:1px;}
+.ksum{font-size:12px;color:var(--txt2);line-height:1.65;margin-top:4px;}
+/* MAIN */
+.main{display:grid;grid-template-columns:1fr 312px;gap:11px;padding:10px 22px 10px;
+  flex:1;overflow:hidden;min-height:0;}
+.sec{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;
+  margin-bottom:8px;display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.sec::after{content:'';flex:1;height:1px;background:var(--bdr);}
+.sec-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);flex-shrink:0;}
+/* NEWS */
+.news-col{display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);
+  gap:7px;flex:1;overflow:hidden;min-height:0;}
+.nc{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:10px 12px;
+  display:flex;flex-direction:column;gap:4px;overflow:hidden;min-height:0;}
+.nc.s3{border-left:3px solid var(--pink);}
+.nc.s2{border-left:3px solid var(--gold);}
+.nc.s1{border-left:3px solid var(--sgray);}
+.nc-top{display:flex;align-items:flex-start;gap:8px;}
+.bdg{flex-shrink:0;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-top:2px;white-space:nowrap;}
+.s3 .bdg{background:var(--p-bg);color:var(--pink);border:1px solid var(--p-bd);}
+.s2 .bdg{background:var(--g-bg);color:#7a6010;border:1px solid var(--g-bd);}
+.s1 .bdg{background:var(--s-bg);color:#4a6278;border:1px solid var(--s-bd);}
+.nt{font-size:14px;font-weight:600;color:var(--dgray);line-height:1.4;}
+.nm{font-size:11px;color:var(--txt3);}
+.nb{font-size:12.5px;color:var(--txt2);line-height:1.55;flex:1;}
+.ni{font-size:11.5px;color:var(--txt2);background:var(--imp-bg);
+  border-left:2px solid var(--gold);border-radius:0 3px 3px 0;
+  padding:4px 9px;line-height:1.5;flex-shrink:0;}
+.tags{display:flex;gap:3px;flex-wrap:wrap;flex-shrink:0;}
+.tag{font-size:10px;padding:1px 7px;border-radius:3px;background:var(--bg);color:var(--txt3);border:1px solid var(--bdr);}
+/* RIGHT */
+.right{display:flex;flex-direction:column;gap:11px;overflow:hidden;min-height:0;}
+.ov-card{background:var(--card);border:1px solid var(--bdr);border-radius:7px;
+  padding:8px 11px;display:grid;grid-template-columns:24px 1fr auto;
+  gap:8px;align-items:center;margin-bottom:6px;}
+.ov-card:last-child{margin-bottom:0;}
+.of{font-size:18px;line-height:1;}
+.on{font-size:12px;font-weight:600;color:var(--dgray);}
+.ot{font-size:11px;color:var(--txt2);margin-top:1px;}
+.os{font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;}
+.os.w{background:var(--g-bg);color:#7a6010;border:1px solid var(--g-bd);}
+.os.g{background:rgba(10,124,86,.09);color:#0A7C56;border:1px solid rgba(10,124,86,.28);}
+.os.b{background:var(--s-bg);color:#4a6278;border:1px solid var(--s-bd);}
+.mkt-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:9px 12px;}
+.mr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bdr);font-size:12px;}
+.mr:last-child{border-bottom:none;padding-bottom:0;}
+.mv{font-size:13px;font-weight:600;}
+.mv.pos{color:var(--pos);} .mv.neg{color:var(--neg);} .mv.gld{color:#7a6010;}
+/* CHARTS */
+.chart-area{flex:1;display:flex;flex-direction:column;min-height:0;}
+.chart-row{display:grid;grid-template-columns:1fr 1.4fr;gap:7px;flex:1;min-height:0;}
+.cc{background:var(--card);border:1px solid var(--bdr);border-radius:7px;padding:9px 11px;display:flex;flex-direction:column;}
+.ct{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;flex-shrink:0;}
+.cw{position:relative;flex:1;min-height:0;}
+/* FX */
+.fx-row{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--bdr);}
+.fx-left{display:flex;align-items:center;gap:8px;}
+.fx-flag{font-size:18px;line-height:1;}
+.fx-name{font-size:12px;font-weight:600;color:var(--dgray);}
+.fx-sub{font-size:10px;font-weight:400;color:var(--txt3);margin-left:3px;}
+.fx-right{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.fx-val{font-size:14px;font-weight:700;color:var(--dgray);}
+.fx-chg{font-size:10px;font-weight:600;}
+.fx-chg.neg{color:var(--neg);} .fx-chg.pos{color:var(--pos);} .fx-chg.neu{color:var(--sgray);}
+/* FOOTER */
+footer{background:var(--hdr);border-top:1px solid var(--bdr);padding:0 22px;height:30px;
+  display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--txt3);flex-shrink:0;}
+footer strong{color:var(--pink);font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-title">일일 경영 브리핑</div>
+    <div id="hdr-date" class="hdr-date">—</div>
+    <span class="conf">CONFIDENTIAL</span>
+  </div>
+  <img src="http://www.shinshinsa.com/img/ci_sign02_01.png"
+       alt="SHINSHIN" style="height:34px;width:auto;object-fit:contain;"
+       onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='flex';">
+  <svg id="logo-fallback" display="none" width="90" height="34" viewBox="0 0 110 42" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="55" cy="6" r="4" fill="#858585"/>
+    <polygon points="40,12 55,12 40,34 25,34" fill="#E0144C"/>
+    <polygon points="55,12 70,12 85,34 70,34" fill="#8c8c8c"/>
+    <polygon points="52,12 58,12 55,17" fill="#70000e"/>
+    <text x="55" y="42" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-size="8" font-weight="900" fill="#3a3a3a" letter-spacing="1.5">SHINSHIN</text>
+  </svg>
+</header>
+
+<!-- KPI -->
+<div class="kpi-row" id="kpi-row"></div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="news-col">
+    <div class="sec" id="news-sec"><span class="sec-dot"></span>주요 뉴스</div>
+    <div class="news-grid" id="news-grid"></div>
+  </div>
+
+  <div class="right">
+    <div style="flex-shrink:0;">
+      <div class="sec"><span class="sec-dot"></span>해외 모니터링</div>
+      <div id="overseas-cards"></div>
+    </div>
+    <div style="flex-shrink:0;">
+      <div class="sec"><span class="sec-dot"></span>글로벌 시장 지표</div>
+      <div class="mkt-wrap" id="market-rows"></div>
+    </div>
+    <div class="chart-area">
+      <div class="sec"><span class="sec-dot"></span>시장 추이</div>
+      <div class="chart-row">
+        <div class="cc" id="fx-card" style="justify-content:space-between;"></div>
+        <div class="cc">
+          <div class="ct" id="wti-title">WTI 유가 (7거래일, USD/bbl)</div>
+          <div class="cw"><svg id="wti-chart" style="width:100%;height:100%;display:block;"></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>기획팀 내부 자료 &nbsp;|&nbsp; CONFIDENTIAL &nbsp;|&nbsp; AI 자동 생성 / 검수: <strong>이승환 선임</strong></span>
+  <span id="footer-ts">발행: —</span>
+</footer>
+
+<script>
+/* ── SVG 차트 헬퍼 ── */
+function svgEl(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
+}
+function drawLine(svgId, data, labels, color, minV, maxV, yFmt) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+  const W = svg.clientWidth || 220, H = svg.clientHeight || 90;
+  const ml=40,mr=6,mt=8,mb=22,pw=W-ml-mr,ph=H-mt-mb,n=data.length;
+  const xs=i=>ml+(i/(n-1))*pw, ys=v=>mt+ph-((v-minV)/(maxV-minV))*ph;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.innerHTML='';
+  [0,.5,1].forEach(t=>{
+    const v=minV+t*(maxV-minV),y=ys(v);
+    svg.appendChild(svgEl('line',{x1:ml,y1:y,x2:W-mr,y2:y,stroke:'rgba(0,0,0,0.06)','stroke-width':1}));
+    const tx=svgEl('text',{x:ml-4,y:y+4,'text-anchor':'end','font-size':10,fill:'#9DAABA','font-family':'sans-serif'});
+    tx.textContent=yFmt(v); svg.appendChild(tx);
+  });
+  svg.appendChild(svgEl('polygon',{points:`${xs(0)},${mt+ph} ${data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' ')} ${xs(n-1)},${mt+ph}`,fill:color,opacity:0.1}));
+  svg.appendChild(svgEl('polyline',{points:data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' '),fill:'none',stroke:color,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'}));
+  data.forEach((v,i)=>svg.appendChild(svgEl('circle',{cx:xs(i),cy:ys(v),r:3,fill:color,stroke:'white','stroke-width':1.5})));
+  labels.forEach((l,i)=>{
+    const tx=svgEl('text',{x:xs(i),y:H-4,'text-anchor':'middle','font-size':10,fill:'#9DAABA','font-family':'sans-serif'});
+    tx.textContent=l; svg.appendChild(tx);
+  });
+}
+
+/* ── 렌더 함수 ── */
+function renderKPIs(kpis) {
+  document.getElementById('kpi-row').innerHTML = kpis.map(k => {
+    if (k.type === 'inf') {
+      return `<div class="kpi inf"><div class="kl">${k.label}</div><div class="ksum">${k.summary}</div></div>`;
+    }
+    const sub = k.unit ? ` <sub>${k.unit}</sub>` : '';
+    const chgCls = k.type === 'pos' ? 'pos' : k.type === 'neg' ? 'neg' : '';
+    return `<div class="kpi ${k.type}">
+      <div class="kl">${k.label}</div>
+      <div class="kv">${k.value}${sub}</div>
+      <div class="kc ${chgCls}">${k.change}</div>
+      <div class="ks">${k.note}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderNews(news) {
+  const stars = {3:'★★★', 2:'★★', 1:'★'};
+  const cls   = {3:'s3',   2:'s2',  1:'s1'};
+  const items = news.slice(0, 8);
+  const s3 = items.filter(n=>n.importance===3).length;
+  const s2 = items.filter(n=>n.importance===2).length;
+  const s1 = items.filter(n=>n.importance===1).length;
+  document.getElementById('news-sec').innerHTML =
+    `<span class="sec-dot"></span>주요 뉴스 &nbsp;·&nbsp; ${items.length}건 (★★★ ${s3} / ★★ ${s2} / ★ ${s1})`;
+  document.getElementById('news-grid').innerHTML = items.map(item => `
+    <div class="nc ${cls[item.importance]}">
+      <div class="nc-top"><span class="bdg">${stars[item.importance]}</span><div class="nt">${item.title}</div></div>
+      <div class="nm">${item.source} · ${item.pubDate}</div>
+      <div class="nb">${item.body}</div>
+      ${item.impact ? `<div class="ni">${item.impact}</div>` : ''}
+      <div class="tags">${(item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+function renderOverseas(overseas) {
+  document.getElementById('overseas-cards').innerHTML = overseas.map(o => `
+    <div class="ov-card">
+      <div class="of">${o.flag}</div>
+      <div><div class="on">${o.country}</div><div class="ot">${o.summary}</div></div>
+      <div class="os ${o.statusType}">${o.status}</div>
+    </div>`).join('');
+}
+
+function renderMarkets(markets) {
+  const colorMap = {pos:'var(--pos)', neg:'var(--neg)', gld:'#7a6010'};
+  document.getElementById('market-rows').innerHTML = markets.map(m => `
+    <div class="mr">
+      <span style="color:var(--txt2);">${m.label}</span>
+      <span class="mv" style="color:${colorMap[m.color]||'var(--txt)'};">${m.value}</span>
+    </div>`).join('');
+}
+
+function renderFX(fx, date) {
+  document.getElementById('fx-card').innerHTML = `
+    <div class="ct">법인 소재지 환율 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(vs USD, ${date})</span></div>
+    <div style="display:flex;flex-direction:column;gap:5px;flex:1;justify-content:space-evenly;">
+      ${fx.map(f=>`
+        <div class="fx-row">
+          <div class="fx-left"><span class="fx-flag">${f.flag}</span><div><div class="fx-name">${f.currency} <span class="fx-sub">${f.country}</span></div></div></div>
+          <div class="fx-right"><span class="fx-val">${f.value}</span><span class="fx-chg ${f.dir}">${f.change}</span></div>
+        </div>`).join('')}
+    </div>`;
+}
+
+/* ── 메인 로더 ── */
+async function loadDashboard() {
+  let data;
+  try {
+    const res = await fetch('./data.json?v=' + Date.now());
+    if (!res.ok) throw new Error('fetch failed');
+    data = await res.json();
+  } catch(e) {
+    document.getElementById('hdr-date').textContent = '데이터 로드 실패 — data.json 확인 필요';
+    return;
+  }
+
+  document.getElementById('hdr-date').textContent = data.date_kr;
+  document.getElementById('footer-ts').textContent = '발행: ' + data.generated_at + ' &nbsp;|&nbsp; 신신사 경영기획팀';
+
+  renderKPIs(data.kpis);
+  renderNews(data.news);
+  renderOverseas(data.overseas);
+  renderMarkets(data.markets);
+  renderFX(data.fx, data.date);
+
+  // WTI 차트
+  const wti = data.wti;
+  if (wti) {
+    const trend = wti.trend ? ` &nbsp;<span style="font-weight:400;color:var(--neg);text-transform:none;letter-spacing:0;">${wti.trend}</span>` : '';
+    document.getElementById('wti-title').innerHTML = `WTI 유가 (7거래일, USD/bbl)${trend}`;
+    requestAnimationFrame(() =>
+      drawLine('wti-chart', wti.values, wti.labels, '#B8A060', wti.min, wti.max, v => '$' + v.toFixed(1))
+    );
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadDashboard);
+</script>
+</body>
+</html>
