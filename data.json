@@ -39,11 +39,8 @@
       "pubDate": "2026-05-13",
       "body": "美 CPI 충격으로 원화 약세 심화, NDF 환율 1,492원. KOSPI −2.29% 급락.",
       "impact": "원가 ⬇ — 수입 강판·소재 원가 상승 직격",
-      "tags": [
-        "환율",
-        "원가",
-        "거시경제"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=%EC%9B%90%EB%8B%AC%EB%9F%AC+%ED%99%98%EC%9C%A8+1492%EC%9B%90+CPI",
+      "tags": ["환율","원가","거시경제"]
     },
     {
       "importance": 3,
@@ -52,12 +49,8 @@
       "pubDate": "2026-05-11",
       "body": "EU CBAM 시행으로 LG전자 납품 협력사도 탄소배출량 보고 사실상 의무화.",
       "impact": "규제·정책 ⬇ — 미대응 시 납품 자격 위협",
-      "tags": [
-        "CBAM",
-        "탄소",
-        "LG전자",
-        "규제"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=EU+CBAM+LG%EC%A0%84%EC%9E%90+%ED%98%91%EB%A0%A5%EC%82%AC+%ED%83%84%EC%86%8C%EB%8D%B0%EC%9D%B4%ED%84%B0",
+      "tags": ["CBAM","탄소","LG전자","규제"]
     },
     {
       "importance": 3,
@@ -66,12 +59,8 @@
       "pubDate": "2026-05-12",
       "body": "LG전자·삼성이 300조 히트펌프 시장 동시 공략. B2B 고수익 사업 전환 가속.",
       "impact": "매출 ⬆ — HVAC 관련 프레스·금속 부품 수요 증가 기대",
-      "tags": [
-        "LG전자",
-        "HVAC",
-        "B2B",
-        "히트펌프"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+HVAC+%ED%9E%88%ED%8A%B8%ED%8E%8C%ED%94%84+300%EC%A1%B0",
+      "tags": ["LG전자","HVAC","B2B","히트펌프"]
     },
     {
       "importance": 3,
@@ -80,12 +69,8 @@
       "pubDate": "2026-05-13",
       "body": "로봇 완성품 사업자로 재평가, 주가 신고가. 엔비디아 협업·가전-로봇 통합 설계 추진.",
       "impact": "고객사(LG전자) ⬆ — 정밀 금속부품 수요 확대 가능성",
-      "tags": [
-        "LG전자",
-        "로봇",
-        "AI",
-        "주가"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+%EB%A1%9C%EB%B4%87+%EC%99%84%EC%84%B1%ED%92%88+%EC%82%AC%EC%97%85%EC%9E%90+%EC%A3%BC%EA%B0%80",
+      "tags": ["LG전자","로봇","AI","주가"]
     },
     {
       "importance": 2,
@@ -94,12 +79,8 @@
       "pubDate": "2026-05-04",
       "body": "LG전자, 태국 Sansiri와 14,000가구 HVAC 공급 계약. 아시아 B2B 40+ 프로젝트 참여.",
       "impact": "매출(해외) ⬆ — LG전자 태국 HVAC 거점 확대",
-      "tags": [
-        "태국",
-        "LG전자",
-        "HVAC",
-        "B2B"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+%ED%83%9C%EA%B5%AD+Sansiri+HVAC",
+      "tags": ["태국","LG전자","HVAC","B2B"]
     },
     {
       "importance": 2,
@@ -108,12 +89,8 @@
       "pubDate": "2026-05-10",
       "body": "삼성전자, 중국 가전 공장 폐쇄 및 외주 전환 추진. 중국 로컬 브랜드 압박.",
       "impact": "원가 ⬌ — LG전자 중국 점유율 반사이익 기대",
-      "tags": [
-        "삼성전자",
-        "중국",
-        "가전",
-        "철수"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90+%EC%A4%91%EA%B5%AD+%EA%B0%80%EC%A0%84+%EC%B2%A0%EC%88%98",
+      "tags": ["삼성전자","중국","가전","철수"]
     },
     {
       "importance": 2,
@@ -122,12 +99,8 @@
       "pubDate": "2026-05-12",
       "body": "KDI, 반도체 수출 급증으로 경기 회복세 판단 상향. WTI $102 고유가 하방 리스크.",
       "impact": "거시경제 ⬌ — 경기 회복 긍정적이나 고유가 원가 부담 병존",
-      "tags": [
-        "거시경제",
-        "KDI",
-        "WTI",
-        "유가"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=KDI+%EA%B2%BD%EA%B8%B0+%ED%8C%90%EB%8B%A8+%EB%B0%98%EB%8F%84%EC%B2%B4+%EA%B3%A0%EC%9C%A0%EA%B0%80",
+      "tags": ["거시경제","KDI","WTI","유가"]
     },
     {
       "importance": 2,
@@ -136,11 +109,8 @@
       "pubDate": "2026-05-13",
       "body": "LG전자, InnoFest 2026 APAC에서 아시아 B2B 확장 전략 공개. 태국·싱가포르·필리핀 B2B 적극 추진.",
       "impact": "고객사(LG전자) ⬆ — 아시아 공급망 확대",
-      "tags": [
-        "LG전자",
-        "APAC",
-        "성장전략"
-      ]
+      "url": "https://search.naver.com/search.naver?where=news&query=LG+InnoFest+2026+APAC+B2B",
+      "tags": ["LG전자","APAC","성장전략"]
     }
   ],
   "overseas": [
