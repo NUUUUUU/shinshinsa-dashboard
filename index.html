@@ -92,38 +92,39 @@ body{
 .tags{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0;}
 .tag{font-size:12px;padding:2px 9px;border-radius:3px;background:var(--bg);color:var(--txt3);border:1px solid var(--bdr);}
 /* RIGHT */
-.right{display:flex;flex-direction:column;gap:9px;overflow:hidden;min-height:0;}
+.right{display:flex;flex-direction:column;gap:7px;overflow:hidden;min-height:0;}
+.right .sec{margin-bottom:6px;}
 .ov-card{background:var(--card);border:1px solid var(--bdr);border-radius:7px;
-  padding:6px 10px;display:grid;grid-template-columns:22px 1fr auto;
-  gap:8px;align-items:center;margin-bottom:4px;}
+  padding:5px 9px;display:grid;grid-template-columns:20px 1fr auto;
+  gap:7px;align-items:center;margin-bottom:3px;}
 .ov-card:last-child{margin-bottom:0;}
-.of{font-size:18px;line-height:1;}
-.on{font-size:14px;font-weight:700;color:var(--dgray);}
-.ot{font-size:13px;color:var(--txt2);margin-top:1px;}
-.os{font-size:12px;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap;}
+.of{font-size:16px;line-height:1;}
+.on{font-size:13px;font-weight:700;color:var(--dgray);}
+.ot{font-size:12px;color:var(--txt2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.os{font-size:11px;font-weight:700;padding:2px 7px;border-radius:3px;white-space:nowrap;}
 .os.w{background:var(--g-bg);color:#7a6010;border:1px solid var(--g-bd);}
 .os.g{background:rgba(10,124,86,.09);color:#0A7C56;border:1px solid rgba(10,124,86,.28);}
 .os.b{background:var(--s-bg);color:#4a6278;border:1px solid var(--s-bd);}
-.mkt-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:7px 12px;}
-.mr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--bdr);font-size:15px;}
+.mkt-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:6px 11px;}
+.mr{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--bdr);font-size:14px;}
 .mr:last-child{border-bottom:none;padding-bottom:0;}
-.mv{font-size:17px;font-weight:700;}
+.mv{font-size:16px;font-weight:700;}
 .mv.pos{color:var(--pos);} .mv.neg{color:var(--neg);} .mv.gld{color:#7a6010;}
 /* CHARTS */
 .chart-area{flex:1;display:flex;flex-direction:column;min-height:120px;}
 .chart-row{display:grid;grid-template-columns:1fr 1.4fr;gap:7px;flex:1;min-height:0;}
-.cc{background:var(--card);border:1px solid var(--bdr);border-radius:7px;padding:8px 11px;display:flex;flex-direction:column;}
-.ct{font-size:13px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;flex-shrink:0;}
+.cc{background:var(--card);border:1px solid var(--bdr);border-radius:7px;padding:7px 10px;display:flex;flex-direction:column;}
+.ct{font-size:13px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;flex-shrink:0;}
 .cw{position:relative;flex:1;min-height:0;}
 /* FX */
-.fx-row{display:flex;align-items:center;justify-content:space-between;padding:6px 9px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);}
-.fx-left{display:flex;align-items:center;gap:9px;}
-.fx-flag{font-size:21px;line-height:1;}
-.fx-name{font-size:16px;font-weight:700;color:var(--dgray);}
-.fx-sub{font-size:13px;font-weight:400;color:var(--txt3);margin-left:3px;}
-.fx-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
-.fx-val{font-size:20px;font-weight:700;color:var(--dgray);}
-.fx-chg{font-size:13px;font-weight:700;}
+.fx-row{display:flex;align-items:center;justify-content:space-between;padding:4px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--bdr);}
+.fx-left{display:flex;align-items:center;gap:7px;}
+.fx-flag{font-size:17px;line-height:1;}
+.fx-name{font-size:14px;font-weight:700;color:var(--dgray);}
+.fx-sub{font-size:12px;font-weight:400;color:var(--txt3);margin-left:2px;}
+.fx-right{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.fx-val{font-size:17px;font-weight:700;color:var(--dgray);}
+.fx-chg{font-size:12px;font-weight:700;}
 .fx-chg.neg{color:var(--neg);} .fx-chg.pos{color:var(--pos);} .fx-chg.neu{color:var(--sgray);}
 /* FOOTER */
 footer{background:var(--hdr);border-top:1px solid var(--bdr);padding:0 26px;height:36px;
@@ -280,7 +281,7 @@ function renderMarkets(markets) {
 function renderFX(fx, date) {
   document.getElementById('fx-card').innerHTML = `
     <div class="ct">법인 소재지 환율 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(vs USD, ${date})</span></div>
-    <div style="display:flex;flex-direction:column;gap:6px;flex:1;justify-content:space-evenly;">
+    <div style="display:flex;flex-direction:column;gap:3px;flex:1;justify-content:space-evenly;">
       ${fx.map(f=>`
         <div class="fx-row">
           <div class="fx-left"><span class="fx-flag">${f.flag}</span><div><div class="fx-name">${f.currency} <span class="fx-sub">${f.country}</span></div></div></div>
