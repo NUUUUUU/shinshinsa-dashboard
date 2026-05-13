@@ -1,160 +1,197 @@
 {
-  "date": "2026-05-13",
-  "date_kr": "2026년 5월 13일 (수)",
-  "generated_at": "2026-05-13 08:46 KST",
+  "date": "2026-05-14",
+  "date_kr": "2026년 5월 14일 (목)",
+  "generated_at": "2026-05-14 17:46 KST",
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "7,643",
-      "change": "▼ −179.09 (−2.29%)",
-      "note": "美 CPI 충격, 반도체주 급락"
+      "value": "—",
+      "change": "집계 중",
+      "note": "장중 데이터 미수집"
     },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
-      "value": "1,492",
+      "value": "1,489",
       "unit": "원",
-      "change": "▲ +17.5원",
-      "note": "NDF 기준, 원화 약세 심화"
+      "change": "▲ 달러 강세",
+      "note": "NDF 1개월물 기준"
     },
     {
       "type": "gld",
       "label": "한국 제조업 PMI",
-      "value": "50.4",
-      "change": "▲ +1.4p",
-      "note": "3월 기준, 확장 전환"
+      "value": "53.6",
+      "change": "▲ 최고치",
+      "note": "4월 한국 제조업 PMI"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "LG전자가 로봇·HVAC B2B로 급전환하며 수주 기회가 열리는 한편, 원화 1,492원 급등·EU CBAM·WTI $102 돌파가 동시에 원가·규제 압박을 가중, 선제적 대응이 시급하다."
+      "summary": "LG전자 1Q 실적 호조(+35%)로 수주 기대↑, 환율 1,490원대·ESG 요구 강화가 원가·운영 비용 압박"
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "원/달러 환율 1,492원 급등 — 미국 CPI 충격",
-      "source": "토큰포스트",
+      "title": "LG전자 1Q 영업익 1.67조(+35%), 로봇 신사업 목표가↑",
+      "source": "매일경제",
+      "pubDate": "2026-05-14",
+      "body": "LG전자 1분기 영업이익 1조6,737억원(+35%), 가전 역대 최대 분기 매출. 증권사 목표주가 상향.",
+      "impact": "고객사(LG전자) ⬆ 긍정 — 협력사 수주 확대 기대",
+      "url": "https://n.news.naver.com/mnews/article/009/0005679708?sid=101",
+      "tags": [
+        "LG전자",
+        "실적",
+        "협력사"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "원달러 환율 1,490원대 지속 — 수입 원가 압박",
+      "source": "이투데이/연합인포맥스",
+      "pubDate": "2026-05-14",
+      "body": "NDF 1,488~1,489원, 미국 PPI 충격 달러 강세. 당분간 1,490원 보합권 예상.",
+      "impact": "원가/환율 ⬇ 부정 — 수입 원자재 단가 상승 직접 압박",
+      "url": "https://www.etoday.co.kr/news/view/2584306",
+      "tags": [
+        "환율",
+        "원가",
+        "달러"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG전자 협력사 ESG 물 관리 요구 확산",
+      "source": "이로운넷",
       "pubDate": "2026-05-13",
-      "body": "美 CPI 충격으로 원화 약세 심화, NDF 환율 1,492원. KOSPI −2.29% 급락.",
-      "impact": "원가 ⬇ — 수입 강판·소재 원가 상승 직격",
-      "url": "https://search.naver.com/search.naver?where=news&query=%EC%9B%90%EB%8B%AC%EB%9F%AC+%ED%99%98%EC%9C%A8+1492%EC%9B%90+CPI",
-      "tags": ["환율","원가","거시경제"]
-    },
-    {
-      "importance": 3,
-      "title": "EU CBAM — LG전자 협력사 탄소데이터 의무화",
-      "source": "기계저널",
-      "pubDate": "2026-05-11",
-      "body": "EU CBAM 시행으로 LG전자 납품 협력사도 탄소배출량 보고 사실상 의무화.",
-      "impact": "규제·정책 ⬇ — 미대응 시 납품 자격 위협",
-      "url": "https://search.naver.com/search.naver?where=news&query=EU+CBAM+LG%EC%A0%84%EC%9E%90+%ED%98%91%EB%A0%A5%EC%82%AC+%ED%83%84%EC%86%8C%EB%8D%B0%EC%9D%B4%ED%84%B0",
-      "tags": ["CBAM","탄소","LG전자","규제"]
-    },
-    {
-      "importance": 3,
-      "title": "LG전자 B2B HVAC·히트펌프 300조 시장 정조준",
-      "source": "ftoday",
-      "pubDate": "2026-05-12",
-      "body": "LG전자·삼성이 300조 히트펌프 시장 동시 공략. B2B 고수익 사업 전환 가속.",
-      "impact": "매출 ⬆ — HVAC 관련 프레스·금속 부품 수요 증가 기대",
-      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+HVAC+%ED%9E%88%ED%8A%B8%ED%8E%8C%ED%94%84+300%EC%A1%B0",
-      "tags": ["LG전자","HVAC","B2B","히트펌프"]
-    },
-    {
-      "importance": 3,
-      "title": "LG전자 로봇 완성품 사업자 재평가 — 주가 18% 폭등 신고가",
-      "source": "한국경제",
-      "pubDate": "2026-05-13",
-      "body": "로봇 완성품 사업자로 재평가, 주가 신고가. 엔비디아 협업·가전-로봇 통합 설계 추진.",
-      "impact": "고객사(LG전자) ⬆ — 정밀 금속부품 수요 확대 가능성",
-      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+%EB%A1%9C%EB%B4%87+%EC%99%84%EC%84%B1%ED%92%88+%EC%82%AC%EC%97%85%EC%9E%90+%EC%A3%BC%EA%B0%80",
-      "tags": ["LG전자","로봇","AI","주가"]
+      "body": "글로벌 기업들이 협력사에 물 사용량·폐수 관리 요구. 가전 분야로 확산, ESG 공급망 실사 강화.",
+      "impact": "규제·정책 ⬇ 부정 — ESG 대응 비용 증가 리스크",
+      "url": "https://www.eroun.net/news/articleView.html?idxno=80548",
+      "tags": [
+        "ESG",
+        "규제",
+        "협력사"
+      ]
     },
     {
       "importance": 2,
-      "title": "LG전자 태국 HVAC B2B — Sansiri 1만4천 가구 냉방 공급 계약",
+      "title": "LG전자-창원대-부산대 HVAC 연구센터 출범",
+      "source": "CNB뉴스",
+      "pubDate": "2026-05-13",
+      "body": "창원대 내 LG전자 HVAC 연구센터 건립. 에어컨·히트펌프·AI 냉각 솔루션 R&D 강화.",
+      "impact": "고객사(LG전자) ⬆ 긍정 — 창원 생산 확대 시 부품 수요 증가 가능성",
+      "url": "https://www.cnbnews.com/news/articleView.html?idxno=1001692",
+      "tags": [
+        "LG전자",
+        "HVAC",
+        "창원"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 태국 산시리 HVAC 14,000대 계약",
       "source": "Seoul Economic Daily",
       "pubDate": "2026-05-04",
-      "body": "LG전자, 태국 Sansiri와 14,000가구 HVAC 공급 계약. 아시아 B2B 40+ 프로젝트 참여.",
-      "impact": "매출(해외) ⬆ — LG전자 태국 HVAC 거점 확대",
-      "url": "https://search.naver.com/search.naver?where=news&query=LG%EC%A0%84%EC%9E%90+%ED%83%9C%EA%B5%AD+Sansiri+HVAC",
-      "tags": ["태국","LG전자","HVAC","B2B"]
+      "body": "LG전자가 태국 최대 부동산 개발사 산시리와 14,000대 냉방 솔루션 계약 체결. 동남아 B2B 확대.",
+      "impact": "매출/고객사 ⬆ 긍정 — 해외 HVAC 수주 증가로 부품 수요 간접 증가",
+      "url": "https://en.sedaily.com/markets/2026/05/04/lg-electronics-beats-japanese-rivals-in-thai-hvac-market",
+      "tags": [
+        "태국",
+        "HVAC",
+        "B2B"
+      ]
     },
     {
       "importance": 2,
-      "title": "삼성전자 중국 가전 생산 철수 — 34년 만의 결단",
-      "source": "한국일보 위클리",
-      "pubDate": "2026-05-10",
-      "body": "삼성전자, 중국 가전 공장 폐쇄 및 외주 전환 추진. 중국 로컬 브랜드 압박.",
-      "impact": "원가 ⬌ — LG전자 중국 점유율 반사이익 기대",
-      "url": "https://search.naver.com/search.naver?where=news&query=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90+%EC%A4%91%EA%B5%AD+%EA%B0%80%EC%A0%84+%EC%B2%A0%EC%88%98",
-      "tags": ["삼성전자","중국","가전","철수"]
+      "title": "미중 관세 휴전 연장 — 30% 수준 2026년 11월까지",
+      "source": "Tax Foundation",
+      "pubDate": "2026-05-01",
+      "body": "미국의 중국산 30% 관세 2026년 11월까지 유지. Section 301 조사 병행으로 공급망 불확실성 지속.",
+      "impact": "원가 ⬌ 중립 — 글로벌 공급망 간접 영향, 단기 직접 타격 제한적",
+      "url": "https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/",
+      "tags": [
+        "미중관세",
+        "무역",
+        "공급망"
+      ]
     },
     {
       "importance": 2,
-      "title": "KDI 경기 판단 상향 — 반도체 수출 급증, 고유가 복병",
-      "source": "KDI/서울경제",
-      "pubDate": "2026-05-12",
-      "body": "KDI, 반도체 수출 급증으로 경기 회복세 판단 상향. WTI $102 고유가 하방 리스크.",
-      "impact": "거시경제 ⬌ — 경기 회복 긍정적이나 고유가 원가 부담 병존",
-      "url": "https://search.naver.com/search.naver?where=news&query=KDI+%EA%B2%BD%EA%B8%B0+%ED%8C%90%EB%8B%A8+%EB%B0%98%EB%8F%84%EC%B2%B4+%EA%B3%A0%EC%9C%A0%EA%B0%80",
-      "tags": ["거시경제","KDI","WTI","유가"]
-    },
-    {
-      "importance": 2,
-      "title": "LG InnoFest 2026 APAC — 아시아 B2B 성장전략 공개",
-      "source": "PR Newswire",
+      "title": "KIMEX 2026 — 금형 없는 생산 기술 부상",
+      "source": "헬로티",
       "pubDate": "2026-05-13",
-      "body": "LG전자, InnoFest 2026 APAC에서 아시아 B2B 확장 전략 공개. 태국·싱가포르·필리핀 B2B 적극 추진.",
-      "impact": "고객사(LG전자) ⬆ — 아시아 공급망 확대",
-      "url": "https://search.naver.com/search.naver?where=news&query=LG+InnoFest+2026+APAC+B2B",
-      "tags": ["LG전자","APAC","성장전략"]
+      "body": "KIMEX 2026에서 금형 없는 씰링 기술 주목. 프레스·사출 방식 대체 신공법 확산 중.",
+      "impact": "생산 ⬇ 부정(위협) — 장기적 프레스·금형 수요 대체 기술 확산 가능성",
+      "url": "https://www.hellot.net/news/article.html?no=112537",
+      "tags": [
+        "금형",
+        "KIMEX",
+        "기술동향"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "한국 제조업 PMI 53.6 (4월) — 2022년 2월 이후 최고치",
+      "source": "지식인",
+      "pubDate": "2026-05-05",
+      "body": "4월 한국 제조업 PMI 53.6 기록, 2022년 2월 이후 최고치. 반도체 주도, 자동차 부품 부진 지속.",
+      "impact": "생산/매출 ⬆ 긍정 — 제조업 경기 호조로 수주 환경 개선 기대",
+      "url": "https://www.ziksir.com/news/articleView.html?idxno=132867",
+      "tags": [
+        "PMI",
+        "제조업",
+        "경기"
+      ]
     }
   ],
   "overseas": [
     {
-      "flag": "🇹🇭",
-      "country": "태국",
-      "summary": "LG전자, Sansiri 14,000가구 HVAC 공급 계약 체결. PMI 4월 52.7 (확장).",
+      "flag": "🇨🇳",
+      "country": "중국",
+      "summary": "제조업 PMI 52.2로 확장 지속, 미중 관세 30% 유지",
       "status": "모니터링",
       "statusType": "w"
     },
     {
-      "flag": "🇨🇳",
-      "country": "중국",
-      "summary": "삼성전자 가전 철수 결단. 제조업 PMI 4월 52.2 (5년래 최고).",
-      "status": "주목",
+      "flag": "🇹🇭",
+      "country": "태국",
+      "summary": "LG전자 산시리 HVAC 14,000대 계약, PMI 54.1 호조",
+      "status": "긍정",
       "statusType": "g"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "summary": "LG전자 냉장고 생산라인 추가 예정. GDP 성장률 5.4% 목표.",
+      "summary": "LG $340M 투자 지속, IMF $2.3B 지급 완료",
       "status": "안정",
       "statusType": "b"
     }
   ],
   "markets": [
     {
-      "label": "KOSPI",
-      "value": "7,643.15 (▼2.29%)",
-      "color": "neg"
-    },
-    {
       "label": "원/달러 환율",
-      "value": "1,492.30원 (▲17.5)",
+      "value": "1,489원",
       "color": "neg"
     },
     {
-      "label": "WTI 유가",
-      "value": "$101.87/bbl (▲3.87%)",
-      "color": "neg"
+      "label": "한국 PMI (4월)",
+      "value": "53.6",
+      "color": "pos"
     },
     {
-      "label": "한국 제조업 PMI (3월)",
-      "value": "50.4",
+      "label": "중국 PMI (4월)",
+      "value": "52.2",
+      "color": "pos"
+    },
+    {
+      "label": "태국 PMI (3월)",
+      "value": "54.1",
+      "color": "pos"
+    },
+    {
+      "label": "미중 관세 (중국산)",
+      "value": "30%",
       "color": "gld"
     }
   ],
@@ -163,32 +200,32 @@
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "value": "1,492",
-      "change": "▲+17.5",
+      "value": "1,489",
+      "change": "▲ 달러강세",
       "dir": "neg"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "33.2",
-      "change": "▶ 0.0",
+      "value": "34.2",
+      "change": "보합",
       "dir": "neu"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "value": "7.25",
-      "change": "▶ 0.0",
+      "value": "7.23",
+      "change": "보합",
       "dir": "neu"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
-      "value": "52.72",
-      "change": "▶ 0.0",
+      "value": "49.5",
+      "change": "안정",
       "dir": "neu"
     }
   ],
@@ -199,20 +236,20 @@
       "5/9",
       "5/10",
       "5/11",
-      "5/12",
-      "5/13"
+      "5/13",
+      "5/14"
     ],
     "values": [
-      93.2,
-      95.1,
-      96.8,
-      98.3,
-      99.5,
-      101.0,
-      101.87
+      71.2,
+      72.1,
+      71.8,
+      70.9,
+      73.2,
+      72.8,
+      71.5
     ],
-    "min": 90,
-    "max": 105,
-    "trend": "▲ +8.5% (7거래일)"
+    "min": 68,
+    "max": 76,
+    "trend": "WTI 유가 71~73달러 박스권"
   }
 }
