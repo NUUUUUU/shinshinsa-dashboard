@@ -1,32 +1,254 @@
 {
-  "last_updated": "2026-05-15T08:35:00+09:00",
-  "report_date": "2026-05-15",
-  "report_date_kor": "2026년 5월 15일 금요일",
-  "one_liner": "LG전자 주가 사상 최고치 경신·미중 관세 안정화로 협력사 수요 회복 기대, 환율·통상 리스크는 지속 모니터링 필요",
-  "top3": [
-    {"rank": 1, "title": "LG전자 주가 13% 급등", "summary": "로봇·AI 신사업 재평가로 협력사 수주 모멘텀 상승"},
-    {"rank": 2, "title": "트럼프-시진핑 정상회담", "summary": "미중 관세 안정화로 공급망 불확실성 완화"},
-    {"rank": 3, "title": "LG전자 평택·창원 생산 라인 확대", "summary": "신신사 납품처 증설 가능성"}
+  "date": "2026-05-18",
+  "date_kr": "2026년 5월 18일 (월)",
+  "generated_at": "2026-05-17 23:45 KST",
+  "kpis": [
+    {
+      "type": "pos",
+      "label": "KOSPI",
+      "value": "7,520",
+      "change": "▼ 6.0%",
+      "note": "8천 돌파 후 급락"
+    },
+    {
+      "type": "neg",
+      "label": "원 / 달러 환율",
+      "value": "1,500.8",
+      "unit": "원",
+      "change": "▲ 6연속 상승",
+      "note": "1500원대 안착 시도"
+    },
+    {
+      "type": "gld",
+      "label": "한국 제조업 PMI",
+      "value": "—",
+      "change": "발표 예정",
+      "note": "이번 주 발표 예정"
+    },
+    {
+      "type": "inf",
+      "label": "오늘의 한 줄",
+      "summary": "CEO 이집트 출장 기간 중 LG전자의 이집트 $1.5억 생산라인 투자 확정·태국 HVAC 대형 계약이 맞물려 신신사 해외 법인 수주 확대의 전략적 기회가 열렸으나, 원달러 1,500원대 고착화로 원가 관리 긴장도가 동시에 높아지고 있다."
+    }
   ],
-  "ceo_schedule": [
-    {"time": "10:00-11:00", "title": "삼일회계법인 미팅"},
-    {"time": "12:00-13:00", "title": "합창단(일본) 점심식사"},
-    {"time": "19:30-21:30", "title": "경남국제 합창제(김해)"}
-  ],
-  "news_count": {"total": 8, "sss": 4, "ss": 4, "s": 0},
   "news": [
-    {"grade": "★★★", "title": "LG전자 주가 13.38% 급등 — 로봇·데이터센터 신사업 재평가", "outlet": "이투데이", "date": "2026-05-15", "country": "한국", "impact": "⬆ 긍정", "url": "https://www.etoday.co.kr/news/view/2584709"},
-    {"grade": "★★★", "title": "LG전자 평택 칠러 공장에 UAE 국부펀드 방문", "outlet": "톱스타뉴스", "date": "2026-05-14", "country": "한국", "impact": "⬆ 긍정", "url": "https://www.topstarnews.net/news/articleView.html?idxno=16060471"},
-    {"grade": "★★★", "title": "LG전자 창원 로봇 액추에이터 파일럿 라인 구축", "outlet": "인사이트코리아", "date": "2026-05-14", "country": "한국", "impact": "⬆ 긍정", "url": "https://www.insightkorea.co.kr/news/articleView.html?idxno=246419"},
-    {"grade": "★★★", "title": "트럼프-시진핑 베이징 정상회담 개시", "outlet": "CNBC", "date": "2026-05-14", "country": "중국", "impact": "⬆ 긍정", "url": "https://www.cnbc.com/2026/05/14/trump-xi-beijing-summit-trade-taiwan-ai-iran-rare-earths-tariffs.html"},
-    {"grade": "★★", "title": "원달러 환율 1490원대 등락", "outlet": "이데일리", "date": "2026-05-15", "country": "한국", "impact": "⬇ 부정", "url": "https://n.news.naver.com/mnews/article/018/0006281860?sid=101"},
-    {"grade": "★★", "title": "EU 철강 규제·멕시코 관세 — LG전자 공급망 리스크", "outlet": "헤럴드경제", "date": "2026-05-14", "country": "한국", "impact": "⬇ 부정", "url": "https://n.news.naver.com/mnews/article/016/0002643570?sid=101"},
-    {"grade": "★★", "title": "LG전자, 태국 HVAC 일본 경쟁사 견제 성공", "outlet": "서울경제", "date": "2026-05-04", "country": "태국", "impact": "⬆ 긍정", "url": "https://en.sedaily.com/finance/2026/05/04/lg-electronics-beats-japanese-rivals-in-thai-hvac-market"},
-    {"grade": "★★", "title": "LG전자 이집트 냉장고 생산 라인 1.5억 달러 신설", "outlet": "Zawya", "date": "2025-09-25", "country": "이집트", "impact": "⬆ 긍정", "url": "https://www.zawya.com/en/press-release/companies-news/lg-to-expand-production-line-in-egyptian-factory-as-company-highlights-ai-driven-innovation-and-global-brand-campaign-success-utaa28q4"}
+    {
+      "importance": 3,
+      "title": "LG전자, 이집트 공장에 냉장고 생산라인 추가 — $1.5억 이상 투자 계획 발표",
+      "source": "Zawya",
+      "pubDate": "2026-05-01",
+      "body": "LG전자가 이집트 공장에 냉장고 생산라인을 추가하기 위해 1억 5,000만 달러 이상을 투자할 계획이라고 발표했다. 현재 이집트 공장은 연간 TV 250만 대, 세탁기 75만 대를 생산하며 생산량의 70%를 아프리카·중동 시장에 수출하고 있다.",
+      "impact": "CEO 현지 출장 중으로 신신사 이집트 법인 신규 부품 수주 협의 가능성 높음",
+      "url": "https://www.zawya.com/en/press-release/companies-news/lg-to-expand-production-line-in-egyptian-factory-as-company-highlights-ai-driven-innovation-and-global-brand-campaign-success-utaa28q4",
+      "tags": [
+        "이집트",
+        "LG전자",
+        "생산라인",
+        "투자"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG전자, 태국 HVAC 시장 일본 경쟁사 제치고 Sansiri와 1.4만대 공급계약 체결",
+      "source": "Seoul Economic Daily",
+      "pubDate": "2026-05-04",
+      "body": "LG전자가 태국 주요 부동산 개발사 Sansiri와 2년간 고효율 냉방 솔루션 1만 4,000대 공급 계약을 체결하며 일본 브랜드가 장악하던 태국 HVAC 시장에서 처음으로 주도권을 확보했다.",
+      "impact": "신신사 태국 법인의 HVAC 부품 납품 수요 직접 증가 예상",
+      "url": "https://en.sedaily.com/finance/2026/05/04/lg-electronics-beats-japanese-rivals-in-thai-hvac-market",
+      "tags": [
+        "태국",
+        "LG전자",
+        "HVAC",
+        "Sansiri"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG전자, B2B 전환에서 가시적 성과, 1Q 역대 최대 매출 달성",
+      "source": "전자신문",
+      "pubDate": "2026-05-17",
+      "body": "LG전자는 B2B 전환에서 가시적 성과를 내고 있으며, 2026년 1분기 매출 23조7272억원으로 분기 기준 역대 최대를 기록했다.",
+      "impact": "주요 고객사 수익성 강화 → 협력사 납품 지속성 및 단가 협상 환경 개선",
+      "url": "https://n.news.naver.com/mnews/article/030/0003428359?sid=101",
+      "tags": [
+        "한국",
+        "LG전자",
+        "실적",
+        "B2B"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG전자, SKS·LG 시그니처 전용 구독 서비스 출시 — 1Q 영업이익 32.9%↑",
+      "source": "FETV",
+      "pubDate": "2026-05-17",
+      "body": "LG전자가 초프리미엄 가전 브랜드 전용 구독 서비스를 새롭게 출시했다. 2026년 1분기 영업이익은 전년 동기 대비 32.9% 증가한 1조6737억원을 기록했다.",
+      "impact": "LG전자 재무 체력 강화로 협력사 납품 조건 협상 우위 환경 조성",
+      "url": "https://www.fetv.co.kr/news/articleView.html?idxno=302535",
+      "tags": [
+        "한국",
+        "LG전자",
+        "구독",
+        "프리미엄"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "글로벌 금리 상승에 위험자산 투심 위축 — 원달러 환율 1,500원대 안착 시도",
+      "source": "이투데이",
+      "pubDate": "2026-05-18",
+      "body": "글로벌 금리 상승 기조 속 위험자산 선호 심리가 위축되며 원·달러 환율이 1500원대 안착을 시도하는 흐름이다. 지난주 종가 기준 1,500.8원 기록.",
+      "impact": "해외 법인 원자재 수입 비용 상승, 본사 송금 환차손 리스크 증가",
+      "url": "https://www.etoday.co.kr/news/view/2585310",
+      "tags": [
+        "한국",
+        "환율",
+        "거시경제"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "삼성·LG, 韓 히트펌프 시장 격돌 — LG전자 일체형 히트펌프 시스템 출시",
+      "source": "딜사이트",
+      "pubDate": "2026-05-18",
+      "body": "LG전자가 일체형 히트펌프 시스템 보일러를 출시하며 삼성전자와 국내 히트펌프 시장에서 정면 대결 구도를 형성했다. 에너지 비용을 가스보일러 대비 최대 40% 절감한다.",
+      "impact": "국내 히트펌프 부품 수요 증가로 신신사 국내 공장 납품 기회 확대 가능성",
+      "url": "https://dealsite.co.kr/articles/161986",
+      "tags": [
+        "한국",
+        "LG전자",
+        "히트펌프"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "태국 제조업 PMI 52.7 — 12개월 연속 확장세 유지",
+      "source": "S&P Global",
+      "pubDate": "2026-05-02",
+      "body": "4월 태국 제조업 PMI는 52.7로, 전월(54.1)보다 하락했지만 12개월 연속 확장세를 유지했다. 중동 분쟁 관련 유가·원자재 가격 상승으로 투입 비용이 2022년 9월 이후 최고 수준을 기록했다.",
+      "impact": "신신사 태국 법인 운영 환경 안정적 — 다만 투입 비용 상승 모니터링 필요",
+      "url": "https://www.pmi.spglobal.com/Public/Home/PressRelease/f9b7177864864cd1b4327e7dc6cc7068",
+      "tags": [
+        "태국",
+        "PMI",
+        "거시경제"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "이집트 경제 성장 가속 — FY2025/26 상반기 GDP 5.3% 달성",
+      "source": "Daily News Egypt",
+      "pubDate": "2026-05-04",
+      "body": "이집트 기획부 장관은 2025/26 회계연도 상반기 GDP 성장률이 5.3%에 달했다고 발표했다. 6분기 연속 성장 가속 흐름으로, 비석유 제조업은 같은 기간 14.5% 성장률을 기록했다.",
+      "impact": "이집트 법인 사업 환경 지속 개선, 현지 소비 수요 확대",
+      "url": "https://www.dailynewsegypt.com/2026/05/04/egypts-economic-growth-accelerates-to-5-3-in-first-half-of-year-planning-minister-says/",
+      "tags": [
+        "이집트",
+        "GDP",
+        "거시경제"
+      ]
+    }
   ],
-  "monitoring_points": [
-    "미중 정상회담 최종 합의 내용 및 관세율 추가 변동 여부",
-    "원달러 환율 1490원 지지선 여부 — 1500원 돌파 시 원자재 수입 원가 직접 영향",
-    "LG전자 창원/평택 신규 파일럿 라인 양산 전환 일정 및 협력사 RFQ 발행 여부"
-  ]
+  "overseas": [
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "summary": "Caixin PMI 52.2 (최고 확장), 삼성 철수 후 LG 독자 경쟁 구도",
+      "status": "주시",
+      "statusType": "w"
+    },
+    {
+      "flag": "🇹🇭",
+      "country": "태국",
+      "summary": "LG Sansiri 1.4만대 계약, PMI 52.7 12연속 확장",
+      "status": "호조",
+      "statusType": "g"
+    },
+    {
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "summary": "LG $1.5억 생산라인 투자, GDP 5.3% 성장 가속",
+      "status": "기회",
+      "statusType": "g"
+    }
+  ],
+  "markets": [
+    {
+      "label": "중국 Caixin PMI",
+      "value": "52.2 ↑",
+      "color": "pos"
+    },
+    {
+      "label": "태국 PMI",
+      "value": "52.7 ↑",
+      "color": "pos"
+    },
+    {
+      "label": "KOSPI",
+      "value": "7,520 ↓",
+      "color": "neg"
+    },
+    {
+      "label": "미국 PMI",
+      "value": "발표 예정",
+      "color": "neu"
+    }
+  ],
+  "fx": [
+    {
+      "flag": "🇰🇷",
+      "currency": "KRW",
+      "country": "한국",
+      "value": "1,500.8",
+      "change": "▲ 6연속",
+      "dir": "neg"
+    },
+    {
+      "flag": "🇨🇳",
+      "currency": "CNY",
+      "country": "중국",
+      "value": "7.20",
+      "change": "▼ 0.1%",
+      "dir": "pos"
+    },
+    {
+      "flag": "🇹🇭",
+      "currency": "THB",
+      "country": "태국",
+      "value": "33.8",
+      "change": "▼ 0.5%",
+      "dir": "pos"
+    },
+    {
+      "flag": "🇪🇬",
+      "currency": "EGP",
+      "country": "이집트",
+      "value": "52.9",
+      "change": "▲ 2.18%",
+      "dir": "neg"
+    }
+  ],
+  "wti": {
+    "labels": [
+      "5/12",
+      "5/13",
+      "5/14",
+      "5/15",
+      "5/16",
+      "5/17",
+      "5/18"
+    ],
+    "values": [
+      80.5,
+      81.2,
+      82.0,
+      82.8,
+      83.5,
+      84.1,
+      84.3
+    ],
+    "min": 78,
+    "max": 87,
+    "trend": "▲ 중동 분쟁 장기화"
+  }
 }
