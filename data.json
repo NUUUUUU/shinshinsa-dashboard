@@ -1,189 +1,146 @@
 {
-  "date": "2026-05-19",
-  "date_kr": "2026년 5월 19일 (화)",
-  "generated_at": "2026-05-19 08:35 KST",
+  "date": "2026-05-20",
+  "date_kr": "2026년 5월 20일 (수)",
+  "generated_at": "2026-05-20 08:32 KST",
   "kpis": [
-    {
-      "type": "pos",
-      "label": "KOSPI",
-      "value": "—",
-      "change": "장 시작 전",
-      "note": "5/19 09:00 개장"
-    },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
-      "value": "1,487.90",
+      "value": "1,506~1,515",
       "unit": "원",
-      "change": "▼ 10.75원",
-      "note": "NDF 기준, 약달러·미이란 협상 기대감"
-    },
-    {
-      "type": "gld",
-      "label": "한국 제조업 PMI",
-      "value": "—",
-      "change": "5/21 발표 예정",
-      "note": "한국 5월 1~20일 수출과 동시 발표"
+      "change": "+0.35",
+      "note": "미 장기금리 상승 압력"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "미중 관세 완화와 LG전자의 글로벌 HVAC·B2B 수주 확대가 신신사의 중단기 부품 수요를 견인할 호재이나, 공급망 탄소규제 본격화와 철강 통상규제로 인한 원가 부담 대응이 동시에 시급하다."
+      "summary": "LG전자 공조 공장 130% 풀가동 속 원달러 1,500원·이집트 파운드 약세 이중 압박"
+    },
+    {
+      "type": "neg",
+      "label": "이집트 파운드",
+      "value": "53.15",
+      "unit": "EGP/USD",
+      "change": "-0.34%",
+      "note": "12개월 대비 6.51% 절하"
+    },
+    {
+      "type": "pos",
+      "label": "LG전자 공조 가동률",
+      "value": "130%+",
+      "change": "풀가동",
+      "note": "AI 냉각+히트펌프 수요 급증"
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "공급망 탄소감축, LG전자 포함 8개 컨소시엄 '원팀'으로 뭉친다",
-      "source": "아시아경제",
+      "title": "LG전자 공조사업 공장 '풀가동'…AI 냉각 수요 올라탔다",
+      "source": "뉴스핌",
       "pubDate": "2026-05-19",
-      "body": "산업부가 공급망 탄소파트너십 사업 8개 컨소시엄 선정. LG전자·삼성전자 등이 연결 시너지형 컨소시엄을 구성해 협력사 공급망 탄소 감축 확산 방식 채택. EU CBAM 등 강화되는 글로벌 탄소규제에 선제 대응.",
-      "impact": "협력사(신신사 포함) 탄소 감축 실적 제출 의무화 현실화 가능성 — ESG 대응 비용 증가 예상",
-      "tags": [
-        "탄소규제",
-        "LG전자",
-        "공급망",
-        "ESG"
-      ]
+      "body": "LG전자 ES사업부문(공조) 공장 가동률 130% 초과. 히트펌프·데이터센터 냉각 수요 급증으로 연중 풀가동 체제. 신신사 부품 납품 수요 직접 증가.",
+      "impact": "생산·매출 ⬆",
+      "url": "https://www.newspim.com/news/view/20260519001065",
+      "tags": ["LG전자", "공조", "생산"]
     },
     {
       "importance": 3,
-      "title": "LG전자, 태국 HVAC 산시리 14,000대 계약 체결 — 일본 업체 제치고 동남아 진입",
-      "source": "서울경제 영문판",
-      "pubDate": "2026-05-04",
-      "body": "LG전자가 태국 대형 부동산 개발사 산시리와 고효율 냉난방 솔루션 1만 4천 대 공급 계약 체결. 동남아 HVAC 시장 본격 진입 및 싱가포르·필리핀 추가 수주.",
-      "impact": "태국 B2B HVAC 수주 확대 → 신신사 태국 공장 부품 납품 물량 증가 기대",
-      "tags": [
-        "LG전자",
-        "태국",
-        "HVAC",
-        "B2B"
-      ]
+      "title": "'중간재 상승+1500원 환율' 이중고…제조업 덮친 '비용 인플레' 압박",
+      "source": "뉴스1",
+      "pubDate": "2026-05-20",
+      "body": "원달러 환율 1,500원 돌파와 LPG·합성고무 등 중간재 가격 상승 동시 발생. 하반기 수익성 악화 우려 확대.",
+      "impact": "원가 ⬇",
+      "url": "https://n.news.naver.com/mnews/article/421/0008954739?sid=101",
+      "tags": ["환율", "원가", "제조업"]
     },
     {
       "importance": 3,
-      "title": "LG전자 하반기, AI 데이터센터 냉각장치·피지컬 AI 초격차 전략 집중",
-      "source": "파이낸셜포스트",
+      "title": "공급망 탄소감축 지원 확대…LG전자 협력사까지 포함",
+      "source": "4차산업혁명경제",
       "pubDate": "2026-05-19",
-      "body": "LG전자가 하반기 글로벌 AI 데이터센터 냉각장치(HVAC)와 피지컬 AI 등 차세대 고부가 시장 선점에 전사적 역량 집중. B2B 중심 고부가 제품군으로 수출 전략 재편.",
-      "impact": "HVAC·B2B 집중 전략이 신신사 관련 부품 중장기 수요 확대로 이어질 가능성",
-      "tags": [
-        "LG전자",
-        "HVAC",
-        "B2B",
-        "하반기전략"
-      ]
+      "body": "산업부 탄소파트너십에 LG전자 협력사 포함. 8개 대기업 컨소시엄이 공급망 탄소감축 모델 적용. ESG 대응 의무화 임박.",
+      "impact": "규제·정책 ⬌",
+      "url": "http://www.4th.kr/news/articleView.html?idxno=2111977",
+      "tags": ["ESG", "탄소감축", "LG전자 협력사"]
     },
     {
-      "importance": 3,
-      "title": "미중, 대두·희토류 딜 공표…트럼프-시진핑 상호 관세 24% 감면 연장 합의",
+      "importance": 2,
+      "title": "이집트 신규 산업 인센티브 패키지 시행 (5/1~12/31)",
+      "source": "Al-Ahram English",
+      "pubDate": "2026-05-01",
+      "body": "이집트 정부가 제조업 투자 촉진 인센티브 패키지 시행. 28개 우선 산업 섹터 집중 지원. CEO 이집트 출장 중.",
+      "impact": "규제·정책 ⬆",
+      "url": "https://english.ahram.org.eg/NewsContentP/3/567031/Business/Egypt-rolls-out-new-incentives-for-industrial-proj.aspx",
+      "tags": ["이집트", "산업정책", "이집트법인"]
+    },
+    {
+      "importance": 2,
+      "title": "IMF, 이집트 경제 프로그램 25억불 집행 승인",
+      "source": "Egypt Today",
+      "pubDate": "2026-02-26",
+      "body": "IMF 이집트 EFF 5·6차 점검 완료, 약 23억불 인출 승인. 이집트 성장률 4.4% 회복. 외환보유고 569억달러.",
+      "impact": "고객사·환율 ⬌",
+      "url": "https://www.egypttoday.com/Article/3/144156/IMF-approves-2-5B-fifth-sixth-reviews-of-Egypt%E2%80%99s-economic",
+      "tags": ["이집트", "IMF", "거시경제"]
+    },
+    {
+      "importance": 2,
+      "title": "미중 정상회담 이후 무역 합의 — 관세 30%/10% 유지",
       "source": "CNBC",
       "pubDate": "2026-05-18",
-      "body": "트럼프-시진핑 정상회담 후속으로 미중 양국 상호 관세 인하에 원칙 동의. 미국 대중 상호관세 24% 감면 2026년 11월까지 연장, 중국도 보복관세 전면 유예.",
-      "impact": "글로벌 공급망 비용 압박 완화 → 한국 부품사 원자재·물류 비용 부담 경감 기대",
-      "tags": [
-        "미중무역",
-        "관세",
-        "공급망",
-        "원가"
-      ]
+      "body": "트럼프-시진핑 회담 후 무역·투자 협의체 설립 합의. 미국 대중 관세 30%, 중국 대미 관세 10% 잠정 유지.",
+      "impact": "원가·환율 ⬌",
+      "url": "https://www.cnbc.com/2026/05/18/us-china-announce-deals-after-trump-xi-summit.html",
+      "tags": ["미중무역", "관세", "공급망"]
     },
     {
       "importance": 2,
-      "title": "정부, EU·미국 철강 통상규제 대응 총력…자동차·가전 공급망 영향",
-      "source": "페로타임스",
+      "title": "LG전자 히트펌프 삼성과 경쟁 심화",
+      "source": "더비즈",
       "pubDate": "2026-05-19",
-      "body": "EU·미국 철강 통상규제 강화에 정부가 한국산 철강 시장 접근 안정성 확보 협의 지속. 철강 규제가 자동차·가전 현지 생산 공급망에도 영향 가능성.",
-      "impact": "철강 원자재 가격 상승 시 프레스 부품 원가 직접 증가",
-      "tags": [
-        "철강",
-        "통상규제",
-        "원가",
-        "공급망"
-      ]
+      "body": "LG전자가 히트펌프를 씽큐 앱과 연동한 신제품 출시. 삼성전자와 국내 히트펌프 시장 경쟁 심화. 부품 수요 증가 기대.",
+      "impact": "매출 ⬆",
+      "url": "http://www.the-biz.co.kr/news/articleView.html?idxno=720975",
+      "tags": ["LG전자", "히트펌프", "경쟁"]
     },
     {
       "importance": 2,
-      "title": "LG전자, 류재철 가전 전문 사장 선임 — '기술·현장형' CEO 시대 개막",
-      "source": "뉴스1",
+      "title": "이집트 파운드(EGP) 환율 — USD/EGP 53.15 약세 지속",
+      "source": "Trading Economics",
       "pubDate": "2026-05-19",
-      "body": "LG전자가 조주완 사장 후임으로 30년 이상 가전 사업 담당 류재철 사장 선임. 기술·현장형 CEO로의 교체는 제품 개발·생산 중심 의사결정 강화 시사.",
-      "impact": "가전 전문 CEO 선임 → LG전자 가전 사업 지속 투자 의지 반영, 부품 사업 관계 안정적 유지 예상",
-      "tags": [
-        "LG전자",
-        "CEO교체",
-        "경영"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "원달러 환율 1,487~1,500원 등락…약달러·미이란 협상 기대감 복합 작용",
-      "source": "이투데이 / 연합인포맥스",
-      "pubDate": "2026-05-19",
-      "body": "19일 원·달러 환율 NDF 기준 1,487.90원으로 전일 대비 10.75원 하락. 약달러 흐름과 미·이란 협상 진전 기대감이 환율 하방 압력으로 작용, 1,480원대 후반 등락 전망.",
-      "impact": "환율 하락(원화 강세) 시 수출 채산성 감소, 상승 시 원자재 수입 비용 증가 — 양방향 관리 필요",
-      "tags": [
-        "환율",
-        "원달러",
-        "외환"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "LG이집트법인 NPI 2026 신제품 발표 + IMF 이집트 7차 심사 개시",
-      "source": "Egyptian Gazette / Egypt Today",
-      "pubDate": "2026-05-17",
-      "body": "LG이집트법인이 2026년 신제품(OLED TV, 현지생산 HERO 에어컨 등) 발표. IMF가 이집트 7차 심사 개시, 완료 시 16억 달러 추가 지원 가능. CEO 이집트 출장 중(5/18~5/22).",
-      "impact": "이집트 법인 현지 생산 확대 및 IMF 경제 지원으로 이집트 사업 환경 점진적 개선 기대",
-      "tags": [
-        "이집트",
-        "LG전자",
-        "IMF",
-        "CEO출장"
-      ]
+      "body": "EGP/USD 53.15. 최근 12개월 대비 6.51% 절하. IMF 지원에도 파운드 약세 지속. 이집트 법인 수익성 압박.",
+      "impact": "환율 ⬇",
+      "url": "https://tradingeconomics.com/egypt/currency",
+      "tags": ["이집트", "환율", "이집트법인"]
     }
   ],
-  "overseas": [],
-  "markets": [],
+  "ceo_schedule": [
+    {"time": "종일", "title": "이집트 법인 출장 예정", "note": "2026-05-18~05-22"},
+    {"time": "14:00~16:00", "title": "글로벌주간(개발/품질/금형)", "note": ""}
+  ],
+  "top3": [
+    {"rank": 1, "stars": "★★★", "title": "LG전자 공조 풀가동 130%", "impact": "생산·매출 ⬆", "reason": "신신사 부품 납품 확대 기회 직결"},
+    {"rank": 2, "stars": "★★★", "title": "환율 1500원+중간재 이중고", "impact": "원가 ⬇", "reason": "하반기 마진 방어 시급"},
+    {"rank": 3, "stars": "★★★", "title": "LG협력사 탄소파트너십 포함", "impact": "규제·정책 ⬌", "reason": "ESG 의무화 대응 선제 준비 필요"}
+  ],
+  "monitoring": [
+    "원달러 환율 1,510원 저항선 돌파 여부 (미국 장기금리 추이)",
+    "CEO 이집트 출장 결과 및 현지 신규 산업 인센티브 적용 가능성",
+    "LG전자 공조·히트펌프 부품 발주 물량 확정 시점"
+  ],
+  "stats": {
+    "total_collected": 35,
+    "selected": 8,
+    "star3": 3,
+    "star2": 5,
+    "star1": 0,
+    "ceo_events": 2
+  },
+  "notion_url": "https://www.notion.so/36507c4cdfa181428a60ea77c8e6e885",
   "fx": [
-    {
-      "flag": "🇰🇷",
-      "currency": "KRW",
-      "country": "한국",
-      "value": "—",
-      "change": "—",
-      "dir": "neu"
-    },
-    {
-      "flag": "🇹🇭",
-      "currency": "THB",
-      "country": "태국",
-      "value": "—",
-      "change": "—",
-      "dir": "neu"
-    },
-    {
-      "flag": "🇨🇳",
-      "currency": "CNY",
-      "country": "중국",
-      "value": "—",
-      "change": "—",
-      "dir": "neu"
-    },
-    {
-      "flag": "🇪🇬",
-      "currency": "EGP",
-      "country": "이집트",
-      "value": "—",
-      "change": "—",
-      "dir": "neu"
-    }
-  ],
-  "wti": {
-    "labels": [],
-    "values": [],
-    "min": 60,
-    "max": 100,
-    "trend": ""
-  }
+    {"flag": "🇰🇷", "currency": "KRW", "country": "한국", "value": "1,506~1,515", "change": "+0.35", "dir": "neg"},
+    {"flag": "🇨🇳", "currency": "CNY", "country": "중국", "value": "—", "change": "—", "dir": "neu"},
+    {"flag": "🇹🇭", "currency": "THB", "country": "태국", "value": "—", "change": "—", "dir": "neu"},
+    {"flag": "🇪🇬", "currency": "EGP", "country": "이집트", "value": "53.15", "change": "-0.34%", "dir": "neg"}
+  ]
 }
