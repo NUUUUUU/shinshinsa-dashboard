@@ -114,6 +114,37 @@
       "tags": ["이집트", "환율", "이집트법인"]
     }
   ],
+  "overseas": [
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "summary": "미중 정상회담 무역 합의 윤곽. Caixin PMI 4월 52.2로 개선 — 단 수출 주문 둔화",
+      "statusType": "w",
+      "status": "주의"
+    },
+    {
+      "flag": "🇹🇭",
+      "country": "태국",
+      "summary": "세계은행 2026 성장률 1.3% 하향. 제조업 PMI 52.7 유지 중 원가 상승 압력",
+      "statusType": "w",
+      "status": "주의"
+    },
+    {
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "summary": "CEO 출장 중(~5/22). 신규 산업 인센티브 시행. EGP 53.15 약세 지속",
+      "statusType": "g",
+      "status": "출장"
+    }
+  ],
+  "markets": [
+    { "label": "KOSPI", "value": "6,598 ▲", "color": "pos" },
+    { "label": "S&P 500", "value": "YTD+ 회복", "color": "pos" },
+    { "label": "WTI 유가", "value": "$103 /bbl", "color": "neg" },
+    { "label": "원/달러", "value": "1,506~1,515", "color": "neg" },
+    { "label": "EGP/USD", "value": "53.15 ▼", "color": "neg" },
+    { "label": "위안/달러", "value": "미중 합의 주시", "color": "gld" }
+  ],
   "ceo_schedule": [
     {"time": "종일", "title": "이집트 법인 출장 예정", "note": "2026-05-18~05-22"},
     {"time": "14:00~16:00", "title": "글로벌주간(개발/품질/금형)", "note": ""}
@@ -138,9 +169,16 @@
   },
   "notion_url": "https://www.notion.so/36507c4cdfa181428a60ea77c8e6e885",
   "fx": [
-    {"flag": "🇰🇷", "currency": "KRW", "country": "한국", "value": "1,506~1,515", "change": "+0.35", "dir": "neg"},
-    {"flag": "🇨🇳", "currency": "CNY", "country": "중국", "value": "—", "change": "—", "dir": "neu"},
-    {"flag": "🇹🇭", "currency": "THB", "country": "태국", "value": "—", "change": "—", "dir": "neu"},
-    {"flag": "🇪🇬", "currency": "EGP", "country": "이집트", "value": "53.15", "change": "-0.34%", "dir": "neg"}
-  ]
+    {"flag": "🇰🇷", "currency": "KRW", "country": "한국",   "value": "1,506~1,515", "change": "+0.35", "dir": "neg"},
+    {"flag": "🇨🇳", "currency": "CNY", "country": "중국",   "value": "7.21",         "change": "미중합의 주시", "dir": "neu"},
+    {"flag": "🇹🇭", "currency": "THB", "country": "태국",   "value": "~34.5",        "change": "보합",  "dir": "neu"},
+    {"flag": "🇪🇬", "currency": "EGP", "country": "이집트", "value": "53.15",        "change": "-0.34%", "dir": "neg"}
+  ],
+  "wti": {
+    "labels": ["5/12", "5/13", "5/14", "5/15", "5/16", "5/19", "5/20"],
+    "values": [96.2, 98.5, 101.3, 103.8, 105.1, 107.2, 103.4],
+    "min": 90,
+    "max": 115,
+    "trend": "호르무즈 분쟁 → 급등 후 조정"
+  }
 }
