@@ -1,151 +1,147 @@
 {
-  "date": "2026-05-21",
-  "date_kr": "2026년 5월 21일 (목)",
-  "generated_at": "2026-05-21 00:02 KST",
+  "date": "2026-05-26",
+  "date_kr": "2026년 5월 26일 (화)",
+  "generated_at": "2026-05-26 08:30 KST",
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "7,208.95",
-      "change": "▼ 0.86%",
-      "note": "반등 예상 (미·이란 협상 진전)"
+      "value": "—",
+      "change": "변동성 지속",
+      "note": "고환율·고유가 불안으로 장중 변동성"
     },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
-      "value": "1,497.60",
+      "value": "1,517",
       "unit": "원",
-      "change": "▼ 9.20원",
-      "note": "NDF 기준, 1493~1503 예상 범위"
+      "change": "▲ 9.6원",
+      "note": "달러 매매환율 1,572원까지 상승"
     },
     {
       "type": "gld",
       "label": "한국 제조업 PMI",
-      "value": "—",
-      "change": "",
-      "note": "5월 한국 PMI 미발표"
+      "value": "발표예정",
+      "change": "5/29 발표",
+      "note": "한국 4월 산업활동동향 5/29 예정"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "LG전자의 AI·HVAC B2B 수주 확대와 이집트·태국 생산 증설이 신신사 주문 기회를 열고 있으나, 4월 생산자물가가 외환위기 이후 최고치를 기록하며 원가 방어가 긴급 과제로 부상했다."
+      "summary": "원달러 환율 1,500원대 고착과 3高 현상이 제조업 원가를 직접 압박하는 가운데, LG전자는 B2B·신흥국 수주 확대로 협력사 수요 기반을 강화하고 있어 기회·리스크가 공존하는 국면이다."
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "중동 충격에 4월 생산자물가 상승률 외환위기 이후 최고",
+      "title": "원달러 환율 급등·1500원대 고착…달러 매매환율 1572원까지",
       "source": "SBS Biz",
-      "pubDate": "2026-05-21",
-      "body": "4월 생산자물가지수 128.43, 전월 대비 +2.5% — 외환위기 이후 최고 상승률. 중동 전쟁 유가 급등 원인. 원자재·에너지 원가 직접 상승 압력.",
-      "impact": "원가: ⬇ 부정 — 원자재·에너지 원가 직접 상승 → 가공비·철강재 구매단가 상승 압력",
-      "url": "https://n.news.naver.com/mnews/article/374/0000511442?sid=101",
-      "tags": [
-        "원가",
-        "생산자물가",
-        "중동"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "LG, 이집트 공장 냉장고 생산라인 증설 — 1억5천만 달러+ 투자",
-      "source": "Zawya",
-      "pubDate": "2025-09-25",
-      "body": "LG전자 이집트 법인이 $150M+ 투자로 냉장고 신규 생산라인 추가. 연간 약 250만 대 TV 생산, 70%를 아프리카·중동에 수출. CEO 이집트 출장(5/18~22)과 직접 연계.",
-      "impact": "매출·생산: ⬆ 긍정 — CEO 이집트 출장 연계, 냉장고 라인 부품 신규 발주 기회",
-      "url": "https://www.zawya.com/en/press-release/companies-news/lg-to-expand-production-line-in-egyptian-factory-as-company-highlights-ai-driven-innovation-and-global-brand-campaign-success-utaa28q4",
-      "tags": [
-        "이집트",
-        "LG전자",
-        "생산라인"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "LG전자, 태국 HVAC 시장서 일본 경쟁사 추월 — Sansiri와 1만4천 대 계약",
-      "source": "서울경제 영문판",
-      "pubDate": "2026-05-04",
-      "body": "LG전자가 태국 최대 부동산사 Sansiri와 향후 2년간 냉방 솔루션 14,000대 공급 계약. 일본 브랜드 장악 동남아 HVAC 시장에서 우위. B2B 협력사 부품 수요 증가 기대.",
-      "impact": "매출·고객사: ⬆ 긍정 — LG전자 HVAC B2B 물량 급증 → 공조 부품 협력사 발주 증가",
-      "url": "https://en.sedaily.com/finance/2026/05/04/lg-electronics-beats-japanese-rivals-in-thai-hvac-market",
-      "tags": [
-        "태국",
-        "HVAC",
-        "LG전자",
-        "B2B"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "LG전자, 공조사업 공장 '풀가동'…AI 냉각 수요 올라탔다",
-      "source": "뉴스핌",
-      "pubDate": "2026-05-19",
-      "body": "LG전자 ES사업부문, 칠러·CDU 등 데이터센터 냉각 솔루션 중심 공조 공장 풀가동. 히트펌프+데이터센터 냉각 수요 동시 증가. 애널리스트, 수익성 개선 핵심 동인 평가.",
-      "impact": "생산·매출: ⬆ 긍정 — 고객사 공조 라인 풀가동 → 부품 협력사 주문 증가 직결",
-      "url": "https://www.newspim.com/news/view/20260519001065",
-      "tags": [
-        "LG전자",
-        "공조",
-        "HVAC",
-        "AI냉각"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "삼성·LG, EU·亞 공략 'AI·HVAC' 투트랙 전략 공식화",
-      "source": "viva100",
-      "pubDate": "2026-05-21",
-      "body": "LG전자가 유럽·아시아 시장 겨냥 AI 가전과 HVAC을 양대 축으로 전략 공식화. B2B 파트너사를 핵심 협력 업체로 육성. AI 데이터센터 냉각 수요와 히트펌프 수요 맞물려.",
-      "impact": "매출·고객사: ⬆ 긍정 — LG전자 B2B 협력사 육성 전략 → 신신사 파트너십 강화 기회",
-      "url": "https://www.viva100.com/article/20260520500629",
-      "tags": [
-        "LG전자",
-        "AI",
-        "HVAC",
-        "B2B전략"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "美·이란 협상 기대에 달러 약세…달러/원 1490원대 중후반 전망",
-      "source": "뉴스핌",
-      "pubDate": "2026-05-21",
-      "body": "미·이란 협상 진전 기대로 달러 약세. NDF 종가 1,497.60원(-9.20원). 달러/원 예상 범위 1,493~1,503원.",
-      "impact": "환율·원가: ⬌ 중립 — 원화 강세→수입 원자재 원가 소폭 완화 / 수출 채산성 영향 주시",
-      "url": "https://www.newspim.com/news/view/20260521000092",
+      "pubDate": "2026-05-26",
+      "body": "달러·원 환율이 전일비 9.6원 급등하며 1500원선 부근에서 등락 중이며 달러 매매환율은 1572원에 달한다. 외국인 자금 이탈과 강달러 기조가 맞물려 금융당국이 환율 안정 의지를 표명했으나 효과는 제한적이다.",
+      "impact": "환율·원가 ⬇ 부정 — 수입 원자재·부품 비용 직접 상승으로 제조업 원가 압박 실질화",
+      "url": "https://n.news.naver.com/mnews/article/374/0000512098?sid=101",
       "tags": [
         "환율",
-        "달러",
-        "미이란"
+        "원가",
+        "거시경제"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "3%대 물가 경고음에도…\"3高는 성공비용\" 제조업 원가 전이 우려",
+      "source": "머니투데이",
+      "pubDate": "2026-05-26",
+      "body": "중동전쟁 장기화로 국제유가 급등·원달러 환율 1517원 돌파로 5월 소비자물가 상승률 3%대 진입이 우려된다. 수입물가 상승이 제조업 원가에 구조적으로 전이되는 영향이 가속화될 전망이다.",
+      "impact": "원가·환율 ⬇ 부정 — 수입물가 상승이 제조원가 전이 가속, 이익률 훼손 위험",
+      "url": "https://n.news.naver.com/mnews/article/008/0005362451?sid=101",
+      "tags": [
+        "물가",
+        "원가",
+        "3高"
       ]
     },
     {
       "importance": 2,
-      "title": "[AI 권력지도] LG 구광모, AI·HVAC·B2B 체질 개선 가시화",
-      "source": "한스비즈",
-      "pubDate": "2026-05-20",
-      "body": "LG전자가 AI홈·스마트팩토리·로봇·HVAC 등 AI 기반 B2B 사업 확대에 속도. AI 데이터센터 확대에 따른 냉각 솔루션 시장 급성장. 구광모 회장 체질 개선 전략 가시적 성과.",
-      "impact": "고객사·매출: ⬆ 긍정 — LG전자 AI/HVAC B2B 전략 가속 → 협력사 장기 수요 증가 구조",
-      "url": "http://www.hansbiz.co.kr/news/articleView.html?idxno=839857",
+      "title": "LG전자 류재철 \"로봇 경쟁력\"…B2B 체질 개선·매출 비중 36%",
+      "source": "파이낸셜뉴스",
+      "pubDate": "2026-05-26",
+      "body": "LG전자가 B2B 중심으로 사업 체질을 개선하며 가전 구독·webOS·공조·전장 등 B2B 매출 비중을 전체의 36%까지 끌어올렸다. 류재철 CEO 체제에서 B2B 사업이 대외 불확실성을 방어하는 핵심 축으로 부각되고 있다.",
+      "impact": "고객사(LG전자) ⬆ 긍정 — B2B 확장이 공조·가전 부품 수요 증가로 이어질 가능성",
+      "url": "http://www.fntimes.com/html/view.php?ud=202605250847347688dd55077bc2_18",
+      "tags": [
+        "LG전자",
+        "B2B",
+        "고객사"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자, 글로벌 소비자 평가 1위…1Q 영업이익 전년비 +32.9%",
+      "source": "FETV",
+      "pubDate": "2026-05-25",
+      "body": "LG전자가 글로벌 소비자 평가 1위를 기록했으며 2026년 1분기 영업이익은 1조6737억원(+32.9% YoY)을 달성했다. 전장·B2B·구독 등 차세대 사업 성장이 실적 견인했다.",
+      "impact": "고객사·매출 ⬆ 긍정 — 고객사 실적 호조로 협력사 수주 모멘텀 긍정적",
+      "url": "https://www.fetv.co.kr/news/articleView.html?idxno=302997",
+      "tags": [
+        "LG전자",
+        "실적",
+        "고객사"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "프레스·금형 스마트팩토리 전환 — 대림글로벌 원스톱 생산 체계 구축",
+      "source": "뉴스1",
+      "pubDate": "2026-05-26",
+      "body": "인천 소재 자동차부품 제조기업 대림글로벌이 금형 설계·프레스·사출·조립 전 공정 원스톱 체계를 구축해 스마트팩토리로 전환했다. 인력 증원 방식 한계를 넘어 자동화·디지털화로 생산성을 높이는 업계 트렌드가 확인된다.",
+      "impact": "생산 ⬌ 중립(트렌드) — 동종 업계 스마트팩토리 전환 가속화, 중장기 투자 방향 참고",
+      "url": "https://n.news.naver.com/mnews/article/421/0008965045?sid=102",
+      "tags": [
+        "프레스",
+        "금형",
+        "스마트팩토리"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "피지컬 AI로 뭉친 '원팀 LG'… 5개월 만에 시총 56조 불렸다",
+      "source": "파이낸셜뉴스",
+      "pubDate": "2026-05-25",
+      "body": "LG전자 계열사를 중심으로 로봇·AI 데이터센터 관련 B2B 신사업 기대감이 확산되면서 LG그룹 시가총액이 5개월 만에 56조원 증가했다. 피지컬 AI를 매개로 한 그룹 차원의 원팀 전략이 주목받고 있다.",
+      "impact": "고객사(LG전자) ⬆ 긍정 — LG그룹 B2B 모멘텀 강화, 공조·가전 부품 중장기 수요 긍정적",
+      "url": "https://n.news.naver.com/mnews/article/014/0005526002?sid=101",
       "tags": [
         "LG전자",
         "AI",
-        "B2B",
-        "구광모"
+        "로봇"
       ]
     },
     {
       "importance": 2,
-      "title": "중국 가전 대기업, 태국 공장 확장 — Haier·Midea·Hisense·TCL 증설",
-      "source": "더네이션 타이 (The Nation Thailand)",
-      "pubDate": "2026-05-10",
-      "body": "중국 가전 대기업들이 태국 현지 생산·마케팅 강화. Midea 22억 바트 에어컨 공장 신설. 중국 브랜드 제품이 한국 브랜드 대비 10~20% 저렴, 가격 경쟁 극도로 치열.",
-      "impact": "매출: ⬇ 부정 — LG전자 동남아 시장점유율 압박 → 장기적 LG향 부품 발주 변동 리스크",
-      "url": "https://www.nationthailand.com/blogs/business/trade/40055403",
+      "title": "LG전자, 신흥국 공략 속도 'Up'…B2B 빌트인 시장 중점 공략",
+      "source": "딜사이트TV",
+      "pubDate": "2026-05-25",
+      "body": "LG전자 생활가전(HS)사업본부가 전사 영업이익의 50% 이상을 담당하는 주력 사업부로 신흥국 시장 공략을 가속화하고 있다. 미국 시장의 경우 전체 가전의 약 20%를 차지하는 고수익 B2B 빌트인 시장을 중점 공략 중이다.",
+      "impact": "고객사(LG전자)·매출 ⬆ 긍정 — 가전 수주 지역 다변화로 협력사 수요 기반 안정화 기대",
+      "url": "https://news.dealsitetv.com/articles/170740",
       "tags": [
-        "태국",
-        "중국가전",
-        "경쟁"
+        "LG전자",
+        "신흥국",
+        "가전"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "[증시전망] 반도체 쉬자 코스닥 질주…이번 주 PMI·금통위 향방은",
+      "source": "디지털투데이",
+      "pubDate": "2026-05-25",
+      "body": "코스닥이 반도체 대형주 쉬어가기 국면에서 강세를 보이는 가운데 이번 주(5/26~30) 코스피 방향성이 주목된다. 5월 29일 한국 4월 산업활동동향 및 중국 제조업·서비스업 PMI 발표가 예정돼 있어 제조업 경기 가늠 지표로 관심이 집중된다.",
+      "impact": "기타 ⬌ 중립 — 이번 주 PMI·금통위 결정이 원화 환율 및 제조업 경기 방향성 결정 변수",
+      "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=668700",
+      "tags": [
+        "증시",
+        "PMI",
+        "금통위"
       ]
     }
   ],
@@ -153,22 +149,22 @@
     {
       "flag": "🇨🇳",
       "country": "중국",
-      "summary": "Caixin PMI 4월 52.2 (2020년 12월 이후 최고) — 민간 제조업 확장세 강화. 삼성 중국 가전 철수로 LG 반사이익 가능성.",
+      "summary": "4월 Caixin PMI 52.2 강세 속 NBS PMI 50.3 소폭 둔화. 신규 수출 주문 둔화·원자재 비용 상승이 리스크",
       "status": "주시",
       "statusType": "w"
     },
     {
       "flag": "🇹🇭",
       "country": "태국",
-      "summary": "LG, 태국 HVAC 시장 일본 추월. 제조업 PMI 52.7 (12개월 연속 확장). 중국 가전사 공장 확장으로 경쟁 심화.",
-      "status": "기회",
-      "statusType": "p"
+      "summary": "4월 PMI 52.7로 12개월 연속 확장세. 단, 공장 폐업 급증·스태그플레이션 경고로 구조적 어려움 지속",
+      "status": "주시",
+      "statusType": "w"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "summary": "LG 냉장고 생산라인 $150M+ 증설. CEO 출장(5/18~22) 중. IMF 지원 23억달러 승인, GDP 4.5% 성장 전망.",
-      "status": "기회",
+      "summary": "LG전자 이집트 공장 냉장고 라인 $1.5억 투자 추진. IMF 23억달러 지원으로 경제 안정화 진행 중",
+      "status": "긍정",
       "statusType": "p"
     }
   ],
@@ -179,19 +175,19 @@
       "color": "pos"
     },
     {
-      "label": "태국 제조업 PMI",
-      "value": "52.7 →",
+      "label": "태국 PMI (4월)",
+      "value": "52.7 ↓",
+      "color": "neu"
+    },
+    {
+      "label": "이집트 GDP성장",
+      "value": "4.4%",
       "color": "pos"
     },
     {
-      "label": "이집트 GDP 성장률",
-      "value": "4.5% ↑",
-      "color": "pos"
-    },
-    {
-      "label": "한국 생산자물가",
-      "value": "+2.5% ⚠",
-      "color": "neg"
+      "label": "태국 USD/THB",
+      "value": "32.47",
+      "color": "neu"
     }
   ],
   "fx": [
@@ -199,56 +195,48 @@
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "value": "1,497.60",
-      "change": "▼ 9.20원",
-      "dir": "pos"
-    },
-    {
-      "flag": "🇨🇳",
-      "currency": "CNY",
-      "country": "중국",
-      "value": "6.80",
-      "change": "▼ 0.01%",
-      "dir": "pos"
+      "value": "1,517",
+      "change": "▲ 9.6원",
+      "dir": "neg"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "32.73",
-      "change": "▲ 0.18%",
-      "dir": "neg"
+      "value": "32.47",
+      "change": "—",
+      "dir": "neu"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
-      "value": "53.09",
-      "change": "▲ 0.35%",
-      "dir": "neg"
+      "value": "52.28",
+      "change": "—",
+      "dir": "neu"
     }
   ],
   "wti": {
     "labels": [
-      "5/15",
-      "5/16",
-      "5/17",
-      "5/18",
-      "5/19",
       "5/20",
-      "5/21"
+      "5/21",
+      "5/22",
+      "5/23",
+      "5/24",
+      "5/25",
+      "5/26"
     ],
     "values": [
-      81.2,
-      82.5,
-      83.1,
-      84.0,
-      85.3,
-      86.1,
-      85.8
+      80,
+      81.5,
+      83,
+      84,
+      85,
+      85.5,
+      86
     ],
     "min": 78,
     "max": 90,
-    "trend": "▲ 중동 분쟁 리스크"
+    "trend": "▲ 중동전쟁 장기화 리스크"
   }
 }
