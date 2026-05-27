@@ -43,7 +43,7 @@ body{
 .conf{font-size:13px;font-weight:700;padding:3px 12px;border-radius:3px;letter-spacing:.7px;
   background:var(--p-bg);color:var(--pink);border:1px solid var(--p-bd);}
 /* KPI */
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding:12px 26px;
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px;padding:12px 26px;
   background:var(--hdr);border-bottom:1px solid var(--bdr);flex-shrink:0;}
 .kpi{background:var(--bg);border:1px solid var(--bdr);border-radius:9px;padding:12px 16px;}
 .kpi.pos{border-left:4px solid var(--pos);}
@@ -321,8 +321,8 @@ async function loadDashboard() {
     return;
   }
 
-  document.getElementById('hdr-date').textContent = data.date_kr;
-  document.getElementById('footer-ts').textContent = '발행: ' + data.generated_at + ' &nbsp;|&nbsp; 신신사 경영기획팀';
+  document.getElementById('hdr-date').textContent = data.date_label || data.date_kr || '';
+  document.getElementById('footer-ts').innerHTML = '발행: ' + (data.generated || data.generated_at || '—') + ' &nbsp;|&nbsp; 신신사 경영기획팀';
 
   // 오늘의 한 줄
   if (data.summary_line) {
@@ -351,7 +351,4 @@ async function loadDashboard() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadDashboard);
-</script>
-</body>
-</html>
+document.addEve
