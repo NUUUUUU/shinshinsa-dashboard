@@ -43,7 +43,7 @@ body{
 .conf{font-size:13px;font-weight:700;padding:3px 12px;border-radius:3px;letter-spacing:.7px;
   background:var(--p-bg);color:var(--pink);border:1px solid var(--p-bd);}
 /* KPI */
-.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px;padding:12px 26px;
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding:12px 26px;
   background:var(--hdr);border-bottom:1px solid var(--bdr);flex-shrink:0;}
 .kpi{background:var(--bg);border:1px solid var(--bdr);border-radius:9px;padding:12px 16px;}
 .kpi.pos{border-left:4px solid var(--pos);}
@@ -126,19 +126,11 @@ body{
 .fx-val{font-size:17px;font-weight:700;color:var(--dgray);}
 .fx-chg{font-size:12px;font-weight:700;}
 .fx-chg.neg{color:var(--neg);} .fx-chg.pos{color:var(--pos);} .fx-chg.neu{color:var(--sgray);}
-/* SUMMARY BAR */
-.summary-bar{
-  background:linear-gradient(90deg,#c30040 0%,#a8003a 100%);
-  padding:7px 26px;color:#fff;font-size:15px;font-weight:700;
-  letter-spacing:-.2px;flex-shrink:0;display:none;
-  align-items:center;gap:14px;
-}
-.sum-label{
-  font-size:12px;font-weight:800;letter-spacing:.8px;white-space:nowrap;
-  padding:2px 10px;border:1px solid rgba(255,255,255,.45);border-radius:3px;
-  opacity:.92;flex-shrink:0;
-}
-#sum-text{line-height:1.4;}
+/* SUMMARY KPI */
+.kpi.sum{border-left:4px solid var(--pink);background:var(--p-bg);}
+.ksum-label{font-size:12px;font-weight:800;letter-spacing:.7px;color:var(--pink);
+  text-transform:uppercase;margin-bottom:6px;}
+.ksum-text{font-size:16px;font-weight:700;color:var(--dgray);line-height:1.55;}
 /* FOOTER */
 footer{background:var(--hdr);border-top:1px solid var(--bdr);padding:0 26px;height:36px;
   display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--txt3);flex-shrink:0;}
@@ -165,12 +157,6 @@ footer strong{color:var(--pink);font-weight:700;}
     <text x="55" y="42" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-size="8" font-weight="900" fill="#3a3a3a" letter-spacing="1.5">SHINSHIN</text>
   </svg>
 </header>
-
-<!-- 오늘의 한 줄 -->
-<div id="summary-bar" class="summary-bar">
-  <span class="sum-label">🔍 오늘의 한 줄</span>
-  <span id="sum-text"></span>
-</div>
 
 <!-- KPI -->
 <div class="kpi-row" id="kpi-row"></div>
@@ -243,6 +229,9 @@ function drawLine(svgId, data, labels, color, minV, maxV, yFmt) {
 /* ── 렌더 함수 ── */
 function renderKPIs(kpis) {
   document.getElementById('kpi-row').innerHTML = kpis.map(k => {
+    if (k.type === 'sum') {
+      return `<div class="kpi sum"><div class="ksum-label">${k.label}</div><div class="ksum-text">${k.summary}</div></div>`;
+    }
     if (k.type === 'inf') {
       return `<div class="kpi inf"><div class="kl">${k.label}</div><div class="ksum">${k.summary}</div></div>`;
     }
@@ -324,17 +313,12 @@ async function loadDashboard() {
   document.getElementById('hdr-date').textContent = data.date_label || data.date_kr || '';
   document.getElementById('footer-ts').innerHTML = '발행: ' + (data.generated || data.generated_at || '—') + ' &nbsp;|&nbsp; 신신사 경영기획팀';
 
-  // 오늘의 한 줄
-  if (data.summary_line) {
-    const bar = document.getElementById('summary-bar');
-    const txt = document.getElementById('sum-text');
-    if (bar && txt) {
-      txt.textContent = data.summary_line;
-      bar.style.display = 'flex';
-    }
+  // 오늘의 한 줄 → 4번째 KPI 슬롯
+  const kpis = [...(data.kpis || [])];
+  if (data.summary_line && kpis.length < 4) {
+    kpis.push({ type: 'sum', label: '🔍 오늘의 한 줄', summary: data.summary_line });
   }
-
-  renderKPIs(data.kpis);
+  renderKPIs(kpis);
   renderNews(data.news);
   renderOverseas(data.overseas);
   renderMarkets(data.markets);
@@ -351,4 +335,8 @@ async function loadDashboard() {
   }
 }
 
-document.addEve
+document.addEventListener('DOMContentLoaded', loadDashboard);
+</script>
+</body>
+</html>
+                                                                                                                                                                    
