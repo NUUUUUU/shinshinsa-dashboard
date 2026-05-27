@@ -1,192 +1,208 @@
 {
-  "generated": "2026-05-27T08:31:00+09:00",
-  "date": "2026-05-27",
-  "date_label": "2026년 5월 27일 수요일",
-  "summary_line": "LG전자 HVAC B2B 고성장 가속(칠러 1조 조기달성·국내 생산전환) — 신신사 부품 발주 모멘텀 가시화 국면",
+  "date": "2026-05-28",
+  "date_kr": "2026년 5월 28일 (목)",
+  "generated_at": "2026-05-27 23:43 KST",
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "8,047.51",
-      "change": "▲ 2.55%",
-      "note": "사상 최초 8,000선 돌파 · 5/26"
+      "value": "8,012.34",
+      "change": "▲ 0.85%",
+      "note": "8,000선 돌파, 외국인 순매수 지속"
     },
     {
       "type": "neg",
-      "label": "USD/KRW",
-      "value": "1,504.3",
-      "change": "▼ 12.9원",
-      "note": "5/26 종가 · 1,498~1,510원 전망"
+      "label": "원 / 달러 환율",
+      "value": "1,500",
+      "unit": "원",
+      "change": "▲ 0.04%",
+      "note": "NDF 1,500.60원, 강달러 지속"
     },
     {
-      "type": "pos",
-      "label": "5월 수출증감(1~20일)",
-      "value": "+64.8%",
-      "change": "반도체 +202.1%",
-      "note": "관세청 속보(5/21) · 수출 회복 신호"
+      "type": "gld",
+      "label": "한국 제조업 PMI",
+      "value": "+18.4%",
+      "change": "반도체 강세 지속",
+      "note": "관세청 속보 · 제조업 수출 회복 신호"
+    },
+    {
+      "type": "inf",
+      "label": "오늘의 한 줄",
+      "summary": "코스피 8,000 돌파·미중 관세 완화 등 긍정 신호 속, 1,500원대 환율 고공행진과 한은 금통위 금리 결정이 제조업 원가 압박의 분수령이 될 전망이다."
     }
   ],
   "news": [
     {
       "importance": 3,
-      "grade": "★★★",
-      "title": "[쇼티지 기업을 찾아라] ① LG전자, HVAC發 실적 랠리 \"칠러 매출 1조 조기 달성\"",
-      "source": "대한경제",
-      "pubDate": "2026-05-27",
-      "body": "LG전자가 AI 데이터센터 열관리 수요 급증에 힘입어 칠러·히트펌프 등 HVAC 실적 랠리를 이어가고 있다. 당초 2027년 목표였던 칠러 매출 1조원 달성 시점이 대폭 앞당겨질 전망이다.",
-      "impact": "LG전자 HVAC 핵심사업 조기 목표달성 → 부품 협력사 발주 모멘텀 강화 기대",
-      "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202605261221258790949",
+      "title": "뿌리산업 중기 \"에너지 비용 부담…정책 지원 절실\"",
+      "source": "서울경제",
+      "pubDate": "2026-05-26",
+      "body": "주조·금형·소성가공·프레스 등 뿌리산업 중소기업들이 급등한 에너지 비용 부담을 호소하며 정책 지원을 촉구했다.",
+      "impact": "프레스·금형 포함 뿌리산업 에너지 비용 급등이 직접적 원가 압박으로 작용",
+      "url": "https://n.news.naver.com/mnews/article/011/0004624731?sid=101",
       "tags": [
-        "LG전자",
-        "HVAC",
-        "칠러",
-        "발주"
+        "뿌리산업",
+        "프레스",
+        "금형",
+        "에너지비용",
+        "원가"
       ]
     },
     {
       "importance": 3,
-      "grade": "★★★",
-      "title": "'인력·서비스망 구축'…LG전자, 국내 히트펌프 시장 인프라 강화",
-      "source": "더퍼블릭",
-      "pubDate": "2026-05-26",
-      "body": "LG전자가 히트펌프 보일러 핵심 부품과 완제품의 국내 생산을 순차적으로 진행할 예정이다. 전문 설치·유지보수 인력 양성도 확대 중이다.",
-      "impact": "LG전자 히트펌프 부품·완제품 국내 생산 전환 → 신신사 프레스 부품 직접 발주 가능성 증가",
-      "url": "https://www.thepublic.kr/news/articleView.html?idxno=305595",
+      "title": "신현송 체제 첫 금통위…'동결' 기조 이어갈까",
+      "source": "컨슈머타임스",
+      "pubDate": "2026-05-28",
+      "body": "신현송 신임 한국은행 총재 취임 후 첫 금융통화위원회가 개최됐다. 시장은 동결을 예상하나 매파적 발언 가능성에 주목한다.",
+      "impact": "금리 인상 결정 시 자금조달 비용 상승 및 환율 변동성 확대",
+      "url": "https://www.cstimes.com/news/articleView.html?idxno=707429",
+      "tags": [
+        "한국은행",
+        "금통위",
+        "기준금리",
+        "환율"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "China and US agree to establish trade and investment councils after Xi-Trump summit",
+      "source": "South China Morning Post",
+      "pubDate": "2026-05-27",
+      "body": "미중 정상회담 후속으로 양국이 무역·투자 협의체 설립에 합의하고 상호 관세 인하 원칙을 천명했다.",
+      "impact": "LG전자 공급망 환경 개선 기대",
+      "url": "https://www.scmp.com/economy/global-economy/article/3353840/china-and-us-agree-establish-trade-and-investment-councils-after-xi-trump-summit",
+      "tags": [
+        "미중무역",
+        "관세",
+        "공급망",
+        "LG전자"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "한국은행 금통위 대기…환율, 1500원대 초반 출발 전망",
+      "source": "이데일리",
+      "pubDate": "2026-05-28",
+      "body": "원·달러 환율이 1,500원대 초반에서 출발할 것으로 예상된다.",
+      "impact": "수입 원자재 비용 상승(부정) vs 해외 매출 환차익(긍정)",
+      "url": "https://n.news.naver.com/mnews/article/018/0006291927?sid=101",
+      "tags": [
+        "환율",
+        "달러",
+        "외환"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "냉장고 넘어 데이터센터로…LG전자, AI 냉각 앞세워 체질 전환 속도",
+      "source": "포인트데일리",
+      "pubDate": "2026-05-28",
+      "body": "LG전자가 냉장고·에어컨 기술을 데이터센터 냉각 및 산업용 공조로 확장하고 있다.",
+      "impact": "LG전자 B2B 전환은 가전 부품 수요 구조 변화 예고",
+      "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=306249",
+      "tags": [
+        "LG전자",
+        "B2B",
+        "AI냉각",
+        "체질전환"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "위기 커지자… 가전 투톱 일제히 베트남行",
+      "source": "파이낸셜뉴스",
+      "pubDate": "2026-05-27",
+      "body": "삼성전자·LG전자 수장이 베트남을 방문해 현장 경영에 나섰다.",
+      "impact": "LG전자 해외 생산 거점 강화는 국내 협력사 물량 감소 가능성 시사",
+      "url": "https://n.news.naver.com/mnews/article/014/0005527221?sid=101",
+      "tags": [
+        "LG전자",
+        "베트남",
+        "해외생산",
+        "협력사"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자, 히트펌프 전문 인력 확대…평택 HVAC 아카데미서 엔지니어 육성",
+      "source": "이코노뉴스",
+      "pubDate": "2026-05-27",
+      "body": "LG전자가 평택 LG HVAC 아카데미에서 히트펌프 전문 엔지니어 육성 교육을 진행했다.",
+      "impact": "LG전자 HVAC·히트펌프 사업 확대로 관련 부품 수요 증가 가능성",
+      "url": "http://www.econonews.co.kr/news/articleView.html?idxno=438930",
       "tags": [
         "LG전자",
         "히트펌프",
-        "국내생산",
-        "프레스"
+        "HVAC",
+        "평택",
+        "유럽"
       ]
     },
     {
       "importance": 2,
-      "grade": "★★",
-      "title": "평화협정 기대가 위험선호 촉발…\"1500원 지지선 하향이탈 시도\" [환율전망]",
-      "source": "이투데이",
-      "pubDate": "2026-05-27",
-      "body": "27일 원달러 환율 등락 범위는 1498~1510원으로 전망. 미·이란 평화협정 기대감에 따른 위험선호 심리와 외국인 순매수가 환율 하락 압력.",
-      "impact": "환율 1,500원 선 공방 → 수입 원자재 비용 영향, 해외 법인 환차손·익 모니터링 필요",
-      "url": "https://www.etoday.co.kr/news/view/2587993",
-      "tags": [
-        "환율",
-        "원달러",
-        "미이란"
-      ]
-    },
-    {
-      "importance": 2,
-      "grade": "★★",
-      "title": "사람 더 뽑는 방식으론 못 버틴다…대림글로벌의 스마트 전환 해법",
-      "source": "뉴스1",
-      "pubDate": "2026-05-26",
-      "body": "자동차 부품 제조기업 대림글로벌이 금형 설계부터 프레스·조립까지 전 공정을 자체 운영하는 원스톱 생산 체계를 구축하고 스마트팩토리 전환.",
-      "impact": "동종 부품사 스마트팩토리 전환 사례 — 신신사 생산 자동화 방향성 벤치마킹 기회",
-      "url": "https://n.news.naver.com/mnews/article/421/0008965045?sid=102",
-      "tags": [
-        "스마트팩토리",
-        "프레스",
-        "자동화"
-      ]
-    },
-    {
-      "importance": 2,
-      "grade": "★★",
-      "title": "Egypt, UNDP Discuss Expanding Green Industry Cooperation — Solar Initiative Targets 1,000 MW for Factories",
-      "source": "Daily News Egypt",
-      "pubDate": "2026-05-24",
-      "body": "이집트-UNDP가 공장용 태양광 1,000MW 공급을 목표로 하는 녹색 산업 협력 확대를 논의했다.",
-      "impact": "이집트 법인 소재지의 제조업 에너지 정책 변화 → 공장 운영 비용 및 투자 환경 변화 모니터링 필요",
-      "url": "https://www.dailynewsegypt.com/2026/05/24/egypt-undp-discuss-expanding-green-industry-cooperation-as-solar-initiative-targets-1000-mw-for-factories/",
-      "tags": [
-        "이집트",
-        "에너지",
-        "태양광"
-      ]
-    },
-    {
-      "importance": 2,
-      "grade": "★★",
-      "title": "Economic Restructure Proposed — Industry Leaders Call for SME Support, Agricultural Reform",
-      "source": "Bangkok Post",
-      "pubDate": "2026-05-25",
-      "body": "태국 산업계 지도자들이 SME 경쟁력 강화 및 농업 현대화를 포함한 경제구조 전환 방안을 총리에게 제안했다.",
-      "impact": "태국 법인 소재지 경제 불확실성 지속 → 현지 B2B 수요 변화 모니터링 필요",
-      "url": "https://www.bangkokpost.com/business/general/3260433/economic-restructure-proposed",
+      "title": "Thailand factory closures outpace openings as SME strain deepens",
+      "source": "The Nation Thailand",
+      "pubDate": "2026-05-21",
+      "body": "2026년 1분기 태국 신규 공장 개설보다 폐쇄가 10분기 만에 처음으로 많아졌다.",
+      "impact": "태국 제조업 투자 환경 악화로 신신사 태국 법인 사업 환경 불확실성 증가",
+      "url": "https://www.nationthailand.com/business/economy/40066477",
       "tags": [
         "태국",
-        "경제구조",
-        "SME"
-      ]
-    },
-    {
-      "importance": 1,
-      "grade": "★",
-      "title": "Egyptian Pound (EGP) Steady at 52.22 Per USD (2026-05-26)",
-      "source": "Trading Economics / 이집트 중앙은행(CBE)",
-      "pubDate": "2026-05-26",
-      "body": "이집트 파운드 환율이 달러당 52.22 EGP로 안정세 유지.",
-      "impact": "이집트 법인 환율 안정 → 현지 원가 변동 제한적",
-      "url": "https://tradingeconomics.com/egypt/currency",
-      "tags": [
-        "이집트",
-        "환율",
-        "EGP"
-      ]
-    },
-    {
-      "importance": 1,
-      "grade": "★",
-      "title": "종가로도 '8천피' 뚫은 코스피...연내 1만피 가나?",
-      "source": "YTN",
-      "pubDate": "2026-05-27",
-      "body": "코스피가 2026-05-26 종가 기준 사상 처음 8,000선을 돌파했다. 외국인 매수세와 반도체 ETF 기대감이 상승을 이끌었다.",
-      "impact": "증시 호황은 투자심리 개선 신호",
-      "url": "https://n.news.naver.com/mnews/article/052/0002358271?sid=101",
-      "tags": [
-        "코스피",
-        "증시",
-        "반도체"
+        "제조업",
+        "공장폐쇄",
+        "신신사태국"
       ]
     }
   ],
   "overseas": [
     {
-      "flag": "🇨🇳",
-      "country": "중국",
-      "summary": "4월 공식 PMI 50.3 확장세 유지. 5월 발표 5/30 예정. 대외수요 약화·관세 영향 지속.",
+      "flag": "🇺🇸",
+      "country": "미국",
+      "summary": "연준 추가 긴축 가능성, 강달러 지속",
       "status": "주시",
       "statusType": "w"
+    },
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "summary": "미중 무역협의체 합의, 관세 안정화 기대",
+      "status": "긍정",
+      "statusType": "g"
     },
     {
       "flag": "🇹🇭",
       "country": "태국",
-      "summary": "경제구조 전환 제안 논의 중(SME지원·농업개혁). 이란전쟁 여파 내수 침체 지속. 바트화 소폭 강세.",
-      "status": "주시",
-      "statusType": "w"
+      "summary": "제조업 공장 폐쇄 급증, 투자 환경 악화",
+      "status": "위험",
+      "statusType": "r"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "summary": "UNDP와 1,000MW 태양광 녹색산업 협력 논의. EGP 환율 52.22 안정세. 비석유 제조업 1Q 14.5% 성장.",
-      "status": "양호",
-      "statusType": "p"
+      "summary": "중동 분쟁 여파, 에너지 가격 급등",
+      "status": "주시",
+      "statusType": "w"
     }
   ],
   "markets": [
     {
       "label": "KOSPI",
-      "value": "8,047.51 ▲",
+      "value": "8,012 ▲",
       "color": "pos"
     },
     {
       "label": "USD/KRW",
-      "value": "1,504.3 ▼",
+      "value": "1,500 ▲",
       "color": "neg"
     },
     {
-      "label": "WTI",
-      "value": "$94.31 ▼",
+      "label": "5월 수출(1~20일)",
+      "value": "+18.4%",
+      "color": "pos"
+    },
+    {
+      "label": "WTI 유가",
+      "value": "$83.6 ▲",
       "color": "neg"
     }
   ],
@@ -195,95 +211,56 @@
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "value": "1,504.3",
-      "change": "▼ 0.85%",
+      "value": "1,500",
+      "change": "▲ 0.04%",
       "dir": "neg"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "value": "6.7835",
+      "value": "6.78",
       "change": "▼ 0.12%",
-      "dir": "neg"
+      "dir": "pos"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "32.48",
-      "change": "▲ 0.63%",
-      "dir": "pos"
+      "value": "32.60",
+      "change": "▲ 0.09%",
+      "dir": "neg"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
       "value": "52.22",
-      "change": "▲ 0.63%",
+      "change": "▼ 0.10%",
       "dir": "pos"
     }
   ],
   "wti": {
     "labels": [
-      "5/1",
-      "5/8",
-      "5/15",
-      "5/19",
       "5/22",
-      "5/26"
+      "5/23",
+      "5/24",
+      "5/25",
+      "5/26",
+      "5/27",
+      "5/28"
     ],
     "values": [
-      106.0,
-      103.0,
-      98.0,
-      96.0,
-      97.5,
-      94.3
+      80.2,
+      81.5,
+      82.0,
+      82.8,
+      83.1,
+      83.6,
+      83.8
     ],
-    "min": 88,
-    "max": 110,
-    "trend": "▼ 미·이란 협상 진전 (-10%/주)"
-  },
-  "top3": [
-    {
-      "title": "LG전자 칠러 매출 1조원 조기달성 전망",
-      "core": "HVAC 가속 성장이 부품 발주 증가로 연결되는 핵심 신호"
-    },
-    {
-      "title": "LG전자 히트펌프 국내 부품·완제품 생산 전환 추진",
-      "core": "신신사 프레스 부품 직접 발주 가능성 최인접 이슈"
-    },
-    {
-      "title": "이집트 UNDP 녹색산업 협력 (1,000MW 태양광)",
-      "core": "이집트 법인 에너지 비용·규제 환경 변화 주시 필요"
-    }
-  ],
-  "monitoring": [
-    "LG전자 히트펌프 국내 생산 전환 일정 및 협력사 발주 동향",
-    "원달러 환율 1,498원 하향 돌파 여부",
-    "미·이란 협상 진전에 따른 유가 추가 하락 가능성"
-  ],
-  "ceo_schedule": [
-    {
-      "time": "08:00 ~ 10:00",
-      "title": "재무실 주간보고",
-      "note": ""
-    },
-    {
-      "time": "12:00 ~ 13:00",
-      "title": "LGE협지팀장 점심식사(미확정)",
-      "note": ""
-    },
-    {
-      "time": "13:00 ~ 14:00",
-      "title": "LGE협지팀 미팅",
-      "note": ""
-    },
-    {
-      "time": "15:00 ~ 17:00",
-      "title": "글로벌주간(가마감)",
-      "note": ""
-    }
-  ]
+    "min": 78,
+    "max": 87,
+    "trend": "▲ 중동 리스크 지속"
+  }
 }
