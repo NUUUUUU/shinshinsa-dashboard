@@ -1,266 +1,193 @@
 {
-  "date": "2026-05-28",
-  "date_kr": "2026년 5월 28일 (목)",
-  "generated_at": "2026-05-27 23:43 KST",
+  "date": "2026-05-29",
+  "date_kr": "2026년 5월 29일 (금)",
+  "generated_at": "2026-05-29 09:15 KST",
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "8,012.34",
-      "change": "▲ 0.85%",
-      "note": "8,000선 돌파, 외국인 순매수 지속"
+      "value": "8,185",
+      "change": "-0.53% (5/28 종가)",
+      "note": "29일 미·이란 휴전 기대감에 반등 시도 중"
     },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
-      "value": "1,500",
+      "value": "1,495",
       "unit": "원",
-      "change": "▲ 0.04%",
-      "note": "NDF 1,500.60원, 강달러 지속"
+      "change": "-7.2원 (전일 대비)",
+      "note": "미·이란 종전 MOU 합의 소식에 하락"
     },
     {
       "type": "gld",
       "label": "한국 제조업 PMI",
-      "value": "+18.4%",
-      "change": "반도체 강세 지속",
-      "note": "관세청 속보 · 제조업 수출 회복 신호"
+      "value": "-11.1%",
+      "change": "내구재 소비 (4월)",
+      "note": "가전·통신기기 급감, 중동발 소비 위축 반영"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "코스피 8,000 돌파·미중 관세 완화 등 긍정 신호 속, 1,500원대 환율 고공행진과 한은 금통위 금리 결정이 제조업 원가 압박의 분수령이 될 전망이다."
+      "summary": "4월 내구재 소비 11.1% 급감·자동차 생산 -10% 등 중동발 수요 충격이 가시화되는 가운데, LG전자는 협력사 스마트공장 연 600억 지원과 기술 전문가 파견을 확대해 공급망 경쟁력 강화에 속도를 내고 있다."
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "뿌리산업 중기 \"에너지 비용 부담…정책 지원 절실\"",
-      "source": "서울경제",
-      "pubDate": "2026-05-26",
-      "body": "주조·금형·소성가공·프레스 등 뿌리산업 중소기업들이 급등한 에너지 비용 부담을 호소하며 정책 지원을 촉구했다.",
-      "impact": "프레스·금형 포함 뿌리산업 에너지 비용 급등이 직접적 원가 압박으로 작용",
-      "url": "https://n.news.naver.com/mnews/article/011/0004624731?sid=101",
+      "title": "LG전자, 협력사 스마트공장 전환 연 600억 지원·생산기술 전문가 파견",
+      "source": "동아일보·매일경제",
+      "pubDate": "2026-05-29",
+      "body": "LG전자가 협력사의 제조 경쟁력 강화를 위해 스마트공장 구축 지원을 확대하고 설비 투자용 금융 지원을 연 600억 원 규모로 대폭 늘린다. 창원 스마트파크와 테네시 공장은 세계경제포럼(WEF) '등대공장'으로 선정된 바 있으며, 사내 생산기술 전문가를 협력사에인 쌌견하는 방식으로 현장 제조 경쟁력도 동시에 지원한다.",
+      "impact": "생산/원가: ⬆ 긍정 — 협력사 스마트화 지원으로 신신사 설비 자동화 추진 직접 기회. 지원 신청 기준·일정 선제 파악 필요",
+      "url": "https://n.news.naver.com/mnews/article/020/0003723093?sid=101",
       "tags": [
-        "뿌리산업",
-        "프레스",
-        "금형",
-        "에너지비용",
-        "원가"
+        "LG전자",
+        "협력사",
+        "스마트공장",
+        "생산"
       ]
     },
     {
       "importance": 3,
-      "title": "신현송 체제 첫 금통위…'동결' 기조 이어갈까",
-      "source": "컨슈머타임스",
-      "pubDate": "2026-05-28",
-      "body": "신현송 신임 한국은행 총재 취임 후 첫 금융통화위원회가 개최됐다. 시장은 동결을 예상하나 매파적 발언 가능성에 주목한다.",
-      "impact": "금리 인상 결정 시 자금조달 비용 상승 및 환율 변동성 확대",
-      "url": "https://www.cstimes.com/news/articleView.html?idxno=707429",
+      "title": "4월 생산·소비·투자 트리플 감소…내구재 소비 11.1% 급감",
+      "source": "KBS뉴스",
+      "pubDate": "2026-05-29",
+      "body": "4월 전산업 생산지수가 전월 대비 0.6% 감소했다. 반도체(3.1%)는 증가했지만 자동차(-10.0%), 석유정제(-19.4%) 등 생산이 크게 줄었다. 통신기기·컴퓨터·가전 등 내구재 소비가 11.1% 급감하며 중동 전쟁 영향이 한국 경제 전반에 본격 반영되기 시작했다.",
+      "impact": "매출: ⬇ 부정 — 가전·내구재 수요 동반 위축으로 2분기 부품 수주 계획 전면 재검토 필요",
+      "url": "https://n.news.naver.com/mnews/article/056/0012190229?sid=101",
       "tags": [
-        "한국은행",
-        "금통위",
-        "기준금리",
-        "환율"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "China and US agree to establish trade and investment councils after Xi-Trump summit",
-      "source": "South China Morning Post",
-      "pubDate": "2026-05-27",
-      "body": "미중 정상회담 후속으로 양국이 무역·투자 협의체 설립에 합의하고 상호 관세 인하 원칙을 천명했다.",
-      "impact": "LG전자 공급망 환경 개선 기대",
-      "url": "https://www.scmp.com/economy/global-economy/article/3353840/china-and-us-agree-establish-trade-and-investment-councils-after-xi-trump-summit",
-      "tags": [
-        "미중무역",
-        "관세",
-        "공급망",
-        "LG전자"
+        "거시경제",
+        "소비",
+        "중동리스크",
+        "가전"
       ]
     },
     {
       "importance": 2,
-      "title": "한국은행 금통위 대기…환율, 1500원대 초반 출발 전망",
-      "source": "이데일리",
+      "title": "LG전자, 한국·중국·멕시코로 글로벌 생산거점 다변화 가속",
+      "source": "매일일보",
       "pubDate": "2026-05-28",
-      "body": "원·달러 환율이 1,500원대 초반에서 출발할 것으로 예상된다.",
-      "impact": "수입 원자재 비용 상승(부정) vs 해외 매출 환차익(긍정)",
-      "url": "https://n.news.naver.com/mnews/article/018/0006291927?sid=101",
+      "body": "LG전자가 한국, 중국, 멕시코를 중심으로 글로벌 생산 거점을 역할별로 운영하며 공급망 효율화에 속도를 내고 있다. 경남 창원 에어컨 생산라인이 핵심 거점이며, 평택·광주 사업장도 시스템에어컨 및 일부 생활가전 생산에 활용되고 있다.",
+      "impact": "생산: ⬌ 중립 — 기존 창원·평택 거점 유지, 글로벌 분산 전략이 수주 안정성에 기여",
+      "url": "https://www.m-i.kr/news/articleView.html?idxno=1376909",
+      "tags": [
+        "LG전자",
+        "생산거점",
+        "공급망"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "신현송 한국은행 총재 첫 금통위, 사실상 금리 인상 방향 제시",
+      "source": "뉴스웍스",
+      "pubDate": "2026-05-29",
+      "body": "신현송 한국은행 총재의 첫 금융통화위원회에서 사실상 금리 인상 방향이 제시됐다. 중동 지정학 리스크와 국제유가 흐름, 반도체 경기 지속 여부, 원·달러 환율 방향성 등에 따라 실제 인상 속도와 폭이 달라질 수 있다는 분석이 나온다.",
+      "impact": "원가: ⬇ 부정 — 금리 인상 시 설비투자 금융비용 증가. 투자 의사결정 앞당기거나 고정금리 전환 검토 필요",
+      "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=842218",
+      "tags": [
+        "금리",
+        "한국은행",
+        "거시경제"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "원/달러 환율 1,494원 하락…미·이란 휴전 연장 기대 반영",
+      "source": "이슈앤비즈",
+      "pubDate": "2026-05-29",
+      "body": "원/달러 환율이 미국과 이란의 종전 양해각서(MOU) 잠정 합의 소식에 하락세를 보이며 1,490원대로 내려섰다. 야간 NDF 거래에서 전장 종가 대비 7.20원 내린 1,494.00원에 마감했다. 1,500원 하회 시도가 지속될 전망이다.",
+      "impact": "환율: ⬌ 중립 — 원화 강세는 수입 원자재 비용 절감에 유리하나 수출 가격 경쟁력 소폭 약화",
+      "url": "http://www.issuenbiz.com/news/articleView.html?idxno=76957",
       "tags": [
         "환율",
-        "달러",
-        "외환"
+        "미이란",
+        "중동"
       ]
     },
     {
       "importance": 2,
-      "title": "냉장고 넘어 데이터센터로…LG전자, AI 냉각 앞세워 체질 전환 속도",
-      "source": "포인트데일리",
-      "pubDate": "2026-05-28",
-      "body": "LG전자가 냉장고·에어컨 기술을 데이터센터 냉각 및 산업용 공조로 확장하고 있다.",
-      "impact": "LG전자 B2B 전환은 가전 부품 수요 구조 변화 예고",
-      "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=306249",
+      "title": "자동차·철강·가전, 미국 통상정책 최전선…정부 15조 금융 지원",
+      "source": "데일리안",
+      "pubDate": "2026-05-29",
+      "body": "이재명 정부 출범 1년을 맞아 자동차·철강·가전이 미국 통상정책의 최전선에 서게 됐다. 배터리와 석유화학은 중국의 물량 공세에 직면해 있으며, 정부는 자동차 산업에 정책금융 15조 원 이상을 공급하고 원자재 품목에 할당관세를 적용할 방침이다.",
+      "impact": "규제·정책: ⬇ 부정 가능성 — 미국 통상압력 지속 시 LG전자 수출 전략 변화→부품 수주 구조 변동 주시",
+      "url": "https://n.news.naver.com/mnews/article/119/0003095588?sid=101",
       "tags": [
-        "LG전자",
-        "B2B",
-        "AI냉각",
-        "체질전환"
+        "통상정책",
+        "가전수출",
+        "규제"
       ]
     },
     {
       "importance": 2,
-      "title": "위기 커지자… 가전 투톱 일제히 베트남行",
-      "source": "파이낸셜뉴스",
-      "pubDate": "2026-05-27",
-      "body": "삼성전자·LG전자 수장이 베트남을 방문해 현장 경영에 나섰다.",
-      "impact": "LG전자 해외 생산 거점 강화는 국내 협력사 물량 감소 가능성 시사",
-      "url": "https://n.news.naver.com/mnews/article/014/0005527221?sid=101",
-      "tags": [
-        "LG전자",
-        "베트남",
-        "해외생산",
-        "협력사"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "LG전자, 히트펌프 전문 인력 확대…평택 HVAC 아카데미서 엔지니어 육성",
-      "source": "이코노뉴스",
-      "pubDate": "2026-05-27",
-      "body": "LG전자가 평택 LG HVAC 아카데미에서 히트펌프 전문 엔지니어 육성 교육을 진행했다.",
-      "impact": "LG전자 HVAC·히트펌프 사업 확대로 관련 부품 수요 증가 가능성",
-      "url": "http://www.econonews.co.kr/news/articleView.html?idxno=438930",
-      "tags": [
-        "LG전자",
-        "히트펌프",
-        "HVAC",
-        "평택",
-        "유럽"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "Thailand factory closures outpace openings as SME strain deepens",
+      "title": "중국 가전, 태국 에어컨 시장 집중 공략…LG·삼성 프리미엄 경쟁 심화",
       "source": "The Nation Thailand",
-      "pubDate": "2026-05-21",
-      "body": "2026년 1분기 태국 신규 공장 개설보다 폐쇄가 10분기 만에 처음으로 많아졌다.",
-      "impact": "태국 제조업 투자 환경 악화로 신신사 태국 법인 사업 환경 불확실성 증가",
-      "url": "https://www.nationthailand.com/business/economy/40066477",
+      "pubDate": "2026-05-23",
+      "body": "중국 가전 브랜드(Haier·Midea·Hisense·TCL 등)가 태국 에어컨 시장(약 345억 바트 규모)에 공격적으로 진입하면서 가격 경쟁이 심화되고 있다. Midea는 라용에 22억 바트 규모 신규 공장을 투자하며, 한국·일본 브랜드 대비 10~20% 낮은 가격을 무기로 시장을 확대 중이다.",
+      "impact": "고객사(LG전자): ⬇ 부정 — LG 태국법인 경쟁 심화로 B2B·HVAC 수요 증가 속도 둔화 가능성",
+      "url": "https://www.nationthailand.com/blogs/business/trade/40048983",
       "tags": [
         "태국",
-        "제조업",
-        "공장폐쇄",
-        "신신사태국"
+        "중국가전",
+        "에어컨",
+        "경쟁"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "하반기 가전 수출, 기저효과로 완만한 반등 전망",
+      "source": "반론보도닷컴",
+      "pubDate": "2026-05-29",
+      "body": "가전 산업은 기저효과로 하반기 들어 수출과 내수 모두 완만한 반등이 예상된다. 상반기 한국 경제를 견인한 AI 수혜 업종 중심의 수출 호조가 하반기에도 이어질 전망이며, 디스플레이는 고부가 제품 중심으로 재편되고 있다.",
+      "impact": "매출: ⬆ 긍정 — 하반기 반등 전망으로 수주 회복 가능성, 단 상반기 수요 위축 지속 모니터링 필요",
+      "url": "https://www.banronbodo.com/news/articleView.html?idxno=32373",
+      "tags": [
+        "가전수출",
+        "하반기전망"
       ]
     }
   ],
-  "overseas": [
-    {
-      "flag": "🇺🇸",
-      "country": "미국",
-      "summary": "연준 추가 긴축 가능성, 강달러 지속",
-      "status": "주시",
-      "statusType": "w"
-    },
-    {
-      "flag": "🇨🇳",
-      "country": "중국",
-      "summary": "미중 무역협의체 합의, 관세 안정화 기대",
-      "status": "긍정",
-      "statusType": "g"
-    },
-    {
-      "flag": "🇹🇭",
-      "country": "태국",
-      "summary": "제조업 공장 폐쇄 급증, 투자 환경 악화",
-      "status": "위험",
-      "statusType": "r"
-    },
-    {
-      "flag": "🇪🇬",
-      "country": "이집트",
-      "summary": "중동 분쟁 여파, 에너지 가격 급등",
-      "status": "주시",
-      "statusType": "w"
-    }
-  ],
-  "markets": [
-    {
-      "label": "KOSPI",
-      "value": "8,012 ▲",
-      "color": "pos"
-    },
-    {
-      "label": "USD/KRW",
-      "value": "1,500 ▲",
-      "color": "neg"
-    },
-    {
-      "label": "5월 수출(1~20일)",
-      "value": "+18.4%",
-      "color": "pos"
-    },
-    {
-      "label": "WTI 유가",
-      "value": "$83.6 ▲",
-      "color": "neg"
-    }
-  ],
+  "overseas": [],
+  "markets": [],
   "fx": [
     {
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "value": "1,500",
-      "change": "▲ 0.04%",
+      "value": "1,495",
+      "change": "-7.2",
       "dir": "neg"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "value": "6.78",
-      "change": "▼ 0.12%",
+      "value": "6.79",
+      "change": "+0.01",
       "dir": "pos"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "32.60",
-      "change": "▲ 0.09%",
-      "dir": "neg"
+      "value": "32.77",
+      "change": "+0.34",
+      "dir": "pos"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
       "value": "52.22",
-      "change": "▼ 0.10%",
-      "dir": "pos"
+      "change": "-0.72",
+      "dir": "neg"
     }
   ],
   "wti": {
-    "labels": [
-      "5/22",
-      "5/23",
-      "5/24",
-      "5/25",
-      "5/26",
-      "5/27",
-      "5/28"
-    ],
-    "values": [
-      80.2,
-      81.5,
-      82.0,
-      82.8,
-      83.1,
-      83.6,
-      83.8
-    ],
-    "min": 78,
-    "max": 87,
-    "trend": "▲ 중동 리스크 지속"
+    "labels": [],
+    "values": [],
+    "min": 60,
+    "max": 100,
+    "trend": ""
   }
 }
