@@ -1,155 +1,154 @@
 {
   "date": "2026-06-04",
   "date_kr": "2026년 6월 4일 (목)",
-  "generated_at": "2026-06-03 23:15 KST",
+  "generated_at": "2026-06-03 23:43 KST",
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "9,012.45",
-      "change": "▲ 1.24%",
-      "note": "AI 기대감·지방선거 기대감 반영"
+      "value": "8,801",
+      "change": "▲ 0.15%",
+      "note": "6/2 종가 · 역대 최고치 경신 국면"
     },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
       "value": "1,530",
       "unit": "원",
-      "change": "▲ 급등",
-      "note": "금융위기 이후 최고 / 미-이란 긴장 재개"
+      "change": "▲ 1530원 돌파",
+      "note": "2008년 금융위기 이후 최고 · 원가 부담 경계"
     },
     {
       "type": "gld",
       "label": "한국 제조업 PMI",
-      "value": "+53.2%",
-      "change": "가전·자동차는 감소",
-      "note": "산업부 5월 수출입 동향 · 가전 수출 감소 주의"
+      "value": "54.8",
+      "change": "↑ 전월比 +1.2p",
+      "note": "한국 5월 PMI · 5년 최고치 · 수출수주 첫 감소 주의"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "원/달러 1530원대·가전 수출 감소·EU 철강쿼터 3중 리스크가 동시 부상한 가운데, 자동차 금형 부품의 중국산 대체 압박이 신신사 매출의 중기 핵심 위협으로 부각됨."
+      "summary": "LG전자 S&P 신용등급 BBB+ 12년 만에 상향·엔비디아 피지컬AI 협력 가시화로 고객사 성장 동력이 재확인된 반면, 원/달러 환율 2008년 이후 최고치(1,530원) 돌파로 수입 원가 부담이 동시에 급부상했다."
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "원/달러 환율, 한때 1530원 웃돌아…금융위기 이후 최고",
-      "source": "에너지경제신문",
-      "pubDate": "2026-06-04",
-      "body": "원/달러 환율이 서브프라임 금융위기(2008년) 이후 최고 수준인 1530원대를 기록했다. 미국·이란 군사충돌 재개로 NDF 시장에서 원·달러 1개월물이 1533원까지 급등했다.",
-      "impact": "원자재(철강·소재) 수입 원가 급등 불가피. 이집트·태국 법인 환차손 리스크 동시 심화.",
-      "url": "https://www.ekn.kr/web/view.php?key=20260604023440388",
-      "tags": [
-        "환율",
-        "원가",
-        "이집트",
-        "태국"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "현대차 원가절감 압박에 울산 협력사 불안 — 금형 부품 중국산 대체 우려",
-      "source": "경상일보",
-      "pubDate": "2026-06-04",
-      "body": "현대차의 강도 높은 원가절감 요구가 울산 지역 자동차 협력사들에게 압박으로 작용하고 있다.",
-      "impact": "자동차용 금형 부품의 중국산 대체 전환 시 신신사 수주 직접 감소 위협.",
-      "url": "https://www.ksilbo.co.kr/news/articleView.html?idxno=1058501",
-      "tags": [
-        "현대차",
-        "금형",
-        "중국산",
-        "수주"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "5월 수출 전년比 53.2% 급증…자동차·가전은 감소",
-      "source": "세계일보",
-      "pubDate": "2026-06-04",
-      "body": "산업통상자원부의 2026년 5월 수출입 동향에 따르면 지난달 수출은 전년 동월보다 53.2% 증가했으나, 가전은 감소 품목에 포함됐다.",
-      "impact": "가전 수출 감소는 LG전자의 글로벌 생산 가동률 저하로 이어져 신신사 부품 발주 단기 축소 가능성.",
-      "url": "https://n.news.naver.com/mnews/article/022/0004132856?sid=101",
-      "tags": [
-        "수출",
-        "가전",
-        "LG전자",
-        "산업부"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "EU 철강 쿼터 도입 임박…한국 가전·자동차 기업 생산에도 타격 우려",
-      "source": "아시아경제",
-      "pubDate": "2026-06-04",
-      "body": "EU가 7월부터 철강 수입쿼터(TRQ) 제도를 도입하는 가운데, EU 역내 한국 자동차·가전 기업들의 생산·투자 활동에도 부정적 영향이 우려된다.",
-      "impact": "EU 철강쿼터 발효 시 LG전자 유럽 생산법인 원가 부담 증가 → 부품 발주 단가 압박 가능.",
-      "url": "https://n.news.naver.com/mnews/article/277/0005771499?sid=101",
-      "tags": [
-        "EU",
-        "철강",
-        "쿼터",
-        "LG전자"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "잘나가는 LG전자… 신용등급도 상향 (S&P BBB+ 12년 만에)",
+      "title": "잘나가는 LG전자… S&P 신용등급 BBB+로 12년 만에 상향",
       "source": "국민일보",
       "pubDate": "2026-06-04",
-      "body": "S&P가 LG전자 신용등급을 BBB에서 BBB+로 12년 만에 상향 조정했다. B2B 사업 매출은 6조 5000억원으로 전체의 36%.",
-      "impact": "핵심 고객사 LG전자의 재무 건전성 강화 확인. B2B 36% 비중은 히트펌프·공조 등 신신사 납품 분야 수요 안정 신호.",
+      "body": "LG전자가 S&P로부터 신용등급 BBB+ 상향을 받아 글로벌 신뢰도가 제고됐다. 1Q26 매출 23조7272억원(역대 최대)·B2B 매출 6조5000억원(전체 36%), 구독 서비스 확장이 핵심 근거. 프리미엄·B2B·구독 삼각 성장이 지속될 전망이다.",
+      "impact": "고객사/매출 ⬆ — LG전자 재무 건전성 강화로 협력사 수주 기반 안정화, 히트펌프·AI 가전 부품 수요 중장기 확대 신호",
       "url": "https://n.news.naver.com/mnews/article/005/0001852878?sid=101",
       "tags": [
         "LG전자",
         "신용등급",
-        "S&P",
-        "B2B"
+        "B2B",
+        "구독"
       ]
     },
     {
-      "importance": 2,
+      "importance": 3,
       "title": "젠슨 황, 구광모 LG 회장 왜 만나나…피지컬 AI의 퍼즐이 맞춰진다",
       "source": "서울경제",
       "pubDate": "2026-06-04",
-      "body": "엔비디아 젠슨 황 CEO와 구광모 LG 회장의 회동이 예정되면서 LG전자 주가가 급등했다. LG전자는 피지컬 AI 관련 특허를 다수 보유 중.",
-      "impact": "LG전자의 AI·로봇 사업 확장은 중장기 제조 공정 혁신을 촉진할 수 있으나, 단기 직접 영향은 제한적.",
+      "body": "LG전자 창원공장 모터·컴프레서 기술이 엔비디아 피지컬AI 협력의 핵심 접점으로 부상했다. LG전자는 삼성을 압도하는 피지컬AI 특허 보유, 아이작 GR00T 기반 자체 모델 개발 중이다.",
+      "impact": "생산/고객사 ⬆ — 창원공장 핵심 부품 수요 증가 가능성, 스마트팩토리 투자 연계 모니터링 요망",
       "url": "https://n.news.naver.com/mnews/article/011/0004627496?sid=101",
       "tags": [
         "LG전자",
         "엔비디아",
         "피지컬AI",
-        "젠슨황"
+        "창원공장"
       ]
     },
     {
-      "importance": 2,
-      "title": "LG, 하이센스에 TV 사업 매각 논의설…LG '근거 없다' 공식 부인",
-      "source": "Gizmochina / Android Authority",
+      "importance": 3,
+      "title": "공휴일 사이 1530원 뚫은 환율…외환당국 개입 경계",
+      "source": "이데일리",
+      "pubDate": "2026-06-04",
+      "body": "원/달러 환율이 지방선거 휴장 기간 중 1530원을 돌파, 2008년 금융위기 이후 최고 수준이다. 중동 지정학 리스크·외국인 매도·달러 강세가 복합 작용하고 있다.",
+      "impact": "환율/원가 ⬇ — 수입 원자재 의존 협력사 원가 즉시 점검 필요, 1540원 돌파 시 재가격 검토 트리거",
+      "url": "https://n.news.naver.com/mnews/article/018/0006296944?sid=101",
+      "tags": [
+        "환율",
+        "1530원",
+        "달러강세",
+        "원가부담"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG Electronics-Hisense TV 매각설…LG 즉각 부인",
+      "source": "Gizmochina (중국)",
       "pubDate": "2026-05-28",
-      "body": "LG전자 임원진이 TV 사업부 매각 가능성을 논의하기 위해 하이센스 측과 면담했다는 보도가 나왔으나, LG전자는 즉각 공식 부인했다.",
-      "impact": "공식 부인에도 불구하고 LG전자 TV 사업 불확실성이 부각됨. TV 부품 수요 감소 가능성 중장기 시나리오 검토 필요.",
+      "body": "LG전자 임원이 하이센스와 TV 사업부 매각을 논의했다는 보도가 나왔으나 LG전자는 근거 없다고 즉각 부인했다. LG 글로벌 TV 점유율이 정체된 가운데 TCL·하이센스가 추격 중이다.",
+      "impact": "고객사 ⬇ — LG전자 TV 사업 구조조정 루머, 관련 부품 수주 불확실성 단기 모니터링 필요",
       "url": "https://www.gizmochina.com/2026/05/28/lg-in-talks-with-hisense-for-potential-sale-of-its-tv-business/",
       "tags": [
         "LG전자",
         "하이센스",
-        "TV",
-        "매각"
+        "TV사업",
+        "중국"
       ]
     },
     {
       "importance": 2,
-      "title": "China Manufacturing Activity Flatlines as New Export Orders Fall",
-      "source": "Caixin Global",
-      "pubDate": "2026-06-01",
-      "body": "중국 5월 공식 제조업 PMI가 50.0으로 전월(50.3) 대비 하락하며 확장-수축 경계선에 걸쳤다. 수출 신규주문 지수는 48.6으로 악화됐다.",
-      "impact": "중국 제조업 경기 둔화는 글로벌 부품 공급망 수요 약화로 이어질 수 있음. 신신사 중국 법인 부품 수주 현황 모니터링 필요.",
-      "url": "https://www.caixinglobal.com/2026-06-01/china-manufacturing-activity-flatlines-as-new-export-orders-fall-102449642.html",
+      "title": "현대차 원가절감 압박에 울산 협력사 불안",
+      "source": "경상일보",
+      "pubDate": "2026-06-04",
+      "body": "현대차가 협력사에 강도 높은 원가 절감을 요구하면서 울산 지역 금형·부품사들이 불안감을 호소하고 있다.",
+      "impact": "원가 ⬇ — 자동차 부품 협력사 원가압박 추세, 가전 협력사 확산 여부 모니터링 필요",
+      "url": "https://www.ksilbo.co.kr/news/articleView.html?idxno=1058501",
       "tags": [
-        "중국",
-        "PMI",
-        "제조업",
-        "수출"
+        "현대차",
+        "금형",
+        "협력사",
+        "원가절감"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "K-온디바이스 AI 반도체 예산 8000억 확정…LG전자 참여",
+      "source": "더일렉",
+      "pubDate": "2026-06-04",
+      "body": "정부가 가전·로봇 등 맞춤형 AI 반도체·모듈 개발에 8000억원을 확정, LG전자가 참여 기업으로 포함됐다. 가전 AI 반도체 국산화가 협력사 공급망 구조에 영향을 미칠 전망이다.",
+      "impact": "고객사/규제·정책 ⬆ — LG전자 AI 가전 투자 가속, 스마트팩토리 설비 수요 확대 가능성",
+      "url": "https://www.thelec.kr/news/articleView.html?idxno=57558",
+      "tags": [
+        "LG전자",
+        "AI반도체",
+        "정부지원",
+        "가전"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG 이집트 NPI 2026 — 에어컨 현지 생산 확대 발표",
+      "source": "Al-Ahram Online (이집트)",
+      "pubDate": "2026-05-28",
+      "body": "LG전자 이집트 법인이 2026년형 가전 라인업 발표하고 HERO 에어컨 시리즈의 현지 생산을 강조했다. 이집트 정부의 수입 대체 산업화 정책과 맞물려 현지 생산 확대 중이다.",
+      "impact": "고객사/생산 ⬆ — 이집트 현지 생산 부품 수요 발생, 기존 수출 구조와 병행 검토 필요",
+      "url": "https://english.ahram.org.eg/News/568117.aspx",
+      "tags": [
+        "LG전자",
+        "이집트",
+        "현지생산",
+        "에어컨"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "[포스트 6·3] 자동차·가전 수출 8개 품목 감소",
+      "source": "파이낸셜포스트",
+      "pubDate": "2026-06-04",
+      "body": "지방선거 이후 규제 개혁 요구가 높아진 가운데 가전·자동차 등 8개 주력 수출 품목이 감소세를 보이고 있다. 고환율·고물가·고금리 삼중 충격으로 협력사 체감 경기가 위축 중이다.",
+      "impact": "매출 ⬇ — 가전 수출 부진 지속 시 부품 협력사 수주 감소 직결, 단기 수주 파이프라인 점검 요망",
+      "url": "https://www.financialpost.co.kr/news/articleView.html?idxno=261362",
+      "tags": [
+        "가전수출",
+        "수출감소",
+        "협력사"
       ]
     }
   ],
@@ -157,45 +156,45 @@
     {
       "flag": "🇨🇳",
       "country": "중국",
-      "summary": "제조업 PMI 50.0 경계선 · LG TV 매각설 부인",
+      "summary": "LG전자 TV 사업 매각설(LG 부인)·Caixin PMI 51.8·미중 관세 협상 진전. TV 사업 불확실성 단기 주시 필요.",
       "status": "주시",
       "statusType": "w"
     },
     {
       "flag": "🇹🇭",
       "country": "태국",
-      "summary": "PMI 52.6 확장 지속 · 법인 환차손 리스크 심화",
-      "status": "주시",
-      "statusType": "w"
+      "summary": "LG 태국 제습기 B2B 공급 확대·방콕 집들이 by LG 마케팅 행사(6/4~9)·PMI 52.6 확장 지속.",
+      "status": "긍정",
+      "statusType": "p"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "summary": "EGP 안정세 유지 · 환차손 리스크 모니터링",
-      "status": "주시",
-      "statusType": "w"
+      "summary": "LG NPI 2026 현지 생산 에어컨 발표·이집트 국가산업전략 전자조립 육성 정책·EGP 환율 51.95 안정.",
+      "status": "긍정",
+      "statusType": "p"
     }
   ],
   "markets": [
     {
-      "label": "중국 공식 PMI",
-      "value": "50.0 →",
-      "color": "neu"
-    },
-    {
-      "label": "차이신 PMI",
-      "value": "51.8 ↓",
-      "color": "neg"
-    },
-    {
-      "label": "5월 수출 증감",
-      "value": "+53.2% ↑",
+      "label": "한국 PMI (5월)",
+      "value": "54.8 ↑",
       "color": "pos"
     },
     {
-      "label": "가전 수출",
-      "value": "감소 ↓",
-      "color": "neg"
+      "label": "중국 Caixin PMI (5월)",
+      "value": "51.8 →",
+      "color": "neu"
+    },
+    {
+      "label": "태국 PMI (5월)",
+      "value": "52.6 →",
+      "color": "pos"
+    },
+    {
+      "label": "미국 ISM PMI (5월)",
+      "value": "54.0 ↑",
+      "color": "pos"
     }
   ],
   "fx": [
@@ -204,22 +203,22 @@
       "currency": "KRW",
       "country": "한국",
       "value": "1,530",
-      "change": "▲ 급등",
+      "change": "▲ 0.52%",
       "dir": "neg"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "value": "7.28",
-      "change": "▲ 0.15%",
+      "value": "6.77",
+      "change": "▲ 0.05%",
       "dir": "neg"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "32.66",
+      "value": "32.67",
       "change": "▲ 0.12%",
       "dir": "neg"
     },
@@ -228,31 +227,29 @@
       "currency": "EGP",
       "country": "이집트",
       "value": "51.95",
-      "change": "▲ 0.18%",
-      "dir": "neg"
+      "change": "▼ 0.08%",
+      "dir": "pos"
     }
   ],
   "wti": {
     "labels": [
+      "5/28",
       "5/29",
       "5/30",
-      "5/31",
-      "6/1",
       "6/2",
       "6/3",
       "6/4"
     ],
     "values": [
-      74.0,
-      75.5,
-      76.5,
-      78.0,
-      80.5,
-      82.0,
-      84.0
+      83.2,
+      84.5,
+      85.1,
+      86.3,
+      87.2,
+      88.1
     ],
-    "min": 70,
-    "max": 88,
-    "trend": "▲ 미-이란 군사충돌 재개"
+    "min": 78,
+    "max": 92,
+    "trend": "▲ 중동 지정학 리스크"
   }
 }
