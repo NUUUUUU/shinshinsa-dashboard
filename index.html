@@ -171,10 +171,11 @@ footer strong{color:var(--pink);font-weight:700;}
     <span class="conf">CONFIDENTIAL</span>
   </div>
   <div class="hdr-right">
-    <!-- ② Macro Scorecard 링크 -->
-    <a class="scorecard-btn" href="#"
-       onclick="openScorecard();return false;"
-       title="신신사 Macro & Cost Scorecard — 6개월 추세 (Cowork 아티팩트)">
+    <!-- ② Macro Scorecard 링크 → weekly-briefing GitHub Pages -->
+    <a class="scorecard-btn"
+       href="https://NUUUUUU.github.io/weekly-briefing/"
+       target="_blank" rel="noopener"
+       title="신신사 Macro & Cost Scorecard — 6개월 추세">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="1" y="8" width="3" height="7" rx="1" fill="rgba(255,255,255,0.9)"/>
         <rect x="6" y="5" width="3" height="10" rx="1" fill="rgba(255,255,255,0.9)"/>
@@ -258,25 +259,7 @@ footer strong{color:var(--pink);font-weight:700;}
 </footer>
 
 <script>
-/* ══════════════════════════════════════
-   Macro Scorecard 열기
-   Cowork 아티팩트 ID: ssh-macro-scorecard-22w
-   ══════════════════════════════════════ */
-function openScorecard() {
-  // Claude Cowork 아티팩트는 앱 내부에서만 열림
-  // 브라우저 환경에서는 로컬 파일 경로로 시도
-  const localPath = 'C:\\Users\\shins\\OneDrive\\문서\\Claude\\Artifacts\\ssh-macro-scorecard-22w\\index.html';
-  const fileUrl = 'file:///' + localPath.replace(/\\/g, '/');
-  const newWin = window.open(fileUrl, '_blank');
-  if (!newWin || newWin.closed) {
-    alert(
-      '📊 신신사 Macro & Cost Scorecard — 6개월 추세\n\n' +
-      'Claude Cowork 앱에서 아티팩트를 열어주세요.\n' +
-      '아티팩트 ID: ssh-macro-scorecard-22w\n\n' +
-      '또는 로컬 경로:\n' + localPath
-    );
-  }
-}
+/* Macro Scorecard: https://NUUUUUU.github.io/weekly-briefing/ (직접 링크 — JS 불필요) */
 
 /* ══════════════════════════════════════
    뉴스 필터 — 6개 카테고리
