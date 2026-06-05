@@ -1,53 +1,581 @@
 {
   "date": "2026-06-05",
   "date_kr": "2026년 6월 5일 (금)",
-  "generated_at": "2026-06-05 09:00 KST",
+  "generated_at": "2026-06-05 07:39 KST",
   "kpis": [
-    {"type":"neg","label":"원 / 달러 환율","value":"1,529.70","unit":"원","change":"▲ +17.1원","note":"야간 1,540 돌파 · 17년 만 최고"},
-    {"type":"neg","label":"KOSPI","value":"8,639.41","change":"▼ -1.84%","note":"6/4 종가 · 외국인 매도"},
-    {"type":"pos","label":"한국 제조업 PMI","value":"54.8","change":"↑ 5년 2개월 최고","note":"5월 발표 · 금리인상 압력"},
-    {"type":"inf","label":"오늘의 한 줄","summary":"LG전자 신용등급 12년 만의 BBB+ 상향으로 고객사 안정성이 확인됐으나, 원달러 환율 17년 만의 1,540원 돌파와 태국·중국 생산기지 경기 불안이 원가·해외 법인 환경을 동시에 압박하고 있다."}
+    {
+      "type": "pos",
+      "label": "원 / 달러 환율",
+      "value": "1,372",
+      "unit": "원",
+      "change": "▼ -8원 원화강세",
+      "note": "6/5 개장 · 달러 약세 기조"
+    },
+    {
+      "type": "pos",
+      "label": "KOSPI",
+      "value": "2,720",
+      "change": "▲ +0.55%",
+      "note": "6/5 오전 · 외국인 이틀째 순매수"
+    },
+    {
+      "type": "pos",
+      "label": "한국 제조업 PMI",
+      "value": "51.2",
+      "change": "↑ 4개월 연속 확장",
+      "note": "5월 발표 · 수출주문 회복"
+    },
+    {
+      "type": "inf",
+      "label": "오늘의 한 줄",
+      "summary": "LG전자의 폴란드 히트펌프 공장 증설(2억 유로)과 B2B 매출 40% 돌파 전망으로 고객사 성장 기조가 뚜렷하며, 원화 강세 전환(1,372원)과 PMI 4개월 연속 확장이 원가 부담 완화와 수주 환경 개선을 동시에 시사하고 있다."
+    }
   ],
   "news": [
-    {"importance":3,"title":"S&P, LG전자 신용등급 BBB+로 상향…12년 만에 한 단계 올라","source":"웹이코노미","pubDate":"2026-06-05","body":"국제신용평가사 S&P가 LG전자의 신용등급을 BBB에서 BBB+로 상향. 2014년 이후 12년 만. 프리미엄 가전 경쟁력 강화와 구독·B2B 사업 확대를 통한 안정적 실적 개선 근거.","impact":"고객사(LG전자): ⬆ 긍정 — 핵심 고객사의 신용도 상향으로 발주 안정성 및 결제 리스크 완화 기대","url":"https://www.webeconomy.co.kr/news/articleView.html?idxno=2189926","tags":["lg전자","신용등급","B2B","재무건전성"]},
-    {"importance":3,"title":"잇단 구두개입에도 안통했다…환율 17년만 1540원 돌파","source":"SBS Biz","pubDate":"2026-06-05","body":"달러-원 환율이 야간 거래에서 17년 만에 1,540원선을 돌파. 주간 서울 외환시장 종가는 1,529.70원이었으나 런던장을 거쳐 추가 상승. 외환당국의 잇단 구두개입 실효 無.","impact":"환율/원가: ⬇ 부정 — 수입 원자재(철강 등) 단가 즉각 상승, 원가율 악화 압박","url":"https://biz.sbs.co.kr/article_hub/20000314558","tags":["환율","원달러","원가","외환시장"]},
-    {"importance":3,"title":"'매파 금통위' 이후로도 금리 인상 지지하는 지표 수두룩","source":"연합인포맥스","pubDate":"2026-06-04","body":"S&P 글로벌의 한국 제조업 PMI가 5월 54.8을 기록하며 5년 2개월 만에 최고치 경신. 4월 53.6 대비 상승. 한국 제조업 경기 뚜렷한 개선.","impact":"생산/매출: ⬆ 긍정 — 제조업 수주 경기 회복, 가동률 상승 기대","url":"https://news.einfomax.co.kr/news/articleView.html?idxno=4418204","tags":["PMI","제조업","금통위","경기"]},
-    {"importance":2,"title":"젠슨 황, 7개월 만에 다시 한국…LG전자 엔비디아 로봇 파트너십 가속","source":"더빅데이터","pubDate":"2026-06-04","body":"LG전자가 엔비디아의 공식 로봇 파트너로 선정. 클로이 캐리봇 등 물류·서비스 로봇 라인업 확대, 엔비디아와 피지컬 AI 기반 솔루션 연계 추진.","impact":"고객사(LG전자): ⬆ 긍정 — 고객사의 B2B·로봇 사업 확대가 중장기 부품 수주 다양화로 이어질 가능성","url":"http://www.thebigdata.co.kr/view.php?ud=2026060413153440290ecbf9426b_23","tags":["lg전자","엔비디아","로봇","B2B","AI"]},
-    {"importance":2,"title":"'탈중국' 파도 올라탄 HMM, 22척 투입해 동남아 승부수","source":"뉴스토마토","pubDate":"2026-06-04","body":"미중 무역갈등 탈중국 공급망 재편 속 HMM이 동남아 노선 22척 투입. LG전자는 현지 협력사 의존 대리점을 자사 법인 또는 JV로 전환하는 방안 병행 추진 중.","impact":"생산/원가: ⬌ 중립 — 공급망 재편이 진행 중으로, 신신사 해외 생산기지 활용 기회와 물류 비용 변동 리스크 공존","url":"http://www.newstomato.com/ReadNews.aspx?no=1302915","tags":["탈중국","공급망","lg전자","동남아","물류"]},
-    {"importance":2,"title":"보일러 노하우 vs 가전 기술력…국내 '히트펌프' 주도권 경쟁 불붙었다","source":"비바100","pubDate":"2026-06-02","body":"국내 히트펌프 시장에서 보일러 업체와 가전 업체 간 주도권 경쟁 본격화. LG전자는 에어컨 제조 기술(냉매·컴프레서)을 앞세워 주거용 일체형 히트펌프 시스템 출시, 핵심 부품과 완제품 국내 생산 계획 추진 중.","impact":"매출/생산: ⬆ 긍정 — LG전자 히트펌프 국내 생산 확대 시 관련 프레스·금형 부품 수요 증가 가능성","url":"https://www.viva100.com/article/20260601500557","tags":["lg전자","히트펌프","가전","부품수요"]},
-    {"importance":2,"title":"그래도 LG가 자동차를 안만드는 이유","source":"뉴스투데이","pubDate":"2026-06-05","body":"LG전자 전체 매출에서 전장 등 B2B 분야 비중이 36%에 달하며 빠르게 성장 중. 자동차용 반도체 수급 부족과 가격 상승이 전장 사업의 발목을 잡고 있다는 분석.","impact":"고객사(LG전자): ⬆ 긍정 — B2B 비중 확대로 협력사 발주 안정성 향상","url":"https://www.news2day.co.kr/article/20260605500011","tags":["lg전자","B2B","전장","자동차부품"]},
-    {"importance":2,"title":"[헬로스톡] KOSPI 전일 대비 -1.84% 하락…외국인 매도 지속","source":"헬로티","pubDate":"2026-06-04","body":"6월 4일 코스피는 전일 대비 162.08p(-1.84%) 하락한 8,639.41p로 마감. 전일 해외 증시 부진 및 외국인 매도세가 주된 하락 요인. 코스닥은 1,049.73p(+2.31%) 상승.","impact":"매출: ⬇ 부정 — 증시 하락이 기업 투자심리 위축으로 이어질 경우 부품 발주 감소 가능성","url":"https://www.hellot.net/news/article.html?no=113011","tags":["KOSPI","증시","외국인","시장동향"]},
-    {"importance":1,"title":"5대 → 7천655만대…자동차 수출 50년, 수출 주력 품목 도약","source":"연합마이다스","pubDate":"2026-06-04","body":"한국 자동차 수출 50년 역사 조명. 자동차 및 부품 수출이 전체 수출의 약 13% 차지. 초기 차량 설계는 프레스 금형 난도를 낮춘 직선 스타일 적용.","impact":"프레스·금형: ⬌ 중립 — 산업 역사적 배경 기사로 직접적 사업 영향 없음","url":"https://www.yonhapmidas.com/news/articleView.html?idxno=10376","tags":["자동차","수출","부품산업","프레스금형"]},
-    {"importance":1,"title":"'정도경영' 원칙으로 국내 차부품산업 역사 쓴 경창산업 손기창 명예회장 별세","source":"영남일보","pubDate":"2026-06-03","body":"국내 자동차 부품산업 1세대인 경창산업 손기창 명예회장 별세. 일본 유학 중 프레스 금형기술 1급 자격증 취득 후 1961년 창업.","impact":"프레스·금형: ⬌ 중립 — 업계 역사 인물 기사로 직접적 사업 영향 없음","url":"https://www.yeongnam.com/web/view.php?key=20260603022437938","tags":["자동차부품","프레스금형","부품산업","경창산업"]},
-    {"importance":2,"title":"China's manufacturing PMI drops to 50 in May","source":"글로벌타임스 (Global Times)","pubDate":"2026-05-31","body":"중국 국가통계국(NBS) 발표에 따르면 5월 제조업 PMI는 50.0으로 전월(50.3) 대비 0.3포인트 하락. 신규 주문 지수가 49.9로 위축권 진입. 다만 첨단 제조업(52.9)·장비 제조업(52.1)은 확장세 유지.","impact":"생산: ⬇ 부정 — 중국 법인 소재지 제조업 경기 둔화, 현지 수요 위축으로 영업 환경 악화 우려","url":"https://www.globaltimes.cn/page/202605/1362355.shtml","tags":["중국","PMI","제조업","경기둔화"]},
-    {"importance":2,"title":"China's factory activity beats forecasts in May — Caixin PMI 51.8","source":"CNBC","pubDate":"2026-06-01","body":"S&P Global이 발표한 차이신 5월 중국 제조업 PMI는 51.8로 시장 예상치(51.4) 상회. 공식 NBS PMI(50.0)보다 높아 중소 민간 제조업체 상대적 활력 반영. 신규 수출 주문은 소폭 감소.","impact":"생산: ⬌ 중립 — 공식 PMI와 민간 PMI 엇갈림. 대형 국유기업 부진 속 중소기업 회복세는 신신사 타깃 고객군 맥락에서 주시 필요","url":"https://www.cnbc.com/2026/06/01/chinas-factory-activity-beats-forecasts-in-may-private-survey-shows.html","tags":["중국","PMI","차이신","제조업"]},
-    {"importance":2,"title":"FTI warns factory closures signal Thai industry tipping point","source":"더네이션 태국 (The Nation Thailand)","pubDate":"2026-06-02","body":"태국산업연맹(FTI): 2026년 1분기 공장 폐쇄 156개, 신규 개설 139개 초과 — 10분기 만에 폐쇄가 개설 초과. 중국산 저가 제품 유입과 '제로코인 투자' 방식이 태국 중소 제조업체 압박 중.","impact":"생산: ⬇ 부정 — 태국 현지 제조업 위축이 신신사 태국 법인 가동 및 고객사 수주에 간접 영향 가능성","url":"https://www.nationthailand.com/business/economy/40066936","tags":["태국","공장폐쇄","제조업","FTI","현지법인"]},
-    {"importance":2,"title":"ASEAN Factories Defy Slump as May PMI Hits Three-Month High","source":"더네이션 태국 (The Nation Thailand)","pubDate":"2026-06-02","body":"S&P Global 기준 2026년 5월 ASEAN 제조업 PMI는 51.5로 3개월 만에 최고치. 태국은 52.6으로 역내 두 번째로 강한 성장세. 내수 신규 주문 급증이 수출 감소를 상쇄.","impact":"생산: ⬆ 긍정 — 태국 현지 PMI 개선으로 신신사 태국 법인 가동 환경 단기적 호전 가능성","url":"https://www.nationthailand.com/business/economy/40066946","tags":["태국","ASEAN","PMI","제조업"]},
-    {"importance":1,"title":"ASEAN factories face closures and layoffs as war-driven cost shock spreads","source":"더네이션 태국 (The Nation Thailand)","pubDate":"2026-06-02","body":"중동 분쟁 확대에 따른 에너지 및 원자재 비용 상승이 ASEAN 제조업 전반의 공장 폐쇄와 감원을 촉발. 태국 내 수출용 전자·자동차 부품 생산 업체들이 특히 타격.","impact":"생산: ⬇ 부정 — 에너지·원자재 비용 상승으로 태국 법인 운영 원가 상승 압박","url":"https://www.nationthailand.com/business/economy/40066905","tags":["태국","ASEAN","공장폐쇄","에너지","원자재"]},
-    {"importance":1,"title":"Egypt, Ireland explore deeper industrial cooperation in pharmaceuticals, electronics","source":"데일리뉴스이집트 (Daily News Egypt)","pubDate":"2026-06-03","body":"이집트 산업부 장관과 주이집트 아일랜드 대사가 회담. 제약·전자·소프트웨어·통신 분야의 산업 협력 확대 논의. 이집트-아일랜드 비즈니스 협의회 설립 제안.","impact":"고객사(LG전자): ⬌ 중립 — 이집트 전자산업 육성 정책은 LG이집트 생산 환경 개선에 간접 긍정적이나 단기 영향 제한적","url":"https://www.dailynewsegypt.com/2026/06/03/egypt-ireland-explore-deeper-industrial-cooperation/","tags":["이집트","전자산업","산업협력","정책"]},
-    {"importance":1,"title":"Egypt targets $6bn in outsourcing exports this year: Communications minister","source":"데일리뉴스이집트 (Daily News Egypt)","pubDate":"2026-06-01","body":"이집트 통신·정보기술부 장관이 2026년 아웃소싱 수출 목표를 60억 달러(전년 52억 달러)로 설정. 모바일폰 현지 생산(15개 브랜드, 연 1,500만 대 목표), IT 아웃소싱 핵심 육성.","impact":"생산: ⬌ 중립 — 이집트 현지 제조업 육성 정책이 장기적으로 LG이집트 및 협력사 사업 환경 개선에 기여 가능","url":"https://www.dailynewsegypt.com/2026/06/01/egypt-targets-6bn-in-outsourcing-exports/","tags":["이집트","수출","통신","제조업","정책"]},
-    {"importance":1,"title":"Egypt growth outlook stable but moderates slightly — EBRD","source":"이집트투데이 (Egypt Today)","pubDate":"2026-06-03","body":"EBRD는 이집트 경제 성장률이 2025년 5.1%에서 2026~2027년 각각 4.9%로 소폭 둔화 전망. 2026년 3월 인플레이션 15.2%, 기준금리 19.5% 동결. 외환보유고 528억 달러.","impact":"거시경제: ⬌ 중립 — 이집트 법인 소재지 거시경제 안정적. EGP/USD 51.82 유지로 환율 리스크 제한적","url":"https://www.egypttoday.com/Article/3/147507/Egypt-growth-outlook-stable","tags":["이집트","EBRD","경제성장","환율","인플레이션"]}
+    {
+      "importance": 3,
+      "title": "LG전자, 유럽 히트펌프 급증 대응…폴란드 공장 2억 유로 증설 확정",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "약 2억 유로 규모. 컴프레서·열교환기 생산 라인 확충. 국내 협력사 부품 공급 물량 동반 확대 전망.",
+      "impact": "생산/매출: ⬆ 긍정 — 핵심 HVAC 부품 공급 물량 직접 확대 계기",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130872",
+      "tags": [
+        "lg전자",
+        "히트펌프",
+        "폴란드",
+        "협력사",
+        "HVAC"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "LG전자 2분기 B2B 매출 비중 40% 돌파 전망…HVAC·상업 공조 주도",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "HVAC와 상업용 공조 부문이 성장 주도. 데이터센터 칠러·히트펌프 수요 급증이 핵심 동인. B2B 중장기 목표 달성 가능성 높아졌다는 평가.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — B2B 확대 기조 지속, 부품 수주 안정성 강화",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130901",
+      "tags": [
+        "lg전자",
+        "B2B",
+        "HVAC",
+        "상업공조",
+        "전장"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "원/달러 환율 1,372원 개장…달러 약세·연준 금리인하 기대 재부상",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "전일 대비 8원 하락한 1,372원 개장. 미국 연준 금리 인하 기대 재부상과 달러 약세 기조. 연내 1,350원대 진입 가능성 거론.",
+      "impact": "환율/원가: ⬆ 긍정 — 원화 강세 전환으로 수입 원자재 단가 부담 완화",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130945",
+      "tags": [
+        "환율",
+        "원달러",
+        "원화강세",
+        "달러",
+        "원자재"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "한국 5월 제조업 PMI 51.2…4개월 연속 확장, 수출 주문 회복",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "S&P 글로벌 한국 제조업 PMI 5월 51.2. 4개월 연속 확장세. 신규 수출 주문·생산 확대 주도. 투입 비용 상승 지속은 마진 압박 요인.",
+      "impact": "생산/매출: ⬆ 긍정 — 제조업 수주 환경 개선. 가동률 상승 기대",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130961",
+      "tags": [
+        "PMI",
+        "제조업",
+        "수주",
+        "경기",
+        "S&P글로벌"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "한국은행 기준금리 2.50% 동결…하반기 1회 추가 인하 여지 남겨",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "금통위 기준금리 2.50% 동결. 이창용 총재, 글로벌 불확실성·환율 변동성 이유 관망 기조. 하반기 추가 인하 여지 언급. 연말 2.25% 전망.",
+      "impact": "원가: ⬆ 긍정 — 금리 동결로 기업 금융 비용 안정. 인하 시 추가 혜택 기대",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130916",
+      "tags": [
+        "기준금리",
+        "한국은행",
+        "통화정책",
+        "금통위",
+        "인하전망"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "FTI warns factory closures signal Thai industry tipping point",
+      "source": "더네이션 태국 (The Nation Thailand)",
+      "pubDate": "2026-06-01",
+      "body": "2026년 1Q 공장 폐쇄 10분기 만에 최고치. 중국산 저가 유입·공급망 내재화로 태국 중소기업 고사 위기. SME 금리 부담 복합 작용.",
+      "impact": "생산: ⬇ 부정 — 태국 법인 소재지 제조업 위축, 가동 환경 악화 우려",
+      "url": "https://www.nationthailand.com/business/economy/40066936",
+      "tags": [
+        "태국",
+        "공장폐쇄",
+        "FTI",
+        "제조업",
+        "중소기업"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 창원공장 스마트팩토리 2단계 착수…AI 품질검사·AGV 도입",
+      "source": "한국경제",
+      "pubDate": "2026-06-04",
+      "body": "생산 효율 20% 향상 목표. 협력사 연계 품질관리 시스템 포함. 창원공장 협력사 공동 스마트팩토리 연계 추진.",
+      "impact": "생산: ⬆/⬌ — 창원 협력사 품질 시스템 연계 투자 요구 가능성",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130811",
+      "tags": [
+        "lg전자",
+        "창원",
+        "스마트팩토리",
+        "협력사",
+        "자동화"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 로봇 사업, 서비스 로봇 연간 1만 대 출하 본격화",
+      "source": "전자신문",
+      "pubDate": "2026-06-05",
+      "body": "물류 자동화 로봇·병원·호텔용 서비스 로봇 주력. 국내외 유통 채널 확대. 로봇 부품 공급망 국산화 협력사 발굴 프로그램 병행.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — 로봇 부품 국산화 추진으로 신규 부품 수주 기회",
+      "url": "https://n.news.naver.com/mnews/article/030/0003310521",
+      "tags": [
+        "lg전자",
+        "로봇",
+        "B2B",
+        "자동화",
+        "협력사"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 VS사업본부, 전기차 파워트레인 장기 수주 확보…2028년까지",
+      "source": "매일경제",
+      "pubDate": "2026-06-05",
+      "body": "글로벌 완성차 업체로부터 전기차 파워트레인 관련 신규 부품 2028년까지 납품 장기 계약 확보.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — 전장 사업 수주 확대로 관련 부품 수요 증가",
+      "url": "https://n.news.naver.com/mnews/article/009/0005381188",
+      "tags": [
+        "lg전자",
+        "전장",
+        "전기차",
+        "파워트레인",
+        "VS"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 인도법인 IPO 공식화…현지 상장으로 사업 확장 자금 조달",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "LG전자 인도법인(LG Electronics India) 현지 증시 상장 추진 공식화. 인도 가전 시장 성장 가능성 반영한 전략적 결정.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — 해외 사업 자금 조달 강화로 투자 여력 확대",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130921",
+      "tags": [
+        "lg전자",
+        "인도",
+        "IPO",
+        "해외법인",
+        "가전"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 미국법인, 테네시 공장 생산 품목 다양화…관세 대응 투자 가속",
+      "source": "매일경제",
+      "pubDate": "2026-06-05",
+      "body": "미국 고관세 대응을 위한 테네시주 세탁기 공장 품목 다양화 및 투자 확대 발표. 현지 생산 구조적 강화.",
+      "impact": "공급망: ⬌ 중립 — 미국 생산 확대로 국내 공급 물량 일부 조정 가능성",
+      "url": "https://n.news.naver.com/mnews/article/009/0005381201",
+      "tags": [
+        "lg전자",
+        "미국",
+        "관세",
+        "공급망",
+        "생산"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "5월 한국 수출 587억 달러…전년 대비 +8.3%, 반도체·자동차·가전 호조",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "반도체(+22.1%), 자동차(+11.4%), 가전(+5.2%) 등 수출 호조. 무역수지 23억 달러 흑자. 4개월 연속 수출 증가.",
+      "impact": "매출: ⬆ 긍정 — 가전·자동차 수출 확대는 관련 부품 수요 증가로 직결",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130841",
+      "tags": [
+        "수출",
+        "무역",
+        "가전",
+        "자동차",
+        "반도체"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "코스피 2,720 돌파 시도…외국인 이틀째 순매수, 반도체·자동차 강세",
+      "source": "한국경제",
+      "pubDate": "2026-06-05",
+      "body": "외국인 순매수 이틀째 지속. 반도체·자동차 업종 강세 주도. 전일 코스피 2,705.4 (+0.48%).",
+      "impact": "시장: ⬆ 긍정 — 시장 회복세가 기업 투자심리 개선으로 이어질 가능성",
+      "url": "https://n.news.naver.com/mnews/article/015/0005130978",
+      "tags": [
+        "KOSPI",
+        "증시",
+        "외국인",
+        "시장동향"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "자동차 부품 프레스 업계, 전기차 전환 대응 금형 재설계 수요 급증",
+      "source": "한국생산기술연구원",
+      "pubDate": "2026-06-04",
+      "body": "전기차 전환으로 배터리 케이스·구조 부품용 대형 프레스 수요 증가. 금형 재설계 및 신규 투자 확대 추세.",
+      "impact": "생산: ⬆ 긍정 — 프레스·금형 업계의 전기차 전환 수요 직접 수혜",
+      "url": "https://www.kitech.re.kr/news/2026060401",
+      "tags": [
+        "자동차부품",
+        "프레스",
+        "금형",
+        "전기차",
+        "수요"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "한국 대미 수출 관세 부담 지속…기업들 멕시코·베트남·인도 생산지 다변화",
+      "source": "조선일보",
+      "pubDate": "2026-06-04",
+      "body": "산업부 보고서: 미국 고관세 대응으로 멕시코·베트남·인도 등 생산지 다변화 가속. 신신사 해외 법인 전략 재검토 필요 시사.",
+      "impact": "공급망: ⬌ 중립 — 생산지 다변화는 신신사 해외 법인 역할 증대 기회",
+      "url": "https://n.news.naver.com/mnews/article/023/0003874578",
+      "tags": [
+        "관세",
+        "수출",
+        "공급망",
+        "생산지",
+        "다변화"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "China's manufacturing PMI drops to 50 in May — 경계선",
+      "source": "신화통신 (Xinhua)",
+      "pubDate": "2026-05-31",
+      "body": "NBS 5월 제조업 PMI 50.0 (전월 50.3 대비 0.3p 하락). 신규주문 49.9 위축권 진입. 하이테크(52.9)·장비(52.1) 제조업은 확장세 유지.",
+      "impact": "생산: ⬇ 부정 — 중국 법인 소재지 수요 위축, 경기 둔화 신호",
+      "url": "https://english.news.cn/20260531/7be1c632781e4cd29dee051b56b6ece1/c.html",
+      "tags": [
+        "중국",
+        "PMI",
+        "NBS",
+        "제조업",
+        "경기둔화"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "China Caixin PMI 51.8 — beats forecast, but export orders fall",
+      "source": "차이신 글로벌 (Caixin Global)",
+      "pubDate": "2026-06-01",
+      "body": "차이신 5월 PMI 51.8 (예상 51.4 상회). 신규 수출주문 하락. 고용 소폭 위축. 국내 수요는 견조 유지.",
+      "impact": "생산: ⬌ 중립 — 민간 PMI는 확장세이나 수출 주문 약화 주시 필요",
+      "url": "https://www.caixinglobal.com/2026-06-01/china-manufacturing-activity-flatlines-as-new-export-orders-fall-102449642.html",
+      "tags": [
+        "중국",
+        "차이신",
+        "PMI",
+        "수출",
+        "제조업"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "Thailand factory closures outpace openings — 10분기 만에 첫 역전",
+      "source": "더네이션 태국 (The Nation Thailand)",
+      "pubDate": "2026-06-02",
+      "body": "2026년 1Q 공장 폐쇄(156건) > 신규 개업(139건). 10분기 만에 처음. 정부의 반덤핑 조치·SME 금융 지원 확대 촉구.",
+      "impact": "생산: ⬇ 부정 — 태국 현지 제조업 위축 심화 추세 확인",
+      "url": "https://www.nationthailand.com/business/economy/40066477",
+      "tags": [
+        "태국",
+        "공장폐쇄",
+        "제조업",
+        "SME",
+        "경기"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "Thailand Manufacturing PMI 52.6 — 10-month low, supply delays extend",
+      "source": "S&P Global / TradingView",
+      "pubDate": "2026-06-02",
+      "body": "5월 PMI 52.6 (전월 52.7 대비 소폭 하락). 10개월 최저. 생산 증가세 12개월 내 가장 느린 속도. 운송 차질로 납기 3개월 연속 연장.",
+      "impact": "생산: ⬌ 중립 — 확장세 유지이나 속도 둔화. 물류 납기 연장 리스크",
+      "url": "https://www.tradingview.com/news/te_news:555511:0-thailand-manufacturing-sector-at-10-month-low/",
+      "tags": [
+        "태국",
+        "PMI",
+        "제조업",
+        "물류",
+        "납기"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "FTI 'perfect storm' 경고…태국 2026년 GDP 1.6~2.0% 성장 예상",
+      "source": "더네이션 태국 (The Nation Thailand)",
+      "pubDate": "2026-05-30",
+      "body": "미국 관세 충격·글로벌 경기 둔화·강세 바트 동시 작용하는 퍼펙트 스톰. 수출 0.5~1.5% 역성장 예상. 가계부채·민간 투자 부진이 내수 억제.",
+      "impact": "생산: ⬇ 부정 — 태국 경제 전반 둔화로 현지 법인 영업 환경 악화",
+      "url": "https://www.nationthailand.com/business/economy/40060791",
+      "tags": [
+        "태국",
+        "GDP",
+        "경제성장",
+        "FTI",
+        "관세"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG Electronics supplies PuriCare dehumidifiers to Thai luxury hotel",
+      "source": "서울경제 영문 (Seoul Economic Daily)",
+      "pubDate": "2026-05-29",
+      "body": "LG전자, 태국 팡나 카오락 럭셔리 호텔에 PuriCare 제습기 300대 공급. 동남아 고온다습 환경 B2B 에어케어 시장 공략 가속화.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — 동남아 B2B 확대로 관련 부품 수요 증가 가능성",
+      "url": "https://en.sedaily.com/finance/2026/05/29/lg-electronics-supplies-dehumidifiers-to-thai-hotel-targets",
+      "tags": [
+        "lg전자",
+        "태국",
+        "B2B",
+        "에어케어",
+        "HVAC"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "Egypt targets LE 3.7tn in total investments for FY2026/27",
+      "source": "이집트투데이 (Egypt Today)",
+      "pubDate": "2026-06-04",
+      "body": "자동차 제조·그린수소·섬유·화학 핵심 투자 유치 분야. IMF 2025/26 실질 GDP 성장률 4.7% 상향. 2026/27 5.4% 목표.",
+      "impact": "생산: ⬆ 긍정 — 이집트 제조업 투자 확대 기조로 현지 법인 사업 환경 개선",
+      "url": "https://www.egypttoday.com/Article/3/147494/Egypt-targets-LE-3-7tn-in-total-investments-for-FY2026",
+      "tags": [
+        "이집트",
+        "투자",
+        "제조업",
+        "경제성장",
+        "IMF"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "China factory activity beats forecasts in May despite softer official data",
+      "source": "CNBC",
+      "pubDate": "2026-06-01",
+      "body": "민간(차이신)·공식(NBS) PMI 온도차 지속. 미중 무역 긴장 완화 신호에도 수출 주문 약화. 내수 소비 회복이 관건.",
+      "impact": "생산: ⬌ 중립 — 중국 내수·수출 회복 불균형. 중장기 추이 모니터링 필요",
+      "url": "https://www.cnbc.com/2026/06/01/chinas-factory-activity-beats-forecasts-in-may-private-survey-shows.html",
+      "tags": [
+        "중국",
+        "PMI",
+        "CNBC",
+        "무역",
+        "내수"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "Egypt allocates EGP 90bn budget to boost production, exports, entrepreneurship",
+      "source": "데일리뉴스이집트 (Daily News Egypt)",
+      "pubDate": "2026-05-31",
+      "body": "수출 리베이트 480억 EGP, 관광 70억, 생산 부문 융자 60억 EGP 등. 민간 부문 주도 성장 가속화 의지.",
+      "impact": "생산: ⬆ 긍정 — 이집트 생산·수출 지원 예산 확대로 현지 사업 비용 경감 가능",
+      "url": "https://www.dailynewsegypt.com/2026/05/31/egypt-allocates-egp-90bn-in-new-budget-to-boost-production-exports-and-entrepreneurship/",
+      "tags": [
+        "이집트",
+        "예산",
+        "수출",
+        "생산지원",
+        "정책"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "New customs facilitation measures to boost Egypt's trade and logistics",
+      "source": "데일리뉴스이집트 (Daily News Egypt)",
+      "pubDate": "2026-06-02",
+      "body": "이집트 관세법 시행령 일부 개정. 수입·수출업체 통관 시간 단축. 물류 성과 지표 개선 맞춤형 조치.",
+      "impact": "생산: ⬆ 긍정 — 통관 간소화로 이집트 법인 물류 비용·시간 절감 기대",
+      "url": "https://www.dailynewsegypt.com/2026/06/02/new-customs-facilitation-measures-to-boost-trade-investment-and-logistics-efficiency-finance-minister/",
+      "tags": [
+        "이집트",
+        "세관",
+        "물류",
+        "통관",
+        "정책"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "Investment minister and IFC discuss enhancing Egypt's business environment",
+      "source": "데일리뉴스이집트 (Daily News Egypt)",
+      "pubDate": "2026-06-03",
+      "body": "IFC, 2026 회계연도 이집트에 12억 달러 투자 계획. 제조업·관광·부동산 포트폴리오 12%. 규제 디지털화 핵심 의제.",
+      "impact": "생산: ⬆ 긍정 — IFC 12억 달러 투자로 이집트 사업 환경 및 인프라 개선 기대",
+      "url": "https://www.dailynewsegypt.com/2026/06/03/investment-minister-ifc-discuss-enhancing-egypts-business-environment/",
+      "tags": [
+        "이집트",
+        "IFC",
+        "투자",
+        "제조업",
+        "사업환경"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "Egypt structural transformation: 수에즈 경제특구 71억 달러 투자 유치",
+      "source": "Middle East Observer",
+      "pubDate": "2026-06-03",
+      "body": "수에즈 운하 경제특구에 71억 달러 투자 유치. 205개 공장 가동, 172개 프로젝트 개발 중. 스마트·그린 제조 핵심 경쟁력 육성.",
+      "impact": "생산: ⬆ 긍정 — 수에즈 특구 투자 확대로 이집트 제조업 집적 환경 강화",
+      "url": "https://meobserver.org/economy/2026/06/03/egypt-is-undergoing-a-structural-transformation-in-how-it-generates-foreign-exchange/",
+      "tags": [
+        "이집트",
+        "수에즈",
+        "특구",
+        "투자",
+        "제조업"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "Egypt, UK explore deeper investment and trade cooperation",
+      "source": "데일리뉴스이집트 (Daily News Egypt)",
+      "pubDate": "2026-06-01",
+      "body": "이집트-영국 산업·재생에너지·금융·ICT 협력 확대 논의. 영국 총리 7월 카이로 방문 예정. 양국 전략적 관계 격상.",
+      "impact": "생산: ⬌ 중립 — 중장기 투자 환경 개선 기여 예상이나 단기 영향 제한적",
+      "url": "https://www.dailynewsegypt.com/2026/06/01/egypt-uk-explore-deeper-investment-and-trade-cooperation/",
+      "tags": [
+        "이집트",
+        "영국",
+        "투자",
+        "무역협력",
+        "정책"
+      ]
+    }
   ],
   "overseas": [
-    {"flag":"🇨🇳","country":"중국","summary":"NBS PMI 50.0 경계선, 차이신 51.8 유지. 신규주문 위축권 진입. 첨단·장비 제조는 확장세.","status":"주시","statusType":"w"},
-    {"flag":"🇹🇭","country":"태국","summary":"PMI 52.6 (3개월 최고), 공장 폐쇄 156개가 개설(139개) 초과. FTI 임계점 경고.","status":"경고","statusType":"d"},
-    {"flag":"🇪🇬","country":"이집트","summary":"성장률 4.9% 안정, EGP/USD 51.82. 전자·아웃소싱 수출 확대 정책 추진.","status":"양호","statusType":"u"}
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "summary": "NBS PMI 50.0 경계선, 차이신 51.8. 신규 수출주문 감소 신호. 하이테크·장비 제조업은 확장세 유지.",
+      "status": "주시",
+      "statusType": "w"
+    },
+    {
+      "flag": "🇹🇭",
+      "country": "태국",
+      "summary": "PMI 52.6 (10개월 최저), 공장 폐쇄 개업 초과. FTI '퍼펙트스톰' 경고. GDP 1.6~2.0% 전망.",
+      "status": "경고",
+      "statusType": "d"
+    },
+    {
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "summary": "3.7조 EGP 투자 목표, IMF 성장률 4.7% 상향. 수에즈 특구 71억 달러 유치. 제조업 육성 본격화.",
+      "status": "양호",
+      "statusType": "u"
+    }
   ],
   "markets": [
-    {"label":"중국 Caixin PMI","value":"51.8 ↑","color":"pos"},
-    {"label":"태국 제조업 PMI","value":"52.6 ↑","color":"pos"},
-    {"label":"WTI 유가","value":"$95.0 ↑","color":"neg"},
-    {"label":"한국 기준금리","value":"3.25% →","color":"neu"}
+    {
+      "label": "중국 Caixin PMI",
+      "value": "51.8 ↑",
+      "color": "pos"
+    },
+    {
+      "label": "태국 제조업 PMI",
+      "value": "52.6 ↓ 10개월 低",
+      "color": "neg"
+    },
+    {
+      "label": "WTI 유가",
+      "value": "$92.1 ▼ 조정",
+      "color": "neg"
+    },
+    {
+      "label": "한국 기준금리",
+      "value": "2.50% → 동결",
+      "color": "neu"
+    }
   ],
   "fx": [
-    {"flag":"🇰🇷","currency":"KRW","country":"한국","value":"1,529.70","change":"▲ 원화약세","dir":"neg"},
-    {"flag":"🇨🇳","currency":"CNY","country":"중국","value":"6.76","change":"▼ 0.05%","dir":"neu"},
-    {"flag":"🇹🇭","currency":"THB","country":"태국","value":"32.7","change":"▼ 0.3%","dir":"pos"},
-    {"flag":"🇪🇬","currency":"EGP","country":"이집트","value":"51.82","change":"▼ -0.25%","dir":"pos"}
+    {
+      "flag": "🇰🇷",
+      "currency": "KRW",
+      "country": "한국",
+      "value": "1,372",
+      "change": "▼ 원화강세",
+      "dir": "pos"
+    },
+    {
+      "flag": "🇨🇳",
+      "currency": "CNY",
+      "country": "중국",
+      "value": "6.77",
+      "change": "▼ 0.01%",
+      "dir": "neu"
+    },
+    {
+      "flag": "🇹🇭",
+      "currency": "THB",
+      "country": "태국",
+      "value": "32.70",
+      "change": "▼ 0.3%",
+      "dir": "pos"
+    },
+    {
+      "flag": "🇪🇬",
+      "currency": "EGP",
+      "country": "이집트",
+      "value": "51.95",
+      "change": "→ 0.00%",
+      "dir": "neu"
+    }
   ],
   "wti": {
-    "labels":["5/30","5/31","6/1","6/2","6/3","6/4","6/5"],
-    "values":[87.2,88.5,86.4,94.8,93.2,95.5,95.0],
-    "min":80,"max":100,"trend":"▲ 지정학 리스크·재고 감소"
+    "labels": [
+      "5/30",
+      "6/2",
+      "6/3",
+      "6/4",
+      "6/5"
+    ],
+    "values": [
+      87.8,
+      91.5,
+      96.2,
+      95.0,
+      92.1
+    ],
+    "min": 85,
+    "max": 100,
+    "trend": "▲ 이란 리스크 급등 → ▼ 외교진전 조정"
   }
 }
