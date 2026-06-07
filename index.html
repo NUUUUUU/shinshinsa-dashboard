@@ -50,6 +50,14 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .scorecard-btn:hover{background:linear-gradient(135deg,#0d4f7c,#2080c0);
   box-shadow:0 3px 10px rgba(0,100,200,.38);transform:translateY(-1px);}
 .scorecard-btn svg{flex-shrink:0;}
+/* 전체보고서·아카이브 버튼 */
+.nav-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;
+  border-radius:5px;font-size:12px;font-weight:600;letter-spacing:.1px;
+  background:rgba(224,20,76,.12);color:var(--pink);text-decoration:none;
+  border:1px solid rgba(224,20,76,.28);transition:all .2s;white-space:nowrap;}
+.nav-btn:hover{background:rgba(224,20,76,.22);border-color:rgba(224,20,76,.5);transform:translateY(-1px);}
+.nav-btn.arc{background:rgba(124,143,163,.1);color:var(--sgray);border-color:rgba(124,143,163,.3);}
+.nav-btn.arc:hover{background:rgba(124,143,163,.2);}
 /* KPI */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding:12px 26px;
   background:var(--hdr);border-bottom:1px solid var(--bdr);flex-shrink:0;}
@@ -171,7 +179,9 @@ footer strong{color:var(--pink);font-weight:700;}
     <span class="conf">CONFIDENTIAL</span>
   </div>
   <div class="hdr-right">
-    <!-- ② Macro Scorecard 링크 → weekly-briefing GitHub Pages -->
+    <a class="nav-btn" href="briefing.html" target="_blank" rel="noopener" title="전체 경영 보고서 (모바일)">📋 전체보고서</a>
+    <a class="nav-btn arc" href="archive.html" target="_blank" rel="noopener" title="날짜별 브리핑 아카이브">📅 아카이브</a>
+    <!-- Macro Scorecard 링크 → weekly-briefing GitHub Pages -->
     <a class="scorecard-btn"
        href="https://NUUUUUU.github.io/weekly-briefing/"
        target="_blank" rel="noopener"
