@@ -185,13 +185,13 @@ footer strong{color:var(--pink);font-weight:700;}
     <a class="scorecard-btn"
        href="https://NUUUUUU.github.io/weekly-briefing/"
        target="_blank" rel="noopener"
-       title="신신사 Macro & Cost Scorecard — 6개월 추세">
+       title="신신사 경영지표 2년 추세 차트">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="1" y="8" width="3" height="7" rx="1" fill="rgba(255,255,255,0.9)"/>
         <rect x="6" y="5" width="3" height="10" rx="1" fill="rgba(255,255,255,0.9)"/>
         <rect x="11" y="1" width="3" height="14" rx="1" fill="rgba(255,255,255,0.9)"/>
       </svg>
-      📈 Macro Scorecard
+      📈 경영지표 2년 추세
     </a>
     <img src="http://www.shinshinsa.com/img/ci_sign02_01.png"
          alt="SHINSHIN" style="height:38px;width:auto;object-fit:contain;"
@@ -216,12 +216,12 @@ footer strong{color:var(--pink);font-weight:700;}
     <div class="sec" id="news-sec">
       <span class="sec-dot"></span>주요 뉴스
       <a class="lg-ref-link" id="lg-ref-link"
-         href="https://www.lge.co.kr/corporate-info/newsroom"
+         href="https://live.lge.co.kr/"
          target="_blank" rel="noopener">
         🔵 LG 뉴스룸 ↗
       </a>
       <a class="lg-ref-link" id="lg-ir-link"
-         href="https://www.lge.co.kr/investor-relations"
+         href="https://www.lge.co.kr/company/investor/IREvents"
          target="_blank" rel="noopener" style="margin-left:-4px;">
         📋 IR ↗
       </a>
@@ -388,11 +388,11 @@ function renderGrid(items) {
   // LG 링크 재삽입
   const a1 = document.createElement('a');
   a1.id='lg-ref-link'; a1.className='lg-ref-link';
-  a1.href='https://www.lge.co.kr/corporate-info/newsroom';
+  a1.href='https://live.lge.co.kr/';
   a1.target='_blank'; a1.rel='noopener'; a1.textContent='🔵 LG 뉴스룸 ↗';
   const a2 = document.createElement('a');
   a2.id='lg-ir-link'; a2.className='lg-ref-link';
-  a2.href='https://www.lge.co.kr/investor-relations';
+  a2.href='https://www.lge.co.kr/company/investor/IREvents';
   a2.target='_blank'; a2.rel='noopener'; a2.textContent='📋 IR ↗';
   a2.style.marginLeft='-4px';
   secNode.appendChild(a1); secNode.appendChild(a2);
