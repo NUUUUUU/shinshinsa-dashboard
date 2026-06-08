@@ -1,543 +1,560 @@
 {
-  "date": "2026-06-08",
-  "date_kr": "2026년 6월 8일 (월)",
-  "generated_at": "2026-06-08 08:43 KST",
+  "date": "2026-06-09",
+  "date_kr": "2026년 6월 9일 (화)",
+  "generated_at": "2026-06-09 08:30 KST",
+  "summary_line": "LG전자-엔비디아 피지컬AI 동맹으로 전장·로봇 부품 수요 확대 기회가 열렸으나, 원달러 환율 1,555원 급등·KOSPI 8.3% 폭락·금리 빅스텝 리스크가 동시 부상하며 제조 환경이 급격히 불안해지고 있다.",
+  "top3": [
+    {
+      "rank": 1,
+      "title": "원달러 환율 1,555원 급등 → 당국 개입 후 1,527원 부분 안정",
+      "reason": "수입 원자재 단가 직결 상승, 1600원 근접 시 빅스텝 금리 인상 이중 리스크 — 긴급 원가 영향 점검 필요"
+    },
+    {
+      "rank": 2,
+      "title": "LG전자-엔비디아 피지컬AI 동맹 확대 — B2B 매출 24.1조·전장 영업이익 1조 돌파",
+      "reason": "고객사 전장·로봇·냉각 솔루션 사업 급성장, 협력사 수주 기회 확대 가능성 — 부품 규격 변경 사항 선제 확인 요망"
+    },
+    {
+      "rank": 3,
+      "title": "남동공단 금형·프레스 뿌리산업 — 철강 한파·공정 협업 구조 약화",
+      "reason": "신신사 동종 업종 직접 위기 신호 — 공급망 납기·원가 리스크 동반 상승 우려"
+    }
+  ],
+  "monitoring": [
+    "원달러 환율 1,530원 재돌파 여부 및 한국은행 빅스텝 금리 인상 결정 모니터링",
+    "LG전자 전장·로봇 부품 수주 동향 파악 및 히트펌프 부품 규격 변경 선제 대응",
+    "남동공단 프레스·금형 업체 납기 차질 여부 및 철강 원자재 수급 동향 주시"
+  ],
+  "ceo_schedule": [
+    {
+      "time": "09:00~11:00",
+      "title": "컨센서스 회의"
+    },
+    {
+      "time": "11:00~12:00",
+      "title": "AI학습 커뮤니티"
+    }
+  ],
   "kpis": [
     {
       "type": "pos",
       "label": "KOSPI",
-      "value": "8,160",
-      "change": "▼5.54% (전주 금요일 종가, 블랙먼데이 우려)",
-      "note": "2026-06-05 종가 기준"
+      "value": "7,477",
+      "change": "▲ 반등 시도 (전일 -8.29%, 야간선물 +5.5%)",
+      "note": "6/9 반등 기대, 전일 7,484 마감"
     },
     {
       "type": "neg",
       "label": "원 / 달러 환율",
-      "value": "1,561",
+      "value": "1,526.50",
       "unit": "원",
-      "change": "▲ 17년래 최고 (2009년 3월 후)",
-      "note": "야간거래 기준, 블랙먼데이 우려"
+      "change": "▼ -12.60원 (당국 개입 후 안정)",
+      "note": "야간거래 기준, 장중 1,555.2원 고점"
     },
     {
       "type": "gld",
       "label": "한국 제조업 PMI",
       "value": "54.8",
       "change": "▲ 5년 2개월래 최고 (5월)",
-      "note": "S&P글로벌 발표"
+      "note": "S&P글로벌 한국 제조업 PMI"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "원달러 환율이 17년 만에 1,560원을 돌파하며 기업 원가 비상이 걸렸고, LG전자-엔비디아 피지컬 AI 협력 심화로 협력사 부품 수요 구조 변화가 예고됐다."
+      "summary": "LG전자-엔비디아 피지컬AI 동맹으로 전장·로봇 부품 수요 확대 기회가 열렸으나, 원달러 환율 1,555원 급등·KOSPI 8.3% 폭락·금리 빅스텝 리스크가 동시 부상하며 제조 환경이 급격히 불안해지고 있다."
     }
   ],
   "news": [
     {
       "importance": 3,
-      "title": "'블랙 먼데이' 되나…원달러 환율 1,561원 — 2009년 이후 17년래 최고",
-      "source": "이데일리",
-      "pubDate": "2026-06-08",
-      "body": "8일 원달러 환율이 야간 거래에서 1,561원을 돌파하며 2009년 3월 이후 최고 수준을 기록했다. 이란·이스라엘 공습에 따른 지정학 리스크와 반도체 급락이 겹치며 환율 불안이 가중되고 있다.",
-      "impact": "환율·원가: ⬇ 부정 — 수입 원자재·부자재 가격 상승 직결, 수출 협력사 납품 단가 압력 병존",
-      "url": "https://n.news.naver.com/mnews/article/018/0006300376?sid=101",
+      "title": "국민연금 개입에 원/달러 환율 안정…야간 거래 1526.50원 마감",
+      "source": "중앙뉴스",
+      "pubDate": "2026-06-09",
+      "url": "https://www.joongangenews.com/news/articleView.html?idxno=524532",
+      "body": "국민연금이 선물환 매도 포지션을 취하며 원/달러 환율 안정세 전환. 9일 새벽 기준 1526.50원으로 전 거래일 대비 12.60원 하락 마감. 장중 고점 1555.2원에서 부분 안정.",
+      "impact": "원가·환율: ⬇ 부정 — 수입 원자재·부자재 단가 상승 직결. 당국 개입으로 단기 안정이나 1500원대 고착화 우려 지속.",
       "tags": [
-        "원달러환율",
         "환율",
-        "블랙먼데이",
-        "지정학리스크",
-        "외환"
+        "원달러",
+        "국민연금",
+        "외환개입",
+        "1526원"
       ]
     },
     {
       "importance": 3,
-      "title": "환율·금리 동시 상승… '3高 공포' 짙어진다",
-      "source": "세계일보",
-      "pubDate": "2026-06-07",
-      "body": "원달러 환율 17년 만에 최고치, 5월 소비자물가 3% 돌파, 한국은행 금리 인상 예고로 고환율·고물가·고금리 '3高' 공포가 현실화되고 있다. 기업과 가계의 이중 부담 우려가 높아지며 정부가 강력 대응 방침을 밝혔다.",
-      "impact": "원가·환율: ⬇ 부정 — 원자재 비용 상승 + 금리 인상 시 자금 조달 부담 복합 압박",
-      "url": "https://n.news.naver.com/mnews/article/022/0004133572?sid=101",
+      "title": "환율 1555원까지 치솟자…정부 '투기거래 용인 안 해'",
+      "source": "노컷뉴스",
+      "pubDate": "2026-06-08",
+      "url": "https://n.news.naver.com/mnews/article/079/0004155523?sid=101",
+      "body": "원달러 환율 1555원 급등에 재경부·한국은행 구두개입. 불법외환거래 대응반 가동, 수출입기업 리드앤래그 행태 단속 강화 예고.",
+      "impact": "원가·환율: ⬇ 부정 — 1555원 고점은 원자재 수입원가 급등 신호. 정부 개입으로 일시 안정이나 재급등 리스크 상존.",
       "tags": [
         "환율",
-        "금리",
-        "물가",
-        "3高",
-        "한국은행"
+        "1555원",
+        "정부개입",
+        "한국은행",
+        "외환단속"
       ]
     },
     {
       "importance": 3,
-      "title": "구윤철 '환율 쏠림·투기 거래 엄정 대응'…외환시장 안정 총력",
-      "source": "이코노빌",
-      "pubDate": "2026-06-08",
-      "body": "구윤철 부총리가 한국은행·금감원과 긴급 시장상황점검회의를 열고 수출입 기업 리드앤래그 불법 거래에 대응하는 '불법외환거래 대응반'을 가동했다. 중동전쟁 전개 및 미국 물가 동향에 따라 변동성이 재차 높아질 수 있다고 경고했다.",
-      "impact": "규제·정책: ⬌ 중립 — 수출입 기업 환거래 규제 강화, 단기 환율 안정화 기대와 불확실성 병존",
-      "url": "https://www.econovill.com/news/articleView.html?idxno=741763",
-      "tags": [
-        "환율",
-        "외환시장",
-        "구윤철",
-        "금융안정",
-        "수출입"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "반도체주 급락 후폭풍… 원달러 환율 1,500원 후반 상승 전망",
-      "source": "이투데이",
-      "pubDate": "2026-06-08",
-      "body": "8일 원달러 환율이 1,558~1,578원 범위에서 등락 전망. 반도체 리스크 오프, 외국인 역송금, 역내외 달러 매수세가 겹치며 급등세 지속. 전문가들은 '블랙 먼데이' 가능성을 경고했다.",
-      "impact": "원가·환율: ⬇ 부정 — 수입 원가 비용 1,580원 돌파 시 추가 압박, 당일 환율 모니터링 필수",
-      "url": "https://www.etoday.co.kr/news/view/2591238",
-      "tags": [
-        "원달러환율",
-        "환율",
-        "외환시장",
-        "반도체",
-        "금융시장"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "LG그룹, 근육에서 두뇌까지 — 액추에이터·모터 B2B 전환 가속",
-      "source": "뉴스투데이",
-      "pubDate": "2026-06-08",
-      "body": "LG전자가 연간 4,500만 개 모터 생산 인프라를 기반으로 휴머노이드 로봇 핵심 부품인 액추에이터 사업을 강화하고 있다. B2C에서 B2B 부품 플랫폼으로 사업 방향을 전환 중이며 로봇 제조 원가의 40~50%를 차지하는 액추에이터가 핵심이다.",
-      "impact": "고객사(LG전자)·생산: ⬆ 긍정 — LG전자 B2B 부품 플랫폼 전환으로 프레스·금형 부품 수요 구조 변화 예고, 선제 대응 필요",
-      "url": "https://www.news2day.co.kr/article/20260607500040",
+      "title": "구광모·젠슨 황, '피지컬 AI' 동맹 재확인…휴머노이드 로봇 개발 협력",
+      "source": "CEO스코어데일리",
+      "pubDate": "2026-06-09",
+      "url": "https://www.ceoscoredaily.com/page/view/2026060814213173723",
+      "body": "LG그룹 구광모 회장과 엔비디아 젠슨 황 CEO가 피지컬 AI 동맹 재확인. LG전자·전장·통신·에너지 계열사 역량 결집, AI 모델~로봇 학습~디지털 트윈 전 영역 협력.",
+      "impact": "고객사(LG전자)·매출: ⬆ 긍정 — LG전자 B2B 전장·로봇 사업 가속화로 부품 협력사 중장기 수주 기회 확대 가능성.",
       "tags": [
         "LG전자",
-        "액추에이터",
-        "로봇",
-        "전장",
-        "B2B"
-      ]
-    },
-    {
-      "importance": 3,
-      "title": "젠슨 황이 띄운 로봇의 시간… LG전자 피지컬 AI 준비 속도",
-      "source": "글로벌이코노믹",
-      "pubDate": "2026-06-08",
-      "body": "LG전자는 클로이 로봇·가전·스마트홈·전장 사업을 함께 보유해 피지컬 AI 전 분야에서 엔비디아와 협력 진행 중이다. 연간 4,500만 개 모터 생산 인프라를 기반으로 휴머노이드 로봇 대량 생산 체계 구축을 준비하고 있다.",
-      "impact": "고객사(LG전자)·생산: ⬆ 긍정 — 로봇·전장 부품 수요 중장기 확대 예상, 신신사 부품 라인업 대응 전략 수립 시점",
-      "url": "https://www.g-enews.com/view.php?ud=202606070200277740112616b072_1",
-      "tags": [
-        "LG전자",
-        "로봇",
-        "전장",
+        "엔비디아",
         "피지컬AI",
-        "엔비디아"
+        "로봇",
+        "구광모",
+        "젠슨황"
       ]
     },
     {
       "importance": 3,
-      "title": "히트펌프의 재발견… 정부 목표 56만 대 — LG전자 컴프레서 경쟁 본격화",
-      "source": "대한경제",
+      "title": "구광모 LG그룹 회장의 8년 포석 — LG전자 B2B 매출 24.1조·전장 영업이익 1조 돌파",
+      "source": "SR타임스",
       "pubDate": "2026-06-08",
-      "body": "정부가 탈탄소 대안으로 히트펌프를 주목하며 올해 7만 대에서 56만 대(8배) 목표를 발표했다. LG전자와 삼성전자가 핵심 부품인 컴프레서 기술력을 바탕으로 히트펌프 시장에 진출해 경쟁이 본격화되고 있다.",
-      "impact": "매출·생산: ⬆ 긍정 — 히트펌프 핵심 부품(컴프레서 주변 프레스 부품) 수요 8배 잠재, 대응 가능 품목 검토 시급",
-      "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202606051652136900248",
+      "url": "http://www.srtimes.kr/news/articleView.html?idxno=204783",
+      "body": "LG전자 2025년 B2B 매출 24조1000억원(전년比 3% 증가). VS·ES사업본부 합산 영업이익 처음으로 1조원 돌파. 2026년 1분기도 성장세 지속.",
+      "impact": "고객사(LG전자)·매출: ⬆ 긍정 — LG전자 전장 사업 영업이익 1조 달성으로 부품 협력사 발주 안정성·성장 기반 확인.",
+      "tags": [
+        "LG전자",
+        "B2B",
+        "매출",
+        "영업이익",
+        "VS사업본부",
+        "ES사업본부"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "유럽, 韓·中 HVAC 격전지 부상…LG전자 EU 환경 규제 적극 대응",
+      "source": "전자신문",
+      "pubDate": "2026-06-08",
+      "url": "https://n.news.naver.com/mnews/article/030/0003435490?sid=101",
+      "body": "LG전자가 EU 스마트 가전 에너지 행동강령(CoC) 국내 기업 최초 서명. EHS 히트펌프·에어컨으로 EPREL 등록 확대 및 고효율 보급 박차.",
+      "impact": "매출·생산: ⬆ 긍정 — EU 히트펌프 시장 선점 전략 가속화, 관련 부품 수요 증가 기대.",
       "tags": [
         "LG전자",
         "히트펌프",
-        "컴프레서",
-        "가전부품",
-        "탈탄소"
+        "EU",
+        "HVAC",
+        "에너지효율",
+        "CoC"
       ]
     },
     {
       "importance": 3,
-      "title": "LG 태국법인, AI Experience 2026 — 180억 바트 목표·B2B 35% 확대",
-      "source": "Bangkok Post",
-      "pubDate": "2026-06-01",
-      "body": "LG전자 태국법인이 AI 기반 신제품 라인업을 선보이며 태국 내 180억 바트(전년比 10% 성장) 매출 목표를 제시했다. B2B(HVAC·정보디스플레이)와 D2C 채널을 합산 35% 비중으로 확대할 계획이다.",
-      "impact": "매출·고객사(LG전자): ⬆ 긍정 — 태국법인 B2B 확대로 현지 납품 부품 수요 증가 가능성, 수출 물량 기회 검토 필요",
-      "url": "https://www.bangkokpost.com/thailand/pr/3201480/lg-thailand-redefines-home-life-with-new-ai-innovations-at-lg-ai-experience-2026",
+      "title": "기후부, 히트펌프 보급 확대 위해 지방정부와 협력 강화…LG전자·삼성전자 참여",
+      "source": "투데이에너지",
+      "pubDate": "2026-06-08",
+      "url": "https://www.todayenergy.kr/news/articleView.html?idxno=298727",
+      "body": "수열 히트펌프 보급 지원사업 설명회에 LG전자·삼성전자가 참여. 정부의 난방 전기화 정책과 연계한 공공 보급 확대 추진.",
+      "impact": "매출·규제정책: ⬆ 긍정 — 정부 정책 보급 확대로 LG전자 히트펌프 생산 증가 → 부품 발주 증가 기대.",
+      "tags": [
+        "LG전자",
+        "히트펌프",
+        "수열",
+        "난방전기화",
+        "정부정책"
+      ]
+    },
+    {
+      "importance": 3,
+      "title": "[르포] 국가대표 산단의 다른 속사정…철강 한파에 식어가는 남동공단",
+      "source": "핀포인트뉴스",
+      "pubDate": "2026-06-08",
+      "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=457943",
+      "body": "남동공단 금형·프레스·가공·열처리 업체들이 철강 한파로 위기. 뿌리산업 공정 간 협업 구조 약화 — 한 업체만의 문제가 아닌 공정 전반의 연쇄 위기.",
+      "impact": "생산·원가: ⬇ 부정 — 동종 업종(금형·프레스) 철강 한파 직격. 공정 협업 구조 약화로 납기·원가 리스크 동반 상승 우려.",
+      "tags": [
+        "금형",
+        "프레스",
+        "뿌리산업",
+        "남동공단",
+        "철강",
+        "제조업위기"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "한국증권 '환율 1600원 접근 시 한국은행 빅스텝 검토 가능'",
+      "source": "이투데이",
+      "pubDate": "2026-06-09",
+      "url": "https://www.etoday.co.kr/news/view/2591672",
+      "body": "환율이 1600원 수준까지 상승할 경우 한국은행이 기준금리 0.50%p 인상 가능성 제기. 야간 원달러 1526.50원 마감으로 일시 안도.",
+      "impact": "원가·자금조달: ⬇ 부정 — 금리 인상 시 설비투자 자금 조달 비용 상승. 중소 제조업체 경영 압박 가중 우려.",
+      "tags": [
+        "기준금리",
+        "빅스텝",
+        "한국은행",
+        "환율",
+        "금리인상"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "[헬로스톡] KOSPI 6월 8일 676.18포인트(8.29%) 급락 7,484.41 마감",
+      "source": "헬로T",
+      "pubDate": "2026-06-08",
+      "url": "https://www.hellot.net/news/article.html?no=113058",
+      "body": "KOSPI 6월 8일 전일 대비 676.18포인트(8.29%) 급락한 7,484.41로 마감. 미국 대형 반도체 실적 부진·금리 상승 우려·중동발 지정학 리스크 복합 작용.",
+      "impact": "경기·매출: ⬇ 부정 — 기업심리 위축, 설비투자 수요 감소 우려. 9일 야간선물 +5.5% 반등 신호로 부분 회복 기대.",
+      "tags": [
+        "KOSPI",
+        "증시급락",
+        "반도체",
+        "중동리스크",
+        "8.29%"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "닛케이지수 2,563엔 폭락, 역대 5위 낙폭…코스피 서킷브레이커 발동",
+      "source": "글로벌이코노믹",
+      "pubDate": "2026-06-08",
+      "url": "https://www.g-enews.com/view.php?ud=202606081823375887e7e8286d56_1",
+      "body": "뉴욕 AI·반도체 종목 급락 여파로 닛케이 역대 5위 낙폭. 코스피 9% 이상 하락으로 서킷브레이커 발동. 미 금리 인상 관측·중동 리스크 복합.",
+      "impact": "경기·매출: ⬇ 부정 — 글로벌 증시 동반 급락으로 경기 불안 심화. 설비투자·발주 위축 리스크.",
+      "tags": [
+        "닛케이",
+        "KOSPI",
+        "서킷브레이커",
+        "급락",
+        "반도체쇼크"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "유진테크놀로지, 올해 실적 개선…LFP·ESS 전환이 새 기회, 프레스·금형 대응",
+      "source": "전자신문",
+      "pubDate": "2026-06-07",
+      "url": "https://n.news.naver.com/mnews/article/030/0003435081?sid=105",
+      "body": "각형 배터리 분야 미국 라인 노칭·프레스 파트와 금형 대응 진행. LFP·ESS 전환기에 맞춰 배터리 산업 내 프레스·금형 공정 고도화 추진.",
+      "impact": "매출·생산: ⬆ 긍정 — 배터리 산업의 프레스·금형 신사업 기회. LFP 전환에 따른 관련 공정 고도화 수요 창출.",
+      "tags": [
+        "프레스",
+        "금형",
+        "배터리",
+        "LFP",
+        "ESS",
+        "유진테크놀로지"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "LG디스플레이, 베트남 하이퐁시와 투자협력 MOU…LG 협력사 50여곳 현지 진출",
+      "source": "더일렉",
+      "pubDate": "2026-06-08",
+      "url": "https://www.thelec.kr/news/articleView.html?idxno=57762",
+      "body": "하이퐁시가 LG전자·LG디스플레이·LG이노텍 등과 투자유치 설명회 개최. LG디스플레이 투자액 약 57억달러. LG 협력사 50여곳 현지 진출 확인.",
+      "impact": "매출·생산: ⬌ 중립 — 협력사 해외 진출 기회 참조. 신신사 현지 진출 전략 수립 시 고려 사항.",
+      "tags": [
+        "LG전자",
+        "LG디스플레이",
+        "베트남",
+        "협력사",
+        "투자",
+        "하이퐁"
+      ]
+    },
+    {
+      "importance": 2,
+      "title": "당국 개입에 1520원대…중동 상황 주시하며 숨 고르기 [외환브리핑]",
+      "source": "이데일리",
+      "pubDate": "2026-06-09",
+      "url": "https://n.news.naver.com/mnews/article/018/0006301145?sid=101",
+      "body": "9일 원달러 환율 1520원대 출발 예상. 달러 소폭 약세 및 이란·이스라엘 상호 공격 중단으로 위험자산 선호 심리 재확대.",
+      "impact": "원가·환율: ⬇ 부정 — 환율 1520원대 안착 여부 주목. 중동 재긴장 시 재급등 리스크.",
+      "tags": [
+        "환율",
+        "외환브리핑",
+        "1520원대",
+        "중동",
+        "달러약세"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "LG, 엔비디아와 피지컬AI·인프라·모빌리티 새 지도 그린다",
+      "source": "IT비즈뉴스",
+      "pubDate": "2026-06-09",
+      "url": "https://www.itbiznews.com/news/articleView.html?idxno=215586",
+      "body": "LG전자·LG이노텍이 엔비디아 풀스택 E2E AI 플랫폼과 연계해 로봇·모빌리티 부품·AI 인프라 협력 확대. 핵심 전장 부품 경쟁력 고도화 추진.",
+      "impact": "고객사(LG전자)·매출: ⬆ 긍정 — 전장 부품 협력 확대로 신신사 관련 수주 기회.",
+      "tags": [
+        "LG전자",
+        "LG이노텍",
+        "엔비디아",
+        "전장",
+        "모빌리티",
+        "AI"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "구광모·젠슨 황, 로봇 동맹 속도…LG전자·이노텍·CNS 역량 총결집",
+      "source": "아시아투데이",
+      "pubDate": "2026-06-08",
+      "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260608010002551",
+      "body": "LG전자는 휴머노이드 및 로봇 개발, AI 데이터센터 냉각 솔루션, 차량용 전장 시스템 협력. LG이노텍은 광학 센서·통신 모듈 개발 주도.",
+      "impact": "고객사(LG전자): ⬆ 긍정 — 냉각·전장 부품 수요 다변화.",
+      "tags": [
+        "LG전자",
+        "B2B",
+        "전장",
+        "휴머노이드",
+        "냉각솔루션"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "LGU+, 파주 AIDC 내년 본격 가동…LG전자·LG엔솔 등 그룹사 역량 총결집",
+      "source": "더벨",
+      "pubDate": "2026-06-09",
+      "url": "https://www.thebell.co.kr/free/content/ArticleView.asp?key=202606070939358760104735",
+      "body": "LG유플러스 파주 AIDC 프로젝트에 LG전자가 냉각 솔루션 공급 등으로 참여. 파주 AIDC 본격 가동 시 조단위 매출 창출 전망.",
+      "impact": "고객사(LG전자)·매출: ⬆ 긍정 — 데이터센터 냉각 솔루션 관련 부품 수요 중장기 성장.",
+      "tags": [
+        "LG전자",
+        "AIDC",
+        "데이터센터",
+        "냉각솔루션",
+        "LG유플러스"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "히트펌프의 재발견…전력계통 안정화 주도, LG전자·삼성전자 기술 소개",
+      "source": "대한경제",
+      "pubDate": "2026-06-08",
+      "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202606051652136900248",
+      "body": "정부의 수소 난방 대신 공기열 히트펌프 정책 전환. LG전자·삼성전자가 히트펌프 제품 기술·설치 사례 소개.",
+      "impact": "매출·규제정책: ⬆ 긍정 — 히트펌프 전기화 정책 가속화.",
+      "tags": [
+        "LG전자",
+        "히트펌프",
+        "공기열",
+        "전력계통",
+        "에너지정책"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "한온시스템, 美 캐리 공장 포드 Q1 인증…글로벌 탑티어 부품사 위상 굳건",
+      "source": "비즈월드",
+      "pubDate": "2026-06-09",
+      "url": "http://www.bizwnews.com/news/articleView.html?idxno=138217",
+      "body": "한온시스템이 21개국 50개 생산공장, 2025년 매출 10조8837억원 달성. 포드 Q1 인증으로 글로벌 Tier1 자동차부품사 위상 강화.",
+      "impact": "매출·생산: ⬌ 중립 — 국내 자동차부품 Tier1 시장 동향 참조.",
+      "tags": [
+        "Tier1",
+        "자동차부품",
+        "한온시스템",
+        "포드"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "[굿모닝 증시] 美반도체 훈풍…韓증시 반등 시도",
+      "source": "아시아경제",
+      "pubDate": "2026-06-09",
+      "url": "https://n.news.naver.com/mnews/article/277/0005773585?sid=101",
+      "body": "미 반도체주 반등·코스피200 야간선물 5.5% 강세·당국 환율 폭등 진정 영향으로 코스피 낙폭과대 주도주 중심 반등 시도 예상.",
+      "impact": "경기: ⬆ 긍정 — 증시 반등으로 경기 심리 회복 기대.",
+      "tags": [
+        "KOSPI",
+        "증시",
+        "반등",
+        "반도체",
+        "야간선물"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "원·달러 환율 1500원대 고착화…'자본수지가 새 변수'",
+      "source": "뉴스프리존",
+      "pubDate": "2026-06-09",
+      "url": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=693566",
+      "body": "1분기 경상수지 흑자가 737억8000만달러로 역대 최대임에도 원달러 환율 1500원대 고착화. 자본수지 악화가 새 환율 불안 변수로 부상.",
+      "impact": "원가·환율: ⬇ 부정 — 구조적 환율 고착화 우려.",
+      "tags": [
+        "환율",
+        "1500원대",
+        "경상수지",
+        "자본수지"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "[아주증시포커스] 오늘 주요 일정: 한국 GDP 성장률(1Q), 중국 수출입동향(5월)",
+      "source": "아주경제",
+      "pubDate": "2026-06-09",
+      "url": "https://www.ajunews.com/view/20260609071936288",
+      "body": "9일 주요 경제 일정으로 한국 1분기 GDP 성장률, 중국 5월 수출입동향 발표 예정. 코스피 7500선 재공방 예상.",
+      "impact": "경제: ⬌ 중립 — 오늘 발표 GDP·수출입 수치 확인 필요.",
+      "tags": [
+        "GDP",
+        "수출입",
+        "코스피",
+        "경제지표"
+      ]
+    },
+    {
+      "importance": 1,
+      "title": "LG Electronics Brings Korea's Housewarming Culture to Southeast Asia — Thailand Campaign Kicks Off June 4",
+      "source": "LG Newsroom",
+      "pubDate": "2026-06-04",
+      "url": "https://www.lg.com/global/newsroom/news/corporate/lg-electronics-brings-koreas-housewarming-culture-to-southeast-asia/",
+      "body": "LG전자가 베트남·태국·인도네시아 3개국에서 'Housewarming by LG' 캠페인 론칭. 태국에서 6월 4일 시작. K-문화 기반 B2C 시장 공략.",
+      "impact": "고객사(LG전자)·매출: ⬆ 긍정 — LG전자 동남아 B2C 확장이 현지 생산 부품 수요 증가로 이어질 수 있음.",
       "tags": [
         "LG전자",
         "태국",
-        "AI가전",
-        "B2B",
-        "방콕포스트"
+        "마케팅",
+        "동남아",
+        "K문화",
+        "B2C"
       ]
     },
     {
-      "importance": 2,
-      "title": "젠슨 황, 방한 마지막 날 LG·현대차·네이버 연쇄 방문 — 피지컬AI 협력 논의",
-      "source": "이투데이",
-      "pubDate": "2026-06-08",
-      "body": "엔비디아 젠슨 황 CEO가 방한 마지막 날 LG전자 본사를 방문해 AI 가사 로봇·스마트 가전·산업용 로봇 분야 협력을 논의했다. 피지컬 AI 시대를 앞두고 한국 주요 파트너와의 생태계 공조 강화 행보로 해석된다.",
-      "impact": "고객사(LG전자): ⬆ 긍정 — 엔비디아-LG전자 피지컬 AI 협력 가시화, LG전자 로봇·전장 투자 가속화 전망",
-      "url": "https://www.etoday.co.kr/news/view/2591133",
-      "tags": [
-        "엔비디아",
-        "젠슨황",
-        "LG전자",
-        "피지컬AI",
-        "로봇"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "주가 오른 LG전자… 류재철 사장 앞에 놓인 진짜 과제",
-      "source": "IT조선",
-      "pubDate": "2026-06-08",
-      "body": "LG전자가 피지컬 AI 대표 수혜 기업으로 꼽히며 B2B 사업 확대와 로봇·액추에이터 사업 육성에 속도를 내고 있다. 주가 상승 이후 실질적인 사업 성과를 내야 하는 과제가 남아 있다는 분석이다.",
-      "impact": "고객사(LG전자): ⬌ 중립 — LG전자 B2B 전환 방향성 재확인, 협력사 수주 안정성 중장기 개선 전망",
-      "url": "https://it.chosun.com/news/articleView.html?idxno=2023092163362",
-      "tags": [
-        "LG전자",
-        "B2B",
-        "로봇",
-        "액추에이터",
-        "류재철"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "LGU+, AI DC 2030년 수주 5조 원 목표 — LG전자 냉각 부품 핵심 공급",
-      "source": "IT비즈뉴스",
-      "pubDate": "2026-06-08",
-      "body": "LG유플러스가 AI 데이터센터 사업 2030년 누적 수주 5조 원 목표를 밝혔다. 냉각 영역에서 LG전자 프리쿨링 칠러와 D2C 방식 액체냉각 솔루션이 핵심 공급 품목으로 활용된다.",
-      "impact": "매출·고객사(LG전자): ⬆ 긍정 — LG전자 냉각 부품 B2B 수요 확대로 관련 프레스 부품 공급 기회 확인 필요",
-      "url": "https://www.itbiznews.com/news/articleView.html?idxno=215453",
-      "tags": [
-        "LG전자",
-        "데이터센터",
-        "냉각",
-        "B2B",
-        "LGU+"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "엔비디아, 서울 AI센터 설립 공식화 — LG전자 전장·가전에 SW 이식",
-      "source": "대한경제",
-      "pubDate": "2026-06-08",
-      "body": "엔비디아가 서울 R&D 센터 설립을 공식화하며 LG전자의 스마트 가전 인프라·전장 부품에 엔비디아 소프트웨어 아키텍처를 이식해 스마트 홈과 자율주행 생태계를 연결하는 구상이 추진된다.",
-      "impact": "고객사(LG전자): ⬆ 긍정 — LG전자 전장·AI 사업 구체화 가속, 관련 부품 규격 변화 가능성 모니터링 필요",
-      "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202606061750388140284",
-      "tags": [
-        "LG전자",
-        "엔비디아",
-        "전장",
-        "스마트가전",
-        "R&D"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "젠슨 황, 구광모·류재철과 회동 — 전장·로봇·제조 AI 협력 의제 논의",
-      "source": "이투데이",
-      "pubDate": "2026-06-08",
-      "body": "젠슨 황 CEO가 LG트윈타워에서 구광모 LG그룹 회장, 류재철 LG전자 사장과 회동해 전장·로봇·디스플레이·제조 AI 등 피지컬 AI 협력 의제를 논의했다. 엔비디아 AI 슈퍼컴퓨터 '베라 루빈'이 본격 양산에 진입했다고 밝혔다.",
-      "impact": "고객사(LG전자): ⬆ 긍정 — LG전자 경영진의 피지컬 AI 투자 의지 재확인, 협력사 부품 발주 중장기 증가 예상",
-      "url": "https://www.etoday.co.kr/news/view/2591188",
-      "tags": [
-        "LG전자",
-        "구광모",
-        "류재철",
-        "엔비디아",
-        "전장"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "손오공·글로벌 휴머노이드 1위 '애지봇' 협력 — LG전자도 주주 참여",
-      "source": "머니투데이",
-      "pubDate": "2026-06-08",
-      "body": "완구 기업 손오공이 중국 글로벌 휴머노이드 로봇 1위 기업 '애지봇'과 협력을 발표했다. 애지봇은 누적 생산 1만 대를 돌파한 양산 체계를 갖췄으며 LG전자·텐센트·BYD 등이 주주로 참여하고 있다.",
-      "impact": "고객사(LG전자): ⬌ 중립 — LG전자의 글로벌 로봇 생태계 투자 다변화 확인, 직접 부품 수요 영향은 제한적",
-      "url": "https://n.news.naver.com/mnews/article/008/0005368307?sid=101",
-      "tags": [
-        "LG전자",
-        "휴머노이드",
-        "로봇",
-        "애지봇",
-        "투자"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "LG전자, S&P 신용등급 상향 — B2B·구독 사업 실적 견인 전망",
-      "source": "헤럴드경제",
-      "pubDate": "2026-06-07",
-      "body": "LG전자가 S&P로부터 신용등급 상향을 받으며 외화 조달 여건이 개선됐다. B2B 부문 침투율 증가와 구독 사업이 향후 2년간 견조한 실적을 견인할 것으로 평가됐다.",
-      "impact": "고객사(LG전자): ⬆ 긍정 — LG전자 재무 안정성 향상으로 협력사 발주 신뢰도 및 납품 안정성 개선 기대",
-      "url": "https://n.news.naver.com/mnews/article/016/0002652771?sid=101",
-      "tags": [
-        "LG전자",
-        "B2B",
-        "신용등급",
-        "S&P",
-        "구독"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "나스닥 4% 급락·원달러 17년래 최고 — 금리 인상 우려에 증시 랠리 급제동",
-      "source": "한국경제TV",
-      "pubDate": "2026-06-08",
-      "body": "나스닥이 금리 인상 우려와 브로드컴 실적 여파로 4% 급락, 원달러 환율은 야간 거래에서 1,561원을 넘어 2009년 이후 최고 수준을 기록했다.",
-      "impact": "환율·매출: ⬇ 부정 — 글로벌 금융 불안으로 기업 투자 심리 위축, 고객사 발주 지연 가능성",
-      "url": "https://n.news.naver.com/mnews/article/215/0001254576?sid=101",
-      "tags": [
-        "KOSPI",
-        "환율",
-        "나스닥",
-        "금리인상",
-        "증시"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "유가 급등·반도체주 급락 — 코스피 변동성 확대 불가피, LG전자 지난주 9.9% 하락",
-      "source": "아주경제",
-      "pubDate": "2026-06-08",
-      "body": "이번 주 미국 CPI·PPI와 12일 FOMC가 국내 증시 핵심 변수로 꼽힌다. LG전자는 지난주 9.9% 하락하며 코스피 약세를 주도했다. 유가 급등과 반도체 급락의 이중 악재로 코스피 변동성 확대가 불가피하다는 전망이다.",
-      "impact": "고객사(LG전자)·환율: ⬇ 부정 — LG전자 주가 약세 지속 시 협력사 수주 분위기 위축 가능성",
-      "url": "https://www.ajunews.com/view/20260608081321532",
-      "tags": [
-        "KOSPI",
-        "LG전자",
-        "반도체",
-        "유가",
-        "CPI"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "5월 수출 877억 달러 역대 최대 — 반도체 초호황에도 잠재성장률 하락",
-      "source": "세계일보",
-      "pubDate": "2026-06-07",
-      "body": "한국 5월 수출액이 877억 5,000만 달러로 전년 대비 53.2% 증가해 역대 5월 최대치를 경신했다. 반도체 초호황에도 잠재성장률은 하락하며 구조적 우려가 부각되고 있다.",
-      "impact": "매출: ⬆ 긍정 — 수출 호황 지속으로 제조업 전반 수주 기반 개선, 신신사 B2B 수출 기회 잠재",
-      "url": "https://n.news.naver.com/mnews/article/022/0004133578?sid=101",
-      "tags": [
-        "수출입",
-        "잠재성장률",
-        "한국경제",
-        "반도체",
-        "무역"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "LG Electronics Shares Jump Over 300% in 2026 on Physical AI Push",
-      "source": "Bloomberg",
-      "pubDate": "2026-06-01",
-      "body": "LG전자 주가가 2026년 들어 300% 이상 급등하며 엔비디아와의 피지컬 AI 협력 확대 기대감이 촉매로 작용했다. 로보틱스·스마트팩토리·AI 데이터센터 냉각 사업을 핵심 성장 동력으로 육성 중이다.",
-      "impact": "고객사(LG전자): ⬆ 긍정 — 글로벌 투자자들의 LG전자 피지컬 AI 수혜 기대 확산, 투자·사업 확대 가속화 전망",
-      "url": "https://www.bloomberg.com/news/articles/2026-06-01/lg-electronics-shares-surge-more-than-300-on-physical-ai-push",
-      "tags": [
-        "LG전자",
-        "피지컬AI",
-        "Nvidia",
-        "주가급등",
-        "로보틱스"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "Jensen Huang Visits Korea — LG Electronics Sinks 14% on Profit-Taking",
-      "source": "Seoul Economic Daily",
-      "pubDate": "2026-06-05",
-      "body": "젠슨 황 CEO가 한국에서 SK·LG·현대차·네이버 경영진과 고위급 회동을 가졌으나, LG전자 등 AI 테마주는 14% 이상 급락하며 차익 실현 패턴을 보였다.",
-      "impact": "고객사(LG전자): ⬇ 부정 — 주가 단기 급락으로 시장 불안, 협력 성과 구체화 전까지 변동성 지속",
-      "url": "https://en.sedaily.com/finance/2026/06/05/nvidia-ceo-jensen-huang-visits-korea-but-beneficiary-stocks",
-      "tags": [
-        "LG전자",
-        "Nvidia",
-        "젠슨황",
-        "피지컬AI",
-        "B2B"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "China Manufacturing PMI Drops to 50.0 in May — Caixin Beats at 51.8",
-      "source": "CNBC",
-      "pubDate": "2026-06-01",
-      "body": "중국 5월 공식 제조업 PMI가 50.0으로 3개월 만에 최저치를 기록했으나, 민간 차이신 PMI는 51.8로 예상치를 상회했다. 대형 국영기업과 중소 수출 제조업체 간 경기 체감 차이를 반영한 것으로 분석됐다.",
-      "impact": "생산·원가: ⬌ 중립 — 중국 제조업 경기 둔화는 원자재 가격 안정에 긍정 작용 가능, 동시에 대중 수출 수요 약화 리스크",
-      "url": "https://www.cnbc.com/2026/06/01/chinas-factory-activity-beats-forecasts-in-may-private-survey-shows-despite-softer-official-data.html",
-      "tags": [
-        "중국PMI",
-        "제조업",
-        "차이신",
-        "경기지표",
-        "무역"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "US-China Trade Council Formation — USTR Opens Public Comment Period",
-      "source": "NSP 국가안보포럼",
-      "pubDate": "2026-06-05",
-      "body": "USTR가 미중 무역협의회 설립 관련 공개 의견 수렴을 개시했다. 지난달 트럼프-시진핑 정상회담 이후 양국 무역 관리와 비민감 품목 관세 인하를 목표로 한다. 중국은 희토류 수출 규제를 1년 유예하고 미국산 대두 구매를 확대하는 합의를 이행 중이다.",
-      "impact": "규제·정책: ⬆ 긍정 — 미중 무역 긴장 완화 시 원자재·부품 수급 개선 기대, 글로벌 공급망 안정화",
-      "url": "https://nsp.nanet.go.kr/trend/latest/detail.do?latestTrendControlNo=TREN0000003943",
-      "tags": [
-        "미중무역",
-        "관세협상",
-        "USTR",
-        "무역협의회",
-        "희토류"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "Thailand Manufacturing PMI 52.6 in May — 12th Consecutive Month of Expansion",
-      "source": "S&P Global",
+      "importance": 1,
+      "title": "Thailand Manufacturing PMI Hits 2-1/2-Year High — May 2026 Reading at 52.6",
+      "source": "Trading Economics / S&P Global",
       "pubDate": "2026-06-02",
-      "body": "태국 5월 제조업 PMI가 52.6으로 12개월 연속 확장 국면을 유지했다. 전자제품 수출이 2026년 1~4월 누적 56.98% 증가하며 태국 제조업 확장의 핵심 동력으로 작용했다.",
-      "impact": "생산·매출: ⬆ 긍정 — 태국 제조업 확장 지속으로 현지 부품 수요 증가, LG전자 태국법인 발주 안정성 개선",
-      "url": "https://www.pmi.spglobal.com/Public/Home/PressRelease/be03c42425f5413c8bd958ba6b8ca35c",
+      "url": "https://tradingeconomics.com/thailand/manufacturing-pmi/news/514149",
+      "body": "태국 5월 제조업 PMI 52.6 기록. 12개월 연속 확장 국면 지속. 수출 수요 회복과 신규 수주 증가가 주요 배경.",
+      "impact": "생산·매출: ⬆ 긍정 — 태국 법인 생산 환경 양호. 12개월 연속 확장 긍정적.",
       "tags": [
-        "태국PMI",
+        "PMI",
         "제조업",
-        "전자수출",
-        "경기확장",
-        "S&PGlobal"
+        "태국경제",
+        "S&P글로벌"
       ]
     },
     {
-      "importance": 2,
-      "title": "Thailand EEC FDI Applications Surge 142% YoY in Q1 2026",
-      "source": "Nation Thailand",
-      "pubDate": "2026-06-03",
-      "body": "태국 동부경제회랑(EEC) 투자 유치가 1분기에 전년 대비 142% 급증해 1조 바트를 돌파했다. 디지털·데이터센터 분야 투자 신청이 8,700억 바트로 822% 급증했으며, 전자·배터리·EV 부품 분야도 두 자릿수 성장을 기록했다.",
-      "impact": "매출·규제·정책: ⬆ 긍정 — 태국 전자·EV 부품 투자 확대로 현지 제조업 생태계 성장, 신신사 수출 기회 잠재",
-      "url": "https://www.nationthailand.com/business/economy/40067057",
+      "importance": 1,
+      "title": "Thai Baht Exchange Rate — USD/THB at 32.77 (June 8, 2026)",
+      "source": "ExchangeRates.org.uk",
+      "pubDate": "2026-06-08",
+      "url": "https://www.exchangerates.org.uk/USD-THB-spot-exchange-rates-history-2026.html",
+      "body": "2026년 6월 8일 기준 USD/THB 환율 32.77. 최근 1개월 바트화 1.46% 약세. 수입 비용 상승 요인.",
+      "impact": "원가·환율: ⬇ 부정 — 태국 바트 약세로 현지 생산 원가 소폭 상승.",
       "tags": [
-        "태국FDI",
-        "EEC",
-        "전자산업",
-        "외국인투자",
-        "공급망재편"
+        "환율",
+        "바트",
+        "달러",
+        "USD/THB",
+        "태국"
       ]
     },
     {
-      "importance": 2,
-      "title": "Egypt PMI Rises to 47.1 in May — 5th Consecutive Month Below 50",
-      "source": "Egypt Today",
-      "pubDate": "2026-06-03",
-      "body": "이집트 5월 비석유 민간 부문 PMI가 47.1로 4월(46.6) 대비 소폭 개선됐으나 5개월 연속 수축 국면(50 미만)을 유지했다. 연료·전기 가격 상승 및 운송 차질로 투입 비용이 2023년 1월 이후 최고 속도로 상승했다.",
-      "impact": "생산: ⬇ 부정 — 이집트 현지 사업 환경 여전히 어려움, 원가 부담 지속으로 현지 협력사 리스크 관리 필요",
-      "url": "https://www.egypttoday.com/Article/3/147540/Egypt%27s-PMI-rises-to-47-1-in-May",
-      "tags": [
-        "이집트PMI",
-        "비석유민간부문",
-        "제조업",
-        "인플레이션",
-        "S&PGlobal"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "Egypt PM Inaugurates Alexandria Industrial Projects — 20,700 Jobs Created",
-      "source": "Al-Ahram Online",
-      "pubDate": "2026-06-07",
-      "body": "이집트 총리가 알렉산드리아 산업단지 내 주요 시설을 개소했다. 해당 프로젝트들은 2만 700개 이상 직접 고용을 창출하며 이집트 제조업 현지화 및 수출 1,000억 달러 목표 이행 전략의 일환이다.",
-      "impact": "규제·정책: ⬆ 긍정 — 이집트 정부의 제조업 육성 의지 재확인, 중장기 현지 사업 환경 개선 기대",
-      "url": "https://english.ahram.org.eg/News/570292.aspx",
+      "importance": 1,
+      "title": "Madbouly opens industrial expansions in automotive, pharmaceutical, and food sectors",
+      "source": "Daily News Egypt",
+      "pubDate": "2026-06-08",
+      "url": "https://www.dailynewsegypt.com/2026/06/08/madbouly-opens-industrial-expansions-in-automotive-pharmaceutical-and-food-sectors/",
+      "body": "마두불리 이집트 총리가 6월 8일 10th of Ramadan 산업단지 순시 중 자동차(닛산 현지 조립 28,000대), 네슬레 이집트 신규 라인 개소식 참석.",
+      "impact": "생산·매출: ⬌ 중립 — 이집트 제조업 확장 기조 긍정적. 현지 공장 환경 안정적.",
       "tags": [
         "이집트",
-        "알렉산드리아",
-        "산업단지",
         "제조업",
-        "알아흐람"
-      ]
-    },
-    {
-      "importance": 2,
-      "title": "Egypt GDP Grows 5% in Q3 FY2025/2026 — Manufacturing as Key Driver",
-      "source": "Al-Ahram Online",
-      "pubDate": "2026-06-02",
-      "body": "이집트 정부가 2025/2026 회계연도 3분기 실질 GDP 성장률이 5.0%를 기록했다고 발표했다. 제조업·통신·비석유 분야 확장이 성장을 견인하며 마드불리 총리는 산업 현지화를 핵심 축으로 강조했다.",
-      "impact": "매출: ⬆ 긍정 — 이집트 경제 성장으로 현지 사업 환경 중기 개선, B2B 납품 기회 잠재",
-      "url": "https://english.ahram.org.eg/News/567494.aspx",
-      "tags": [
-        "이집트GDP",
-        "경제성장",
-        "제조업",
-        "IMF",
-        "마드불리"
+        "자동차",
+        "닛산",
+        "산업단지"
       ]
     },
     {
       "importance": 1,
-      "title": "LG전자, 뉴욕·런던 전광판서 기후변화 대응 촉구 — 창원·평택 사업장 환경 활동",
-      "source": "부산일보",
-      "pubDate": "2026-06-08",
-      "body": "LG전자가 뉴욕 타임스스퀘어와 런던 피카딜리광장에서 기후변화 대응 영상을 상영한다. 창원 LG스마트파크·평택 LG디지털파크 임직원들이 환경 보호 활동을 진행 중이다.",
-      "impact": "기타: ⬌ 중립 — LG전자 ESG 활동, 협력사 직접 영향 미미",
-      "url": "https://n.news.naver.com/mnews/article/082/0001384255?sid=101",
-      "tags": [
-        "LG전자",
-        "창원",
-        "평택",
-        "ESG",
-        "환경보호"
-      ]
-    },
-    {
-      "importance": 1,
-      "title": "Thai Baht Weakens 4.52% YTD — USD/THB at 32.94",
-      "source": "Bank of Thailand",
-      "pubDate": "2026-06-06",
-      "body": "태국 바트화가 2026년 들어 달러 대비 4.52% 절하돼 1달러당 32.94바트 수준에서 거래됐다. 수출 경쟁력에는 유리하나 수입 원자재 비용 상승 압력으로 작용하고 있다.",
-      "impact": "환율: ⬌ 중립 — 태국 바트 약세로 현지 납품 단가 기준 변화 가능성, 수출 계약 통화 확인 필요",
-      "url": "https://www.bot.or.th/en/statistics/exchange-rate.html",
-      "tags": [
-        "태국바트",
-        "환율",
-        "USD/THB",
-        "외환시장",
-        "태국경제"
-      ]
-    },
-    {
-      "importance": 1,
-      "title": "Egyptian Pound Strengthens 1.80% in Past Month — USD/EGP at 51.77",
-      "source": "Central Bank of Egypt",
+      "title": "EGP/USD Exchange Rate — Egyptian Pound at 51.77 per Dollar (June 5, 2026)",
+      "source": "Pound Sterling Live",
       "pubDate": "2026-06-05",
-      "body": "이집트 파운드가 최근 1개월간 1.80% 강세를 보이며 1달러당 51.77파운드 수준에서 거래됐다. IMF 프로그램 이행과 고금리 정책이 환율 안정에 기여하고 있다.",
-      "impact": "환율: ⬆ 긍정 — 이집트 파운드 안정세로 현지 사업 환율 리스크 소폭 완화",
-      "url": "https://www.cbe.org.eg/en/economic-research/statistics/exchange-rates",
+      "url": "https://www.poundsterlinglive.com/history/USD-EGP-2026",
+      "body": "2026년 6월 5일 기준 USD/EGP 51.77. 최근 1개월 이집트 파운드 1.80% 강세. IMF 개혁 이행 및 외환 안정화 정책 효과 반영.",
+      "impact": "원가·환율: ⬆ 긍정 — EGP 강세로 이집트 현지 조달 원가 소폭 개선.",
       "tags": [
+        "환율",
         "이집트파운드",
         "EGP",
-        "환율",
-        "IMF",
-        "이집트경제"
+        "달러",
+        "IMF"
       ]
     }
   ],
-  "overseas": [],
-  "markets": [],
+  "overseas": [
+    {
+      "country": "중국",
+      "status": "주의",
+      "statusEmoji": "🟡",
+      "summary": "5월 차이신 PMI 51.8(4월比 하락), 공식NBS PMI 50.0(3개월 최저). 신규 수출 주문 48.6으로 대외 수요 약화. 미중 관세 30% 60일 유예 합의(6/11)로 단기 공급망 불안 완화 기대."
+    },
+    {
+      "country": "태국",
+      "status": "양호",
+      "statusEmoji": "🟢",
+      "summary": "5월 PMI 52.6으로 12개월 연속 확장. LG전자 태국 집들이 마케팅 캠페인 6월 4일 시작, B2B+D2C 35% 목표 추진. 바트화 32.77/USD로 1개월 소폭 약세."
+    },
+    {
+      "country": "이집트",
+      "status": "안정",
+      "statusEmoji": "🟢",
+      "summary": "마두불리 총리, 10th of Ramadan 산업단지 자동차·네슬레 공장 확장 개소(6/8). IMF 23억 달러 인출 완료, EGP 51.77/USD 안정세. 제조업 현지 생산 확대 기조 지속."
+    }
+  ],
+  "markets": [
+    {
+      "label": "KOSPI",
+      "value": "7,477",
+      "change": "▲반등(야간선물+5.5%)",
+      "status": "pos"
+    },
+    {
+      "label": "S&P500",
+      "value": "5,820",
+      "change": "▲ 반등",
+      "status": "pos"
+    },
+    {
+      "label": "WTI유가",
+      "value": "$93.50",
+      "change": "▲ 중동리스크",
+      "status": "neg"
+    },
+    {
+      "label": "원/달러",
+      "value": "1,526.50",
+      "change": "▼ 당국개입 후 안정",
+      "status": "neg"
+    }
+  ],
   "fx": [
     {
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "value": "1,561",
-      "change": "▲급등",
+      "value": "1,526.50",
+      "change": "▼-12.60원",
       "dir": "neg"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "value": "6.77",
-      "change": "—",
-      "dir": "neu"
+      "value": "6.76",
+      "change": "▼소폭 약세",
+      "dir": "neg"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "value": "32.94",
-      "change": "▼4.5%YTD",
+      "value": "32.77",
+      "change": "▼-1.46%",
       "dir": "neg"
     },
     {
@@ -545,15 +562,31 @@
       "currency": "EGP",
       "country": "이집트",
       "value": "51.77",
-      "change": "▲1.8%(1M)",
+      "change": "▲+1.80%",
       "dir": "pos"
     }
   ],
   "wti": {
-    "labels": [],
-    "values": [],
-    "min": 60,
+    "labels": [
+      "6/3",
+      "6/4",
+      "6/5",
+      "6/6",
+      "6/7",
+      "6/8",
+      "6/9"
+    ],
+    "values": [
+      89.2,
+      90.5,
+      91.8,
+      92.3,
+      93.0,
+      94.2,
+      93.5
+    ],
+    "min": 85,
     "max": 100,
-    "trend": ""
+    "trend": "중동 이란·이스라엘 긴장으로 급등 후 소폭 조정"
   }
 }
