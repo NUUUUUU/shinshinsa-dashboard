@@ -97,7 +97,9 @@
         "로봇",
         "액추에이터",
         "AI공장"
-      ]
+      ],
+      "id": "k019",
+      "category": "LG"
     },
     {
       "importance": 3,
@@ -113,7 +115,9 @@
         "로봇",
         "피지컬AI",
         "B2B"
-      ]
+      ],
+      "id": "k014",
+      "category": "LG"
     },
     {
       "importance": 3,
@@ -130,7 +134,9 @@
         "전장",
         "로봇",
         "투자"
-      ]
+      ],
+      "id": "k015",
+      "category": "LG"
     },
     {
       "importance": 3,
@@ -145,7 +151,9 @@
         "중동",
         "외환시장",
         "지정학리스크"
-      ]
+      ],
+      "id": "k021",
+      "category": "한국"
     },
     {
       "importance": 3,
@@ -161,7 +169,9 @@
         "급락",
         "Fed",
         "중동"
-      ]
+      ],
+      "id": "k023",
+      "category": "한국"
     },
     {
       "importance": 3,
@@ -177,7 +187,9 @@
         "가전",
         "에너지효율",
         "신제품"
-      ]
+      ],
+      "id": "k011",
+      "category": "LG"
     },
     {
       "importance": 3,
@@ -194,7 +206,9 @@
         "남동공단",
         "제조업",
         "철강"
-      ]
+      ],
+      "id": "k028",
+      "category": "한국"
     },
     {
       "importance": 3,
@@ -210,7 +224,402 @@
         "냉장고",
         "생산확대",
         "아프리카수출"
-      ]
+      ],
+      "id": "o016",
+      "category": "이집트"
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 신수희 팀장, '대한민국 엔지니어상' 2026년 6월 수상자 선정",
+      "source": "생산제조뉴스",
+      "pubDate": "2026-06-11",
+      "url": "http://www.snmnews.com/news/articleView.html?idxno=570587",
+      "body": "LG전자 신수희 팀장이 세탁기·냉장고 생산용 STS 소재 개발·개선으로 생산성·친환경성 확보 공로로 대한민국 엔지니어상 6월 수상자 선정.",
+      "impact": "고객사(LG전자): ⬌ — LG전자 생산 기술 수준 지속 향상 확인",
+      "tags": [
+        "LG전자",
+        "엔지니어상",
+        "생산"
+      ],
+      "id": "k001",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "에어컨 AI 절전 사용법…LG전자 2026년형 휘센 AI 에어컨",
+      "source": "아이뉴스24",
+      "pubDate": "2026-06-11",
+      "url": "https://n.news.naver.com/mnews/article/031/0001034277?sid=101",
+      "body": "LG전자 2026년형 휘센 에어컨이 AI 기반 절전 기능 강화. 사용자 위치·공간 분석으로 최적 바람 제공.",
+      "impact": "고객사(LG전자): ⬌ — AI 가전 라인업 강화",
+      "tags": [
+        "LG전자",
+        "에어컨",
+        "AI가전"
+      ],
+      "id": "k002",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "\"LG처럼 고객부터 연구하라\"…中 매체가 주목한 LG전자 CX 전략",
+      "source": "아이뉴스24",
+      "pubDate": "2026-06-11",
+      "url": "https://n.news.naver.com/mnews/article/031/0001034276?sid=101",
+      "body": "중국 IT 전문매체 란커지가 LG전자 고객경험(CX) 전략을 자국 업계 벤치마킹 사례로 소개.",
+      "impact": "고객사(LG전자): ⬆ — LG전자 글로벌 브랜드 위상 강화",
+      "tags": [
+        "LG전자",
+        "CX",
+        "중국"
+      ],
+      "id": "k003",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "LG전자 가전구독 사업 국내 3조원 돌파…해외 확장 본격화",
+      "source": "뉴스투데이",
+      "pubDate": "2026-06-11",
+      "url": "https://www.news2day.co.kr/article/20260610500238",
+      "body": "LG전자 가전구독 사업이 3조원 규모 돌파, B2B 구독 등 신규 사업 포트폴리오 다변화로 중장기 성장 기반 강화.",
+      "impact": "고객사(LG전자)/매출: ⬆ — 구독 사업 성장은 협력사 지속 수주 기반",
+      "tags": [
+        "LG전자",
+        "가전구독",
+        "B2B"
+      ],
+      "id": "k005",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "AI 팩토리 시동…LG전자 액체냉각 솔루션, 통신 3사 AIDC 채택",
+      "source": "뉴시안",
+      "pubDate": "2026-06-11",
+      "url": "http://www.newsian.co.kr/news/articleView.html?idxno=90780",
+      "body": "AI 팩토리 개념 부상, LG전자 액체냉각 솔루션·프리쿨링 칠러가 국내 AIDC에 대거 채택.",
+      "impact": "고객사(LG전자): ⬆ — B2B 신규 매출원 확대",
+      "tags": [
+        "LG전자",
+        "AI팩토리",
+        "AIDC",
+        "액체냉각"
+      ],
+      "id": "k006",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "'현지화·구독' 명중…대만 홀린 LG가전, 히트펌프 워시타워 1위",
+      "source": "머니투데이",
+      "pubDate": "2026-06-10",
+      "url": "https://n.news.naver.com/mnews/article/008/0005369526?sid=101",
+      "body": "LG전자가 히트펌프 워시타워 현지화 전략으로 대만 세탁기 시장 점유율 1위 달성.",
+      "impact": "고객사(LG전자)/매출: ⬆ — 히트펌프 글로벌 수요 확인",
+      "tags": [
+        "LG전자",
+        "대만",
+        "히트펌프",
+        "워시타워"
+      ],
+      "id": "k012",
+      "category": "LG"
+    },
+    {
+      "importance": 2,
+      "title": "환율 1500원대 장기화…한은 금리인상 시계 빨라지나",
+      "source": "컨슈머타임스",
+      "pubDate": "2026-06-11",
+      "url": "https://www.cstimes.com/news/articleView.html?idxno=709241",
+      "body": "원/달러 1500원대 장기화로 한국은행 통화정책 경계심 확대. 미국 통화정책 불확실성·외국인 이탈·지정학 리스크 복합.",
+      "impact": "환율/원가: ⬇ — 환율 압박 지속",
+      "tags": [
+        "원달러환율",
+        "한국은행",
+        "금리"
+      ],
+      "id": "k022",
+      "category": "한국"
+    },
+    {
+      "importance": 2,
+      "title": "수출 초호황인데 역설적인 환율…\"글로벌의 부메랑\"",
+      "source": "무역주간",
+      "pubDate": "2026-06-10",
+      "url": "https://www.weeklytrade.co.kr/news/view.html?section=1&category=6&no=100130",
+      "body": "가전·자동차·반도체 수출 초호황에도 원화 약세 지속. 미-한 금리차로 자금 이탈 구조적.",
+      "impact": "환율/매출: ⬌ — 수출 호황이나 환율 역풍 동시 작용",
+      "tags": [
+        "환율",
+        "수출",
+        "원화약세"
+      ],
+      "id": "k026",
+      "category": "한국"
+    },
+    {
+      "importance": 2,
+      "title": "LG links up with Chinese rivals for budget appliance supremacy",
+      "source": "KED Global",
+      "pubDate": null,
+      "url": "https://www.kedglobal.com/electronics/newsView/ked202507140008",
+      "body": "LG가 중국 스카이워스·AUCMA와 JDM 방식으로 세탁기·냉장고 유럽 출시, 성공 시 중국·동남아·남미·아프리카 확대 계획.",
+      "impact": "고객사(LG전자): ⬌ — 중저가 시장 전략 변화 모니터링",
+      "tags": [
+        "LG전자",
+        "JDM",
+        "중국파트너십",
+        "Skyworth"
+      ],
+      "id": "o001",
+      "category": "중국"
+    },
+    {
+      "importance": 2,
+      "title": "미중 고위급 협상, 정상회담 앞두고 관세·희토류 논의",
+      "source": "NANET",
+      "pubDate": null,
+      "url": "https://nsp.nanet.go.kr/trend/latest/detail.do?latestTrendControlNo=TREN0000003943",
+      "body": "미중 대표단 파리 OECD에서 정상회담 준비 협상. 관세·희토류·첨단기술 수출통제 논의. 미 실효관세율 41% 유지.",
+      "impact": "규제·정책: ⬇ — 관세 불확실성 지속, 공급망 재편 영향",
+      "tags": [
+        "미중무역",
+        "관세",
+        "희토류"
+      ],
+      "id": "o003",
+      "category": "중국"
+    },
+    {
+      "importance": 2,
+      "title": "미중 무역 협상 완료, 그런데 관세는 그대로?",
+      "source": "트레드링스",
+      "pubDate": null,
+      "url": "https://www.tradlinx.com/blog/market-trend/미중-무역-협상",
+      "body": "미중 양국이 90일간 관세율 1.15%p씩 인하 합의. 잠정적 프레임워크에 불과, 추가 협상 필요. 실질 관세 부담 여전.",
+      "impact": "규제·정책: ⬌ — 90일 유예, 근본 해결 미완",
+      "tags": [
+        "미중무역",
+        "관세협상",
+        "90일합의"
+      ],
+      "id": "o004",
+      "category": "중국"
+    },
+    {
+      "importance": 2,
+      "title": "LG Electronics Thailand 2026 'Dual Transformation' Strategy — 매출 180억 바트 목표",
+      "source": "Bangkok Post",
+      "pubDate": null,
+      "url": "https://www.bangkokpost.com/thailand/pr/3201480/lg-thailand-redefines-home-life",
+      "body": "LG 태국법인 2026년 목표 매출 180억 바트(+10%), 시장점유율 22% 목표. B2B+D2C 35%로 확대, LG Subscribe 25% 성장 계획.",
+      "impact": "고객사(LG전자)/생산: ⬆ — 태국 B2B 성장은 신신사 태국 거점 수혜 가능",
+      "tags": [
+        "LG전자",
+        "태국",
+        "Dual Transformation",
+        "B2B"
+      ],
+      "id": "o006",
+      "category": "중국"
+    },
+    {
+      "importance": 2,
+      "title": "Thai baht weakens to 32.96 per dollar amid global trade tensions",
+      "source": "Trading Economics",
+      "pubDate": "2026-06-10",
+      "url": "https://tradingeconomics.com/thailand/currency",
+      "body": "2026년 6월 10일 기준 USD/THB 32.96. 글로벌 무역 불확실성이 바트화 약세 요인.",
+      "impact": "환율: ⬇ — 태국 거점 원가 환율 모니터링",
+      "tags": [
+        "태국바트",
+        "환율",
+        "THB"
+      ],
+      "id": "o007",
+      "category": "중국"
+    },
+    {
+      "importance": 2,
+      "title": "Thailand's industrial investment hits THB1 trillion in Q1 2026",
+      "source": "Nation Thailand",
+      "pubDate": null,
+      "url": "https://www.nationthailand.com/business/investment/40065623",
+      "body": "2026년 1분기 태국 BOI 투자신청 1조 바트 돌파(+142%). 디지털·데이터센터 8,700억 바트(+822%). 미중 무역갈등으로 생산기지 이전 가속.",
+      "impact": "생산: ⬆ — 태국 제조투자 급증, 신신사 태국 거점 환경 개선",
+      "tags": [
+        "BOI",
+        "투자",
+        "태국산업",
+        "전자제조"
+      ],
+      "id": "o008",
+      "category": "태국"
+    },
+    {
+      "importance": 2,
+      "title": "LG Electronics Accelerates MEA Expansion at InnoFest 2026 MEA",
+      "source": "PR Newswire",
+      "pubDate": null,
+      "url": "https://www.prnewswire.com/ae/news-releases/lg-electronics-accelerates-mea-expansion",
+      "body": "LG InnoFest 2026 MEA에서 중동·아프리카 시장 특화 AI 가전 솔루션 발표. 이집트를 MEA 지역 생산허브로 위상 강화.",
+      "impact": "생산/고객사: ⬆ — 이집트 MEA 생산허브 강화, 신신사 이집트 거점 수혜",
+      "tags": [
+        "LG전자",
+        "MEA",
+        "이집트",
+        "InnoFest2026"
+      ],
+      "id": "o009",
+      "category": "태국"
+    },
+    {
+      "importance": 2,
+      "title": "Egyptian pound holds at 51.77 per dollar amid stabilization efforts",
+      "source": "Trading Economics",
+      "pubDate": "2026-06-10",
+      "url": "https://tradingeconomics.com/egypt/currency",
+      "body": "2026년 6월 10일 기준 USD/EGP 51.77. 이집트 파운드 안정화 기조, 1개월간 1.80% 강세.",
+      "impact": "환율: ⬆ — 이집트 거점 원가 안정화 긍정적",
+      "tags": [
+        "이집트파운드",
+        "EGP",
+        "환율",
+        "통화안정"
+      ],
+      "id": "o010",
+      "category": "태국"
+    },
+    {
+      "importance": 1,
+      "title": "China's Home Appliance Production and Exports in April 2026",
+      "source": "SMM",
+      "pubDate": null,
+      "url": "https://news.metal.com/newscontent/103914059",
+      "body": "2026년 4월 중국 세탁기 수출 329만 대(+12.4%), LCD TV 880만 대(+2.4%). 냉장고 누적 +10% 성장.",
+      "impact": "원가: ⬌ — 중국 가전 생산 동향",
+      "tags": [
+        "가전수출",
+        "중국제조",
+        "세탁기"
+      ],
+      "id": "o012",
+      "category": "태국"
+    },
+    {
+      "importance": 1,
+      "title": "Guangdong Kitchen Appliance Exports Reverse Decline in Q1 2026",
+      "source": "Fortune Kitchenware",
+      "pubDate": null,
+      "url": "https://www.fortune-kitchenware.com/news/global-trade",
+      "body": "광둥성 주방기기 수출 2026년 1Q 38.2억 달러(+5.7%). 스마트 조리기구 +41% 급증.",
+      "impact": "원가: ⬌ — 중국 주방가전 시장 회복",
+      "tags": [
+        "주방가전",
+        "광둥성",
+        "수출"
+      ],
+      "id": "o013",
+      "category": "태국"
+    },
+    {
+      "importance": 1,
+      "title": "LG Thailand Redefines Home Life at 'LG AI Experience 2026'",
+      "source": "Bangkok Post",
+      "pubDate": null,
+      "url": "https://www.bangkokpost.com/thailand/pr/3201480",
+      "body": "AI 기반 에어컨·OLED·세탁기·냉장고 등 차세대 AI 가전 라인업 전시.",
+      "impact": "고객사(LG전자): ⬌ — 태국 AI 가전 마케팅",
+      "tags": [
+        "LG AI Experience",
+        "OLED",
+        "AI가전"
+      ],
+      "id": "o014",
+      "category": "태국"
+    },
+    {
+      "importance": 1,
+      "title": "LG Subscribe Leads Home Appliance Subscriptions in Thailand and APAC",
+      "source": "Bangkok Post",
+      "pubDate": null,
+      "url": "https://www.bangkokpost.com/thailand/pr/3190070",
+      "body": "LG Subscribe 태국 서비스 APAC 선도. 2026년 7.5~8만 명 고객, 연 20억 바트 매출 목표.",
+      "impact": "고객사(LG전자): ⬆ — APAC 구독 가전 성장",
+      "tags": [
+        "LG Subscribe",
+        "구독서비스",
+        "태국"
+      ],
+      "id": "o015",
+      "category": "태국"
+    },
+    {
+      "importance": 1,
+      "title": "Thailand's Renewed BOI Incentives 2026–2027",
+      "source": "Alvarez & Marsal",
+      "pubDate": null,
+      "url": "https://www.alvarezandmarsal.com/thought-leadership/thailand-boi",
+      "body": "태국 BOI 2026년 1월 신규 투자촉진 패키지. EV·배터리, 반도체·첨단전자, 스마트가전 세금 혜택 강화.",
+      "impact": "규제·정책: ⬆ — 태국 투자 인센티브 확대",
+      "tags": [
+        "BOI",
+        "투자인센티브",
+        "스마트가전"
+      ],
+      "id": "o017",
+      "category": "이집트"
+    },
+    {
+      "importance": 1,
+      "title": "Bangkok Post - Industrial property defies uncertainty",
+      "source": "Bangkok Post",
+      "pubDate": null,
+      "url": "https://www.bangkokpost.com/business/general/3204570",
+      "body": "태국 산업용 부동산 시장이 글로벌 불확실성에도 견조 성장. 외국 기업 생산기지 이전 수요 지탱.",
+      "impact": "생산: ⬌ — 태국 산업 인프라 안정",
+      "tags": [
+        "산업부동산",
+        "태국",
+        "공장이전"
+      ],
+      "id": "o018",
+      "category": "이집트"
+    },
+    {
+      "importance": 1,
+      "title": "LG Egypt Unveils Latest Smart Technologies at 'LG Egypt NPI 2026'",
+      "source": "Techno Time",
+      "pubDate": null,
+      "url": "https://www.technotime.net/14081",
+      "body": "LG Egypt NPI 2026 행사에서 OLED evo·QNED Mini LED·AI DD 세탁기·HEPA 공기청정기 최신 AI 가전 라인업 공개.",
+      "impact": "고객사(LG전자): ⬌ — 이집트 제품 라인업 강화",
+      "tags": [
+        "LG전자",
+        "NPI2026",
+        "이집트",
+        "AI가전"
+      ],
+      "id": "o020",
+      "category": "이집트"
+    },
+    {
+      "importance": 1,
+      "title": "Madbouly opens industrial expansions in automotive, pharmaceutical sectors",
+      "source": "Daily News Egypt",
+      "pubDate": "2026-06-08",
+      "url": "https://www.dailynewsegypt.com/2026/06/08",
+      "body": "이집트 총리가 알렉산드리아 산업 프로젝트 준공식. 닛산 이집트 최초 로컬 조립 개시. 2만700개 직접 일자리 창출.",
+      "impact": "규제·정책: ⬌ — 이집트 제조업 확장 추세",
+      "tags": [
+        "이집트산업",
+        "자동차",
+        "닛산",
+        "알렉산드리아"
+      ],
+      "id": "o023",
+      "category": "이집트"
     }
   ],
   "overseas": [],
