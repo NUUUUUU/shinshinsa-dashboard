@@ -117,16 +117,20 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .right{display:flex;flex-direction:column;gap:7px;overflow:hidden;min-height:0;}
 .right .sec{margin-bottom:6px;}
 .ov-card{background:var(--card);border:1px solid var(--bdr);border-radius:7px;
-  padding:5px 9px;display:grid;grid-template-columns:20px 1fr auto;
-  gap:7px;align-items:center;margin-bottom:3px;}
+  padding:8px 10px;display:grid;grid-template-columns:20px 1fr auto;
+  gap:8px;align-items:start;margin-bottom:4px;}
 .ov-card:last-child{margin-bottom:0;}
-.of{font-size:16px;line-height:1;}
-.on{font-size:13px;font-weight:700;color:var(--dgray);}
-.ot{font-size:12px;color:var(--txt2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.os{font-size:11px;font-weight:700;padding:2px 7px;border-radius:3px;white-space:nowrap;}
-.os.w{background:var(--g-bg);color:#7a6010;border:1px solid var(--g-bd);}
+.of{font-size:16px;line-height:1.4;}
+.on{font-size:13px;font-weight:700;color:var(--dgray);margin-bottom:2px;}
+.oi{font-size:11px;font-weight:600;color:var(--acc);background:rgba(var(--acc-rgb,180,140,60),.08);
+  border-radius:3px;padding:1px 5px;display:inline-block;margin-bottom:3px;letter-spacing:.01em;}
+.ot{font-size:11.5px;color:var(--txt2);line-height:1.55;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.os{font-size:11px;font-weight:700;padding:2px 7px;border-radius:3px;white-space:nowrap;margin-top:1px;}
+.os.w{background:#fffbea;color:#7a6010;border:1px solid #e8d87a;}
 .os.g{background:rgba(10,124,86,.09);color:#0A7C56;border:1px solid rgba(10,124,86,.28);}
-.os.b{background:var(--s-bg);color:#4a6278;border:1px solid var(--s-bd);}
+.os.b{background:#fff0f0;color:#b03030;border:1px solid #f0b0b0;}
+.os.r{background:#fff0f0;color:#b03030;border:1px solid #f0b0b0;}
 .mkt-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:6px 11px;}
 .mr{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--bdr);font-size:14px;}
 .mr:last-child{border-bottom:none;padding-bottom:0;}
@@ -501,16 +505,21 @@ function renderKPI(kpis) {
 }
 
 function renderOverseas(items) {
-  const sm = {u:'g', w:'w', d:'b', g:'g', '양호':'g', '주시':'w', '경고':'b'};
-  document.getElementById('overseas-cards').innerHTML = (items||[]).map(o => `
+  const sm = {u:'g', w:'w', d:'b', g:'g', r:'r', '양호':'g', '주시':'w', '경고':'r', '위험':'r', '주의':'w'};
+  document.getElementById('overseas-cards').innerHTML = (items||[]).map(o => {
+    const indHtml = o.indicators ? `<div class="oi">${o.indicators}</div>` : '';
+    const cls = sm[o.statusType] || sm[o.status] || 'w';
+    return `
     <div class="ov-card">
       <span class="of">${o.flag||''}</span>
       <div>
         <div class="on">${o.country}</div>
+        ${indHtml}
         <div class="ot">${o.summary||''}</div>
       </div>
-      <span class="os ${sm[o.statusType]||sm[o.status]||'b'}">${o.status||''}</span>
-    </div>`).join('');
+      <span class="os ${cls}">${o.status||''}</span>
+    </div>`;
+  }).join('');
 }
 
 function renderMarkets(items) {
