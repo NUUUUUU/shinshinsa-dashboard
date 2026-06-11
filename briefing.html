@@ -184,14 +184,25 @@ svg.wti{width:100%;height:100%;}
 .mpt-dot{width:6px;height:6px;border-radius:50%;background:var(--red);
   flex-shrink:0;margin-top:6px;}
 
-.comments-table{width:100%;border-collapse:collapse;table-layout:fixed;}
-.comments-table th{font-size:11px;font-weight:500;color:var(--txt3);
-  padding:7px 10px;border-bottom:1px solid var(--bdr);text-align:left;
-  background:var(--bg);}
-.comments-table td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--bdr);
-  color:var(--txt2);vertical-align:top;}
-.comments-table tr:last-child td{border-bottom:none;}
-.author{font-weight:500;color:var(--txt);white-space:nowrap;}
+.cmt-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.cmt-item{background:var(--bg);border-radius:8px;padding:10px 12px;border:1px solid var(--bdr);}
+.cmt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.cmt-author{font-size:13px;font-weight:600;color:var(--txt);}
+.cmt-time{font-size:11px;color:var(--txt3);}
+.cmt-body{font-size:13px;color:var(--txt2);line-height:1.55;white-space:pre-wrap;word-break:break-all;}
+.cmt-empty{text-align:center;padding:16px;font-size:12px;color:var(--txt3);}
+.cmt-form{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--bdr);padding-top:12px;}
+.cmt-form-row{display:flex;gap:8px;align-items:flex-start;}
+.cmt-select{flex-shrink:0;width:110px;padding:7px 8px;border:1px solid var(--bdr);border-radius:6px;
+  background:var(--bg);color:var(--txt);font-size:12px;appearance:none;cursor:pointer;}
+.cmt-input-name{flex-shrink:0;width:110px;padding:7px 8px;border:1px solid var(--bdr);border-radius:6px;
+  background:var(--bg);color:var(--txt);font-size:12px;display:none;}
+.cmt-textarea{flex:1;padding:7px 8px;border:1px solid var(--bdr);border-radius:6px;
+  background:var(--bg);color:var(--txt);font-size:12px;min-height:64px;resize:vertical;line-height:1.5;}
+.cmt-submit{padding:7px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;
+  font-size:12px;font-weight:600;cursor:pointer;}
+.cmt-submit:disabled{opacity:.45;cursor:not-allowed;}
+.cmt-status{font-size:12px;color:var(--txt3);text-align:right;min-height:16px;}
 
 .footer{text-align:center;padding:14px 16px;font-size:11px;color:var(--txt3);
   border-top:1px solid var(--bdr);margin-top:4px;}
@@ -303,22 +314,28 @@ svg.wti{width:100%;height:100%;}
   </div>
 
   <div class="card" id="comments-section">
-    <div class="sec-label"><span class="sec-dot"></span>의견·댓글</div>
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <table class="comments-table">
-        <colgroup><col style="width:90px"><col></colgroup>
-        <thead>
-          <tr><th>작성자</th><th>의견 내용</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="author">대표이사</td><td></td></tr>
-          <tr><td class="author">김종일 실장</td><td></td></tr>
-          <tr><td class="author">주태호 팀장</td><td></td></tr>
-          <tr><td class="author">이승환 선임</td><td></td></tr>
-          <tr><td class="author">이예린 주임</td><td></td></tr>
-          <tr><td class="author">직접 입력</td><td></td></tr>
-        </tbody>
-      </table>
+    <div class="sec-label"><span class="sec-dot"></span>검토 의견</div>
+    <div class="cmt-list" id="cmt-list">
+      <div class="cmt-empty" id="cmt-loading">불러오는 중…</div>
+    </div>
+    <div class="cmt-form" id="cmt-form">
+      <div class="cmt-form-row">
+        <select class="cmt-select" id="cmt-author-select">
+          <option value="">작성자 선택</option>
+          <option value="대표이사">대표이사</option>
+          <option value="기획실장">기획실장</option>
+          <option value="기획팀장">기획팀장</option>
+          <option value="이승환 선임">이승환 선임</option>
+          <option value="이예린 주임">이예린 주임</option>
+          <option value="__direct__">직접 작성</option>
+        </select>
+        <input type="text" class="cmt-input-name" id="cmt-author-name" placeholder="이름 입력">
+        <textarea class="cmt-textarea" id="cmt-content" placeholder="의견을 입력하세요…" rows="3"></textarea>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span class="cmt-status" id="cmt-status"></span>
+        <button class="cmt-submit" id="cmt-submit-btn" disabled>등록</button>
+      </div>
     </div>
   </div>
 
@@ -571,6 +588,151 @@ document.getElementById('fbar').addEventListener('click',e=>{
 
 load();
 setInterval(load,300000);
+
+/* ───────────────────────────────────────────────
+   댓글 시스템 — GitHub Contents API
+─────────────────────────────────────────────── */
+const _GH = {
+  get token(){ return localStorage.getItem('gh_cmt_token')||''; },
+  owner: 'NUUUUUU',
+  repo:  'shinshinsa-dashboard',
+  api:   'https://api.github.com'
+};
+
+function _cmtPath(date){ return 'comments/' + date + '.json'; }
+
+function _todayStr(){
+  const p = new URLSearchParams(location.search);
+  const dt = p.get('date');
+  if(dt && dt.length===8) return dt;
+  const d = new Date();
+  return d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+}
+
+async function _ghGet(path){
+  const url = _GH.api + '/repos/' + _GH.owner + '/' + _GH.repo + '/contents/' + path;
+  const r = await fetch(url, {headers:{'Authorization':'token ' + _GH.token,'Accept':'application/vnd.github.v3+json'}});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error('GH GET ' + r.status);
+  return r.json();
+}
+
+async function _ghPut(path, content, sha){
+  const url = _GH.api + '/repos/' + _GH.owner + '/' + _GH.repo + '/contents/' + path;
+  const body = {message:'댓글 업데이트: ' + path, content: btoa(unescape(encodeURIComponent(content)))};
+  if(sha) body.sha = sha;
+  const r = await fetch(url, {
+    method:'PUT',
+    headers:{'Authorization':'token ' + _GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  if(!r.ok){const t=await r.text();throw new Error('GH PUT ' + r.status + ': ' + t);}
+  return r.json();
+}
+
+function _showTokenSetup(){
+  const el = document.getElementById('cmt-list');
+  el.innerHTML =
+    '<div class="cmt-empty" style="line-height:2;">' +
+    '댓글 기능을 사용하려면 GitHub 토큰을 입력하세요.<br>' +
+    '<input id="gh-token-input" type="password" placeholder="ghp_..." ' +
+    'style="width:100%;max-width:280px;padding:6px 8px;margin:8px 0;border:1px solid var(--bdr);' +
+    'border-radius:6px;font-size:12px;background:var(--bg);color:var(--txt);">' +
+    '<br><button onclick="_saveToken()" style="padding:5px 14px;background:var(--red);color:#fff;' +
+    'border:none;border-radius:6px;font-size:12px;cursor:pointer;">저장</button></div>';
+}
+function _saveToken(){
+  const v = document.getElementById('gh-token-input').value.trim();
+  if(!v){alert('토큰을 입력해 주세요.'); return;}
+  localStorage.setItem('gh_cmt_token', v);
+  loadComments();
+}
+
+async function loadComments(){
+  const dt = _todayStr();
+  const el = document.getElementById('cmt-list');
+  if(!_GH.token){ _showTokenSetup(); return; }
+  try{
+    const res = await _ghGet(_cmtPath(dt));
+    if(!res){renderComments([]); return;}
+    const decoded = decodeURIComponent(escape(atob(res.content.replace(/\n/g,''))));
+    renderComments(JSON.parse(decoded));
+  }catch(e){
+    console.error('댓글 로드 실패:',e);
+    el.innerHTML='<div class="cmt-empty">댓글을 불러오지 못했습니다.</div>';
+  }
+}
+
+function renderComments(comments){
+  const el = document.getElementById('cmt-list');
+  if(!comments||!comments.length){
+    el.innerHTML='<div class="cmt-empty">아직 등록된 의견이 없습니다.</div>';
+    return;
+  }
+  el.innerHTML = comments.map(c=>
+    '<div class="cmt-item">' +
+    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' +
+    '<span class="cmt-time">' + _esc(c.time||'') + '</span></div>' +
+    '<div class="cmt-body">' + _esc(c.content) + '</div></div>'
+  ).join('');
+}
+
+function _esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+async function saveComment(author, content){
+  const dt = _todayStr();
+  const status = document.getElementById('cmt-status');
+  status.textContent = '저장 중…';
+  try{
+    const res = await _ghGet(_cmtPath(dt));
+    let comments = [], sha;
+    if(res){
+      comments = JSON.parse(decodeURIComponent(escape(atob(res.content.replace(/\n/g,'')))));
+      sha = res.sha;
+    }
+    const now = new Date();
+    const timeStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+    comments.push({author, content, time: timeStr});
+    await _ghPut(_cmtPath(dt), JSON.stringify(comments, null, 2), sha);
+    status.textContent = '등록 완료!';
+    setTimeout(()=>{ status.textContent=''; }, 2500);
+    renderComments(comments);
+    document.getElementById('cmt-content').value = '';
+    document.getElementById('cmt-author-select').value = '';
+    document.getElementById('cmt-author-name').style.display = 'none';
+    document.getElementById('cmt-author-name').value = '';
+    document.getElementById('cmt-submit-btn').disabled = true;
+  }catch(e){
+    console.error('댓글 저장 실패:',e);
+    document.getElementById('cmt-status').textContent = '저장 실패. 다시 시도해 주세요.';
+  }
+}
+
+document.getElementById('cmt-author-select').addEventListener('change', function(){
+  document.getElementById('cmt-author-name').style.display = (this.value==='__direct__') ? 'block' : 'none';
+  validateCmtForm();
+});
+['cmt-author-name','cmt-content'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', validateCmtForm);
+});
+function validateCmtForm(){
+  const sel = document.getElementById('cmt-author-select').value;
+  const name = document.getElementById('cmt-author-name').value.trim();
+  const content = document.getElementById('cmt-content').value.trim();
+  const authorOk = sel && (sel!=='__direct__' || name.length>0);
+  document.getElementById('cmt-submit-btn').disabled = !(authorOk && content.length>0);
+}
+document.getElementById('cmt-submit-btn').addEventListener('click', async function(){
+  const sel = document.getElementById('cmt-author-select').value;
+  const name = document.getElementById('cmt-author-name').value.trim();
+  const author = sel==='__direct__' ? name : sel;
+  const content = document.getElementById('cmt-content').value.trim();
+  if(!author||!content) return;
+  this.disabled = true;
+  await saveComment(author, content);
+});
+loadComments();
+
 </script>
 </body>
 </html>
