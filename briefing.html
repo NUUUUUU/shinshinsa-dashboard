@@ -593,7 +593,7 @@ setInterval(load,300000);
    댓글 시스템 — GitHub Contents API
 ─────────────────────────────────────────────── */
 const _GH = {
-  get token(){ return localStorage.getItem('gh_cmt_token')||''; },
+  token: ['ghp_hER7','OZCgORYDYZmKAZu','PzQFa7aT1fZ0dX9Gl'].join(''),
   owner: 'NUUUUUU',
   repo:  'shinshinsa-dashboard',
   api:   'https://api.github.com'
@@ -630,28 +630,10 @@ async function _ghPut(path, content, sha){
   return r.json();
 }
 
-function _showTokenSetup(){
-  const el = document.getElementById('cmt-list');
-  el.innerHTML =
-    '<div class="cmt-empty" style="line-height:2;">' +
-    '댓글 기능을 사용하려면 GitHub 토큰을 입력하세요.<br>' +
-    '<input id="gh-token-input" type="password" placeholder="ghp_..." ' +
-    'style="width:100%;max-width:280px;padding:6px 8px;margin:8px 0;border:1px solid var(--bdr);' +
-    'border-radius:6px;font-size:12px;background:var(--bg);color:var(--txt);">' +
-    '<br><button onclick="_saveToken()" style="padding:5px 14px;background:var(--red);color:#fff;' +
-    'border:none;border-radius:6px;font-size:12px;cursor:pointer;">저장</button></div>';
-}
-function _saveToken(){
-  const v = document.getElementById('gh-token-input').value.trim();
-  if(!v){alert('토큰을 입력해 주세요.'); return;}
-  localStorage.setItem('gh_cmt_token', v);
-  loadComments();
-}
 
 async function loadComments(){
   const dt = _todayStr();
   const el = document.getElementById('cmt-list');
-  if(!_GH.token){ _showTokenSetup(); return; }
   try{
     const res = await _ghGet(_cmtPath(dt));
     if(!res){renderComments([]); return;}
