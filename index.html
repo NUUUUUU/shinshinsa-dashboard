@@ -73,6 +73,10 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .kc.pos{color:var(--pos);} .kc.neg{color:var(--neg);}
 .ks{font-size:15px;color:var(--txt3);margin-top:2px;}
 .ksum{font-size:16px;color:var(--black);font-weight:700;line-height:1.65;margin-top:5px;}
+/* 해외 모니터링 스트립 */
+.ov-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;
+  padding:8px 26px;background:var(--hdr);border-bottom:1px solid var(--bdr);flex-shrink:0;}
+.ov-strip .ov-card{margin-bottom:0;}
 /* MAIN */
 .main{display:grid;grid-template-columns:1fr 340px;gap:12px;padding:11px 26px 11px;
   flex:1;overflow:hidden;min-height:0;}
@@ -213,6 +217,9 @@ footer strong{color:var(--pink);font-weight:700;}
 <!-- KPI -->
 <div class="kpi-row" id="kpi-row"></div>
 
+<!-- 해외 모니터링 스트립 (오늘의 한 줄 바로 아래) -->
+<div class="ov-strip" id="overseas-cards"></div>
+
 <!-- MAIN -->
 <div class="main">
   <div class="news-col">
@@ -245,10 +252,6 @@ footer strong{color:var(--pink);font-weight:700;}
   </div>
 
   <div class="right">
-    <div style="flex-shrink:0;">
-      <div class="sec"><span class="sec-dot"></span>해외 모니터링</div>
-      <div id="overseas-cards"></div>
-    </div>
     <div style="flex-shrink:0;">
       <div class="sec"><span class="sec-dot"></span>글로벌 시장 지표</div>
       <div class="mkt-wrap" id="market-rows"></div>
