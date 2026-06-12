@@ -543,7 +543,7 @@ function renderFX(fxList) {
         </div>
       </div>
       <div class="fx-right">
-        <span class="fx-val">${f.value}</span>
+        <span class="fx-val">${f.rate_usd||f.value||'—'}</span>
         <span class="fx-chg ${f.dir||'neu'}">${f.change}</span>
       </div>
     </div>`).join('');
