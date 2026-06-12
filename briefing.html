@@ -245,6 +245,11 @@ svg.wti{width:100%;height:100%;}
     </div>
   </div>
 
+  <div class="card" id="overseas-section">
+    <div class="sec-label"><span class="sec-dot"></span>해외 모니터링</div>
+    <div id="ov-list"></div>
+  </div>
+
   <div class="card" id="kpi-section">
     <div class="sec-label"><span class="sec-dot"></span>핵심 지표</div>
     <div class="kpi-grid" id="kpi-grid">
@@ -286,11 +291,6 @@ svg.wti{width:100%;height:100%;}
       <div class="skeleton" style="height:90px"></div>
       <div class="skeleton" style="height:90px"></div>
     </div>
-  </div>
-
-  <div class="card" id="overseas-section">
-    <div class="sec-label"><span class="sec-dot"></span>해외 모니터링</div>
-    <div id="ov-list"></div>
   </div>
 
   <div class="card" id="market-section">
@@ -462,12 +462,13 @@ function renderSched(sched){
 }
 
 function renderOverseas(items){
-  const sm={u:'g',w:'w',d:'d',g:'g','양호':'g','주시':'w','경고':'d'};
+  const sm={u:'g',w:'w',d:'d',g:'g',r:'d','양호':'g','주시':'w','경고':'d','위험':'d','주의':'w'};
   document.getElementById('ov-list').innerHTML=(items||[]).map(o=>`
     <div class="ov-card">
       <span class="ov-flag">${o.flag||''}</span>
       <div class="ov-info">
         <div class="ov-name">${o.country}</div>
+        ${o.indicators?`<div style="font-size:11px;color:var(--gold);font-weight:500;margin-bottom:2px;">${o.indicators}</div>`:''}
         <div class="ov-sum">${o.summary||''}</div>
       </div>
       <span class="os ${sm[o.statusType]||sm[o.status]||'w'}">${o.status||''}</span>
@@ -493,7 +494,7 @@ function renderFX(items){
         </div>
       </div>
       <div class="fx-right">
-        <div class="fx-val">${f.value}</div>
+        <div class="fx-val">${f.rate_usd||f.value||'—'}</div>
         <div class="fx-chg ${f.dir||'neu'}">${f.change}</div>
       </div>
     </div>`).join('');
