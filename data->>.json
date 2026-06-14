@@ -267,6 +267,7 @@
       "currency": "KRW",
       "country": "한국",
       "rate_usd": "1,533",
+      "value": "1,533",
       "change": "▲ +4.7",
       "color": "neg"
     },
@@ -275,6 +276,7 @@
       "currency": "CNY",
       "country": "중국",
       "rate_usd": "6.77",
+      "value": "6.77",
       "change": "▼ -0.1%",
       "color": "pos"
     },
@@ -283,6 +285,7 @@
       "currency": "THB",
       "country": "태국",
       "rate_usd": "34.5",
+      "value": "34.5",
       "change": "▌ 보합",
       "color": "neu"
     },
@@ -291,6 +294,7 @@
       "currency": "EGP",
       "country": "이집트",
       "rate_usd": "51.95",
+      "value": "51.95",
       "change": "▲ +0.25%",
       "color": "neu"
     }
