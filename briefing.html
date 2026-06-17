@@ -174,6 +174,7 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .fx-val{font-size:16px;font-weight:500;color:var(--txt);}
 .fx-chg{font-size:11px;}
 .fx-chg.pos{color:var(--green);} .fx-chg.neg{color:var(--red);} .fx-chg.neu{color:var(--txt3);}
+.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 6px;min-width:64px;}
 
 .wti-wrap{height:100px;position:relative;margin-top:8px;}
 svg.wti{width:100%;height:100%;}
@@ -264,6 +265,11 @@ svg.wti{width:100%;height:100%;}
     </div>
   </div>
 
+  <div class="card" id="fx-section">
+    <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
+    <div id="fx-list"></div>
+  </div>
+
   <div class="card" id="sched-section">
     <div class="sec-label"><span class="sec-dot"></span>CEO 일정</div>
     <div id="sched-list">
@@ -296,11 +302,6 @@ svg.wti{width:100%;height:100%;}
   <div class="card" id="market-section">
     <div class="sec-label"><span class="sec-dot"></span>시장 지표</div>
     <div class="mkt-grid" id="mkt-grid"></div>
-  </div>
-
-  <div class="card" id="fx-section">
-    <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
-    <div id="fx-list"></div>
   </div>
 
   <div class="card" id="wti-section">
@@ -417,9 +418,22 @@ function updateBadges(news){
   });
 }
 
-function renderKPI(kpis){
-  const cs={pos:'pos',neg:'neg',gld:'neu',inf:'inf'};
-  document.getElementById('kpi-grid').innerHTML=(kpis||[]).map(k=>{
+function renderKPI(kpis, markets){
+  const cs={pos:'pos',neg:'neg',gld:'neu',neu:'neu',inf:'inf'};
+  const regular=(kpis||[]).filter(k=>k.type!=='inf');
+  const infItem=(kpis||[]).find(k=>k.type==='inf');
+  // 4개 미만이면 markets에서 보충
+  if(regular.length<4 && markets && markets.length){
+    const existing=new Set(regular.map(k=>k.label));
+    for(const m of markets){
+      if(regular.length>=4) break;
+      if(!existing.has(m.label)){
+        regular.push({type:m.color||'neu',label:m.label,value:m.value,unit:'',change:'',note:''});
+      }
+    }
+  }
+  const allKpis=[...regular,...(infItem?[infItem]:[])];
+  document.getElementById('kpi-grid').innerHTML=(allKpis||[]).map(k=>{
     if(k.type==='inf') return `
       <div class="kpi inf">
         <div class="kl">${k.label}</div>
@@ -483,9 +497,42 @@ function renderMarkets(items){
     </div>`).join('');
 }
 
+function fxMockHistory(baseStr, changeStr, currency) {
+  const n = 7;
+  const base = parseFloat(String(baseStr||0).replace(/,/g,'')) || 1;
+  const match = changeStr ? changeStr.match(/([\d.]+)%/) : null;
+  const pct = match ? parseFloat(match[1])/100 : 0.002;
+  const isUp = changeStr && changeStr.includes('▲');
+  const start = base * (isUp ? 1 - pct*6 : 1 + pct*6);
+  const seed = (currency||'X').charCodeAt(0);
+  return Array.from({length:n}, (_,i)=>{
+    const t = i/(n-1);
+    const main = start + (base-start)*t;
+    const wave = Math.sin(i*1.4 + seed*0.07) * base * 0.003;
+    return main + wave;
+  });
+}
+
+function fxSparklineSVG(values, isNeg) {
+  const W=64, H=26;
+  const min=Math.min(...values), max=Math.max(...values);
+  const range=max-min||values[0]*0.001||1;
+  const n=values.length;
+  const xs=i=>((i/(n-1))*W).toFixed(1);
+  const ys=v=>(H-((v-min)/range)*(H-5)-2).toFixed(1);
+  const color=isNeg?'#C8102E':'#3B6D11';
+  const pts=values.map((v,i)=>`${xs(i)},${ys(v)}`).join(' ');
+  const fillPts=`${xs(0)},${H} ${pts} ${xs(n-1)},${H}`;
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><polygon points="${fillPts}" fill="${color}" opacity="0.13"/><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${xs(n-1)}" cy="${ys(values[n-1])}" r="2.5" fill="${color}"/></svg>`;
+}
+
 function renderFX(items){
-  document.getElementById('fx-list').innerHTML=(items||[]).map(f=>`
-    <div class="fx-row">
+  document.getElementById('fx-list').innerHTML=(items||[]).map(f=>{
+    const hist=Array.isArray(f.history)&&f.history.length>=2
+      ? f.history
+      : fxMockHistory(f.rate_usd||f.value, f.change, f.currency);
+    const spark=fxSparklineSVG(hist, f.dir==='neg');
+    return `<div class="fx-row">
       <div class="fx-left">
         <span class="fx-flag">${f.flag||''}</span>
         <div>
@@ -493,11 +540,13 @@ function renderFX(items){
           <div class="fx-country">${f.country}</div>
         </div>
       </div>
+      <div class="fx-spark">${spark}</div>
       <div class="fx-right">
         <div class="fx-val">${f.rate_usd||f.value||'—'}</div>
         <div class="fx-chg ${f.dir||'neu'}">${f.change}</div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function renderWTI(wti){
@@ -566,7 +615,7 @@ async function load(){
       const inf=(d.kpis||[]).find(k=>k.type==='inf');
       if(inf)document.getElementById('summary-text').textContent=inf.summary||'—';
     }
-    renderKPI(d.kpis||[]);
+    renderKPI(d.kpis||[], d.markets||[]);
     renderTop3(d.top3||[]);
     renderSched(d.ceo_schedule||[]);
     _allNews=d.news||[];
