@@ -718,4 +718,68 @@ function renderComments(comments){
   }
   el.innerHTML = comments.map(c=>
     '<div class="cmt-item">' +
-    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' 
+    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' +
+    '<span class="cmt-time">' + _esc(c.time||'') + '</span></div>' +
+    '<div class="cmt-body">' + _esc(c.content) + '</div></div>'
+  ).join('');
+}
+
+function _esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+async function saveComment(author, content){
+  const dt = _todayStr();
+  const status = document.getElementById('cmt-status');
+  status.textContent = '저장 중…';
+  try{
+    const res = await _ghGet(_cmtPath(dt));
+    let comments = [], sha;
+    if(res){
+      comments = JSON.parse(decodeURIComponent(escape(atob(res.content.replace(/\n/g,'')))));
+      sha = res.sha;
+    }
+    const now = new Date();
+    const timeStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+    comments.push({author, content, time: timeStr});
+    await _ghPut(_cmtPath(dt), JSON.stringify(comments, null, 2), sha);
+    status.textContent = '등록 완료!';
+    setTimeout(()=>{ status.textContent=''; }, 2500);
+    renderComments(comments);
+    document.getElementById('cmt-content').value = '';
+    document.getElementById('cmt-author-select').value = '';
+    document.getElementById('cmt-author-name').style.display = 'none';
+    document.getElementById('cmt-author-name').value = '';
+    document.getElementById('cmt-submit-btn').disabled = true;
+  }catch(e){
+    console.error('댓글 저장 실패:',e);
+    document.getElementById('cmt-status').textContent = '저장 실패. 다시 시도해 주세요.';
+  }
+}
+
+document.getElementById('cmt-author-select').addEventListener('change', function(){
+  document.getElementById('cmt-author-name').style.display = (this.value==='__direct__') ? 'block' : 'none';
+  validateCmtForm();
+});
+['cmt-author-name','cmt-content'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', validateCmtForm);
+});
+function validateCmtForm(){
+  const sel = document.getElementById('cmt-author-select').value;
+  const name = document.getElementById('cmt-author-name').value.trim();
+  const content = document.getElementById('cmt-content').value.trim();
+  const authorOk = sel && (sel!=='__direct__' || name.length>0);
+  document.getElementById('cmt-submit-btn').disabled = !(authorOk && content.length>0);
+}
+document.getElementById('cmt-submit-btn').addEventListener('click', async function(){
+  const sel = document.getElementById('cmt-author-select').value;
+  const name = document.getElementById('cmt-author-name').value.trim();
+  const author = sel==='__direct__' ? name : sel;
+  const content = document.getElementById('cmt-content').value.trim();
+  if(!author||!content) return;
+  this.disabled = true;
+  await saveComment(author, content);
+});
+loadComments();
+
+</script>
+</body>
+</html>
