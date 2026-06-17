@@ -251,11 +251,9 @@ svg.wti{width:100%;height:100%;}
     <div id="ov-list"></div>
   </div>
 
-  <div class="card" id="kpi-section">
-    <div class="sec-label"><span class="sec-dot"></span>핵심 지표</div>
-    <div class="kpi-grid" id="kpi-grid">
-      <div class="skeleton" style="height:70px;grid-column:1/-1"></div>
-    </div>
+  <div class="card" id="fx-section">
+    <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
+    <div id="fx-list"></div>
   </div>
 
   <div class="card" id="top3-section">
@@ -265,9 +263,11 @@ svg.wti{width:100%;height:100%;}
     </div>
   </div>
 
-  <div class="card" id="fx-section">
-    <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
-    <div id="fx-list"></div>
+  <div class="card" id="kpi-section">
+    <div class="sec-label"><span class="sec-dot"></span>핵심 지표</div>
+    <div class="kpi-grid" id="kpi-grid">
+      <div class="skeleton" style="height:70px;grid-column:1/-1"></div>
+    </div>
   </div>
 
   <div class="card" id="sched-section">
@@ -383,8 +383,8 @@ function renderNews(f){
   const s3=items.filter(n=>n.importance===3).length,s2=items.filter(n=>n.importance===2).length;
   const lbl=document.getElementById('news-hdr-lbl');
   lbl.textContent=f==='all'
-    ?`주요 뉴스 · 상위 ${items.length}건 (전체 ${_allNews.length}건 수집)`
-    :`주요 뉴스 · ${total}건 (★★★ ${s3} / ★★ ${s2})`;
+    ?`주요 뉴스 · 상위 ${items.length}몱 (전체 ${_allNews.length}몱 舘집)`
+    :`주요 뉴스 · ${total}ꪱ (★★★ ${s3} / ★★ ${s2})`;
 
   const sm={3:'★★★',2:'★★',1:'★'},cs={3:'s3',2:'s2',1:'s1'};
   if(!items.length){
@@ -718,68 +718,4 @@ function renderComments(comments){
   }
   el.innerHTML = comments.map(c=>
     '<div class="cmt-item">' +
-    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' +
-    '<span class="cmt-time">' + _esc(c.time||'') + '</span></div>' +
-    '<div class="cmt-body">' + _esc(c.content) + '</div></div>'
-  ).join('');
-}
-
-function _esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-async function saveComment(author, content){
-  const dt = _todayStr();
-  const status = document.getElementById('cmt-status');
-  status.textContent = '저장 중…';
-  try{
-    const res = await _ghGet(_cmtPath(dt));
-    let comments = [], sha;
-    if(res){
-      comments = JSON.parse(decodeURIComponent(escape(atob(res.content.replace(/\n/g,'')))));
-      sha = res.sha;
-    }
-    const now = new Date();
-    const timeStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-    comments.push({author, content, time: timeStr});
-    await _ghPut(_cmtPath(dt), JSON.stringify(comments, null, 2), sha);
-    status.textContent = '등록 완료!';
-    setTimeout(()=>{ status.textContent=''; }, 2500);
-    renderComments(comments);
-    document.getElementById('cmt-content').value = '';
-    document.getElementById('cmt-author-select').value = '';
-    document.getElementById('cmt-author-name').style.display = 'none';
-    document.getElementById('cmt-author-name').value = '';
-    document.getElementById('cmt-submit-btn').disabled = true;
-  }catch(e){
-    console.error('댓글 저장 실패:',e);
-    document.getElementById('cmt-status').textContent = '저장 실패. 다시 시도해 주세요.';
-  }
-}
-
-document.getElementById('cmt-author-select').addEventListener('change', function(){
-  document.getElementById('cmt-author-name').style.display = (this.value==='__direct__') ? 'block' : 'none';
-  validateCmtForm();
-});
-['cmt-author-name','cmt-content'].forEach(function(id){
-  document.getElementById(id).addEventListener('input', validateCmtForm);
-});
-function validateCmtForm(){
-  const sel = document.getElementById('cmt-author-select').value;
-  const name = document.getElementById('cmt-author-name').value.trim();
-  const content = document.getElementById('cmt-content').value.trim();
-  const authorOk = sel && (sel!=='__direct__' || name.length>0);
-  document.getElementById('cmt-submit-btn').disabled = !(authorOk && content.length>0);
-}
-document.getElementById('cmt-submit-btn').addEventListener('click', async function(){
-  const sel = document.getElementById('cmt-author-select').value;
-  const name = document.getElementById('cmt-author-name').value.trim();
-  const author = sel==='__direct__' ? name : sel;
-  const content = document.getElementById('cmt-content').value.trim();
-  if(!author||!content) return;
-  this.disabled = true;
-  await saveComment(author, content);
-});
-loadComments();
-
-</script>
-</body>
-</html>
+    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' 
