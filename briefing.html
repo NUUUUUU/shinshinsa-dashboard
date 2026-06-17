@@ -174,7 +174,7 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .fx-val{font-size:16px;font-weight:500;color:var(--txt);}
 .fx-chg{font-size:11px;}
 .fx-chg.pos{color:var(--green);} .fx-chg.neg{color:var(--red);} .fx-chg.neu{color:var(--txt3);}
-.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 6px;min-width:64px;}
+.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 10px;min-width:120px;}
 
 .wti-wrap{height:100px;position:relative;margin-top:8px;}
 svg.wti{width:100%;height:100%;}
@@ -514,16 +514,31 @@ function fxMockHistory(baseStr, changeStr, currency) {
 }
 
 function fxSparklineSVG(values, isNeg) {
-  const W=64, H=26;
+  const W=130, H=38, PX=5, PY=6;
   const min=Math.min(...values), max=Math.max(...values);
   const range=max-min||values[0]*0.001||1;
   const n=values.length;
-  const xs=i=>((i/(n-1))*W).toFixed(1);
-  const ys=v=>(H-((v-min)/range)*(H-5)-2).toFixed(1);
   const color=isNeg?'#C8102E':'#3B6D11';
-  const pts=values.map((v,i)=>`${xs(i)},${ys(v)}`).join(' ');
-  const fillPts=`${xs(0)},${H} ${pts} ${xs(n-1)},${H}`;
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><polygon points="${fillPts}" fill="${color}" opacity="0.13"/><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${xs(n-1)}" cy="${ys(values[n-1])}" r="2.5" fill="${color}"/></svg>`;
+  const px=i=>PX+i/(n-1)*(W-PX*2);
+  const py=v=>PY+(1-(v-min)/range)*(H-PY*2);
+  const pts=values.map((v,i)=>({x:px(i),y:py(v)}));
+  // smooth cubic bezier through all points
+  let d=`M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+  for(let i=1;i<n;i++){
+    const cpx=((pts[i-1].x+pts[i].x)/2).toFixed(1);
+    d+=` C ${cpx} ${pts[i-1].y.toFixed(1)}, ${cpx} ${pts[i].y.toFixed(1)}, ${pts[i].x.toFixed(1)} ${pts[i].y.toFixed(1)}`;
+  }
+  const fillD=`${d} L ${pts[n-1].x.toFixed(1)} ${H} L ${pts[0].x.toFixed(1)} ${H} Z`;
+  // dots: subtle on intermediate days, solid on last
+  const dots=pts.map(({x,y},i)=>i===n-1
+    ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${color}"/>`
+    : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${color}" opacity="0.4"/>`
+  ).join('');
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+    <path d="${fillD}" fill="${color}" opacity="0.09"/>
+    <path d="${d}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    ${dots}
+  </svg>`;
 }
 
 function renderFX(items){
@@ -703,68 +718,4 @@ function renderComments(comments){
   }
   el.innerHTML = comments.map(c=>
     '<div class="cmt-item">' +
-    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' +
-    '<span class="cmt-time">' + _esc(c.time||'') + '</span></div>' +
-    '<div class="cmt-body">' + _esc(c.content) + '</div></div>'
-  ).join('');
-}
-
-function _esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-async function saveComment(author, content){
-  const dt = _todayStr();
-  const status = document.getElementById('cmt-status');
-  status.textContent = '저장 중…';
-  try{
-    const res = await _ghGet(_cmtPath(dt));
-    let comments = [], sha;
-    if(res){
-      comments = JSON.parse(decodeURIComponent(escape(atob(res.content.replace(/\n/g,'')))));
-      sha = res.sha;
-    }
-    const now = new Date();
-    const timeStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-    comments.push({author, content, time: timeStr});
-    await _ghPut(_cmtPath(dt), JSON.stringify(comments, null, 2), sha);
-    status.textContent = '등록 완료!';
-    setTimeout(()=>{ status.textContent=''; }, 2500);
-    renderComments(comments);
-    document.getElementById('cmt-content').value = '';
-    document.getElementById('cmt-author-select').value = '';
-    document.getElementById('cmt-author-name').style.display = 'none';
-    document.getElementById('cmt-author-name').value = '';
-    document.getElementById('cmt-submit-btn').disabled = true;
-  }catch(e){
-    console.error('댓글 저장 실패:',e);
-    document.getElementById('cmt-status').textContent = '저장 실패. 다시 시도해 주세요.';
-  }
-}
-
-document.getElementById('cmt-author-select').addEventListener('change', function(){
-  document.getElementById('cmt-author-name').style.display = (this.value==='__direct__') ? 'block' : 'none';
-  validateCmtForm();
-});
-['cmt-author-name','cmt-content'].forEach(function(id){
-  document.getElementById(id).addEventListener('input', validateCmtForm);
-});
-function validateCmtForm(){
-  const sel = document.getElementById('cmt-author-select').value;
-  const name = document.getElementById('cmt-author-name').value.trim();
-  const content = document.getElementById('cmt-content').value.trim();
-  const authorOk = sel && (sel!=='__direct__' || name.length>0);
-  document.getElementById('cmt-submit-btn').disabled = !(authorOk && content.length>0);
-}
-document.getElementById('cmt-submit-btn').addEventListener('click', async function(){
-  const sel = document.getElementById('cmt-author-select').value;
-  const name = document.getElementById('cmt-author-name').value.trim();
-  const author = sel==='__direct__' ? name : sel;
-  const content = document.getElementById('cmt-content').value.trim();
-  if(!author||!content) return;
-  this.disabled = true;
-  await saveComment(author, content);
-});
-loadComments();
-
-</script>
-</body>
-</html>
+    '<div class="cmt-header"><span class="cmt-author">' + _esc(c.author) + '</span>' 
