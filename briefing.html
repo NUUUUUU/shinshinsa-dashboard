@@ -543,8 +543,11 @@ function fxSparklineSVG(values, isNeg) {
 
 function renderFX(items){
   document.getElementById('fx-list').innerHTML=(items||[]).map(f=>{
-    const hist=Array.isArray(f.history)&&f.history.length>=2
-      ? f.history
+    const _h=f.history;
+    const hist=(_h&&_h.values&&_h.values.length>=2)
+      ? _h.values
+      : (Array.isArray(_h)&&_h.length>=2)
+      ? _h
       : fxMockHistory(f.rate_usd||f.value, f.change, f.currency);
     const spark=fxSparklineSVG(hist, f.dir==='neg');
     return `<div class="fx-row">
