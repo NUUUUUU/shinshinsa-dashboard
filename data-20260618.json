@@ -1,7 +1,7 @@
 {
   "date": "2026-06-18",
   "date_kr": "2026년 6월 18일 (목)",
-  "generated_at": "2026-06-17 23:53 KST",
+  "generated_at": "2026-06-18 00:12 KST",
   "summary_line": "매파적 FOMC 충격으로 원달러 환율이 1,526원대에 진입한 가운데, 정부의 고환율 피해 기업 지원책 발동과 LG전자 ABC 전략 가시화가 동시에 부각—단기 비용 압박과 중장기 협력사 기회가 교차하는 국면.",
   "top3": [
     {
@@ -284,7 +284,9 @@
       "rate_usd": "1,526",
       "value": "1,526",
       "unit": "원/달러",
-      "color": "neg"
+      "color": "neg",
+      "change": "—",
+      "dir": "neg"
     },
     {
       "flag": "🇨🇳",
@@ -294,27 +296,33 @@
       "rate_usd": "6.76",
       "value": "6.76",
       "unit": "CNY/USD",
-      "color": "neu"
+      "color": "neu",
+      "change": "—",
+      "dir": "neu"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "rate": "—",
-      "rate_usd": "—",
-      "value": "—",
+      "rate": "32.52",
+      "rate_usd": "32.52",
+      "value": "32.52",
       "unit": "THB/USD",
-      "color": "neu"
+      "color": "neu",
+      "change": "—",
+      "dir": "neu"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
-      "rate": "—",
-      "rate_usd": "—",
-      "value": "—",
+      "rate": "49.82",
+      "rate_usd": "49.82",
+      "value": "49.82",
       "unit": "EGP/USD",
-      "color": "neu"
+      "color": "pos",
+      "change": "—",
+      "dir": "pos"
     }
   ],
   "overseas": [
