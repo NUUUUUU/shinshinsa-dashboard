@@ -619,6 +619,7 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
     hit.setAttribute('width', hw);
     hit.setAttribute('height', H);
     hit.setAttribute('fill','transparent');
+    hit.setAttribute('pointer-events','all');
     hit.style.cursor = 'crosshair';
     hit.addEventListener('mouseenter', () => {
       const displayLbl = labels[i]||String(i+1);
