@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko"><head>
+<html lang="ko">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#C8102E">
@@ -253,21 +254,21 @@ svg.wti{width:100%;height:100%;}
   <div class="card" id="fx-section">
     <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
     <div id="fx-list"></div>
-  </div><div class="card" id="top3-section">
+  </div>
+
+  <div class="card" id="top3-section">
     <div class="sec-label"><span class="sec-dot"></span>주목 이슈 TOP 3</div>
     <div id="top3-list">
       <div class="skeleton" style="height:50px"></div>
     </div>
-  </div><div class="card" id="kpi-section">
+  </div>
+
+  <div class="card" id="kpi-section">
     <div class="sec-label"><span class="sec-dot"></span>핵심 지표</div>
     <div class="kpi-grid" id="kpi-grid">
       <div class="skeleton" style="height:70px;grid-column:1/-1"></div>
     </div>
   </div>
-
-  
-
-  
 
   <div class="card" id="sched-section">
     <div class="sec-label"><span class="sec-dot"></span>CEO 일정</div>
@@ -334,7 +335,7 @@ svg.wti{width:100%;height:100%;}
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <span class="cmt-status" id="cmt-status"></span>
-        <button class="cmt-submit" id="cmt-submit-btn" disabled="">등록</button>
+        <button class="cmt-submit" id="cmt-submit-btn" disabled>등록</button>
       </div>
     </div>
   </div>
@@ -780,6 +781,5 @@ document.getElementById('cmt-submit-btn').addEventListener('click', async functi
 loadComments();
 
 </script>
-
-
-</body></html>
+</body>
+</html>
