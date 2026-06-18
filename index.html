@@ -152,6 +152,11 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .fx-val{font-size:17px;font-weight:700;color:var(--dgray);}
 .fx-chg{font-size:12px;font-weight:700;}
 .fx-chg.neg{color:var(--neg);} .fx-chg.pos{color:var(--pos);} .fx-chg.neu{color:var(--sgray);}
+.fx-spark-wrap{position:relative;flex:1;max-width:88px;margin:0 5px;}
+.fx-spark-wrap svg{display:block;overflow:visible;}
+.fx-tooltip{position:absolute;background:var(--dgray);color:#fff;font-size:11px;
+  font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;
+  pointer-events:none;z-index:20;top:-26px;left:50%;transform:translateX(-50%);}
 /* FILTER BAR */
 .filter-bar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px;flex-shrink:0;}
 .filter-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 13px;border-radius:20px;
@@ -532,8 +537,8 @@ function renderMarkets(items) {
 
 function renderFX(fxList) {
   const card = document.getElementById('fx-card');
-  card.innerHTML = '<div class="ct">환율 (vs USD)</div>' +
-    (fxList||[]).map(f=>`
+  card.innerHTML = '<div class="ct">환율 (vs USD) · 영업일 7일 추이</div>' +
+    (fxList||[]).map((f,i)=>`
     <div class="fx-row">
       <div class="fx-left">
         <span class="fx-flag">${f.flag||''}</span>
@@ -542,11 +547,93 @@ function renderFX(fxList) {
           <span class="fx-sub">${f.country}</span>
         </div>
       </div>
+      <div class="fx-spark-wrap">
+        <svg id="fxsp-${i}" width="100%" height="32" style="overflow:visible;"></svg>
+        <div id="fxtt-${i}" class="fx-tooltip" style="display:none;position:absolute;"></div>
+      </div>
       <div class="fx-right">
         <span class="fx-val">${f.rate_usd||f.value||'—'}</span>
         <span class="fx-chg ${f.color||f.dir||'neu'}">${f.change||'—'}</span>
       </div>
     </div>`).join('');
+
+  // 스파크라인 그리기
+  setTimeout(() => {
+    (fxList||[]).forEach((f,i) => {
+      const h = f.history;
+      if (!h || !h.values || h.values.length < 2) return;
+      drawFXSpark(`fxsp-${i}`, `fxtt-${i}`, h.values, h.labels||[], f.color||f.dir||'neu');
+    });
+  }, 60);
+}
+
+function drawFXSpark(svgId, ttId, data, labels, colorClass) {
+  const svg = document.getElementById(svgId);
+  const tt  = document.getElementById(ttId);
+  if (!svg || !tt || data.length < 2) return;
+  const W = svg.clientWidth || 80;
+  const H = 32;
+  const ml=2, mr=2, mt=5, mb=5;
+  const pw=W-ml-mr, ph=H-mt-mb, n=data.length;
+  const minV = Math.min(...data);
+  const maxV = Math.max(...data);
+  const range = maxV - minV || 0.01;
+  const xs = idx => ml + (idx/(n-1))*pw;
+  const ys = v  => mt + ph - ((v-minV)/range)*ph;
+  const clr = colorClass==='neg'?'#E0144C':colorClass==='pos'?'#0A7C56':'#7C8FA3';
+
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.innerHTML = '';
+
+  // 면적 채우기
+  const apts = `${xs(0)},${mt+ph} `+
+    data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' ')+
+    ` ${xs(n-1)},${mt+ph}`;
+  const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  poly.setAttribute('points',apts); poly.setAttribute('fill',clr); poly.setAttribute('opacity','0.13');
+  svg.appendChild(poly);
+
+  // 라인
+  cons
+  const line = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  line.setAttribute('points',data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' '));
+  line.setAttribute('fill','none'); line.setAttribute('stroke',clr);
+  line.setAttribute('stroke-width','1.8');
+  line.setAttribute('stroke-linejoin','round');
+  line.setAttribute('stroke-linecap','round');
+  svg.appendChild(line);
+
+  // 데이터 포인트 + 호버 히트 영역
+  data.forEach((v,i) => {
+    const cx = xs(i), cy = ys(v);
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',cx); c.setAttribute('cy',cy);
+    c.setAttribute('r', i===n-1 ? '3.5' : '2.2');
+    c.setAttribute('fill',clr);
+    if (i===n-1){ c.setAttribute('stroke','#fff'); c.setAttribute('stroke-width','1'); }
+    svg.appendChild(c);
+
+    const hit = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    const hw = n>1 ? Math.max(12, pw/(n-1)) : pw;
+    hit.setAttribute('x', Math.max(0,cx-hw/2));
+    hit.setAttribute('y', 0);
+    hit.setAttribute('width', hw);
+    hit.setAttribute('height', H);
+    hit.setAttribute('fill','transparent');
+    hit.style.cursor = 'crosshair';
+    hit.addEventListener('mouseenter', () => {
+      const displayLbl = labels[i]||String(i+1);
+      const numV = parseFloat(v);
+      const displayV = isNaN(numV)?v:(numV>=100?numV.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2}):numV.toFixed(2));
+      tt.textContent = displayLbl + ': ' + displayV;
+      tt.style.display = 'block';
+      const svgRect  = svg.getBoundingClientRect();
+      const wrapRect = svg.parentElement.getBoundingClientRect();
+      tt.style.left  = ((svgRect.left - wrapRect.left) + cx) + 'px';
+    });
+    hit.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
+    svg.appendChild(hit);
+  });
 }
 
 /* ══════════════════════════════════════
@@ -586,17 +673,13 @@ async function loadData() {
 
 /* ══════════════════════════════════════
    초기화
-   ══════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  loadData();
-  setInterval(loadData, 300000); // 5분 자동 갱신
 
-  document.getElementById('filter-bar').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (btn && !btn.classList.contains('empty'))
-      applyFilter(btn.dataset.filter);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.filter-btn').forEach(btn =>
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+  loadData();
 });
 </script>
+
 </body>
 </html>
