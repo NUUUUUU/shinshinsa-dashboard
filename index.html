@@ -154,9 +154,9 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .fx-chg.neg{color:var(--neg);} .fx-chg.pos{color:var(--pos);} .fx-chg.neu{color:var(--sgray);}
 .fx-spark-wrap{position:relative;flex:1;max-width:88px;margin:0 5px;}
 .fx-spark-wrap svg{display:block;overflow:visible;}
-.fx-tooltip{position:absolute;background:var(--dgray);color:#fff;font-size:11px;
+.fx-tooltip{position:fixed;background:#333;color:#fff;font-size:11px;
   font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;
-  pointer-events:none;z-index:20;top:-26px;left:50%;transform:translateX(-50%);}
+  pointer-events:none;z-index:9999;}
 /* FILTER BAR */
 .filter-bar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px;flex-shrink:0;}
 .filter-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 13px;border-radius:20px;
@@ -549,7 +549,7 @@ function renderFX(fxList) {
       </div>
       <div class="fx-spark-wrap">
         <svg id="fxsp-${i}" width="100%" height="32" style="overflow:visible;"></svg>
-        <div id="fxtt-${i}" class="fx-tooltip" style="display:none;position:absolute;"></div>
+        <div id="fxtt-${i}" class="fx-tooltip" style="display:none;"></div>
       </div>
       <div class="fx-right">
         <span class="fx-val">${f.rate_usd||f.value||'—'}</span>
@@ -581,11 +581,10 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
   const xs = idx => ml + (idx/(n-1))*pw;
   const ys = v  => mt + ph - ((v-minV)/range)*ph;
   const clr = colorClass==='neg'?'#E0144C':colorClass==='pos'?'#0A7C56':'#7C8FA3';
-
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   svg.innerHTML = '';
 
-  // 면적 채우기
+  // polygon area fill
   const apts = `${xs(0)},${mt+ph} `+
     data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' ')+
     ` ${xs(n-1)},${mt+ph}`;
@@ -593,7 +592,7 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
   poly.setAttribute('points',apts); poly.setAttribute('fill',clr); poly.setAttribute('opacity','0.13');
   svg.appendChild(poly);
 
-  // 라인
+  // line
   const line = document.createElementNS('http://www.w3.org/2000/svg','polyline');
   line.setAttribute('points',data.map((v,i)=>`${xs(i)},${ys(v)}`).join(' '));
   line.setAttribute('fill','none'); line.setAttribute('stroke',clr);
@@ -602,7 +601,7 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
   line.setAttribute('stroke-linecap','round');
   svg.appendChild(line);
 
-  // 데이터 포인트 + 호버 히트 영역
+  // data point circles
   data.forEach((v,i) => {
     const cx = xs(i), cy = ys(v);
     const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
@@ -611,29 +610,41 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
     c.setAttribute('fill',clr);
     if (i===n-1){ c.setAttribute('stroke','#fff'); c.setAttribute('stroke-width','1'); }
     svg.appendChild(c);
-
-    const hit = document.createElementNS('http://www.w3.org/2000/svg','rect');
-    const hw = n>1 ? Math.max(12, pw/(n-1)) : pw;
-    hit.setAttribute('x', Math.max(0,cx-hw/2));
-    hit.setAttribute('y', 0);
-    hit.setAttribute('width', hw);
-    hit.setAttribute('height', H);
-    hit.setAttribute('fill','transparent');
-    hit.setAttribute('pointer-events','all');
-    hit.style.cursor = 'crosshair';
-    hit.addEventListener('mouseenter', () => {
-      const displayLbl = labels[i]||String(i+1);
-      const numV = parseFloat(v);
-      const displayV = isNaN(numV)?v:(numV>=100?numV.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2}):numV.toFixed(2));
-      tt.textContent = displayLbl + ': ' + displayV;
-      tt.style.display = 'block';
-      const svgRect = svg.getBoundingClientRect();
-      tt.style.left = (svgRect.left + cx) + 'px';
-      tt.style.top  = (svgRect.top - 28) + 'px';
-    });
-    hit.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-    svg.appendChild(hit);
   });
+
+  // invisible overlay rect — catches ALL mouse events on entire SVG
+  const overlay = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  overlay.setAttribute('x',0); overlay.setAttribute('y',0);
+  overlay.setAttribute('width',W); overlay.setAttribute('height',H);
+  overlay.setAttribute('fill','rgba(0,0,0,0)');
+  overlay.setAttribute('pointer-events','all');
+  svg.appendChild(overlay);
+
+  // 단일 mousemove — X 위치로 가장 가까운 데이터 포인트 찾기
+  svg.addEventListener('mousemove', (e) => {
+    const rect = svg.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    // scale mouseX to SVG coords
+    const scaleX = W / (rect.width || W);
+    const svgX = mouseX * scaleX;
+    // 가장 가까운 인덱스
+    let best = 0, bestD = Infinity;
+    for (let i=0; i<n; i++) {
+      const d = Math.abs(xs(i) - svgX);
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    const v = data[best];
+    const numV = parseFloat(v);
+    const displayV = isNaN(numV)?v:(numV>=100?numV.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2}):numV.toFixed(2));
+    const displayLbl = labels[best]||String(best+1);
+    tt.textContent = displayLbl + ': ' + displayV;
+    tt.style.display = 'block';
+    // fixed 위치: 마우스 바로 위
+    tt.style.left = e.clientX + 'px';
+    tt.style.top  = (e.clientY - 32) + 'px';
+  });
+
+  svg.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
 }
 
 /* ══════════════════════════════════════
