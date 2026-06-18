@@ -627,9 +627,9 @@ function drawFXSpark(svgId, ttId, data, labels, colorClass) {
       const displayV = isNaN(numV)?v:(numV>=100?numV.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2}):numV.toFixed(2));
       tt.textContent = displayLbl + ': ' + displayV;
       tt.style.display = 'block';
-      const svgRect  = svg.getBoundingClientRect();
-      const wrapRect = svg.parentElement.getBoundingClientRect();
-      tt.style.left  = ((svgRect.left - wrapRect.left) + cx) + 'px';
+      const svgRect = svg.getBoundingClientRect();
+      tt.style.left = (svgRect.left + cx) + 'px';
+      tt.style.top  = (svgRect.top - 28) + 'px';
     });
     hit.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
     svg.appendChild(hit);
