@@ -174,7 +174,13 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 .fx-val{font-size:16px;font-weight:500;color:var(--txt);}
 .fx-chg{font-size:11px;}
 .fx-chg.pos{color:var(--green);} .fx-chg.neg{color:var(--red);} .fx-chg.neu{color:var(--txt3);}
-.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 10px;min-width:120px;}
+.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 10px;min-width:120px;position:relative;}
+.fx-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;
+  background:var(--txt);color:var(--card);font-size:10px;font-weight:600;padding:2px 7px;
+  border-radius:5px;white-space:nowrap;pointer-events:none;z-index:50;display:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.fx-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:4px solid transparent;border-top-color:var(--txt);}
 
 .wti-wrap{height:100px;position:relative;margin-top:8px;}
 svg.wti{width:100%;height:100%;}
@@ -348,7 +354,7 @@ svg.wti{width:100%;height:100%;}
 </div>
 
 <script>
-let _allNews=[], _cur='all';
+let _allNews=[], _cur='all', _fxSeries=[];
 
 function cats(item){
   const tags=(item.tags||[]).map(t=>t.toLowerCase());
@@ -513,7 +519,7 @@ function fxMockHistory(baseStr, changeStr, currency) {
   });
 }
 
-function fxSparklineSVG(values, isNeg) {
+function fxSparklineSVG(values, isNeg, idx) {
   const W=130, H=38, PX=5, PY=6;
   const min=Math.min(...values), max=Math.max(...values);
   const range=max-min||values[0]*0.001||1;
@@ -534,7 +540,8 @@ function fxSparklineSVG(values, isNeg) {
     ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${color}"/>`
     : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${color}" opacity="0.4"/>`
   ).join('');
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+  return `<svg id="fxsp-${idx}" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="touch-action:none;cursor:pointer;overflow:visible;">
+    <rect x="0" y="0" width="${W}" height="${H}" fill="transparent" pointer-events="all"/>
     <path d="${fillD}" fill="${color}" opacity="0.09"/>
     <path d="${d}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     ${dots}
@@ -542,14 +549,18 @@ function fxSparklineSVG(values, isNeg) {
 }
 
 function renderFX(items){
-  document.getElementById('fx-list').innerHTML=(items||[]).map(f=>{
+  _fxSeries=[];
+  document.getElementById('fx-list').innerHTML=(items||[]).map((f,i)=>{
     const _h=f.history;
     const hist=(_h&&_h.values&&_h.values.length>=2)
       ? _h.values
       : (Array.isArray(_h)&&_h.length>=2)
       ? _h
       : fxMockHistory(f.rate_usd||f.value, f.change, f.currency);
-    const spark=fxSparklineSVG(hist, f.dir==='neg');
+    let labels=(_h&&_h.labels&&_h.labels.length===hist.length)?_h.labels:null;
+    if(!labels){labels=hist.map((_,k)=>k===hist.length-1?'오늘':`D-${hist.length-1-k}`);}
+    _fxSeries[i]={values:hist,labels:labels};
+    const spark=fxSparklineSVG(hist, f.dir==='neg', i);
     return `<div class="fx-row">
       <div class="fx-left">
         <span class="fx-flag">${f.flag||''}</span>
@@ -558,13 +569,49 @@ function renderFX(items){
           <div class="fx-country">${f.country}</div>
         </div>
       </div>
-      <div class="fx-spark">${spark}</div>
+      <div class="fx-spark">${spark}<div class="fx-tooltip" id="fxtt-${i}"></div></div>
       <div class="fx-right">
         <div class="fx-val">${f.rate_usd||f.value||'—'}</div>
         <div class="fx-chg ${f.dir||'neu'}">${f.change}</div>
       </div>
     </div>`;
   }).join('');
+  (items||[]).forEach((f,i)=>bindFXTip(i));
+}
+
+/* 환율 스파크라인 — 탭(터치)·마우스 호버 시 해당 영업일 환율 툴팁 표시 */
+function bindFXTip(i){
+  const svg=document.getElementById('fxsp-'+i);
+  const tip=document.getElementById('fxtt-'+i);
+  const s=_fxSeries[i];
+  if(!svg||!tip||!s)return;
+  const values=s.values, labels=s.labels, n=values.length, W=130, PX=5;
+  const pxOf=k=>PX+k/(n-1)*(W-PX*2);
+  let hideT;
+  function fmt(v){
+    const num=parseFloat(v);
+    if(isNaN(num))return v;
+    return num>=100
+      ? num.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2})
+      : num.toFixed(2);
+  }
+  function show(clientX){
+    const rect=svg.getBoundingClientRect();
+    const sparkRect=svg.parentElement.getBoundingClientRect();
+    const sw=rect.width||W;
+    const svgX=(clientX-rect.left)/sw*W;
+    let best=0,bd=Infinity;
+    for(let k=0;k<n;k++){const dd=Math.abs(pxOf(k)-svgX);if(dd<bd){bd=dd;best=k;}}
+    tip.textContent=(labels[best]!=null?labels[best]:('D'+best))+' · '+fmt(values[best]);
+    tip.style.left=((rect.left-sparkRect.left)+pxOf(best)/W*sw)+'px';
+    tip.style.display='block';
+  }
+  function hide(){tip.style.display='none';}
+  svg.addEventListener('pointerdown',e=>{clearTimeout(hideT);show(e.clientX);});
+  svg.addEventListener('pointermove',e=>{clearTimeout(hideT);show(e.clientX);});
+  svg.addEventListener('pointerup',e=>{if(e.pointerType==='mouse')return;hideT=setTimeout(hide,1800);});
+  svg.addEventListener('pointercancel',()=>{hideT=setTimeout(hide,1200);});
+  svg.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide();});
 }
 
 function renderWTI(wti){
