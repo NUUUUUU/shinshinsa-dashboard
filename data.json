@@ -1,60 +1,79 @@
 {
-  "date": "2026-06-22",
-  "date_kr": "2026년 6월 22일 (월)",
-  "generated_at": "2026-06-21 23:14 KST",
-  "summary_line": "원·달러 환율이 외환위기 이후 최고인 1,520원대로 고착되며 제조 원가·수출 채산성 압박이 커지는 가운데, LG전자의 B2B·전장 확대와 신제품(워시콤보) 양산은 프레스 부품 협력사에 발주 기회로 작용해 위협과 기회가 공존한다.",
+  "date": "2026-06-23",
+  "date_kr": "2026년 6월 23일 (화)",
+  "generated_at": "2026-06-22 23:11 KST",
+  "summary_line": "강달러에 원·달러 환율이 열흘 만에 1,530원대(1,537원)로 급등하며 수입 원자재·부품 원가 부담이 재차 커진 가운데, 코스피는 9,114로 사상 최고를 경신했다. 태국 바트화 변동성·중국 내수 부진 등 해외 리스크 점검이 필요하며, 오늘 CEO 원가 컨센서스 회의와 태국법인 이슈점검이 예정돼 있다.",
   "top3": [
     {
       "rank": 1,
-      "title": "원·달러 환율 1,520원대 — 외환위기 후 최고",
-      "reason": "24거래일 연속 1,500원대 고착으로 수입 원자재·부품 원가 부담 가중, 수출 채산성과 함께 환헤지·원가계획 재점검 시급"
+      "title": "원·달러 환율 1,537원 급등 — 강달러로 열흘 만에 1,530원대",
+      "reason": "강달러 압력으로 환율이 10원 급등하며 수입 원자재·부품 조달 원가가 직접 상승, 환헤지·원가계획 재점검 시급 (오늘 CEO 원가 컨센서스 회의 직결)"
     },
     {
       "rank": 2,
-      "title": "LG전자 B2B·전장 확대 + 신제품(워시콤보) 양산",
-      "reason": "주요 고객사 LG전자의 1분기 B2B 매출 6.5조(전사 36%) 확대와 복합 세탁건조기 양산은 프레스 부품 발주 물량·믹스에 직접 영향 → 기회 요인"
+      "title": "태국 경상적자·바트화 변동성 리스크 (S&P BBB+ 유지)",
+      "reason": "S&P가 신용등급은 BBB+ 안정적으로 유지했으나 경상적자·바트 변동성 위험 부각, 오늘 CEO 태국법인 이슈점검 일정과 직결돼 현지 환리스크·원가구조 점검 필요"
     },
     {
       "rank": 3,
-      "title": "태국 자동차생산 -16%·중국 가전 보조금 축소",
-      "reason": "태국 5월 자동차 생산 16% 급감과 중국 이구환신 가전 대상 품목 축소(12→6개)는 해외 연관 공급망·LG 중국 가전 발주에 하방 압력"
+      "title": "중국 5월 소매판매 첫 감소 + 92억 달러 가전 부양책",
+      "reason": "3년여 만의 첫 소매판매 감소(-0.6%)로 내수 부진이 확인됐고, 92억 달러 트레이드인 보조금이 가전에 집중돼 고객사 LG전자 중국 가전 수요·부품 발주에 영향"
     }
   ],
   "monitoring": [
-    "원·달러 1,520~1,530원대 추가 상승 여부 및 환헤지 포지션 점검 — 수입 원가·수출 채산성 직접 영향",
-    "LG전자 2분기 실적 발표 일정 및 가전·전장(VS) 부문 가이던스 → 협력사 발주 물량 전이 모니터링",
-    "태국 6월 자동차 생산·수출 지표 및 중국 6월 제조업 PMI(6/29 발표 예정) → 해외 수요·공급망 점검"
+    "원·달러 1,540원 돌파 여부 및 연준 추가 긴축 시그널 — 수입 원가·수출 채산성 직접 영향, 환헤지 포지션 점검",
+    "태국 하반기 바트화 밴드(31.8~33.5)·경상수지 추이 — 태국법인 환리스크·원가구조 점검",
+    "LG전자 HVAC·B2B 수주 확대에 따른 프레스·금형 부품 발주 동향 및 2분기 실적 발표 일정 모니터링"
   ],
-  "ceo_schedule": [],
+  "ceo_schedule": [
+    {
+      "time": "09:00 ~ 11:00",
+      "title": "컨센서스 회의",
+      "location": "",
+      "note": ""
+    },
+    {
+      "time": "11:00 ~ 12:00",
+      "title": "원가 컨센서스 회의",
+      "location": "",
+      "note": ""
+    },
+    {
+      "time": "15:00 ~ 17:00",
+      "title": "태국법인 이슈점검",
+      "location": "",
+      "note": ""
+    }
+  ],
   "kpis": [
     {
       "type": "neg",
       "label": "원/달러 환율",
-      "value": "1,525",
+      "value": "1,538",
       "unit": "원",
-      "change": "▲ 외환위기후 최고",
-      "note": "24거래일 연속 1,500원대, 수입 원자재·부품 원가 압박 가중"
+      "change": "▲ +0.73% (강달러)",
+      "note": "열흘 만에 1,530원대 재진입, 수입 원자재·부품 원가 압박 가중"
     },
     {
-      "type": "neg",
-      "label": "LG전자 주가",
-      "value": "211,500",
-      "unit": "원",
-      "change": "▼ -7.4%",
-      "note": "3거래일 연속 하락, 단기 조정 국면 (6/20 종가 기준)"
-    },
-    {
-      "type": "gld",
-      "label": "WTI 유가",
-      "value": "$76.5",
+      "type": "pos",
+      "label": "KOSPI",
+      "value": "9,114.55",
       "unit": "",
-      "change": "▲ +2.5% (7일)",
-      "note": "이란 휴전 후 박스권($72~78) 등락, 물류·원가 변수"
+      "change": "▲ +0.69% 사상최고",
+      "note": "SK하이닉스가 삼성전자 제치고 시총 1위 등극, 투자심리 강세"
+    },
+    {
+      "type": "pos",
+      "label": "WTI 유가",
+      "value": "$74.1",
+      "unit": "",
+      "change": "▼ -12.5% (7일)",
+      "note": "미·이란 협상 진전에 3월 이후 최저, 원가·물류 부담 완화 요인"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "원·달러 환율이 외환위기 이후 최고인 1,520원대로 고착되며 제조 원가·수출 채산성 압박이 커지는 가운데, LG전자의 B2B·전장 확대와 신제품(워시콤보) 양산은 프레스 부품 협력사에 발주 기회로 작용해 위협과 기회가 공존한다."
+      "summary": "강달러에 원·달러 환율이 열흘 만에 1,530원대(1,537원)로 급등하며 수입 원자재·부품 원가 부담이 재차 커진 가운데, 코스피는 9,114로 사상 최고를 경신했다. 태국 바트화 변동성·중국 내수 부진 등 해외 리스크 점검이 필요하며, 오늘 CEO 원가 컨센서스 회의와 태국법인 이슈점검이 예정돼 있다."
     }
   ],
   "news": [
@@ -62,171 +81,50 @@
       "id": "n001",
       "category": "한국",
       "importance": 3,
-      "title": "6월 환율 1천520원 넘어…98년 외환위기 후 최고",
+      "title": "'강달러'에 열흘 만에 1530원대로…환율, 10원 오른 1537원 마감",
       "source": "SBS Biz",
-      "pubDate": "2026-06-21",
-      "url": "https://n.news.naver.com/mnews/article/374/0000517265?sid=101",
-      "body": "이달 들어 19일까지 주간 거래 종가 기준 평균 원/달러 환율이 1,520원을 웃돌아 외환위기 이후 최고 수준을 기록. 고환율 고착화에 따른 물가 상승과 제조업 원가 부담 우려가 커지고 있다.",
-      "impact": "⬇ 원가·환율 — 1,520원대 고착으로 수입 원자재·부품 조달 원가 직접 상승, 환헤지·원가계획 재점검 필요",
+      "pubDate": "2026-06-22",
+      "url": "https://n.news.naver.com/mnews/article/374/0000517476?sid=101",
+      "body": "원·달러 환율이 달러 강세에 열흘 만에 1530원대로 올라섰다. 서울외환시장 주간 거래 종가는 전 거래일보다 10원 오른 1,537원으로 집계됐다. 매파적 연준 기조와 미-이란 협상 불확실성이 강달러 압력으로 작용했다.",
+      "impact": "⬇ 원가·환율 — 1,530원대 재진입으로 수입 원자재·부품 조달 원가 직접 상승, 환헤지·원가계획 재점검 필요",
       "tags": [
         "원달러환율",
-        "외환위기",
+        "강달러",
+        "연준",
         "원가",
         "거시경제"
       ]
     },
     {
       "id": "n002",
-      "category": "LG",
+      "category": "태국",
       "importance": 3,
-      "title": "전자·디스플레이·이노텍 다 잘 나간다…구광모의 '원LG' 전략 재조명",
-      "source": "매일경제",
-      "pubDate": "2026-06-22",
-      "url": "https://n.news.naver.com/mnews/article/009/0005696807?sid=101",
-      "body": "LG전자가 전장·HVAC를 중심으로 B2B 비중을 빠르게 확대. 1분기 B2B 매출은 6조5000억원으로 전사 매출의 36%를 차지했으며 VS사업본부가 성장을 견인하고 있다.",
-      "impact": "⬆ 매출·고객사 — LG전자 B2B·전장 확대는 프레스·금형 부품 발주 물량·믹스 확대 기회로 연결",
+      "title": "Thailand faces deficit and baht risks despite S&P rating relief",
+      "source": "The Nation Thailand",
+      "pubDate": "2026-06-18",
+      "url": "https://www.nationthailand.com/business/economy/40067707",
+      "body": "S&P가 태국 신용등급을 BBB+ 안정적 전망으로 유지했으나 경상수지 적자와 바트화 변동성 위험이 부각됐다. 유가 상승·기술 투자용 수입 증가로 경상적자가 구조적 문제가 될 수 있다는 우려가 제기됐다. S&P는 2026~2027년 재정적자를 GDP의 약 3.2%로 전망했고, 크룽스리는 하반기 바트화를 달러당 31.80~33.50으로 예상했다.",
+      "impact": "⬇ 환율·기타 — 태국법인 환리스크·원가구조에 직접 영향, 오늘 CEO 태국법인 이슈점검 일정과 직결",
       "tags": [
-        "lg전자",
-        "B2B",
-        "전장",
-        "HVAC",
-        "원LG"
+        "태국",
+        "바트화",
+        "경상적자",
+        "S&P",
+        "신용등급"
       ]
     },
     {
       "id": "n003",
-      "category": "LG",
-      "importance": 3,
-      "title": "LG전자, 국내 최대 용량 복합형 세탁건조기 '워시타워·워시콤보' 출시",
-      "source": "파이낸셜뉴스",
-      "pubDate": "2026-06-21",
-      "url": "https://n.news.naver.com/mnews/article/014/0005537656?sid=101",
-      "body": "LG전자가 핵심부품 기술력에 AI 기능을 더한 국내 최대 25kg 용량 복합형 세탁건조기를 출시. 워시콤보는 듀얼 인버터 히트펌프와 고효율 열교환기를 탑재해 건조 용량을 6kg 늘렸다. 60여 년간 축적한 모터·컴프레서 기술이 적용됐다.",
-      "impact": "⬆ 매출·생산 — 신제품 양산 본격화 시 관련 프레스·판금 부품 발주 확대 가능",
-      "tags": [
-        "lg전자",
-        "세탁건조기",
-        "히트펌프",
-        "부품",
-        "신제품"
-      ]
-    },
-    {
-      "id": "n004",
-      "category": "LG",
-      "importance": 2,
-      "title": "[2026 100대 CEO] 류재철 LG전자 대표, 가전 1등 넘어 B2B·로봇 전환 속도",
-      "source": "한경비즈니스",
-      "pubDate": "2026-06-22",
-      "url": "https://n.news.naver.com/mnews/article/050/0000107566?sid=101",
-      "body": "LG전자가 1분기 역대 최대 매출 23조7272억원, 영업이익 1조6737억원(전년比 32.9%↑)을 달성. 류재철 대표는 생활가전을 넘어 B2B 사업으로 포트폴리오를 확장하고 있다.",
-      "impact": "⬆ 고객사 — 주요 고객 LG전자 호실적은 부품 발주 안정·확대에 긍정",
-      "tags": [
-        "lg전자",
-        "류재철",
-        "B2B",
-        "로봇",
-        "1분기실적"
-      ]
-    },
-    {
-      "id": "n005",
-      "category": "LG",
-      "importance": 2,
-      "title": "유럽 주거단지에 K-히트펌프…삼성·LG전자, 공급 확대 '속도'",
-      "source": "데일리한국",
-      "pubDate": "2026-06-21",
-      "url": "https://daily.hankooki.com/news/articleView.html?idxno=1378230",
-      "body": "삼성·LG전자가 유럽 주거용 히트펌프 공급을 확대. 시장조사업체 MMR은 유럽 히트펌프 시장이 2032년 약 450억달러 규모로 성장할 것으로 전망. LG전자 ES사업본부가 효율성을 강조했다.",
-      "impact": "⬆ 매출 — LG 공조·히트펌프 수주 확대는 관련 프레스·금형 부품 납품 기회",
-      "tags": [
-        "lg전자",
-        "히트펌프",
-        "유럽",
-        "공조",
-        "ES사업"
-      ]
-    },
-    {
-      "id": "n006",
-      "category": "LG",
-      "importance": 2,
-      "title": "[전망] LG전자 2분기 성적표에 쏠린 눈… 가전 경쟁력 다시 증명할까",
-      "source": "이코노미톡뉴스",
-      "pubDate": "2026-06-22",
-      "url": "http://www.economytalk.kr/news/articleView.html?idxno=422088",
-      "body": "LG전자 2분기 실적에서 기존 가전 사업 방어력과 전장·HVAC 등 B2B 사업의 미래 성장 성과가 함께 평가될 전망. 원가 상승과 소비 둔화 국면에서 B2B가 새 성장축이 될지가 관건이다.",
-      "impact": "⬌ 고객사 — 2분기 실적·가이던스에 따라 협력사 발주 방향 영향, 모니터링 필요",
-      "tags": [
-        "lg전자",
-        "2분기실적",
-        "가전",
-        "B2B",
-        "HVAC"
-      ]
-    },
-    {
-      "id": "n007",
-      "category": "한국",
-      "importance": 2,
-      "title": "[ME2026] 부광테크, 금형 자동화 핵심 부품 기술 공개… '정밀 금형 공급'",
-      "source": "산업방송 KIDD",
-      "pubDate": "2026-06-19",
-      "url": "https://kidd.co.kr/news/246392",
-      "body": "부광테크가 한국금형산업협동조합 공동관을 통해 자동차용 프레스 금형 부품, 사출 금형 부품, 금형 자동화 요소 부품을 중심으로 글로벌 바이어와 상담을 진행. 정밀 금형 공급 역량을 공개했다.",
-      "impact": "⬌ 기타 — 프레스금형 동종업계 기술·수주 동향, 경쟁·협력 환경 참고",
-      "tags": [
-        "프레스금형",
-        "자동차부품",
-        "금형산업",
-        "정밀금형"
-      ]
-    },
-    {
-      "id": "n008",
-      "category": "한국",
-      "importance": 2,
-      "title": "美-이란 종전 불확실성 재부상…환율 1530원대서 경계감 지속",
-      "source": "이데일리",
-      "pubDate": "2026-06-22",
-      "url": "https://n.news.naver.com/mnews/article/018/0006311673?sid=101",
-      "body": "원·달러 환율이 1530원대에서 상승세를 이어갈 전망. 미국-이란 종전 불확실성이 반영되며 달러인덱스는 100.85를 기록. 글로벌 위험선호 위축으로 국내 증시 경계감도 지속될 것으로 보인다.",
-      "impact": "⬇ 환율·원가 — 1,530원대 경계감 지속, 수입 원가 상방 리스크",
-      "tags": [
-        "원달러환율",
-        "거시경제",
-        "외환",
-        "이란"
-      ]
-    },
-    {
-      "id": "n009",
-      "category": "한국",
-      "importance": 2,
-      "title": "[마켓 프리뷰] 1만피 향하는 코스피 '숨고르기'…몸집 커지는 삼전닉스",
-      "source": "SBS Biz",
-      "pubDate": "2026-06-22",
-      "url": "https://n.news.naver.com/mnews/article/374/0000517312?sid=101",
-      "body": "6월 달러·원 환율이 1520원을 상회하며 외환위기 후 최고, 24거래일 연속 1500원대 기록. 고환율 고착 우려 속 코스피는 9000선 돌파 후 숨고르기 국면.",
-      "impact": "⬇ 환율 — 고환율 고착은 제조 원가·증시 변동성에 부담",
-      "tags": [
-        "KOSPI",
-        "원달러환율",
-        "증시",
-        "거시경제"
-      ]
-    },
-    {
-      "id": "n010",
       "category": "중국",
-      "importance": 2,
-      "title": "China readies fresh $9 billion consumer stimulus as retail sales shrink",
+      "importance": 3,
+      "title": "China Readies Fresh $9 Billion Consumer Stimulus as Retail Sales Shrink",
       "source": "Caixin Global",
       "pubDate": "2026-06-18",
       "url": "https://www.caixinglobal.com/2026-06-18/china-readies-fresh-9-billion-consumer-stimulus-as-retail-sales-shrink-102455649.html",
-      "body": "중국 정부가 6월 말까지 625억 위안(약 92억 달러)을 소비재 이구환신 보조금에 추가 투입. 2026년 프로그램은 2,500억 위안으로 전년(3,000억)보다 축소됐고 가전 보조 대상 품목은 12→6개로 줄어 LG전자 등 가전 업체의 중국 내수 수요에 영향이 예상된다.",
-      "impact": "⬇ 매출·고객사 — LG전자 중국 가전 수요 둔화 가능 → 부품 발주 간접 영향",
+      "body": "중국 5월 소매판매가 봉쇄 해제 이후 처음으로 전년 대비 0.6% 감소하자 추가 부양에 나선다. 정부는 약 625억 위안(92억 달러)을 소비재 트레이드인 보조금에 투입하며, 2026년 프로그램은 2,500억 위안 규모로 자동차·가전·스마트글래스 등에 집중한다.",
+      "impact": "⬇ 매출·고객사 — 중국 내수 부진은 LG전자 중국 가전 수요에 부담, 다만 가전 트레이드인 보조금 집중은 수혜 품목 모니터링 필요",
       "tags": [
+        "중국",
         "이구환신",
         "가전보조금",
         "소비부양",
@@ -234,218 +132,286 @@
       ]
     },
     {
-      "id": "n011",
+      "id": "n004",
+      "category": "LG",
+      "importance": 2,
+      "title": "이상고온에 AI 냉각 수요… '황금알' 된 HVAC 시장",
+      "source": "국민일보",
+      "pubDate": "2026-06-23",
+      "url": "https://n.news.naver.com/mnews/article/005/0001856477?sid=101",
+      "body": "이상고온과 AI 데이터센터 냉각 수요 급증으로 HVAC(냉난방공조) 시장이 급성장하고 있다. LG전자는 HVAC를 B2B 핵심 성장 동력으로 낙점하고, 독자 플랫폼 '씽큐'를 기반으로 건물 공조와 가전을 유기적으로 관리하는 스마트 솔루션에 속도를 내고 있다.",
+      "impact": "⬆ 매출·고객사 — LG전자 HVAC·공조 B2B 확대는 관련 프레스·금형 부품 발주 물량 확대 기회",
+      "tags": [
+        "lg전자",
+        "HVAC",
+        "공조",
+        "B2B",
+        "AI냉각",
+        "씽큐"
+      ]
+    },
+    {
+      "id": "n005",
+      "category": "LG",
+      "importance": 2,
+      "title": "LG전자, 국내 최대 용량 복합형 세탁건조기 출시…AI 기능 강화",
+      "source": "이지경제",
+      "pubDate": "2026-06-22",
+      "url": "https://www.ezyeconomy.com/news/articleView.html?idxno=236606",
+      "body": "LG전자가 국내 최대 25kg 용량 복합형 세탁건조기 '워시콤보'를 출시했다. 듀얼 인버터 히트펌프와 고효율 열교환기를 적용하고 부품 집적도를 높여 건조 용량을 6kg 확대했으며, AI 기능으로 소량급속코스 건조 시간을 30% 이상 단축했다.",
+      "impact": "⬆ 매출·생산 — 신제품 양산 본격화 시 관련 프레스·판금·열교환 부품 발주 확대 가능",
+      "tags": [
+        "lg전자",
+        "세탁건조기",
+        "히트펌프",
+        "열교환기",
+        "AI가전",
+        "워시콤보"
+      ]
+    },
+    {
+      "id": "n006",
+      "category": "한국",
+      "importance": 2,
+      "title": "[마감 시황] 코스피, 9,114.55로 사상 최고치 마감…SK하이닉스 시총 1위",
+      "source": "비즈니스코리아",
+      "pubDate": "2026-06-22",
+      "url": "https://www.businesskorea.co.kr/news/articleView.html?idxno=271773",
+      "body": "코스피가 62.13포인트(0.69%) 오른 9,114.55로 사상 최고치를 경신했다. SK하이닉스가 삼성전자(보통주)를 제치고 시총 1위에 올라 25년 7개월 만에 대지각변동이 발생했다. 원·달러 환율은 강달러에 10원 급등한 1,537원으로 마감했다.",
+      "impact": "⬌ 환율·기타 — 증시 투자심리는 강세이나 강달러 동반으로 제조 원가 변동성 병존",
+      "tags": [
+        "코스피",
+        "사상최고치",
+        "SK하이닉스",
+        "환율",
+        "시총역전"
+      ]
+    },
+    {
+      "id": "n007",
+      "category": "이집트",
+      "importance": 2,
+      "title": "Egypt launches industrial fund, unified investment platform to boost production, exports",
+      "source": "Daily News Egypt",
+      "pubDate": "2026-06-21",
+      "url": "https://www.dailynewsegypt.com/2026/06/21/egypt-launches-industrial-fund-unified-investment-platform-to-boost-production-exports/",
+      "body": "이집트 투자·대외무역부 장관이 국부펀드 산하 산업펀드와 경제주체 통합 디지털 플랫폼 출범을 발표했다. 통합 창구는 투자자가 환경·민방위 등 각 기관 인허가를 추적하고 처리시간을 단축한다. 1~4월 엔지니어링 수출은 25억 달러로 전년 동기 대비 약 20% 증가했다.",
+      "impact": "⬌ 기타 — 이집트 투자·산업 인프라 정비는 한국 부품·금형사 진출에 기회·경쟁 요인 병존",
+      "tags": [
+        "이집트",
+        "산업펀드",
+        "투자플랫폼",
+        "엔지니어링수출"
+      ]
+    },
+    {
+      "id": "n008",
+      "category": "LG",
+      "importance": 2,
+      "title": "이젠 '주거 플랫폼' 경쟁…삼성·LG, 모듈러 시장 공략법 '다르네'",
+      "source": "뉴스1",
+      "pubDate": "2026-06-23",
+      "url": "https://n.news.naver.com/mnews/article/421/0009017619?sid=101",
+      "body": "LG전자가 2024년 출시한 '스마트코티지'를 기반으로 세컨드하우스·기업 연수원·숙박시설 등 B2B 주거 플랫폼 사업 확대를 모색 중이다. 해외 사업자에게 AI 홈·공조·에너지 솔루션을 공급하며 삼성과 차별화된 모듈러 시장 공략에 나서고 있다.",
+      "impact": "⬌ 매출 — LG 모듈러·주거 플랫폼 확장은 중장기 부품 수요 다변화 요인",
+      "tags": [
+        "lg전자",
+        "B2B",
+        "모듈러",
+        "주거플랫폼",
+        "스마트코티지"
+      ]
+    },
+    {
+      "id": "n009",
+      "category": "한국",
+      "importance": 2,
+      "title": "[ME2026] 한국금기, 다이셋트·가이드 유니트 출품…자동차·전자 금형 부품 강화",
+      "source": "기계산업뉴스(KIDD)",
+      "pubDate": "2026-06-22",
+      "url": "https://kidd.co.kr/news/246424",
+      "body": "한국금기가 ME2026 전시회에서 다이셋트·가이드 유니트 등 정밀 금형 부품을 출품했다. 자동차·전자부품·산업용 제품 생산에 쓰이는 프레스 금형 및 사출 금형용 스프링과 정밀 가공 부품을 선보이며 금형 품질·수명 향상 기술을 강조했다.",
+      "impact": "⬌ 기타 — 프레스금형 동종업계 기술·수주 동향, 경쟁·협력 환경 참고",
+      "tags": [
+        "프레스금형",
+        "다이셋트",
+        "정밀부품",
+        "자동차부품",
+        "ME2026"
+      ]
+    },
+    {
+      "id": "n010",
       "category": "중국",
       "importance": 2,
-      "title": "China economy weakens further in May as retail sales post first drop in over three years",
-      "source": "CNBC",
-      "pubDate": "2026-06-16",
-      "url": "https://www.cnbc.com/amp/2026/06/16/china-economy-may-retail-sales-industrial-output-fixed-asset-investment-.html",
-      "body": "5월 중국 소매판매가 전년 대비 0.6% 감소하며 3년여 만에 첫 감소. 가전(-15.6%)·자동차(-16.1%) 판매 급락. 반면 산업생산은 4.5% 증가. 공급 강세-수요 약세 내수 불균형이 심각하다는 평가.",
-      "impact": "⬇ 매출 — 중국 가전 수요 둔화는 LG 중국 사업·연관 부품 수요에 하방 압력",
+      "title": "China to raise power prices for energy-intensive sectors in green transition push",
+      "source": "South China Morning Post",
+      "pubDate": "2026-06-17",
+      "url": "https://www.scmp.com/economy/china-economy/article/3357297/china-raise-power-prices-energy-intensive-sectors-green-transition-push",
+      "body": "중국 NDRC 등 5개 부처가 9개 에너지 집약 산업의 전기요금을 인상하는 3년 로드맵을 발표했다. 녹색 전환을 가속하고 산업 고도화를 추진하려는 조치로, 2028년까지 탄소배출 2억 톤 감축을 목표로 한다.",
+      "impact": "⬌ 원가 — 중국 에너지 집약 산업 전기요금 인상은 현지 조달 부품·소재 원가 상방 요인",
       "tags": [
-        "중국경제",
-        "소매판매",
-        "산업생산",
-        "가전수요"
+        "중국",
+        "전기요금",
+        "녹색전환",
+        "에너지",
+        "원가"
+      ]
+    },
+    {
+      "id": "n011",
+      "category": "태국",
+      "importance": 2,
+      "title": "Thailand's shrinking surplus raises baht stability fears",
+      "source": "The Nation Thailand",
+      "pubDate": "2026-06-17",
+      "url": "https://www.nationthailand.com/business/economy/40067187",
+      "body": "태국의 2분기 경상수지가 GDP의 약 2% 적자를 기록할 전망으로, 오랜 강점이던 대규모 경상흑자가 약화되고 있다. 높은 에너지 비용, 국내생산 대체 수입 증가, 경쟁력 약화, 불완전한 서비스수지가 원인으로 지목됐다.",
+      "impact": "⬇ 환율 — 태국 경상수지 악화는 바트 변동성 확대 요인, 현지 통화 환산·거래에 변수",
+      "tags": [
+        "태국",
+        "경상수지",
+        "바트화",
+        "수입"
       ]
     },
     {
       "id": "n012",
-      "category": "태국",
-      "importance": 2,
-      "title": "Thai car exports fall as parts costs and weak demand weigh on output",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-19",
-      "url": "https://www.nationthailand.com/business/automobile/40066626",
-      "body": "5월 태국 자동차 생산이 전년 대비 16.19% 감소한 126,161대. 1~5월 누적 생산은 644,951대로 16.88% 감소. 부품 비용 상승과 내수 약세가 생산에 부담으로 작용해 태국 자동차 부품·금형 공급망에 영향이 우려된다.",
-      "impact": "⬇ 생산 — 태국 자동차 부품·금형 공급망 위축은 현지 연관 사업에 부정적",
+      "category": "LG",
+      "importance": 1,
+      "title": "\"냉난방공조부터 모듈러 홈까지\"…삼성·LG, B2B 시장서 격돌",
+      "source": "아주경제",
+      "pubDate": "2026-06-22",
+      "url": "https://www.ajunews.com/view/20260622153147740",
+      "body": "삼성전자와 LG전자가 냉난방공조와 모듈러 홈을 중심으로 B2B 시장에서 정면 대결한다. 삼성이 '삼성 AI 모듈러 홈'을 선보인 가운데 LG전자도 관련 사업에 직접 뛰어들며 B2B 솔루션 경쟁이 본격화되고 있다.",
+      "impact": "⬌ 매출 — LG B2B 공조·모듈러 경쟁 가속은 부품 발주 다변화 요인",
       "tags": [
-        "태국자동차",
-        "생산감소",
-        "수출",
-        "부품"
+        "lg전자",
+        "삼성전자",
+        "B2B",
+        "모듈러홈",
+        "공조"
       ]
     },
     {
       "id": "n013",
-      "category": "태국",
-      "importance": 2,
-      "title": "Thai industry faces uneven outlook as risk factors weigh on sectors",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-20",
-      "url": "https://www.nationthailand.com/business/economy/40067057",
-      "body": "태국 제조업은 부문별로 엇갈린 전망. 제조업은 GDP의 25%·고용 16%(약 620만명)를 차지하나 석유·화학·섬유·건자재가 높은 생산비용과 저가 수입 경쟁에 노출. 4월 제조업 PMI 52.7로 12개월 연속 확장이나 전월(54.1)보다 둔화.",
-      "impact": "⬌ 생산 — 태국 제조업 둔화 신호, 현지 공급망 모니터링 필요",
+      "category": "LG",
+      "importance": 1,
+      "title": "LG전자, 핵심부품 기술력에 AI 기능 강화-최대 용량 복합형 세탁건조기 출시",
+      "source": "테크홀릭",
+      "pubDate": "2026-06-22",
+      "url": "http://www.techholic.co.kr/news/articleView.html?idxno=221771",
+      "body": "LG전자가 60여 년간 축적한 핵심 부품 기술에 AI 기능을 더한 워시콤보 신제품을 출시했다. 세탁조를 정밀 제어하는 모터, 듀얼 인버터 히트펌프, 고효율 열교환기를 탑재하고 부품 집적도를 높였다.",
+      "impact": "⬆ 생산 — 핵심부품 고도화 제품 양산은 정밀 부품 발주 기회",
       "tags": [
-        "태국제조업",
-        "PMI",
-        "산업전망"
+        "lg전자",
+        "세탁건조기",
+        "히트펌프",
+        "핵심부품",
+        "모터"
       ]
     },
     {
       "id": "n014",
-      "category": "이집트",
-      "importance": 2,
-      "title": "Minister of Industry reviews production at ELARABY, Samsung factories in Beni Suef",
-      "source": "Daily News Egypt",
-      "pubDate": "2026-06-21",
-      "url": "https://www.dailynewsegypt.com/2026/06/21/minister-of-industry-reviews-production-at-elaraby-samsung-factories-in-beni-suef/",
-      "body": "6월 21일 이집트 산업부 장관이 베니수에프 ELARABY·삼성전자 공장 생산을 점검. 중동 최초 에어컨 컴프레서 공장(연 200만대 규모, 50% 수출 목표) 포함. 삼성 공장은 약 7억 달러 투자로 연 TV 500만대·휴대폰 600만대 생산.",
-      "impact": "⬌ 기타 — 이집트 가전 현지생산 확대는 한국 부품·금형사에 기회·경쟁 병존",
+      "category": "한국",
+      "importance": 1,
+      "title": "NH투자證 \"코스피, 1만2500 돌파도 가능\"",
+      "source": "한국경제TV",
+      "pubDate": "2026-06-22",
+      "url": "https://n.news.naver.com/mnews/article/215/0001256141?sid=101",
+      "body": "NH투자증권이 코스피 1만2500선 돌파 가능성을 제시했다. 한국 제조업 경기 회복을 긍정 요인으로 지목했으며, 글로벌 제조업 PMI 대비 미국·한국 제조업 PMI 상승폭이 두드러진다고 분석했다. AI 관련 수요가 증시 상승을 견인하고 있다.",
+      "impact": "⬌ 기타 — 제조업 경기 회복 전망은 전방 수요에 긍정 신호",
       "tags": [
-        "이집트가전",
-        "컴프레서공장",
-        "삼성",
-        "ELARABY"
+        "코스피",
+        "NH투자증권",
+        "제조업PMI",
+        "경기회복",
+        "AI수요"
       ]
     },
     {
       "id": "n015",
-      "category": "LG",
+      "category": "중국",
       "importance": 1,
-      "title": "LG전자 모듈러주택 확대…AI·가전·공조 동시에 키운다",
-      "source": "서울경제",
-      "pubDate": "2026-06-21",
-      "url": "https://n.news.naver.com/mnews/article/011/0004633398?sid=101",
-      "body": "LG전자가 모듈러 주택 사업을 확대하며 AI·가전·공조를 동시 육성. 제품 라인업 보강과 B2B 사업 확대, 글로벌 사우스 시장 공략으로 성장세 유지 방침.",
-      "impact": "⬌ 매출 — 신규 사업 확장은 중장기 부품 수요 다변화 요인",
+      "title": "중국 1~5월 소매판매 20.6조 위안(+1.4%), 부가가치 산업생산 5.4% 증가",
+      "source": "Global Times",
+      "pubDate": "2026-06-16",
+      "url": "https://www.globaltimes.cn/page/202606/1363674.shtml",
+      "body": "중국 국가통계국 발표에 따르면 1~5월 누적 소매판매는 20.6조 위안으로 전년 대비 1.4% 증가했고, 규모 이상 기업 부가가치 산업생산은 5.4% 늘었다. 5월 단월 산업생산은 4.5% 증가해 4월(4.1%)보다 개선됐다.",
+      "impact": "⬌ 기타 — 중국 내수 누적 지표·산업생산 회복세, 가전 수요 흐름 참고",
       "tags": [
-        "lg전자",
-        "모듈러주택",
-        "공조",
-        "B2B"
+        "중국경제",
+        "소매판매",
+        "산업생산",
+        "누적통계"
       ]
     },
     {
       "id": "n016",
-      "category": "한국",
+      "category": "중국",
       "importance": 1,
-      "title": "[주간경제일정] 마이크론, 이번 주 실적 발표…반도체 랠리 동력 유지?",
-      "source": "SBS Biz",
-      "pubDate": "2026-06-22",
-      "url": "https://n.news.naver.com/mnews/article/374/0000517307?sid=101",
-      "body": "미국 제조업 5월 PMI 확정치가 55.1, 유로존 5월 PMI도 51.6으로 확장세. 국내에서는 한국은행이 이번 주 6월 기업심리지수를 발표하며 23일 미국 S&P PMI 예비치도 발표된다.",
-      "impact": "⬌ 기타 — 글로벌 제조업 경기 지표 점검 포인트",
+      "title": "China sees first retail sales drop in over 3 years, prompting talk of stimulus",
+      "source": "South China Morning Post",
+      "pubDate": "2026-06-16",
+      "url": "https://www.scmp.com/economy/economic-indicators/article/3357227/chinas-economic-imbalances-deepen-may-retail-sales-drop-first-decline-late-2022",
+      "body": "5월 중국 소매판매가 전년 대비 0.6% 감소해 2022년 말 봉쇄 해제 이후 첫 하락을 기록했다. 수출은 급증한 반면 내수 약세가 지속돼 경제 불균형이 심화됐다. 애널리스트들은 내수 부양을 위한 추가 부양책 도입을 전망하고 있다.",
+      "impact": "⬇ 매출 — 중국 내수 약세는 LG 중국 가전 수요·연관 부품에 하방 압력",
       "tags": [
-        "PMI",
-        "제조업경기",
-        "한국은행",
-        "거시경제"
+        "중국경제",
+        "소매판매",
+        "내수",
+        "부양책"
       ]
     },
     {
       "id": "n017",
-      "category": "한국",
+      "category": "태국",
       "importance": 1,
-      "title": "[외환-주간] 연준발 강달러는 언제까지…물가·이란·당국에 시선",
-      "source": "연합인포맥스",
-      "pubDate": "2026-06-21",
-      "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4421062",
-      "body": "6월 S&P 글로벌 제조업·서비스업 PMI(23일), 1분기 경상수지(24일), GDP 확정치(25일) 등이 주요 지표. 연준 금리 인상에는 경기 순항이 전제돼야 한다는 분석.",
-      "impact": "⬌ 환율 — 강달러·환율 흐름 주간 점검 포인트",
+      "title": "S&P keeps Thailand at BBB+, JSCCIB urges structural reform to sustain confidence",
+      "source": "The Nation Thailand",
+      "pubDate": "2026-06-17",
+      "url": "https://www.nationthailand.com/business/economy/40067610",
+      "body": "S&P가 태국 신용등급을 BBB+ 안정적으로 재확인한 가운데, 태국상공회의소연합(JSCCIB)은 투자 신뢰 유지를 위한 구조개혁을 촉구했다. 안정적 등급은 강한 대외 재정 포지션과 신뢰할 만한 통화정책을 반영한다는 평가다.",
+      "impact": "⬌ 기타 — 태국 신용등급 안정은 현지 사업환경에 긍정, 다만 구조개혁 필요성 상존",
       "tags": [
-        "환율",
-        "연준",
-        "거시경제",
-        "PMI"
+        "태국",
+        "S&P",
+        "신용등급",
+        "구조개혁"
       ]
     },
     {
       "id": "n018",
-      "category": "중국",
+      "category": "LG",
       "importance": 1,
-      "title": "China's Jan-May retail sales reach 20.6 trillion yuan, up 1.4% y-o-y",
-      "source": "Global Times",
-      "pubDate": "2026-06-16",
-      "url": "https://www.globaltimes.cn/page/202606/1363674.shtml",
-      "body": "중국 1~5월 누적 소매판매가 20.6조 위안으로 전년 대비 1.4% 증가, 규모 이상 기업 산업생산은 5.4% 증가. 월별로는 5월 소매판매가 감소세로 돌아섰으나 누적으로는 완만한 성장세 유지.",
-      "impact": "⬌ 기타 — 중국 내수 누적 지표, 가전 수요 흐름 참고",
+      "title": "LG전자, 25kg 세탁건조기 라인업 확대…\"AI로 시간 줄인다\"",
+      "source": "포인트데일리",
+      "pubDate": "2026-06-22",
+      "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=309086",
+      "body": "LG전자가 25kg 세탁건조기 라인업을 확대했다. 워시콤보 신제품은 듀얼 인버터 히트펌프와 고효율 열교환기를 탑재하고 부품 집적도를 높여 건조 용량을 6kg 늘렸으며 '소량급속코스'로 세탁·건조 시간을 대폭 단축했다.",
+      "impact": "⬆ 생산 — 라인업 확대는 관련 부품 발주 물량 증가 요인",
       "tags": [
-        "누적통계",
-        "소매판매",
-        "산업생산",
-        "중국경제"
+        "lg전자",
+        "세탁건조기",
+        "히트펌프",
+        "라인업확대"
       ]
     },
     {
       "id": "n019",
-      "category": "중국",
-      "importance": 1,
-      "title": "위안화 환율 USD/CNY 6.78 부근 — 월간 0.2% 강세",
-      "source": "Trading Economics",
-      "pubDate": "2026-06-21",
-      "url": "https://tradingeconomics.com/china/currency",
-      "body": "6월 21일 기준 USD/CNY 환율은 6.78 부근으로 지난 한 달간 위안화 0.20% 강세, 12개월 기준 5.45% 절상. 위안화 강세는 중국에서 부품·소재를 조달하는 한국 제조업체 원가에 영향.",
-      "impact": "⬌ 원가 — 위안화 강세 시 중국 조달 부품 원가 상방 요인",
-      "tags": [
-        "위안화",
-        "환율",
-        "USDCNY"
-      ]
-    },
-    {
-      "id": "n020",
-      "category": "태국",
-      "importance": 1,
-      "title": "Iran ceasefire brings market calm, but Thailand's 2026 economic pain persists",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-21",
-      "url": "https://www.nationthailand.com/business/economy/40067503",
-      "body": "이란 휴전으로 시장은 일시 안정됐으나 태국 2026년 경제 부진은 지속 전망. 미국 관세 위협, 수출 둔화, 중국발 공급 과잉, 내수 약화가 복합 작용. 세계은행은 2026년 성장률을 1.6%로 하향.",
-      "impact": "⬌ 기타 — 태국 경기 둔화는 현지 사업 환경에 부담 요인",
-      "tags": [
-        "태국경제",
-        "성장전망",
-        "미국관세"
-      ]
-    },
-    {
-      "id": "n021",
-      "category": "태국",
-      "importance": 1,
-      "title": "태국 바트화 USD/THB 32.95 — 월간 0.94% 약세",
-      "source": "Trading Economics",
-      "pubDate": "2026-06-19",
-      "url": "https://tradingeconomics.com/thailand/currency",
-      "body": "6월 19일 기준 USD/THB 환율은 32.95로 지난 한 달간 바트화 0.94% 약세, 연초 대비 4.54% 절하. 중동 분쟁발 유가 상승과 수출 둔화가 약세 요인.",
-      "impact": "⬌ 환율 — 바트화 약세는 현지 통화 환산·거래에 변수",
-      "tags": [
-        "바트화",
-        "환율",
-        "USDTHB"
-      ]
-    },
-    {
-      "id": "n022",
       "category": "이집트",
       "importance": 1,
-      "title": "Egypt signs four industrial agreements to boost exports & local manufacturing",
-      "source": "Egypt Today",
-      "pubDate": "2026-06-21",
-      "url": "https://www.egypttoday.com/Article/3/147912/Egypt-signs-four-industrial-agreements-to-boost-exports-local-manufacturing",
-      "body": "6월 21일 산업현대화센터(IMC)와 수출개발기금·Hassan Allam Group 등 간 4건 협력 의정서 체결. 수출업체 지원·현지 공급망 강화·스마트 제조 가속화 목표로, 2030년 산업 수출 1,000억 달러 목표의 일환.",
-      "impact": "⬌ 기타 — 이집트 제조 현지화 정책, 한국 부품·금형사 기회·경쟁 요인",
+      "title": "Egypt launches Foreign Trade Information Portal to boost exports, global market access",
+      "source": "Daily News Egypt",
+      "pubDate": "2026-06-16",
+      "url": "https://www.dailynewsegypt.com/2026/06/16/egypt-launches-foreign-trade-information-portal-to-boost-exports-global-market-access/",
+      "body": "이집트가 수출 확대와 글로벌 시장 접근성 제고를 위해 대외무역 정보 포털을 출범했다. 2030년까지 연간 수출을 480억 달러에서 1,000억 달러로 두 배 늘리려는 전략의 일환으로, 현지 제조업체를 글로벌 공급망에 통합하는 디지털 B2B 플랫폼 구축과 연계된다.",
+      "impact": "⬌ 기타 — 이집트 수출·공급망 디지털화는 현지 진출 한국 제조업에 정보 인프라 개선 요인",
       "tags": [
-        "이집트제조업",
+        "이집트",
+        "대외무역",
         "수출",
-        "산업현대화"
-      ]
-    },
-    {
-      "id": "n023",
-      "category": "이집트",
-      "importance": 1,
-      "title": "이집트 파운드 EGP/USD 49.99 — 월간 6.55% 강세",
-      "source": "Trading Economics",
-      "pubDate": "2026-06-21",
-      "url": "https://tradingeconomics.com/egypt/currency",
-      "body": "6월 21일 기준 1달러는 약 49.99 이집트 파운드로, 지난 한 달간 파운드화 6.55% 강세. IMF 감독 하 유연 환율 체제와 견조한 외환 유입이 안정 요인.",
-      "impact": "⬌ 환율 — 파운드 강세는 현지 통화 환산에 긍정 요인",
-      "tags": [
-        "이집트파운드",
-        "환율",
-        "EGPUSD"
+        "공급망"
       ]
     }
   ],
@@ -454,63 +420,61 @@
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "rate": "1,525",
-      "rate_usd": "1,525",
-      "value": "1,525",
+      "rate": "1,538",
+      "rate_usd": "1,538",
+      "value": "1,538",
       "unit": "원/달러",
-      "color": "pos",
+      "change": "+0.73%",
+      "dir": "neg",
+      "color": "neg",
       "history": {
         "values": [
-          1514.39,
-          1517.1,
-          1527.15,
-          1520.3,
-          1543,
-          1525.0
+          1519.0,
+          1522.0,
+          1525.0,
+          1524.0,
+          1527.0,
+          1538.3
         ],
         "labels": [
-          "06/15",
           "06/16",
           "06/17",
           "06/18",
           "06/19",
+          "06/22",
           "오늘"
         ]
-      },
-      "change": "-1.17%",
-      "dir": "pos"
+      }
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "rate": "6.76",
-      "rate_usd": "6.76",
-      "value": "6.76",
+      "rate": "6.78",
+      "rate_usd": "6.78",
+      "value": "6.78",
       "unit": "CNY/USD",
-      "color": "neu",
+      "change": "-0.10%",
+      "dir": "pos",
+      "color": "pos",
       "history": {
         "values": [
-          6.77,
-          6.77,
-          6.77,
-          6.76,
-          6.76,
-          6.76,
-          6.76
+          6.795,
+          6.79,
+          6.788,
+          6.785,
+          6.784,
+          6.777
         ],
         "labels": [
-          "06/13",
-          "06/15",
           "06/16",
           "06/17",
           "06/18",
           "06/19",
+          "06/22",
           "오늘"
         ]
-      },
-      "change": "0.00%",
-      "dir": "neu"
+      }
     },
     {
       "flag": "🇹🇭",
@@ -520,87 +484,83 @@
       "rate_usd": "32.95",
       "value": "32.95",
       "unit": "THB/USD",
+      "change": "+0.21%",
+      "dir": "neg",
       "color": "neg",
       "history": {
         "values": [
-          32.76,
-          32.7,
-          32.64,
-          32.58,
-          32.52,
-          32.78,
+          32.8,
+          32.88,
+          32.97,
+          32.9,
+          32.89,
           32.95
         ],
         "labels": [
-          "06/13",
-          "06/15",
           "06/16",
           "06/17",
           "06/18",
           "06/19",
+          "06/22",
           "오늘"
         ]
-      },
-      "change": "+0.52%",
-      "dir": "neg"
+      }
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
-      "rate": "49.99",
-      "rate_usd": "49.99",
-      "value": "49.99",
+      "rate": "49.92",
+      "rate_usd": "49.92",
+      "value": "49.92",
       "unit": "EGP/USD",
+      "change": "+0.36%",
+      "dir": "neg",
       "color": "neg",
       "history": {
         "values": [
-          51.29,
-          50.71,
-          50.12,
-          49.82,
-          49.82,
-          49.92,
-          49.99
+          50.42,
+          50.3,
+          50.1,
+          49.85,
+          49.74,
+          49.92
         ],
         "labels": [
-          "06/13",
-          "06/15",
           "06/16",
           "06/17",
           "06/18",
           "06/19",
+          "06/22",
           "오늘"
         ]
-      },
-      "change": "+0.14%",
-      "dir": "neg"
+      }
     }
   ],
   "overseas": [
     {
       "flag": "🇨🇳",
       "country": "중국",
-      "indicators": "CNY/USD 6.76 | 5월 소매판매 -0.6%",
-      "summary": "5월 소매판매가 3년여 만에 첫 감소(-0.6%), 가전(-15.6%)·자동차(-16.1%) 급락. 6월 말까지 92억 달러 이구환신 보조금 추가 투입하나 가전 대상 품목은 12→6개로 축소돼 LG 중국 가전 수요에 부담.",
+      "indicators": "CNY/USD 6.78 | 5월 소매판매 -0.6%",
+      "summary": "5월 소매판매가 2022년 말 봉쇄 해제 이후 첫 감소(-0.6%)를 기록하며 내수 부진 확인. 정부는 약 92억 달러(625억 위안) 트레이드인 보조금을 추가 투입하며 가전·자동차에 집중, LG전자 중국 가전 수요와 부품 발주에 영향 가능.",
       "status": "경고",
       "statusType": "r"
     },
     {
       "flag": "🇹🇭",
       "country": "태국",
-      "indicators": "THB/USD 32.95 | 제조업 PMI 52.7",
-      "summary": "5월 자동차 생산 -16.2%(12.6만대), 1~5월 누적 -16.9%. 세계은행 2026 성장률 1.6%로 하향, 미국 관세·중국발 공급과잉·내수 약세가 복합 작용. 태국 자동차 부품·금형 공급망 영향 우려.",
-      "status": "경고",
-      "statusType": "r"
+      "indicators": "THB/USD 32.95 | S&P BBB+ 유지",
+      "summary": "S&P가 국가신용등급을 BBB+ 안정적으로 재확인했으나 경상적자·바트화 변동성 위험 부각. 2026~2027 재정적자 GDP 대비 3.2% 전망, 하반기 바트 31.8~33.5 예상. 오늘 CEO 태국법인 이슈점검 일정과 연계되는 핵심 변수.",
+      "status": "주시",
+      "statusType": "w"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "indicators": "EGP/USD 49.99 | IMF 유연환율",
-      "summary": "산업현대화센터(IMC)가 4건 협력의정서 체결, 2030년 산업수출 1,000억 달러 목표. 베니수에프 삼성·ELARABY 공장(중동 첫 에어컨 컴프레서 200만대) 점검. 현지화 정책은 한국 부품·금형사에 기회·경쟁 요인 병존.",
-      "status": "주시",
-      "statusType": "w"
+      "indicators": "EGP/USD 49.92 | 산업펀드 출범",
+      "summary": "투자·대외무역부가 국부펀드 산하 산업펀드와 경제주체 통합 디지털 플랫폼을 출범. 인허가 추적·처리시간 단축으로 투자 환경 개선, 1~4월 엔지니어링 수출 25억 달러(+20%). 현지화 정책은 한국 부품·금형사에 기회·경쟁 병존.",
+      "status": "양호",
+      "statusType": "g"
     }
   ],
   "markets": [
@@ -616,36 +576,36 @@
     },
     {
       "label": "WTI 유가",
-      "value": "$76.5",
-      "color": "neu"
+      "value": "$74.1",
+      "color": "pos"
     },
     {
       "label": "중국 위안 (CNY)",
-      "value": "6.76",
+      "value": "6.78",
       "color": "neu"
     }
   ],
   "wti": {
     "values": [
-      74.6,
-      74.0,
-      75.3,
-      76.0,
-      76.6,
-      76.5,
-      76.5
+      84.65,
+      83.0,
+      81.5,
+      79.6,
+      77.9,
+      75.85,
+      74.07
     ],
     "labels": [
-      "06/12",
       "06/15",
       "06/16",
       "06/17",
       "06/18",
       "06/19",
+      "06/22",
       "오늘"
     ],
-    "trend": "▲ +2.5% (7일)",
-    "min": 72,
-    "max": 80
+    "trend": "▼ -12.5% (7일)",
+    "min": 70,
+    "max": 87
   }
 }
