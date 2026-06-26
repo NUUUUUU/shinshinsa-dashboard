@@ -400,8 +400,9 @@ function renderNews(f){
     <div class="nc ${cs[n.importance]||'s1'}">
       <div class="nc-hd">
         <span class="star ${cs[n.importance]||'s1'}">${sm[n.importance]||'★'}</span>
-        <div class="nc-title">${n.title}</div>
+        <div class="nc-title">${n.title}${n.translated?` <span title="${(n.title_orig||'').replace(/"/g,'&quot;')}" style="font-size:10px;font-weight:600;color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:0 4px;margin-left:4px;white-space:nowrap;">🌐 번역</span>`:''}</div>
       </div>
+      ${n.translated&&n.title_orig?`<div class="nc-orig" style="font-size:11px;color:var(--muted,#888);margin:-2px 0 4px 0;">원제: ${n.title_orig}</div>`:''}
       <div class="nc-meta">
         <span class="nc-src">${n.source} · ${n.pubDate}</span>
         ${n.url?`<a class="nc-link" href="${n.url}" target="_blank" rel="noopener">원문 ↗</a>`:''}
