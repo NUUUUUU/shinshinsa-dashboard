@@ -57,6 +57,18 @@
 <script>
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function qp(k){return new URLSearchParams(location.search).get(k);}
+// 한국어 본문을 문장 단위 단락으로 분리해 가독성 향상
+function paras(text){
+  if(!text) return '';
+  let t = esc(text);
+  // '[신신사 시사점]'은 항상 새 단락으로
+  t = t.replace(/\s*(\[[^\]]*시사점[^\]]*\])/g, '\n\n$1');
+  // 한국어 문장 종결(다/요/음/함/됨/까/네 + 마침표·물음표·느낌표 + 공백) 뒤 단락 구분
+  //  숫자의 소수점(예: 182.81, 48.6%)은 앞 글자가 한글이 아니므로 영향 없음
+  t = t.replace(/([다요음함됨까네])([.!?])\s+/g, '$1$2\n\n');
+  return t.split(/\n{2,}/).map(s=>s.trim()).filter(Boolean)
+          .map(s=>`<p style="margin:0 0 11px;">${s}</p>`).join('');
+}
 
 async function load(){
   const id = qp('id');
@@ -80,13 +92,13 @@ async function load(){
       ${it.title_orig?`<div class="orig">원제: ${esc(it.title_orig)}</div>`:''}
 
       <div class="sec-title">핵심 요약</div>
-      <div class="body">${esc(it.summary_ko||'')}</div>
+      <div class="body">${paras(it.summary_ko)}</div>
 
       ${it.full_ko?`
       <div class="toggle"><button id="tg">📄 전문 번역 보기 ▾</button></div>
       <div class="full" id="full">
         <div class="sec-title">전문 번역</div>
-        <div class="body">${esc(it.full_ko)}</div>
+        <div class="body">${paras(it.full_ko)}</div>
       </div>`:''}
 
       <div class="links">
