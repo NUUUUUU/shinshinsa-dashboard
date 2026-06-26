@@ -361,13 +361,19 @@ function cats(item){
   const title=(item.title||'').toLowerCase();
   const src=(item.source||'').toLowerCase();
   const c=new Set(['all']);
-  const isThai=/thailand|nation thai|bangkokpost|thaipbs|tradingview/.test(src)||tags.includes('태국');
-  const isChina=/xinhua|caixin|global times|globaltimes|cnbc/.test(src)||tags.includes('중국');
-  const isEgypt=/egypt|ahram|middle east observer/.test(src)||tags.includes('이집트');
-  if(isThai)c.add('태국');
-  if(isChina)c.add('중국');
-  if(isEgypt)c.add('이집트');
-  if(!isThai&&!isChina&&!isEgypt)c.add('한국');
+  const cat=item.category||'';
+  if(cat==='중국'||cat==='태국'||cat==='이집트'||cat==='한국'){
+    // 명시적 category 필드 우선 (현지어 출처명도 정확 분류)
+    c.add(cat);
+  } else {
+    const isThai=/thailand|nation thai|bangkokpost|thaipbs|tradingview/.test(src)||tags.includes('태국');
+    const isChina=/xinhua|caixin|global times|globaltimes|cnbc/.test(src)||tags.includes('중국');
+    const isEgypt=/egypt|ahram|middle east observer/.test(src)||tags.includes('이집트');
+    if(isThai)c.add('태국');
+    if(isChina)c.add('중국');
+    if(isEgypt)c.add('이집트');
+    if(!isThai&&!isChina&&!isEgypt)c.add('한국');
+  }
   const isLG=tags.some(t=>t.includes('lg전자')||t==='lg')||title.includes('lg전자');
   if(isLG)c.add('lg');
   return c;
