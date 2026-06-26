@@ -456,7 +456,9 @@
         "태국",
         "GDP",
         "전자수출"
-      ]
+      ],
+      "title_orig": "SCB EIC Lifts Thailand 2026 GDP Forecast to 2%",
+      "translated": true
     },
     {
       "id": "n023",
@@ -472,7 +474,9 @@
         "태국",
         "바트",
         "신용긴축"
-      ]
+      ],
+      "title_orig": "Thai Economy Face-Off: Baht Hits One-Year Low",
+      "translated": true
     },
     {
       "id": "n024",
@@ -488,7 +492,9 @@
         "태국",
         "바트",
         "차입비용"
-      ]
+      ],
+      "title_orig": "Weakening baht falls below 33 to the US dollar as industry leaders warn borrowing costs will also rise",
+      "translated": true
     },
     {
       "id": "n025",
@@ -504,7 +510,9 @@
         "이집트",
         "현지제조",
         "스마트제조"
-      ]
+      ],
+      "title_orig": "Egypt signs four industrial agreements to boost exports, local manufacturing",
+      "translated": true
     },
     {
       "id": "n026",
@@ -520,7 +528,9 @@
         "이집트",
         "삼성전자",
         "현지제조"
-      ]
+      ],
+      "title_orig": "Samsung Electronics probes local manufacturing expansion in Egypt",
+      "translated": true
     },
     {
       "importance": 1,
@@ -558,6 +568,25 @@
         "공급망"
       ],
       "id": "cn005"
+    },
+    {
+      "id": "eg003",
+      "importance": 1,
+      "category": "이집트",
+      "title": "이집트 산업현대화센터-수출개발기금 협력협정…5.57억 파운드 지원",
+      "title_orig": "صالح وهاشم يشهدان اتفاقية تعاون بين مركز تحديث الصناعة وصندوق تنمية الصادرات",
+      "translated": true,
+      "source": "Al-Ahram Business",
+      "pubDate": "2026-06-24",
+      "url": "https://business.ahram.org.eg/News/113124.aspx",
+      "body": "이집트 재무장관 살레와 산업장관 하셈 임석 하에 산업현대화센터(IMC)와 수출개발기금이 협력 협정을 체결했다. 수출개발기금이 5억5,700만 이집트파운드 규모 프로그램 자금을 지원하고 대상 산업·활동·지원 메커니즘을 규정한다. 수출 경쟁력·현지 제조 역량 강화가 목표.",
+      "impact": "⬆ 정책 — 이집트 수출·현지 제조 역량 강화 정책은 이집트 생산기지 운영 환경에 긍정",
+      "tags": [
+        "이집트",
+        "현지제조",
+        "수출",
+        "정책"
+      ]
     }
   ],
   "fx": [
@@ -707,7 +736,7 @@
       "flag": "🇪🇬",
       "country": "이집트",
       "indicators": "EGP/USD 49.52 | 파운드 강세",
-      "summary": "이집트 4건 산업협정·삼성 현지제조 확대 검토 — 현지화·스마트제조 정책 가속(LG 운영환경 주시)",
+      "summary": "이집트 산업현대화·수출개발기금 협정(5.57억£)·삼성 현지 제조 확대 검토 등 현지화·수출 드라이브 가속. 가전부품·압축기 현지생산 확대 흐름.",
       "status": "양호",
       "statusType": "g"
     }
