@@ -611,94 +611,28 @@
   ],
   "overseas": [
     {
-      "importance": 2,
-      "category": "중국",
-      "title": "위안화 강세 2026: 중국 수출기업 마진 압박",
-      "source": "CMGM",
-      "pubDate": "2026-06-24",
-      "summary": "위안화가 2026년 절상돼 6/25 USD/CNY 6.8073 수준 거래. 달러 표시 수출가를 책정하는 중국 공장의 위안화 환산 마진 압박, 고정비 부담 큰 산업재 수출기업 타격.",
-      "impact": "⬌ 환율·경쟁 — 중국 부품 수출 경쟁사 마진 변화는 글로벌 부품 단가 구도에 영향",
-      "url": "https://www.cmgm.net/yuan-appreciation-2026-chinese-export-margins/",
-      "tags": [
-        "위안화",
-        "환율",
-        "수출마진"
-      ]
+      "flag": "🇨🇳",
+      "country": "중국",
+      "indicators": "CNY/USD 6.81 | 위안화 강세",
+      "summary": "위안화 절상으로 중국 수출기업 마진 압박 — 글로벌 가전부품 단가 구도 변화 주시",
+      "status": "주의",
+      "statusType": "w"
     },
     {
-      "importance": 1,
-      "category": "태국",
-      "title": "SCB EIC, 태국 2026 GDP 전망 2%로 상향…K자형 양극화 심화",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-23",
-      "summary": "SCB EIC가 2026 성장률 전망을 1.7%→2%로 상향. 전자제품 수출·FDI 확대가 근거이나 회복은 대기업·전자·AI에 집중, 낙수효과 제한적.",
-      "impact": "⬆ 매출 — 태국 전자 수출·FDI 확대는 해외 생산기지 수요 환경에 긍정",
-      "url": "https://www.nationthailand.com/business/economy/40067770",
-      "tags": [
-        "태국",
-        "GDP",
-        "전자수출"
-      ]
+      "flag": "🇹🇭",
+      "country": "태국",
+      "indicators": "THB/USD 33.38 | 1년래 최저 | 2026 GDP 2%↑",
+      "summary": "바트화 33선 붕괴 약세·차입비용 상승 경고, 단 SCB EIC가 GDP 전망 2% 상향(전자수출·FDI 확대)",
+      "status": "주의",
+      "statusType": "w"
     },
     {
-      "importance": 1,
-      "category": "태국",
-      "title": "태국 경제, 세 가지 취약 요인에 성장 둔화…바트화 1년래 최저",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-24",
-      "summary": "가계부채·기술 편중 K자 회복·신용긴축이 태국 성장 압박. 중소기업 대출 위축, 바트화 6월 1년래 최저 약세.",
-      "impact": "⬌ 환율 — 바트 약세는 태국 생산기지 원가·결제에 영향",
-      "url": "https://www.nationthailand.com/business/economy/40067801",
-      "tags": [
-        "태국",
-        "바트",
-        "신용긴축"
-      ]
-    },
-    {
-      "importance": 1,
-      "category": "태국",
-      "title": "바트화, 달러당 33선 붕괴…업계 '차입비용 상승' 경고",
-      "source": "Thai Examiner",
-      "pubDate": "2026-06-24",
-      "summary": "미 추가 금리인상 기대·자본 이동으로 바트화가 달러당 33선(2025년 5월 이후 최저) 돌파 약세. 산업계 차입비용 상승 경고.",
-      "impact": "⬌ 환율 — 바트 약세·차입비용 상승은 태국 진출 제조기지 비용 구조에 영향",
-      "url": "https://www.thaiexaminer.com/thai-news-foreigners/2026/06/24/weakening-baht-falls-below-33-to-the-us-dollar-as-industry-leaders-warn-borrowing-costs-will-also-rise/",
-      "tags": [
-        "태국",
-        "바트",
-        "차입비용"
-      ]
-    },
-    {
-      "importance": 1,
-      "category": "이집트",
-      "title": "이집트, 수출·현지 제조 확대 위해 4건의 산업협정 체결",
-      "source": "Egypt Today",
-      "pubDate": "2026-06-21",
-      "summary": "이집트 산업현대화센터가 4건 협력 의정서 체결. 9개 부문 수출 품질 인증 지원, 중소기업 스마트 제조·디지털 전환, 철도차량부품 현지화. 2030 산업수출 1,000억 달러 목표.",
-      "impact": "⬆ 정책 — 현지 제조·스마트화 정책은 이집트 생산기지 운영 환경에 긍정",
-      "url": "https://www.egypttoday.com/Article/3/147912/Egypt-signs-four-industrial-agreements-to-boost-exports-local-manufacturing",
-      "tags": [
-        "이집트",
-        "현지제조",
-        "스마트제조"
-      ]
-    },
-    {
-      "importance": 1,
-      "category": "이집트",
-      "title": "삼성전자, 이집트 현지 제조 확대 검토…산업장관과 협의",
-      "source": "Arab Finance",
-      "pubDate": "2026-06-24",
-      "summary": "이집트 산업장관이 삼성전자 대표단과 만나 현지 제조 심화 방안 논의. 전자·기술이 '이집트 산업전략 2030' 우선 산업. 삼성 태양광 에너지 비중 확대 검토.",
-      "impact": "⬌ 경쟁 — 경쟁사 삼성의 이집트 현지화 확대는 LG 이집트 운영 환경과 직결되는 참고 동향",
-      "url": "https://www.zawya.com/en/economy/north-africa/samsung-electronics-probes-local-manufacturing-expansion-in-egypt-c120c6fr",
-      "tags": [
-        "이집트",
-        "삼성전자",
-        "현지제조"
-      ]
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "indicators": "EGP/USD 49.52 | 파운드 강세",
+      "summary": "이집트 4건 산업협정·삼성 현지제조 확대 검토 — 현지화·스마트제조 정책 가속(LG 운영환경 주시)",
+      "status": "양호",
+      "statusType": "g"
     }
   ],
   "markets": [
