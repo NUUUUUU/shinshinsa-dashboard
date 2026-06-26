@@ -296,11 +296,17 @@ function classifyNewsItem(item) {
   const body  = (item.body  || '').toLowerCase();
   const cats  = new Set(['all']);
 
-  /* 국가 판별 (source 우선, 그 다음 tags) */
-  const isThai  = /thailand|bangkok|nation thai|thaipbs|post today/.test(src) || tags.includes('태국');
-  const isChina = /\bnbs\b|caixin|xinhua|global times|globaltimes|peoples.daily|china|scmp/.test(src) || tags.includes('중국');
-  const isEgypt = /egypt|ahram|cairo|daily news egypt|egypt today|egypt independent/.test(src) || tags.includes('이집트');
-  const isKorea = !isThai && !isChina && !isEgypt;
+  /* 국가 판별: 명시적 category 필드 우선, 없으면 source·tags 휴리스틱 */
+  const cat = item.category || '';
+  let isThai, isChina, isEgypt, isKorea;
+  if (cat==='중국'||cat==='태국'||cat==='이집트'||cat==='한국') {
+    isChina = cat==='중국'; isThai = cat==='태국'; isEgypt = cat==='이집트'; isKorea = cat==='한국';
+  } else {
+    isThai  = /thailand|bangkok|nation thai|thaipbs|post today/.test(src) || tags.includes('태국');
+    isChina = /\bnbs\b|caixin|xinhua|global times|globaltimes|peoples.daily|china|scmp/.test(src) || tags.includes('중국');
+    isEgypt = /egypt|ahram|cairo|daily news egypt|egypt today|egypt independent/.test(src) || tags.includes('이집트');
+    isKorea = !isThai && !isChina && !isEgypt;
+  }
 
   if (isThai)  cats.add('태국');
   if (isChina) cats.add('중국');
