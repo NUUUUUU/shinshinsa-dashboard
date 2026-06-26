@@ -90,6 +90,7 @@ async function load(){
       <h1>${esc(it.title_ko||'')}</h1>
       <div class="meta">${esc(it.source||'')} · ${esc(it.pubDate||'')}</div>
       ${it.title_orig?`<div class="orig">원제: ${esc(it.title_orig)}</div>`:''}
+      ${it.image?`<img src="${esc(it.image)}" alt="${esc(it.title_ko||'')}" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'" style="width:100%;max-height:420px;object-fit:cover;border-radius:10px;margin:6px 0 14px;display:block;border:1px solid var(--line);">`:''}
 
       <div class="sec-title">핵심 요약</div>
       <div class="body">${paras(it.summary_ko)}</div>
