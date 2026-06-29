@@ -1,66 +1,66 @@
 {
-  "date": "2026-06-26",
-  "date_kr": "2026년 6월 26일 (금)",
-  "generated_at": "2026-06-25 23:47 KST",
-  "summary_line": "전자부품 원가 급등(반도체·구리)과 원/달러 1,540원대 고환율·7월 금리인상 압박이 동시에 가중되는 가운데, LG전자 HVAC·히트펌프 공조 수요 확대가 협력사 물량 기회로 부상.",
+  "date": "2026-06-29",
+  "date_kr": "2026년 6월 29일 (월)",
+  "generated_at": "2026-06-28 23:39 KST",
+  "summary_line": "2분기 평균 원/달러 환율이 1,500.1원으로 1998년 외환위기 이후 28년 만에 처음 1,500원대를 기록하며 수입 원자재·부품 조달 원가 부담이 구조화됨(당일은 10.7원 내린 1,532원으로 일시 강세). 동시에 유럽 기록적 폭염으로 냉난방공조(HVAC) 수요가 폭증해 핵심 고객사 LG전자(휘센 이동식에어컨 B2B)와 중국 Midea·Gree가 동시 증산에 나서며 공조 부품 발주 확대 기회와 중국발 경쟁 심화가 병존. WTI 유가는 미·이란 평화 진전에 주간 12% 급락한 $68.9로 원가 측면 단기 호재.",
   "top3": [
     {
       "rank": 1,
-      "title": "전자부품 원가 급등 압력 본격화 — 애플, 반도체값 급등에 제품가 인상·구리값 상승",
-      "reason": "AI 데이터센터 발 메모리·스토리지 수요 폭발로 부품가가 전례 없이 급등하자 애플이 제품가 인상을 발표하며 \"소비자 가전 산업이 전례 없는 도전에 직면\"했다고 명시. LG전자도 구리값 상승을 수익성 부담 요인으로 적시 — 가전부품을 제조하는 신신사 협력사 수익성에 원가 측면에서 직접 직격, 단가 협상·소재 헤지 전략 점검 시급."
+      "title": "2분기 평균 원/달러 1,500.1원 — 외환위기 이후 28년 만 첫 1,500원대 고착",
+      "reason": "한국은행 통계 기준 4~6월 평균 환율이 1,500.1원으로 1998년 외환위기 이후 처음 1,500원대를 기록. 당일은 10.7원 내린 1,532원으로 일시 강세 전환했으나 고환율 박스권 구조가 고착 — 수입 원자재·부품 조달 원가가 상시 상승하는 만큼 신신사 환헤지 포지션·결제통화 구조 즉시 재점검 필요"
     },
     {
       "rank": 2,
-      "title": "원/달러 1,540원대 17년 최고 고착 + 7월 기준금리 인상 초읽기",
-      "reason": "6/25 주간거래 1,542.7원으로 17년 만의 최고 수준이 굳어진 가운데, 한국은행이 6/24 금융안정보고서로 빚투 위험을 경고하며 7월 추가 인상이 임박. 수입 원자재·부품 조달 원가(환율)와 차입·설비투자 비용(금리)이 동시 상승하는 이중 압박 — 환헤지 포지션과 차입 만기 구조 즉시 재점검 필요."
+      "title": "유럽 기록적 폭염 → 냉난방공조(HVAC) 수요 폭증, LG·中 경쟁사 동시 풀가동",
+      "reason": "40도 안팎 폭염으로 유럽 냉방기기 수요가 급증, LG전자는 휘센 이동식에어컨 B2B 수주를 확대하고 중국 Midea(유럽 매출 +70%)·Gree(+40%)도 24시간 증산. 글로벌 공조 시장 동시 호황은 LG 공조 부품 발주 확대 기회이자 중국발 경쟁 심화 신호 — 신신사 공조·압축기 관련 부품 라인 대응 점검"
     },
     {
       "rank": 3,
-      "title": "LG전자 HVAC·히트펌프 공조 수요 확대 — 1분기 에어컨 가동률 134.7%, 2030 HVAC 20조 목표",
-      "reason": "핵심 고객사 LG전자가 AI 데이터센터 냉각·유럽 히트펌프 수요로 1분기 에어컨 가동률 134.7%를 기록하고 2030년 HVAC 매출 20조원 목표를 제시. 공조 부품(컴프레서·금형) 협력사 물량 확대로 직결되는 기회 — 다만 R290 저GWP 자연냉매 전환으로 소재·금형 사양 변경 대응 병행 필요."
+      "title": "WTI 유가 주간 12% 급락 $68.9 (2월 이후 최저) — 미·이란 평화 진전",
+      "reason": "호르무즈 해협 통항 정상화와 미·이란 평화협상 진전으로 WTI가 주간 약 13% 급락. 원자재·물류 원가 하향 안정은 제조원가에 단기 우호 요인이나, 주말 미·이란 공격 응수로 지정학 변동성은 잔존 — 조달·헤지 타이밍 관점에서 모니터링"
     }
   ],
   "monitoring": [
-    "전자부품(반도체·구리) 원가 급등 지속 여부 및 LG전자·완성 가전사의 단가 전가 폭 — 신신사 가전부품 수익성·단가 협상 직결",
-    "원/달러 1,540원대 추가 등락과 7월 한국은행 금리 인상 시행 여부 — 수입 원가·차입비용 이중 압박, 환헤지·차입 만기 구조 점검",
-    "LG전자 HVAC·히트펌프 공조 부품 발주 확대 흐름과 R290 자연냉매 전환 사양 변경, 동남아(중국 가전 공습·태국 바트 약세) 생산기지 환경 모니터링"
+    "원/달러 1,500원대 박스권 지속 여부 및 당일 강세 전환의 지속성 — 수입 부품·원자재 조달 원가, 환헤지·결제통화 구조와 직결",
+    "유럽 폭염발 글로벌 공조(HVAC) 수요 확대에 따른 LG전자 공조 B2B 수주·부품 발주 구조 변화, 중국 Midea·Gree·TCL 증산 경쟁 동향",
+    "WTI·원자재 가격 하향 안정 지속성과 중동(미·이란) 지정학 리스크 재점화 가능성, 태국 바트 약세·공장폐쇄 58%·EEC 중국투자 등 해외 생산기지 환경"
   ],
   "ceo_schedule": [
     {
-      "time": "08:00~08:30",
-      "title": "CEO 개인일정",
+      "time": "07:30~08:00",
+      "title": "김해 출근",
       "location": ""
     }
   ],
   "kpis": [
     {
-      "type": "neg",
-      "label": "원/달러 환율",
-      "value": "1,543",
-      "unit": "원",
-      "change": "▲ 17년래 최고 고착",
-      "note": "6/25 주간거래 1,542.7원 마감으로 2009년 글로벌 금융위기 이후 17년 만의 최고 수준 지속. 26일 1,538~1,547원 전망. 수입 원자재·부품 조달 원가 직접 부담 — 환헤지·결제통화 구조 점검 시급."
-    },
-    {
       "type": "pos",
-      "label": "KOSPI",
-      "value": "8,930",
-      "unit": "",
-      "change": "▲ +5.42% (반도체 랠리)",
-      "note": "마이크론 호실적에 반도체주 매수세 유입, 전기·전자 +7.7% 강세로 8,930선 회복 후 9,000선 재돌파 시도. 다만 실현변동성 41%로 금융위기급 — 상방 쏠림 뒤 하방 조정 경계."
+      "label": "원/달러 환율",
+      "value": "1,532",
+      "unit": "원",
+      "change": "▼ -10.7원 (당일 강세 전환)",
+      "note": "6/29 주간거래 종가 1,532원으로 전거래일 대비 10.7원 하락(강세). 다만 2분기 평균이 1,500.1원으로 외환위기 이후 28년 만에 처음 1,500원대 — 고환율 박스권 고착으로 수입 원자재·부품 조달 원가 부담은 지속. 환헤지·결제통화 구조 점검 필요"
     },
     {
       "type": "pos",
       "label": "WTI 유가",
-      "value": "$70.3",
+      "value": "$68.9",
       "unit": "",
-      "change": "▼ -6.9% (원가 완화)",
-      "note": "미·이란 평화협상 진전에 따른 공급 개선 기대로 4거래일 연속 하락, 배럴당 70달러선 붕괴. 중동 갈등 발 상승분 대부분 반납 — 에너지·물류 원가 부담 완화 요인."
+      "change": "▼ -12.8% (주간 급락, 2월 이후 최저)",
+      "note": "미·이란 평화협상 진전과 호르무즈 해협 통항 정상화로 주간 약 13% 급락, 2026년 2월 이후 최저. 원자재·물류 원가 하향 안정으로 단기 우호 — 단 주말 미·이란 공격 응수로 지정학 리스크 잔존"
+    },
+    {
+      "type": "neu",
+      "label": "KOSPI",
+      "value": "9,000선",
+      "unit": "",
+      "change": "변동성 확대 (사흘 새 서킷 2회)",
+      "note": "코스피 9,000선 진입 후 작은 악재에도 사흘 새 두 차례 서킷브레이커 발동. 미국발 AI 반도체 조정(칩플레이션) 우려·연기금 매도로 상방 제한 — 자금조달 환경·투자심리 변동성 확대"
     },
     {
       "type": "inf",
       "label": "오늘의 한 줄",
-      "summary": "전자부품 원가 급등(반도체·구리)과 원/달러 1,540원대 고환율·7월 금리인상 압박이 동시에 가중되는 가운데, LG전자 HVAC·히트펌프 공조 수요 확대가 협력사 물량 기회로 부상."
+      "summary": "2분기 평균 원/달러 환율이 1,500.1원으로 1998년 외환위기 이후 28년 만에 처음 1,500원대를 기록하며 수입 원자재·부품 조달 원가 부담이 구조화됨(당일은 10.7원 내린 1,532원으로 일시 강세). 동시에 유럽 기록적 폭염으로 냉난방공조(HVAC) 수요가 폭증해 핵심 고객사 LG전자(휘센 이동식에어컨 B2B)와 중국 Midea·Gree가 동시 증산에 나서며 공조 부품 발주 확대 기회와 중국발 경쟁 심화가 병존. WTI 유가는 미·이란 평화 진전에 주간 12% 급락한 $68.9로 원가 측면 단기 호재."
     }
   ],
   "news": [
@@ -68,190 +68,33 @@
       "id": "n001",
       "category": "한국",
       "importance": 3,
-      "title": "애플, 반도체값 급등에 결국 손들었다…주가 6.12% 폭락",
-      "source": "글로벌이코노믹",
-      "pubDate": "2026-06-26",
-      "url": "https://www.g-enews.com/view.php?ud=202606260552399588e250e8e188_1",
-      "body": "애플이 AI 데이터센터 확장발 메모리·스토리지 수요 폭발로 부품 가격이 전례 없이 급등하자 제품 가격 인상을 발표. \"소비자 가전 산업이 전례 없는 도전에 직면\"했다고 설명.",
-      "impact": "⬇ 원가 — 전자부품 원가 상승 압력은 가전부품 제조 협력사 수익성에 직접 직격, 단가 협상·소재 헤지 점검",
-      "tags": [
-        "원가",
-        "반도체",
-        "가전부품"
-      ]
-    },
-    {
-      "id": "n002",
-      "category": "한국",
-      "importance": 3,
-      "title": "'구리값 상승·TV 생산 부진' 그늘…LG전자, 엔비디아 손잡고 수익성 개선",
-      "source": "뉴스퀘스트",
-      "pubDate": "2026-06-25",
-      "url": "https://www.newsquest.co.kr/news/articleView.html?idxno=268558",
-      "body": "LG전자 분기보고서상 TV는 생산능력 582만대 대비 403만대 생산, 모니터도 245만대 능력 대비 118만대 생산에 그침. 구리값 상승과 TV 생산 부진이 부담 요인.",
-      "impact": "⬇ 원가·생산 — 구리 등 원자재값 상승과 가동률 저하는 가전·디스플레이 부품 협력사 가동률에 직접 영향",
-      "tags": [
-        "lg전자",
-        "구리",
-        "원가",
-        "생산"
-      ]
-    },
-    {
-      "id": "n003",
-      "category": "한국",
-      "importance": 3,
-      "title": "수출업체 반기말 네고에 달러 약세…\"1540원 지지력 테스트\" [환율전망]",
-      "source": "이투데이",
-      "pubDate": "2026-06-26",
-      "url": "https://www.etoday.co.kr/news/view/2597452",
-      "body": "26일 원·달러 환율 1,538~1,547원 전망. 전일 주간거래 1,542.7원 마감. 반기말 수출업체 네고 물량으로 1,540원 지지력 테스트.",
-      "impact": "⬇ 환율·원가 — 고환율 지속은 가전부품 수출·원자재 수입 단가에 직접 영향, 환헤지 점검",
-      "tags": [
-        "환율",
-        "원달러",
-        "거시경제"
-      ]
-    },
-    {
-      "id": "n004",
-      "category": "한국",
-      "importance": 3,
-      "title": "[구광모 회장 8년 리뷰] 선택과 집중으로 끌어올린 LG 황금실적",
-      "source": "글로벌에픽",
-      "pubDate": "2026-06-25",
-      "url": "http://www.globalepic.co.kr/view.php?ud=20260625135321267948439a4874_29",
-      "body": "LG전자 1분기 매출 23조7272억원(분기 최대), 영업이익 1조6737억원(전년比 +32.9%). AI 데이터센터 냉각·유럽 히트펌프 수요로 1분기 에어컨 가동률 134.7% 기록. 2030년까지 HVAC 매출 20조원 목표.",
-      "impact": "⬆ 매출·고객사 — 히트펌프·공조 부품 협력사 물량 확대 기회 시사",
+      "title": "40도 안팎 폭염 '뉴노멀'된 유럽…냉난방공조 업계 블루오션 되나",
+      "title_orig": "",
+      "translated": false,
+      "source": "조선일보",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/023/0003984642?sid=105",
+      "body": "유럽이 40도 안팎 폭염으로 냉난방공조(HVAC) 수요가 급증하며 업계 블루오션으로 부상. LG전자는 현지 맞춤형 가전과 대규모 B2B 수주, 휘센 이동식 에어컨 라인업으로 유럽 시장 점유율을 끌어올리는 중.",
+      "impact": "⬆ 생산·매출 — LG전자 공조 B2B 수주 확대 시 협력사 부품 발주 기회 확대",
       "tags": [
         "lg전자",
         "HVAC",
-        "히트펌프",
-        "실적"
+        "유럽",
+        "공조"
       ]
     },
     {
       "id": "n005",
       "category": "한국",
       "importance": 3,
-      "title": "7월 금리 인상 초읽기…'영끌·빚투' 청구서 날아올라",
-      "source": "한겨레21",
-      "pubDate": "2026-06-26",
-      "url": "https://h21.hani.co.kr/arti/economy/economy_general/59530.html",
-      "body": "한국은행이 6/24 금융안정보고서로 빚투 위험을 경고하며 7월 기준금리 추가 인상이 초읽기에 들어간 상황.",
-      "impact": "⬇ 원가·금리 — 금리 인상은 제조 협력사 차입 비용·설비투자 부담에 직접 영향",
-      "tags": [
-        "기준금리",
-        "금리",
-        "거시경제"
-      ]
-    },
-    {
-      "id": "n006",
-      "category": "한국",
-      "importance": 2,
-      "title": "\"설치비 70% 지원\"…경동나비엔, 350만대 히트펌프 시장 주도권 잡는다",
-      "source": "뉴데일리경제",
-      "pubDate": "2026-06-25",
-      "url": "https://biz.newdaily.co.kr/site/data/html/2026/06/25/2026062500117.html",
-      "body": "경동나비엔이 유럽 검증 제품으로 히트펌프 시장 공략. 삼성전자·LG전자도 HVAC 사업 확대로 히트펌프 시장 진출 가속화.",
-      "impact": "⬆ 매출 — 히트펌프는 신신사 가전부품 사업과 직접 연관된 성장 분야, LG 공조 부품 수요 확대 배경",
-      "tags": [
-        "lg전자",
-        "히트펌프",
-        "HVAC"
-      ]
-    },
-    {
-      "id": "n007",
-      "category": "한국",
-      "importance": 2,
-      "title": "에어컨 컴프레서, '친환경·고효율'로 급속 재편",
-      "source": "투데이에너지",
-      "pubDate": "2026-06-24",
-      "url": "https://www.todayenergy.kr/news/articleView.html?idxno=299471",
-      "body": "에어컨 컴프레서 시장이 친환경·고효율 중심으로 급속 재편. 에머슨·다이킨·LG전자·파나소닉·댄포스 등 거론. R290(프로판) 등 저GWP 자연냉매 전환 가속.",
-      "impact": "⬌ 원가·생산 — 공조 부품 제조 협력사의 소재·금형 사양 변화 직접 관련",
-      "tags": [
-        "컴프레서",
-        "공조부품",
-        "냉매"
-      ]
-    },
-    {
-      "id": "n008",
-      "category": "한국",
-      "importance": 2,
-      "title": "\"한국산 왜 사요\" 중국 가전에 푹 빠졌다…동남아의 '변심' [도쿄나우]",
-      "source": "한국경제",
-      "pubDate": "2026-06-26",
-      "url": "https://www.hankyung.com/article/202606269014i",
-      "body": "하이얼·메이디 등 중국 가전이 동남아에서 가격·AS 경쟁력으로 점유율 확대. 태국이 중국 가전 수출 거점으로 부상, 메이디는 인도네시아 카라왕에 냉장고 공장 증설.",
-      "impact": "⬇ 매출·경쟁 — 한국 가전 수출 경쟁 심화는 LG전자 협력사 물량에 간접 영향",
-      "tags": [
-        "중국가전",
-        "동남아",
-        "경쟁"
-      ]
-    },
-    {
-      "id": "n009",
-      "category": "한국",
-      "importance": 2,
-      "title": "코스피, 반도체주 랠리에 9,000선 재돌파 시도",
-      "source": "토큰포스트",
-      "pubDate": "2026-06-26",
-      "url": "https://www.tokenpost.kr/news/market/372894",
-      "body": "마이크론 호실적에 반도체주 매수세가 유입되며 코스피가 9,000선 재돌파 시도. 전일 코스피 8,930선(+5.42%)으로 전기·전자 +7.7% 강세.",
-      "impact": "⬆ 환율·심리 — 증시 회복은 자금조달 환경·투자심리 개선, LG전자 등 가전주 재평가",
-      "tags": [
-        "KOSPI",
-        "증시",
-        "반도체"
-      ]
-    },
-    {
-      "id": "n010",
-      "category": "한국",
-      "importance": 2,
-      "title": "[이슈] LG전자, '원 LG'로 피지컬AI 풀스택…협력사 공장까지 지능형 제조 전파",
-      "source": "팍스경제TV",
-      "pubDate": "2026-06-24",
-      "url": "http://www.paxetv.com/news/articleView.html?idxno=275498",
-      "body": "LG전자가 창원 LG스마트파크와 미국 테네시 등 전 세계 130여개 제조현장 기반으로 피지컬 AI 공정 자동화 추진. 협력사 공장까지 지능형 제조 환경 전파가 목표.",
-      "impact": "⬌ 생산 — 프레스금형·가전부품 협력사의 스마트팩토리 전환 압력 시사",
-      "tags": [
-        "lg전자",
-        "피지컬AI",
-        "스마트팩토리"
-      ]
-    },
-    {
-      "id": "n011",
-      "category": "한국",
-      "importance": 2,
-      "title": "코스피 변동성 41% '금융위기급'…\"상방 쏠림 뒤 하방 조정 경계\"",
-      "source": "EBN",
-      "pubDate": "2026-06-26",
-      "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1713972",
-      "body": "6월 들어 KOSPI 실현변동성이 약 41%까지 상승해 글로벌 금융위기 수준 도달. 반도체 쏠림으로 하방 조정 위험 경계 필요.",
-      "impact": "⬇ 심리 — 시장 변동성 확대는 제조·부품 협력사 자금조달·투자심리에 영향",
-      "tags": [
-        "KOSPI",
-        "변동성",
-        "거시경제"
-      ]
-    },
-    {
-      "id": "n020",
-      "category": "한국",
-      "importance": 2,
-      "title": "구두개입 전혀 안먹히는 고환율…변동성 완화 방어 총력",
-      "source": "노컷뉴스",
-      "pubDate": "2026-06-26",
-      "url": "https://www.nocutnews.co.kr/news/6538842",
-      "body": "원·달러 환율이 17년 만에 1,540원대 돌파 후 구두개입에도 안정되지 않는 상황. 외국인 순매도·미국 통화긴축이 달러 강세 견인.",
-      "impact": "⬇ 환율·원가 — 제조 수출기업 환리스크 관리 부담 가중",
+      "title": "2분기 평균 환율 1,500원…외환위기 이후 처음",
+      "title_orig": "",
+      "translated": false,
+      "source": "연합뉴스TV",
+      "pubDate": "2026-06-28",
+      "url": "https://n.news.naver.com/mnews/article/422/0000879302?sid=101",
+      "body": "4월 1일~6월 26일 원·달러 주간거래 종가 평균이 1,500.1원으로 집계. 2분기 평균 환율이 1998년 외환위기 이후 28년 만에 처음으로 1,500원대를 기록하게 됨.",
+      "impact": "⬇ 환율·원가 — 수입 원자재·부품 조달 원가 직접 상승, 환헤지 포지션 점검 시급",
       "tags": [
         "환율",
         "원달러",
@@ -259,333 +102,279 @@
       ]
     },
     {
-      "importance": 2,
+      "id": "n011",
       "category": "중국",
-      "title": "中 5월 제조업 공급지수: 에어컨 생산 -3.3%, PMI 50.0% 임계점",
-      "title_orig": "2026年5月中国制造业供给指数：空调产量同比下降3.3%，PMI录得50.0%",
+      "importance": 3,
+      "title": "유럽 폭염에 중국 에어컨 제조사들 24시간 풀가동…냉방기기 수요 폭증",
+      "title_orig": "Chinese air conditioner manufacturers work around the clock as European heatwaves drive booming demand for cooling products",
       "translated": true,
-      "source": "网易(国家统计局)",
-      "pubDate": "2026-06-25",
-      "url": "https://www.163.com/dy/article/L063FJBB0534I0NW.html",
-      "body": "2026년 5월 중국 가전 공급지수 182.81(전년比 +1.39%). 5월 에어컨 생산 2,704.8만대 전년比 -3.3%, 냉장고 1,009.1만대 +13.8%, 세탁기 1,012.3만대 +8.5%, 컬러TV 1,317만대 -12.2%. 제조업 PMI 50.0%로 임계점, 신규수출주문 48.6%로 외수 둔화. 부동산 침체·기온 영향에 에어컨 감산, 하반기 고온·고기저 완화로 가전 회복 전망.",
-      "impact": "⬌ 생산·매크로 — 중국 에어컨 감산·PMI 임계점은 글로벌 공조부품 수급·단가에 영향, 가전 생산 사이클 모니터링",
+      "source": "Global Times (글로벌타임스)",
+      "pubDate": "2026-06-27",
+      "url": "https://www.globaltimes.cn/page/202606/1364569.shtml",
+      "body": "유럽 기록적 폭염으로 휴대용 분리형 에어컨 수요가 급증, Midea는 광둥 순더 공장을 24시간 가동해 PortaSplit 모델을 증산 중이다. 프랑스·스페인·독일·영국 등 보급률이 낮던 시장에서 Midea 에어컨 매출이 전년比 70% 이상 증가했고, Gree는 1~6월 해당 시장 에어컨 판매가 40% 이상 늘었다. TCL 등도 휴대용 에어컨 증산에 동참.",
+      "impact": "⬌ 매출·경쟁 — 글로벌 공조 호황은 LG 공조 부품 기회이자 중국 경쟁사 증산 압박",
       "tags": [
-        "가전생산",
-        "PMI",
+        "중국",
         "에어컨",
-        "공조"
-      ],
-      "id": "cn001"
+        "Midea",
+        "Gree",
+        "경쟁사"
+      ]
     },
     {
-      "importance": 2,
-      "category": "중국",
-      "title": "중국 가전, 동남아 석권…태국이 핵심 수출기지, 格力 압축기 10년 보증",
-      "title_orig": "中国家电在东南亚站稳脚跟，泰国成核心出口基地，格力压缩机保修10年",
-      "translated": true,
-      "source": "腾讯(观察者网)",
-      "pubDate": "2026-06-22",
-      "url": "https://news.qq.com/rain/a/20260622A0D05R00",
-      "body": "日經亞洲 보도. 동남아 대가전 점유율 5년 연속 상승(17%→20.8%, 에어컨 16.1%→26.6%). 태국은 중국 가전 핵심 수출기지 — 美的 최대 해외 생산기지·지역본부, 海尔 동남아 교두보. 格力는 압축기 10년·완제품 5년 보증으로 일·한 브랜드(압축기 5년)를 압도. 인니 에어컨 점유율 15.7%→34.5%로 일본 첫 추월.",
-      "impact": "⬇ 경쟁 — 중국 가전의 동남아·압축기 보증 공세는 신신사 고객(LG)·공조부품 경쟁 환경을 직접 압박",
-      "tags": [
-        "중국가전",
-        "경쟁",
-        "압축기",
-        "태국"
-      ],
-      "id": "cn002"
-    },
-    {
-      "importance": 2,
-      "category": "중국",
-      "title": "LG, 엔비디아와 손잡고 AI 로봇 진출…감속기·액추에이터 공급망 정리",
-      "title_orig": "LG联手英伟达探路AI机器人，产业链关键环节梳理",
-      "translated": true,
-      "source": "网易",
-      "pubDate": "2026-06-26",
-      "url": "https://www.163.com/dy/article/L01R19J50550WHYR.html",
-      "body": "LG가 엔비디아와 협력해 AI 로봇 분야에 진출하며 감속기·액추에이터 등 핵심 구동부품 공급망 단계를 재편한다. 로봇 핵심부품 내재화·기술경로를 정리.",
-      "impact": "⬆ 매출·고객사 — LG의 로봇 구동부품 내재화는 감속기·액추에이터 협력사에 신규 물량 기회",
-      "tags": [
-        "lg전자",
-        "로봇",
-        "부품"
-      ],
-      "id": "cn003"
-    },
-    {
-      "id": "n012",
+      "id": "n002",
       "category": "한국",
-      "importance": 1,
-      "title": "LG전자, '홈스타일'에 시공사 입점…플랫폼 키워 D2C 강화",
-      "source": "아시아타임즈",
-      "pubDate": "2026-06-25",
-      "url": "https://www.asiatime.co.kr/article/20260625500269",
-      "body": "LG전자가 LGE닷컴 '홈스타일'에 한샘·LX하우시스 등 시공사를 입점시키며 가전·리빙 결합 플랫폼으로 확장. CAC·IVI 등 B2B와 D2C 집중 투자 강조.",
-      "impact": "⬌ 매출 — 가전 제조 체질 전환은 가전부품 협력사 수요 구조 변화 시사",
+      "importance": 2,
+      "title": "구광모가 LG 회장이 된 날로부터 8년…'뉴 LG'는 어떻게 달라졌나",
+      "title_orig": "",
+      "translated": false,
+      "source": "데일리안",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/119/0003105513?sid=101",
+      "body": "구광모 회장 취임 후 B2C에서 B2B로 전략 전환, 지난해 LG그룹 B2B 매출 비중 67%까지 상승. LG전자 VS사업본부는 올해 1분기 영업이익률 6%를 처음 기록.",
+      "impact": "⬌ 매출 — LG전자 B2B 체질전환 가속, 협력사 부품 포트폴리오 대응 필요",
       "tags": [
         "lg전자",
         "B2B",
-        "D2C"
+        "전장"
+      ]
+    },
+    {
+      "id": "n003",
+      "category": "한국",
+      "importance": 2,
+      "title": "LG 스마트코티지, 20평대 신제품 출시…B2B 시장 공략 강화",
+      "title_orig": "",
+      "translated": false,
+      "source": "뉴스락",
+      "pubDate": "2026-06-28",
+      "url": "http://www.newslock.co.kr/news/articleView.html?idxno=132303",
+      "body": "LG전자가 사용 면적을 넓히고 가격 경쟁력을 높인 20평대 모듈러 주택 'LG 스마트코티지' 신제품 2종(모노 코어 72·82)을 29일 출시하며 고객 맞춤형 주거 솔루션 B2B 사업을 확대.",
+      "impact": "⬆ 매출 — 모듈러주택 B2B 신제품, 가전·부품 신규 수요 가능",
+      "tags": [
+        "lg전자",
+        "모듈러주택",
+        "B2B"
+      ]
+    },
+    {
+      "id": "n004",
+      "category": "한국",
+      "importance": 2,
+      "title": "LG전자, B2B 모듈러 주택 시장 본격 공략…삼성전자와 AI 홈 경쟁",
+      "title_orig": "",
+      "translated": false,
+      "source": "LC뉴스",
+      "pubDate": "2026-06-28",
+      "url": "https://www.lcnews.co.kr/news/articleView.html?idxno=204090",
+      "body": "LG전자가 20평대 모듈러 주택으로 B2B 시장을 겨냥하는 가운데 삼성전자도 '삼성 AI 모듈러 홈'을 선보이며 진입. 양사가 가전을 넘어 AI 홈·주거 솔루션에서 경쟁.",
+      "impact": "⬌ 매출 — 가전·주거 솔루션 경쟁 심화, 부품 공급 경쟁력 점검",
+      "tags": [
+        "lg전자",
+        "삼성전자",
+        "모듈러주택",
+        "AI홈"
+      ]
+    },
+    {
+      "id": "n006",
+      "category": "한국",
+      "importance": 2,
+      "title": "사흘 새 두 차례 서킷브레이커…작은 악재에도 변동성",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518727?sid=101",
+      "body": "코스피가 9,000선 진입 후 극심한 변동성을 보이며 사흘 새 두 차례 서킷브레이커 발동. 달러원 환율은 전거래일 대비 10원70전 내린 1,532원에 주간거래 마감, 장중 1,549원80전까지 상승.",
+      "impact": "⬇ 환율·기타 — 증시 변동성 확대, 자금조달 환경·투자심리 영향",
+      "tags": [
+        "코스피",
+        "환율",
+        "변동성"
+      ]
+    },
+    {
+      "id": "n010",
+      "category": "한국",
+      "importance": 2,
+      "title": "[기획: 청년, 현장에서 길을 찾다] 세원정공",
+      "title_orig": "",
+      "translated": false,
+      "source": "대구일보",
+      "pubDate": "2026-06-27",
+      "url": "https://www.idaegu.com/news/articleView.html?idxno=663897",
+      "body": "자동차부품 업체 세원정공이 현대차 등 완성차·해외에 부품을 공급하며 초고장력강 성형기술과 프레스 금형 기술을 기반으로 사업을 이어감. 전기차·친환경차 산업 변화에 대응 중.",
+      "impact": "⬌ 생산 — 프레스·금형 동종업계 동향, 초고장력강 성형 기술 트렌드 참고",
+      "tags": [
+        "프레스금형",
+        "자동차부품",
+        "제조"
+      ]
+    },
+    {
+      "id": "n012",
+      "category": "중국",
+      "importance": 2,
+      "title": "중국 산업이익, 제조·수출 의존 속 견조세 유지",
+      "title_orig": "China industrial profits stay resilient as economy leans on factories, exports",
+      "translated": true,
+      "source": "CNBC / Reuters",
+      "pubDate": "2026-06-27",
+      "url": "https://www.cnbc.com/2026/06/27/china-industrial-profits-stay-resilient-as-economy-leans-on-factories.html",
+      "body": "5월 중국 규모이상 공업기업 이익은 전년동기比 21.1% 증가했으나 4월(24.7%)보다 둔화됐다. 1~5월 누적 이익은 18.8% 증가. 내수 부진을 제조 생산과 수출이 떠받치는 양극화 구조가 뚜렷하며, 부동산 침체·구조적 불균형이 여전히 부담으로 작용한다.",
+      "impact": "⬌ 원가·수요 — 중국 제조업황은 가전 부품 수요·단가에 간접 영향",
+      "tags": [
+        "중국",
+        "산업이익",
+        "제조업"
       ]
     },
     {
       "id": "n013",
-      "category": "한국",
-      "importance": 1,
-      "title": "[넥스트코리아] 새 성장공식 찾는다…K-가전, 체질 개선 '강드라이브'",
-      "source": "매일일보",
-      "pubDate": "2026-06-25",
-      "url": "https://www.m-i.kr/news/articleView.html?idxno=1383632",
-      "body": "삼성·LG전자가 전통 가전에서 구독·B2B·신사업 중심으로 체질 개선. LG전자는 베어로보틱스 경영권 확보 및 로봇 액추에이터 '악시움' 자체 개발.",
-      "impact": "⬌ 매출 — 가전부품 협력 생태계의 사업 영역 재편 흐름",
-      "tags": [
-        "lg전자",
-        "로봇",
-        "신사업"
-      ]
-    },
-    {
-      "id": "n014",
-      "category": "한국",
-      "importance": 1,
-      "title": "LG전자, 협력사 안전문화 확산 나선다 (창원 상생협력 세미나)",
-      "source": "경남신문",
+      "category": "태국",
+      "importance": 2,
+      "title": "태국 경제, 바트화 1년 최저 속 3대 취약 요인이 성장 발목",
+      "title_orig": "Thai Economy Face-Off: Three Fragile Triggers Drag Down Growth as Baht Hits One-Year Low",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
       "pubDate": "2026-06-24",
-      "url": "http://www.knnews.co.kr/news/articleView.php?idxno=1544759",
-      "body": "LG전자가 23일 창원 LG스마트파크에서 '2026 대·중소기업 안전보건 상생협력 세미나' 개최. 협력사 자율 위험요인 발굴·개선 역량 강화가 목적.",
-      "impact": "⬌ 고객사 — LG전자 가전부품 협력사 직접 관련 동향",
+      "url": "https://www.nationthailand.com/business/economy/40067801",
+      "body": "바트화가 달러당 33.20으로 1년 최저치를 기록했다. 성장은 수입의존 첨단산업에 집중된 K자형 회복으로 양극화됐고, 가계·중소기업의 부채 부담과 소득 감소가 내수를 짓누른다. 중소기업 대출 위축과 중동 지정학 리스크가 추가 압박 요인.",
+      "impact": "⬇ 환율 — 바트 약세는 태국 생산기지 원가·수익성에 영향",
       "tags": [
-        "lg전자",
-        "협력사",
-        "안전"
+        "태국",
+        "바트",
+        "거시경제"
       ]
     },
     {
       "id": "n015",
-      "category": "한국",
-      "importance": 1,
-      "title": "LG전자·DH오토리드, 신기술 포럼서 '피지컬AI 기반 무인 공장' 청사진",
-      "source": "데일리한국",
+      "category": "태국",
+      "importance": 2,
+      "title": "중국 투자로 태국 EEC 산업용지 가격 급등",
+      "title_orig": "Chinese investment drives EEC land prices higher in Thailand",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
       "pubDate": "2026-06-25",
-      "url": "https://daily.hankooki.com/news/articleView.html?idxno=1379272",
-      "body": "피지컬 AI 프론티어 강국 신기술 포럼에 LG전자·DH오토리드 참석. 협력사 공장까지 지능형 제조 환경 전파 목표.",
-      "impact": "⬌ 생산 — 가전부품 협력사의 무인공장·자동화 전환 방향성 제시",
+      "url": "https://www.nationthailand.com/business/manufacturing/40067791",
+      "body": "중국 제조업체들의 공장 부지 수요로 동부경제회랑(EEC) 촌부리·라용 일대 산업용지 가격이 20~30% 상승했다. 중국 투자자 수는 2023년 875명에서 2025년 1,584명으로 급증해 산업단지 점유율이 일본에 이어 2위로 올라섰다.",
+      "impact": "⬌ 생산 — 태국 EEC 산업원가·경쟁환경 변화, 현지 진출 시 비용 영향",
       "tags": [
-        "lg전자",
-        "무인공장",
-        "자동화"
+        "태국",
+        "EEC",
+        "중국투자",
+        "제조"
       ]
     },
     {
       "id": "n016",
+      "category": "태국",
+      "importance": 2,
+      "title": "FTI \"공장 폐쇄 급증은 태국 산업 변곡점 신호\" 경고",
+      "title_orig": "FTI warns factory closures signal Thai industry tipping point",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
+      "pubDate": "2026-06-25",
+      "url": "https://www.nationthailand.com/business/economy/40066936",
+      "body": "태국산업연맹(FTI)은 2026년 초 공장 폐쇄가 58% 급증하며 에너지 비용·공급망 부담·수요 약화가 산업을 스태그플레이션으로 몰아가고 있다고 경고했다. 플라스틱 수지·화학·알루미늄 등 원자재 가격이 10~30% 상승했고 반도체(가동률 90%)와 전반 산업 평균(59%) 간 양극화가 심각하다.",
+      "impact": "⬇ 생산·원가 — 태국 제조 환경 악화, 현지 공급망·가동률 모니터링",
+      "tags": [
+        "태국",
+        "FTI",
+        "공장폐쇄",
+        "제조"
+      ]
+    },
+    {
+      "id": "n007",
       "category": "한국",
       "importance": 1,
-      "title": "[Who Is?] 정서진 화신 대표이사 사장",
-      "source": "비즈니스포스트",
-      "pubDate": "2026-06-26",
-      "url": "https://www.businesspost.co.kr/BP?command=article_view&num=440835",
-      "body": "자동차부품기업 화신이 섀시·바디·전동화 부품 생산. 철 소재뿐 아니라 핫프레스포밍(HPF)·알루미늄 등 경량화 복합소재로 영역 확대.",
-      "impact": "⬌ 생산 — 프레스금형 기반 자동차부품 Tier1 산업의 소재 전환 흐름",
+      "title": "[마켓 프리뷰] 반도체 큰 장에 역대급 변동성…한 달 내내 '출렁'",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518711?sid=101",
+      "body": "코스피 9천피 달성 후 연기금 매도로 상방이 제한되고 달러원 환율은 1500대에 갇힘. 주말 미국·이란 공격 응수로 29일 증시 영향 우려.",
+      "impact": "⬌ 기타 — 시장 변동성 모니터링",
       "tags": [
-        "프레스금형",
-        "자동차부품",
-        "소재"
+        "코스피",
+        "반도체",
+        "변동성"
+      ]
+    },
+    {
+      "id": "n008",
+      "category": "한국",
+      "importance": 1,
+      "title": "[증시전략] '칩플레이션'의 습격…AI 반도체 조정국면 진입하나?",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518709?sid=104",
+      "body": "달러원 환율이 1,550선까지 압박받는 가운데 AI 반도체 조정국면 진입 우려 확대. 29일 청와대에서 반도체 등 3대 메가 프로젝트 국민보고회 예정.",
+      "impact": "⬌ 기타 — 반도체·환율 변동성 주시",
+      "tags": [
+        "반도체",
+        "환율",
+        "AI"
+      ]
+    },
+    {
+      "id": "n009",
+      "category": "한국",
+      "importance": 1,
+      "title": "[미리보는 증시재료] 美 고용지표·韓 수출 발표…변동성 장세 분수령",
+      "title_orig": "",
+      "translated": false,
+      "source": "뉴스핌",
+      "pubDate": "2026-06-29",
+      "url": "https://www.newspim.com/news/view/20260626000697",
+      "body": "30일 미국 CB 소비자신뢰지수·JOLTs, 7월 1일 6월 ISM 제조업 PMI 공개. 한국 수출 지표도 발표돼 변동성 장세 분수령 전망.",
+      "impact": "⬌ 기타 — ISM PMI·수출 지표 제조업황 가늠자",
+      "tags": [
+        "PMI",
+        "수출",
+        "제조업"
+      ]
+    },
+    {
+      "id": "n014",
+      "category": "태국",
+      "importance": 1,
+      "title": "바트화 달러당 33 붕괴…산업계 \"차입비용도 오를 것\" 경고",
+      "title_orig": "Weakening baht falls below 33 to the US dollar as industry leaders warn borrowing costs will also rise",
+      "translated": true,
+      "source": "Thai Examiner",
+      "pubDate": "2026-06-24",
+      "url": "https://www.thaiexaminer.com/thai-news-foreigners/2026/06/24/weakening-baht-falls-below-33-to-the-us-dollar-as-industry-leaders-warn-borrowing-costs-will-also-rise/",
+      "body": "바트화가 올해 최저인 달러당 33선을 뚫고 화요일 33.21, 수요일 33.38까지 약세를 보였다. 미 연준의 추가 긴축 기대와 미·태 금리차 확대가 주원인이다.",
+      "impact": "⬇ 환율 — 태국 차입비용 상승, 현지 생산 자금부담 점검",
+      "tags": [
+        "태국",
+        "바트",
+        "금리"
       ]
     },
     {
       "id": "n017",
-      "category": "한국",
-      "importance": 1,
-      "title": "남선알미늄, GM '협력사 품질 우수상' 수상",
-      "source": "더퍼스트미디어",
-      "pubDate": "2026-06-25",
-      "url": "http://www.thefirstmedia.net/news/articleView.html?idxno=202275",
-      "body": "남선알미늄이 GM 공급 자동차 범퍼 시스템·사출금형 분야 전 평가항목 만점으로 협력사 품질 우수상 수상.",
-      "impact": "⬌ 생산 — 금형 기반 부품 협력사 품질관리 벤치마크 사례",
-      "tags": [
-        "금형",
-        "품질",
-        "자동차부품"
-      ]
-    },
-    {
-      "id": "n018",
-      "category": "한국",
-      "importance": 1,
-      "title": "중소기업 AX, 업종별 조합 중심으로 추진 필요 (금형산업협동조합 사례)",
-      "source": "산업일보",
-      "pubDate": "2026-06-25",
-      "url": "https://kidd.co.kr/news/246494",
-      "body": "중소기업협동조합이 업종 단위 AX(AI 전환) 생태계 중추 역할 가능. 금형산업협동조합을 사례로 업종별 조합의 AI 전환 주도 제언.",
-      "impact": "⬌ 정책 — 프레스금형 중소 협력사의 디지털 전환 정책 방향",
-      "tags": [
-        "금형",
-        "AX",
-        "정책"
-      ]
-    },
-    {
-      "id": "n019",
-      "category": "한국",
-      "importance": 1,
-      "title": "인천시, '2026 인천 일하기 좋은 뿌리기업' 14개사 찾는다",
-      "source": "인천일보",
-      "pubDate": "2026-06-25",
-      "url": "http://www.incheonnews.com/news/articleView.html?idxno=437664",
-      "body": "인천시가 주조·금형·소성가공·용접·표면처리·사출·프레스·정밀가공 등 뿌리산업 우수 기업 14개사 선정.",
-      "impact": "⬌ 정책 — 신신사가 속한 뿌리산업 인력·근로환경 개선 흐름",
-      "tags": [
-        "뿌리산업",
-        "프레스",
-        "정책"
-      ]
-    },
-    {
-      "id": "n022",
-      "category": "태국",
-      "importance": 1,
-      "title": "SCB EIC, 태국 2026 GDP 전망 2%로 상향…K자형 양극화 심화",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-23",
-      "url": "https://www.nationthailand.com/business/economy/40067770",
-      "body": "SCB EIC가 2026 성장률 전망을 1.7%→2%로 상향. 전자제품 수출·FDI 확대가 근거이나 회복은 대기업·전자·AI에 집중, 낙수효과 제한적.",
-      "impact": "⬆ 매출 — 태국 전자 수출·FDI 확대는 해외 생산기지 수요 환경에 긍정",
-      "tags": [
-        "태국",
-        "GDP",
-        "전자수출"
-      ],
-      "title_orig": "SCB EIC Lifts Thailand 2026 GDP Forecast to 2%",
-      "translated": true
-    },
-    {
-      "id": "n023",
-      "category": "태국",
-      "importance": 1,
-      "title": "태국 경제, 세 가지 취약 요인에 성장 둔화…바트화 1년래 최저",
-      "source": "The Nation Thailand",
-      "pubDate": "2026-06-24",
-      "url": "https://www.nationthailand.com/business/economy/40067801",
-      "body": "가계부채·기술 편중 K자 회복·신용긴축이 태국 성장 압박. 중소기업 대출 위축, 바트화 6월 1년래 최저 약세.",
-      "impact": "⬌ 환율 — 바트 약세는 태국 생산기지 원가·결제에 영향",
-      "tags": [
-        "태국",
-        "바트",
-        "신용긴축"
-      ],
-      "title_orig": "Thai Economy Face-Off: Baht Hits One-Year Low",
-      "translated": true
-    },
-    {
-      "id": "n024",
-      "category": "태국",
-      "importance": 1,
-      "title": "바트화, 달러당 33선 붕괴…업계 '차입비용 상승' 경고",
-      "source": "Thai Examiner",
-      "pubDate": "2026-06-24",
-      "url": "https://www.thaiexaminer.com/thai-news-foreigners/2026/06/24/weakening-baht-falls-below-33-to-the-us-dollar-as-industry-leaders-warn-borrowing-costs-will-also-rise/",
-      "body": "미 추가 금리인상 기대·자본 이동으로 바트화가 달러당 33선(2025년 5월 이후 최저) 돌파 약세. 산업계 차입비용 상승 경고.",
-      "impact": "⬌ 환율 — 바트 약세·차입비용 상승은 태국 진출 제조기지 비용 구조에 영향",
-      "tags": [
-        "태국",
-        "바트",
-        "차입비용"
-      ],
-      "title_orig": "Weakening baht falls below 33 to the US dollar as industry leaders warn borrowing costs will also rise",
-      "translated": true
-    },
-    {
-      "id": "n025",
       "category": "이집트",
       "importance": 1,
-      "title": "이집트, 수출·현지 제조 확대 위해 4건의 산업협정 체결",
-      "source": "Egypt Today",
-      "pubDate": "2026-06-21",
-      "url": "https://www.egypttoday.com/Article/3/147912/Egypt-signs-four-industrial-agreements-to-boost-exports-local-manufacturing",
-      "body": "이집트 산업현대화센터가 4건 협력 의정서 체결. 9개 부문 수출 품질 인증 지원, 중소기업 스마트 제조·디지털 전환, 철도차량부품 현지화. 2030 산업수출 1,000억 달러 목표.",
-      "impact": "⬆ 정책 — 현지 제조·스마트화 정책은 이집트 생산기지 운영 환경에 긍정",
+      "title": "中 SANY, 이집트 첫 2GW 풍력터빈 제조시설 지원",
+      "title_orig": "SANY backs Egypt's first 2GW wind turbine manufacturing facility",
+      "translated": true,
+      "source": "Egypt Today (이집트 투데이)",
+      "pubDate": "2026-06-24",
+      "url": "https://www.egypttoday.com/Article/3/147987/SANY-backs-Egypt%E2%80%99s-first-2GW-wind-turbine-manufacturing-facility",
+      "body": "이집트가 수에즈만 북부에 자국 첫 풍력터빈 제조공장과 2GW 풍력단지 건설 협정을 체결했다. 중국 SANY Renewable Energy, 이집트전력송전공사(EETC), 신재생에너지청(NREA)이 참여하며 연 2GW 생산능력의 공장은 2년 내 완공을 목표로 한다. 제조업 현지화 및 수출 허브화 전략의 일환이다.",
+      "impact": "⬌ 생산 — 이집트 제조 현지화 가속, 중장기 생산기지 환경 참고",
       "tags": [
         "이집트",
-        "현지제조",
-        "스마트제조"
-      ],
-      "title_orig": "Egypt signs four industrial agreements to boost exports, local manufacturing",
-      "translated": true
-    },
-    {
-      "id": "n026",
-      "category": "이집트",
-      "importance": 1,
-      "title": "삼성전자, 이집트 현지 제조 확대 검토…산업장관과 협의",
-      "source": "Arab Finance",
-      "pubDate": "2026-06-24",
-      "url": "https://www.zawya.com/en/economy/north-africa/samsung-electronics-probes-local-manufacturing-expansion-in-egypt-c120c6fr",
-      "body": "이집트 산업장관이 삼성전자 대표단과 만나 현지 제조 심화 방안 논의. 전자·기술이 '이집트 산업전략 2030' 우선 산업. 삼성 태양광 에너지 비중 확대 검토.",
-      "impact": "⬌ 경쟁 — 경쟁사 삼성의 이집트 현지화 확대는 LG 이집트 운영 환경과 직결되는 참고 동향",
-      "tags": [
-        "이집트",
-        "삼성전자",
-        "현지제조"
-      ],
-      "title_orig": "Samsung Electronics probes local manufacturing expansion in Egypt",
-      "translated": true
-    },
-    {
-      "importance": 1,
-      "category": "중국",
-      "title": "2026 다보스: 등대공장 중국 과반, 长三角 정밀금형 공급망 효율 주목",
-      "title_orig": "2026夏季达沃斯论坛：灯塔工厂中国过半，长三角精密模具供应链效率受关注",
-      "translated": true,
-      "source": "新华网",
-      "pubDate": "2026-06-24",
-      "url": "https://www.news.cn/20260624/5c30bddd78bd48078230b261aa7075de/c.html",
-      "body": "세계경제포럼 글로벌 등대공장 신규 명단서 중국 사례 과반. 珠三角 전자부품·长三角 정밀모구(금형) 공급망 효율 부각. TCL 李东生 '중국제조 우위는 글로벌 현지화로 공급망을 현지 경제에 융합해 실현' 발언. 松下 다롄 R&D 거점 등 외자 '在中国,为全球' 전환.",
-      "impact": "⬌ 생산 — 등대공장·정밀금형 공급망 효율 경쟁은 신신사 프레스금형 스마트화 벤치마크",
-      "tags": [
-        "등대공장",
-        "정밀금형",
-        "공급망"
-      ],
-      "id": "cn004"
-    },
-    {
-      "importance": 1,
-      "category": "중국",
-      "title": "중국 상장사 300곳 베트남 진출…삼성·LG, 하이퐁에 전자부품 공장",
-      "title_orig": "300家中国上市公司越南建厂，三星LG在海防建电子元器件工厂",
-      "translated": true,
-      "source": "腾讯(蓝科技)",
-      "pubDate": "2026-06-22",
-      "url": "https://view.inews.qq.com/a/20260622A0E5WW00",
-      "body": "베트남 1~5월 전자·컴퓨터·부품 수출 562억달러. 海尔·美的·TCL 베트남서 에어컨·냉장고·TV 생산, 삼성(누적 224억달러)·LG는 하이퐁에 디스플레이 패널·전자 부품 공장 건설하고 공급망 확장. 立讯精密·歌尔 등 구조부품·정밀모듈 다공장화. RCEP·EVFTA가 역내 부품 이동 지원.",
-      "impact": "⬌ 생산 — LG 베트남 부품공장 확장은 협력사 해외 동반진출·공급망 재배치 시사",
-      "tags": [
-        "lg전자",
-        "베트남",
-        "부품",
-        "공급망"
-      ],
-      "id": "cn005"
-    },
-    {
-      "id": "eg003",
-      "importance": 1,
-      "category": "이집트",
-      "title": "이집트 산업현대화센터-수출개발기금 협력협정…5.57억 파운드 지원",
-      "title_orig": "صالح وهاشم يشهدان اتفاقية تعاون بين مركز تحديث الصناعة وصندوق تنمية الصادرات",
-      "translated": true,
-      "source": "Al-Ahram Business",
-      "pubDate": "2026-06-24",
-      "url": "https://business.ahram.org.eg/News/113124.aspx",
-      "body": "이집트 재무장관 살레와 산업장관 하셈 임석 하에 산업현대화센터(IMC)와 수출개발기금이 협력 협정을 체결했다. 수출개발기금이 5억5,700만 이집트파운드 규모 프로그램 자금을 지원하고 대상 산업·활동·지원 메커니즘을 규정한다. 수출 경쟁력·현지 제조 역량 강화가 목표.",
-      "impact": "⬆ 정책 — 이집트 수출·현지 제조 역량 강화 정책은 이집트 생산기지 운영 환경에 긍정",
-      "tags": [
-        "이집트",
-        "현지제조",
-        "수출",
-        "정책"
+        "제조",
+        "SANY",
+        "FDI"
       ]
     }
   ],
@@ -594,158 +383,150 @@
       "flag": "🇰🇷",
       "currency": "KRW",
       "country": "한국",
-      "rate_usd": "1,543",
+      "rate_usd": "1,532",
       "unit": "원/달러",
-      "change": "+0.02%",
-      "dir": "neg",
-      "color": "neg",
+      "change": "-0.69%",
+      "dir": "pos",
+      "color": "pos",
       "history": {
         "values": [
-          1531,
-          1527,
-          1540,
-          1527,
-          1539.7,
-          1542.7,
-          1543
+          1542,
+          1545,
+          1547,
+          1543,
+          1534.55,
+          1532
         ],
         "labels": [
-          "06/18",
-          "06/19",
           "06/22",
           "06/23",
           "06/24",
           "06/25",
+          "06/26",
           "오늘"
         ]
       },
-      "value": "1,543"
+      "value": "1,532"
     },
     {
       "flag": "🇨🇳",
       "currency": "CNY",
       "country": "중국",
-      "rate_usd": "6.81",
+      "rate_usd": "6.80",
       "unit": "위안/달러",
-      "change": "-0.08%",
-      "dir": "pos",
+      "change": "+0.13%",
+      "dir": "neg",
       "color": "neu",
       "history": {
         "values": [
-          6.8,
-          6.81,
-          6.81,
-          6.81,
-          6.81,
-          6.807,
-          6.81
+          6.77,
+          6.79,
+          6.79,
+          6.79,
+          6.79,
+          6.8
         ],
         "labels": [
-          "06/18",
-          "06/19",
           "06/22",
           "06/23",
           "06/24",
           "06/25",
+          "06/26",
           "오늘"
         ]
       },
-      "value": "6.81"
+      "value": "6.80"
     },
     {
       "flag": "🇹🇭",
       "currency": "THB",
       "country": "태국",
-      "rate_usd": "33.38",
+      "rate_usd": "33.40",
       "unit": "바트/달러",
-      "change": "-0.10%",
-      "dir": "neu",
-      "color": "neu",
+      "change": "+0.30%",
+      "dir": "neg",
+      "color": "neg",
       "history": {
         "values": [
-          32.62,
-          32.9,
-          33.1,
+          33.05,
+          33.2,
           33.3,
-          33.47,
-          33.38,
-          33.38
+          33.36,
+          33.41,
+          33.4
         ],
         "labels": [
-          "06/18",
-          "06/19",
           "06/22",
           "06/23",
           "06/24",
           "06/25",
+          "06/26",
           "오늘"
         ]
       },
-      "value": "33.38"
+      "value": "33.40"
     },
     {
       "flag": "🇪🇬",
       "currency": "EGP",
       "country": "이집트",
-      "rate_usd": "49.52",
+      "rate_usd": "49.51",
       "unit": "파운드/달러",
-      "change": "-0.18%",
+      "change": "-0.10%",
       "dir": "pos",
       "color": "pos",
       "history": {
         "values": [
-          50.2,
-          50.1,
-          50.06,
+          49.95,
           49.8,
-          49.52,
-          49.52,
-          49.52
+          49.65,
+          49.5,
+          49.51,
+          49.51
         ],
         "labels": [
-          "06/18",
-          "06/19",
           "06/22",
           "06/23",
           "06/24",
           "06/25",
+          "06/26",
           "오늘"
         ]
       },
-      "value": "49.52"
+      "value": "49.51"
     }
   ],
   "overseas": [
     {
       "flag": "🇨🇳",
       "country": "중국",
-      "indicators": "CNY/USD 6.81 | 제조업 PMI 50.0 | 에어컨 생산 -3.3%",
-      "summary": "중국 가전 생산 둔화(에어컨 -3.3%)·PMI 임계점 속 동남아 가전 공세 심화(格力 압축기 10년 보증). LG는 로봇 구동부품 내재화·베트남 부품공장 확장.",
-      "status": "주의",
+      "indicators": "CNY/USD 6.80 | 제조업 PMI 참고",
+      "summary": "유럽 기록적 폭염으로 휴대용 분리형 에어컨 수요 급증. Midea는 광둥 순더 공장을 24시간 가동, 프랑스·스페인·독일·영국 등에서 Midea 에어컨 매출 전년比 70%↑, Gree 1~6월 40%↑. TCL 등도 증산 동참.",
+      "status": "주시",
       "statusType": "w"
     },
     {
       "flag": "🇹🇭",
       "country": "태국",
-      "indicators": "THB/USD 33.38 | 1년래 최저 | 2026 GDP 2%↑",
-      "summary": "바트화 33선 붕괴 약세·차입비용 상승 경고, 단 SCB EIC가 GDP 전망 2% 상향(전자수출·FDI 확대)",
-      "status": "주의",
-      "statusType": "w"
+      "indicators": "THB/USD 33.40 | 제조업 PMI 참고",
+      "summary": "바트화가 달러당 33.20으로 1년 최저. K자형 회복으로 양극화, 가계·중소기업 부채 부담과 소득 감소가 내수를 압박. 중소기업 대출 위축·중동 리스크가 추가 압박.",
+      "status": "경고",
+      "statusType": "r"
     },
     {
       "flag": "🇪🇬",
       "country": "이집트",
-      "indicators": "EGP/USD 49.52 | 파운드 강세",
-      "summary": "이집트 산업현대화·수출개발기금 협정(5.57억£)·삼성 현지 제조 확대 검토 등 현지화·수출 드라이브 가속. 가전부품·압축기 현지생산 확대 흐름.",
-      "status": "양호",
-      "statusType": "g"
+      "indicators": "EGP/USD 49.51 | IMF 체계",
+      "summary": "이집트가 수에즈만 북부에 첫 풍력터빈 제조공장·2GW 풍력단지 건설 협정 체결. 중국 SANY·EETC·NREA 참여, 2년 내 완공 목표. 제조 현지화·수출 허브화 전략.",
+      "status": "주시",
+      "statusType": "w"
     }
   ],
   "markets": [
     {
       "label": "LG전자 주가",
-      "value": "211,500원",
-      "color": "neg"
+      "value": "228,500원",
+      "color": "neu"
     },
     {
       "label": "한국 기준금리",
@@ -754,36 +535,36 @@
     },
     {
       "label": "WTI 유가",
-      "value": "$70.3",
+      "value": "$68.9",
       "color": "pos"
     },
     {
       "label": "중국 위안 (CNY)",
-      "value": "6.81",
+      "value": "6.80",
       "color": "neu"
     }
   ],
   "wti": {
     "values": [
-      74.0,
-      72.5,
-      71.5,
-      70.9,
-      70.3,
-      70.34,
-      70.3
+      80.0,
+      78.94,
+      76.8,
+      73.5,
+      71.0,
+      68.86,
+      68.9
     ],
     "labels": [
-      "06/18",
       "06/19",
       "06/22",
       "06/23",
       "06/24",
       "06/25",
+      "06/26",
       "오늘"
     ],
-    "trend": "▼ -6.9% (7일)",
-    "min": 67,
-    "max": 76
+    "trend": "▼ -13.9% (7일)",
+    "min": 65,
+    "max": 82
   }
 }
