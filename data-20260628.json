@@ -1,0 +1,570 @@
+{
+  "date": "2026-06-29",
+  "date_kr": "2026년 6월 29일 (월)",
+  "generated_at": "2026-06-28 23:39 KST",
+  "summary_line": "2분기 평균 원/달러 환율이 1,500.1원으로 1998년 외환위기 이후 28년 만에 처음 1,500원대를 기록하며 수입 원자재·부품 조달 원가 부담이 구조화됨(당일은 10.7원 내린 1,532원으로 일시 강세). 동시에 유럽 기록적 폭염으로 냉난방공조(HVAC) 수요가 폭증해 핵심 고객사 LG전자(휘센 이동식에어컨 B2B)와 중국 Midea·Gree가 동시 증산에 나서며 공조 부품 발주 확대 기회와 중국발 경쟁 심화가 병존. WTI 유가는 미·이란 평화 진전에 주간 12% 급락한 $68.9로 원가 측면 단기 호재.",
+  "top3": [
+    {
+      "rank": 1,
+      "title": "2분기 평균 원/달러 1,500.1원 — 외환위기 이후 28년 만 첫 1,500원대 고착",
+      "reason": "한국은행 통계 기준 4~6월 평균 환율이 1,500.1원으로 1998년 외환위기 이후 처음 1,500원대를 기록. 당일은 10.7원 내린 1,532원으로 일시 강세 전환했으나 고환율 박스권 구조가 고착 — 수입 원자재·부품 조달 원가가 상시 상승하는 만큼 신신사 환헤지 포지션·결제통화 구조 즉시 재점검 필요"
+    },
+    {
+      "rank": 2,
+      "title": "유럽 기록적 폭염 → 냉난방공조(HVAC) 수요 폭증, LG·中 경쟁사 동시 풀가동",
+      "reason": "40도 안팎 폭염으로 유럽 냉방기기 수요가 급증, LG전자는 휘센 이동식에어컨 B2B 수주를 확대하고 중국 Midea(유럽 매출 +70%)·Gree(+40%)도 24시간 증산. 글로벌 공조 시장 동시 호황은 LG 공조 부품 발주 확대 기회이자 중국발 경쟁 심화 신호 — 신신사 공조·압축기 관련 부품 라인 대응 점검"
+    },
+    {
+      "rank": 3,
+      "title": "WTI 유가 주간 12% 급락 $68.9 (2월 이후 최저) — 미·이란 평화 진전",
+      "reason": "호르무즈 해협 통항 정상화와 미·이란 평화협상 진전으로 WTI가 주간 약 13% 급락. 원자재·물류 원가 하향 안정은 제조원가에 단기 우호 요인이나, 주말 미·이란 공격 응수로 지정학 변동성은 잔존 — 조달·헤지 타이밍 관점에서 모니터링"
+    }
+  ],
+  "monitoring": [
+    "원/달러 1,500원대 박스권 지속 여부 및 당일 강세 전환의 지속성 — 수입 부품·원자재 조달 원가, 환헤지·결제통화 구조와 직결",
+    "유럽 폭염발 글로벌 공조(HVAC) 수요 확대에 따른 LG전자 공조 B2B 수주·부품 발주 구조 변화, 중국 Midea·Gree·TCL 증산 경쟁 동향",
+    "WTI·원자재 가격 하향 안정 지속성과 중동(미·이란) 지정학 리스크 재점화 가능성, 태국 바트 약세·공장폐쇄 58%·EEC 중국투자 등 해외 생산기지 환경"
+  ],
+  "ceo_schedule": [
+    {
+      "time": "07:30~08:00",
+      "title": "김해 출근",
+      "location": ""
+    }
+  ],
+  "kpis": [
+    {
+      "type": "pos",
+      "label": "원/달러 환율",
+      "value": "1,532",
+      "unit": "원",
+      "change": "▼ -10.7원 (당일 강세 전환)",
+      "note": "6/29 주간거래 종가 1,532원으로 전거래일 대비 10.7원 하락(강세). 다만 2분기 평균이 1,500.1원으로 외환위기 이후 28년 만에 처음 1,500원대 — 고환율 박스권 고착으로 수입 원자재·부품 조달 원가 부담은 지속. 환헤지·결제통화 구조 점검 필요"
+    },
+    {
+      "type": "pos",
+      "label": "WTI 유가",
+      "value": "$68.9",
+      "unit": "",
+      "change": "▼ -12.8% (주간 급락, 2월 이후 최저)",
+      "note": "미·이란 평화협상 진전과 호르무즈 해협 통항 정상화로 주간 약 13% 급락, 2026년 2월 이후 최저. 원자재·물류 원가 하향 안정으로 단기 우호 — 단 주말 미·이란 공격 응수로 지정학 리스크 잔존"
+    },
+    {
+      "type": "neu",
+      "label": "KOSPI",
+      "value": "9,000선",
+      "unit": "",
+      "change": "변동성 확대 (사흘 새 서킷 2회)",
+      "note": "코스피 9,000선 진입 후 작은 악재에도 사흘 새 두 차례 서킷브레이커 발동. 미국발 AI 반도체 조정(칩플레이션) 우려·연기금 매도로 상방 제한 — 자금조달 환경·투자심리 변동성 확대"
+    },
+    {
+      "type": "inf",
+      "label": "오늘의 한 줄",
+      "summary": "2분기 평균 원/달러 환율이 1,500.1원으로 1998년 외환위기 이후 28년 만에 처음 1,500원대를 기록하며 수입 원자재·부품 조달 원가 부담이 구조화됨(당일은 10.7원 내린 1,532원으로 일시 강세). 동시에 유럽 기록적 폭염으로 냉난방공조(HVAC) 수요가 폭증해 핵심 고객사 LG전자(휘센 이동식에어컨 B2B)와 중국 Midea·Gree가 동시 증산에 나서며 공조 부품 발주 확대 기회와 중국발 경쟁 심화가 병존. WTI 유가는 미·이란 평화 진전에 주간 12% 급락한 $68.9로 원가 측면 단기 호재."
+    }
+  ],
+  "news": [
+    {
+      "id": "n001",
+      "category": "한국",
+      "importance": 3,
+      "title": "40도 안팎 폭염 '뉴노멀'된 유럽…냉난방공조 업계 블루오션 되나",
+      "title_orig": "",
+      "translated": false,
+      "source": "조선일보",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/023/0003984642?sid=105",
+      "body": "유럽이 40도 안팎 폭염으로 냉난방공조(HVAC) 수요가 급증하며 업계 블루오션으로 부상. LG전자는 현지 맞춤형 가전과 대규모 B2B 수주, 휘센 이동식 에어컨 라인업으로 유럽 시장 점유율을 끌어올리는 중.",
+      "impact": "⬆ 생산·매출 — LG전자 공조 B2B 수주 확대 시 협력사 부품 발주 기회 확대",
+      "tags": [
+        "lg전자",
+        "HVAC",
+        "유럽",
+        "공조"
+      ]
+    },
+    {
+      "id": "n005",
+      "category": "한국",
+      "importance": 3,
+      "title": "2분기 평균 환율 1,500원…외환위기 이후 처음",
+      "title_orig": "",
+      "translated": false,
+      "source": "연합뉴스TV",
+      "pubDate": "2026-06-28",
+      "url": "https://n.news.naver.com/mnews/article/422/0000879302?sid=101",
+      "body": "4월 1일~6월 26일 원·달러 주간거래 종가 평균이 1,500.1원으로 집계. 2분기 평균 환율이 1998년 외환위기 이후 28년 만에 처음으로 1,500원대를 기록하게 됨.",
+      "impact": "⬇ 환율·원가 — 수입 원자재·부품 조달 원가 직접 상승, 환헤지 포지션 점검 시급",
+      "tags": [
+        "환율",
+        "원달러",
+        "거시경제"
+      ]
+    },
+    {
+      "id": "n011",
+      "category": "중국",
+      "importance": 3,
+      "title": "유럽 폭염에 중국 에어컨 제조사들 24시간 풀가동…냉방기기 수요 폭증",
+      "title_orig": "Chinese air conditioner manufacturers work around the clock as European heatwaves drive booming demand for cooling products",
+      "translated": true,
+      "source": "Global Times (글로벌타임스)",
+      "pubDate": "2026-06-27",
+      "url": "https://www.globaltimes.cn/page/202606/1364569.shtml",
+      "body": "유럽 기록적 폭염으로 휴대용 분리형 에어컨 수요가 급증, Midea는 광둥 순더 공장을 24시간 가동해 PortaSplit 모델을 증산 중이다. 프랑스·스페인·독일·영국 등 보급률이 낮던 시장에서 Midea 에어컨 매출이 전년比 70% 이상 증가했고, Gree는 1~6월 해당 시장 에어컨 판매가 40% 이상 늘었다. TCL 등도 휴대용 에어컨 증산에 동참.",
+      "impact": "⬌ 매출·경쟁 — 글로벌 공조 호황은 LG 공조 부품 기회이자 중국 경쟁사 증산 압박",
+      "tags": [
+        "중국",
+        "에어컨",
+        "Midea",
+        "Gree",
+        "경쟁사"
+      ]
+    },
+    {
+      "id": "n002",
+      "category": "한국",
+      "importance": 2,
+      "title": "구광모가 LG 회장이 된 날로부터 8년…'뉴 LG'는 어떻게 달라졌나",
+      "title_orig": "",
+      "translated": false,
+      "source": "데일리안",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/119/0003105513?sid=101",
+      "body": "구광모 회장 취임 후 B2C에서 B2B로 전략 전환, 지난해 LG그룹 B2B 매출 비중 67%까지 상승. LG전자 VS사업본부는 올해 1분기 영업이익률 6%를 처음 기록.",
+      "impact": "⬌ 매출 — LG전자 B2B 체질전환 가속, 협력사 부품 포트폴리오 대응 필요",
+      "tags": [
+        "lg전자",
+        "B2B",
+        "전장"
+      ]
+    },
+    {
+      "id": "n003",
+      "category": "한국",
+      "importance": 2,
+      "title": "LG 스마트코티지, 20평대 신제품 출시…B2B 시장 공략 강화",
+      "title_orig": "",
+      "translated": false,
+      "source": "뉴스락",
+      "pubDate": "2026-06-28",
+      "url": "http://www.newslock.co.kr/news/articleView.html?idxno=132303",
+      "body": "LG전자가 사용 면적을 넓히고 가격 경쟁력을 높인 20평대 모듈러 주택 'LG 스마트코티지' 신제품 2종(모노 코어 72·82)을 29일 출시하며 고객 맞춤형 주거 솔루션 B2B 사업을 확대.",
+      "impact": "⬆ 매출 — 모듈러주택 B2B 신제품, 가전·부품 신규 수요 가능",
+      "tags": [
+        "lg전자",
+        "모듈러주택",
+        "B2B"
+      ]
+    },
+    {
+      "id": "n004",
+      "category": "한국",
+      "importance": 2,
+      "title": "LG전자, B2B 모듈러 주택 시장 본격 공략…삼성전자와 AI 홈 경쟁",
+      "title_orig": "",
+      "translated": false,
+      "source": "LC뉴스",
+      "pubDate": "2026-06-28",
+      "url": "https://www.lcnews.co.kr/news/articleView.html?idxno=204090",
+      "body": "LG전자가 20평대 모듈러 주택으로 B2B 시장을 겨냥하는 가운데 삼성전자도 '삼성 AI 모듈러 홈'을 선보이며 진입. 양사가 가전을 넘어 AI 홈·주거 솔루션에서 경쟁.",
+      "impact": "⬌ 매출 — 가전·주거 솔루션 경쟁 심화, 부품 공급 경쟁력 점검",
+      "tags": [
+        "lg전자",
+        "삼성전자",
+        "모듈러주택",
+        "AI홈"
+      ]
+    },
+    {
+      "id": "n006",
+      "category": "한국",
+      "importance": 2,
+      "title": "사흘 새 두 차례 서킷브레이커…작은 악재에도 변동성",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518727?sid=101",
+      "body": "코스피가 9,000선 진입 후 극심한 변동성을 보이며 사흘 새 두 차례 서킷브레이커 발동. 달러원 환율은 전거래일 대비 10원70전 내린 1,532원에 주간거래 마감, 장중 1,549원80전까지 상승.",
+      "impact": "⬇ 환율·기타 — 증시 변동성 확대, 자금조달 환경·투자심리 영향",
+      "tags": [
+        "코스피",
+        "환율",
+        "변동성"
+      ]
+    },
+    {
+      "id": "n010",
+      "category": "한국",
+      "importance": 2,
+      "title": "[기획: 청년, 현장에서 길을 찾다] 세원정공",
+      "title_orig": "",
+      "translated": false,
+      "source": "대구일보",
+      "pubDate": "2026-06-27",
+      "url": "https://www.idaegu.com/news/articleView.html?idxno=663897",
+      "body": "자동차부품 업체 세원정공이 현대차 등 완성차·해외에 부품을 공급하며 초고장력강 성형기술과 프레스 금형 기술을 기반으로 사업을 이어감. 전기차·친환경차 산업 변화에 대응 중.",
+      "impact": "⬌ 생산 — 프레스·금형 동종업계 동향, 초고장력강 성형 기술 트렌드 참고",
+      "tags": [
+        "프레스금형",
+        "자동차부품",
+        "제조"
+      ]
+    },
+    {
+      "id": "n012",
+      "category": "중국",
+      "importance": 2,
+      "title": "중국 산업이익, 제조·수출 의존 속 견조세 유지",
+      "title_orig": "China industrial profits stay resilient as economy leans on factories, exports",
+      "translated": true,
+      "source": "CNBC / Reuters",
+      "pubDate": "2026-06-27",
+      "url": "https://www.cnbc.com/2026/06/27/china-industrial-profits-stay-resilient-as-economy-leans-on-factories.html",
+      "body": "5월 중국 규모이상 공업기업 이익은 전년동기比 21.1% 증가했으나 4월(24.7%)보다 둔화됐다. 1~5월 누적 이익은 18.8% 증가. 내수 부진을 제조 생산과 수출이 떠받치는 양극화 구조가 뚜렷하며, 부동산 침체·구조적 불균형이 여전히 부담으로 작용한다.",
+      "impact": "⬌ 원가·수요 — 중국 제조업황은 가전 부품 수요·단가에 간접 영향",
+      "tags": [
+        "중국",
+        "산업이익",
+        "제조업"
+      ]
+    },
+    {
+      "id": "n013",
+      "category": "태국",
+      "importance": 2,
+      "title": "태국 경제, 바트화 1년 최저 속 3대 취약 요인이 성장 발목",
+      "title_orig": "Thai Economy Face-Off: Three Fragile Triggers Drag Down Growth as Baht Hits One-Year Low",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
+      "pubDate": "2026-06-24",
+      "url": "https://www.nationthailand.com/business/economy/40067801",
+      "body": "바트화가 달러당 33.20으로 1년 최저치를 기록했다. 성장은 수입의존 첨단산업에 집중된 K자형 회복으로 양극화됐고, 가계·중소기업의 부채 부담과 소득 감소가 내수를 짓누른다. 중소기업 대출 위축과 중동 지정학 리스크가 추가 압박 요인.",
+      "impact": "⬇ 환율 — 바트 약세는 태국 생산기지 원가·수익성에 영향",
+      "tags": [
+        "태국",
+        "바트",
+        "거시경제"
+      ]
+    },
+    {
+      "id": "n015",
+      "category": "태국",
+      "importance": 2,
+      "title": "중국 투자로 태국 EEC 산업용지 가격 급등",
+      "title_orig": "Chinese investment drives EEC land prices higher in Thailand",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
+      "pubDate": "2026-06-25",
+      "url": "https://www.nationthailand.com/business/manufacturing/40067791",
+      "body": "중국 제조업체들의 공장 부지 수요로 동부경제회랑(EEC) 촌부리·라용 일대 산업용지 가격이 20~30% 상승했다. 중국 투자자 수는 2023년 875명에서 2025년 1,584명으로 급증해 산업단지 점유율이 일본에 이어 2위로 올라섰다.",
+      "impact": "⬌ 생산 — 태국 EEC 산업원가·경쟁환경 변화, 현지 진출 시 비용 영향",
+      "tags": [
+        "태국",
+        "EEC",
+        "중국투자",
+        "제조"
+      ]
+    },
+    {
+      "id": "n016",
+      "category": "태국",
+      "importance": 2,
+      "title": "FTI \"공장 폐쇄 급증은 태국 산업 변곡점 신호\" 경고",
+      "title_orig": "FTI warns factory closures signal Thai industry tipping point",
+      "translated": true,
+      "source": "The Nation Thailand (더네이션)",
+      "pubDate": "2026-06-25",
+      "url": "https://www.nationthailand.com/business/economy/40066936",
+      "body": "태국산업연맹(FTI)은 2026년 초 공장 폐쇄가 58% 급증하며 에너지 비용·공급망 부담·수요 약화가 산업을 스태그플레이션으로 몰아가고 있다고 경고했다. 플라스틱 수지·화학·알루미늄 등 원자재 가격이 10~30% 상승했고 반도체(가동률 90%)와 전반 산업 평균(59%) 간 양극화가 심각하다.",
+      "impact": "⬇ 생산·원가 — 태국 제조 환경 악화, 현지 공급망·가동률 모니터링",
+      "tags": [
+        "태국",
+        "FTI",
+        "공장폐쇄",
+        "제조"
+      ]
+    },
+    {
+      "id": "n007",
+      "category": "한국",
+      "importance": 1,
+      "title": "[마켓 프리뷰] 반도체 큰 장에 역대급 변동성…한 달 내내 '출렁'",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518711?sid=101",
+      "body": "코스피 9천피 달성 후 연기금 매도로 상방이 제한되고 달러원 환율은 1500대에 갇힘. 주말 미국·이란 공격 응수로 29일 증시 영향 우려.",
+      "impact": "⬌ 기타 — 시장 변동성 모니터링",
+      "tags": [
+        "코스피",
+        "반도체",
+        "변동성"
+      ]
+    },
+    {
+      "id": "n008",
+      "category": "한국",
+      "importance": 1,
+      "title": "[증시전략] '칩플레이션'의 습격…AI 반도체 조정국면 진입하나?",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518709?sid=104",
+      "body": "달러원 환율이 1,550선까지 압박받는 가운데 AI 반도체 조정국면 진입 우려 확대. 29일 청와대에서 반도체 등 3대 메가 프로젝트 국민보고회 예정.",
+      "impact": "⬌ 기타 — 반도체·환율 변동성 주시",
+      "tags": [
+        "반도체",
+        "환율",
+        "AI"
+      ]
+    },
+    {
+      "id": "n009",
+      "category": "한국",
+      "importance": 1,
+      "title": "[미리보는 증시재료] 美 고용지표·韓 수출 발표…변동성 장세 분수령",
+      "title_orig": "",
+      "translated": false,
+      "source": "뉴스핌",
+      "pubDate": "2026-06-29",
+      "url": "https://www.newspim.com/news/view/20260626000697",
+      "body": "30일 미국 CB 소비자신뢰지수·JOLTs, 7월 1일 6월 ISM 제조업 PMI 공개. 한국 수출 지표도 발표돼 변동성 장세 분수령 전망.",
+      "impact": "⬌ 기타 — ISM PMI·수출 지표 제조업황 가늠자",
+      "tags": [
+        "PMI",
+        "수출",
+        "제조업"
+      ]
+    },
+    {
+      "id": "n014",
+      "category": "태국",
+      "importance": 1,
+      "title": "바트화 달러당 33 붕괴…산업계 \"차입비용도 오를 것\" 경고",
+      "title_orig": "Weakening baht falls below 33 to the US dollar as industry leaders warn borrowing costs will also rise",
+      "translated": true,
+      "source": "Thai Examiner",
+      "pubDate": "2026-06-24",
+      "url": "https://www.thaiexaminer.com/thai-news-foreigners/2026/06/24/weakening-baht-falls-below-33-to-the-us-dollar-as-industry-leaders-warn-borrowing-costs-will-also-rise/",
+      "body": "바트화가 올해 최저인 달러당 33선을 뚫고 화요일 33.21, 수요일 33.38까지 약세를 보였다. 미 연준의 추가 긴축 기대와 미·태 금리차 확대가 주원인이다.",
+      "impact": "⬇ 환율 — 태국 차입비용 상승, 현지 생산 자금부담 점검",
+      "tags": [
+        "태국",
+        "바트",
+        "금리"
+      ]
+    },
+    {
+      "id": "n017",
+      "category": "이집트",
+      "importance": 1,
+      "title": "中 SANY, 이집트 첫 2GW 풍력터빈 제조시설 지원",
+      "title_orig": "SANY backs Egypt's first 2GW wind turbine manufacturing facility",
+      "translated": true,
+      "source": "Egypt Today (이집트 투데이)",
+      "pubDate": "2026-06-24",
+      "url": "https://www.egypttoday.com/Article/3/147987/SANY-backs-Egypt%E2%80%99s-first-2GW-wind-turbine-manufacturing-facility",
+      "body": "이집트가 수에즈만 북부에 자국 첫 풍력터빈 제조공장과 2GW 풍력단지 건설 협정을 체결했다. 중국 SANY Renewable Energy, 이집트전력송전공사(EETC), 신재생에너지청(NREA)이 참여하며 연 2GW 생산능력의 공장은 2년 내 완공을 목표로 한다. 제조업 현지화 및 수출 허브화 전략의 일환이다.",
+      "impact": "⬌ 생산 — 이집트 제조 현지화 가속, 중장기 생산기지 환경 참고",
+      "tags": [
+        "이집트",
+        "제조",
+        "SANY",
+        "FDI"
+      ]
+    }
+  ],
+  "fx": [
+    {
+      "flag": "🇰🇷",
+      "currency": "KRW",
+      "country": "한국",
+      "rate_usd": "1,532",
+      "unit": "원/달러",
+      "change": "-0.69%",
+      "dir": "pos",
+      "color": "pos",
+      "history": {
+        "values": [
+          1542,
+          1545,
+          1547,
+          1543,
+          1534.55,
+          1532
+        ],
+        "labels": [
+          "06/22",
+          "06/23",
+          "06/24",
+          "06/25",
+          "06/26",
+          "오늘"
+        ]
+      },
+      "value": "1,532"
+    },
+    {
+      "flag": "🇨🇳",
+      "currency": "CNY",
+      "country": "중국",
+      "rate_usd": "6.80",
+      "unit": "위안/달러",
+      "change": "+0.13%",
+      "dir": "neg",
+      "color": "neu",
+      "history": {
+        "values": [
+          6.77,
+          6.79,
+          6.79,
+          6.79,
+          6.79,
+          6.8
+        ],
+        "labels": [
+          "06/22",
+          "06/23",
+          "06/24",
+          "06/25",
+          "06/26",
+          "오늘"
+        ]
+      },
+      "value": "6.80"
+    },
+    {
+      "flag": "🇹🇭",
+      "currency": "THB",
+      "country": "태국",
+      "rate_usd": "33.40",
+      "unit": "바트/달러",
+      "change": "+0.30%",
+      "dir": "neg",
+      "color": "neg",
+      "history": {
+        "values": [
+          33.05,
+          33.2,
+          33.3,
+          33.36,
+          33.41,
+          33.4
+        ],
+        "labels": [
+          "06/22",
+          "06/23",
+          "06/24",
+          "06/25",
+          "06/26",
+          "오늘"
+        ]
+      },
+      "value": "33.40"
+    },
+    {
+      "flag": "🇪🇬",
+      "currency": "EGP",
+      "country": "이집트",
+      "rate_usd": "49.51",
+      "unit": "파운드/달러",
+      "change": "-0.10%",
+      "dir": "pos",
+      "color": "pos",
+      "history": {
+        "values": [
+          49.95,
+          49.8,
+          49.65,
+          49.5,
+          49.51,
+          49.51
+        ],
+        "labels": [
+          "06/22",
+          "06/23",
+          "06/24",
+          "06/25",
+          "06/26",
+          "오늘"
+        ]
+      },
+      "value": "49.51"
+    }
+  ],
+  "overseas": [
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "indicators": "CNY/USD 6.80 | 제조업 PMI 참고",
+      "summary": "유럽 기록적 폭염으로 휴대용 분리형 에어컨 수요 급증. Midea는 광둥 순더 공장을 24시간 가동, 프랑스·스페인·독일·영국 등에서 Midea 에어컨 매출 전년比 70%↑, Gree 1~6월 40%↑. TCL 등도 증산 동참.",
+      "status": "주시",
+      "statusType": "w"
+    },
+    {
+      "flag": "🇹🇭",
+      "country": "태국",
+      "indicators": "THB/USD 33.40 | 제조업 PMI 참고",
+      "summary": "바트화가 달러당 33.20으로 1년 최저. K자형 회복으로 양극화, 가계·중소기업 부채 부담과 소득 감소가 내수를 압박. 중소기업 대출 위축·중동 리스크가 추가 압박.",
+      "status": "경고",
+      "statusType": "r"
+    },
+    {
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "indicators": "EGP/USD 49.51 | IMF 체계",
+      "summary": "이집트가 수에즈만 북부에 첫 풍력터빈 제조공장·2GW 풍력단지 건설 협정 체결. 중국 SANY·EETC·NREA 참여, 2년 내 완공 목표. 제조 현지화·수출 허브화 전략.",
+      "status": "주시",
+      "statusType": "w"
+    }
+  ],
+  "markets": [
+    {
+      "label": "LG전자 주가",
+      "value": "228,500원",
+      "color": "neu"
+    },
+    {
+      "label": "한국 기준금리",
+      "value": "2.50%",
+      "color": "neu"
+    },
+    {
+      "label": "WTI 유가",
+      "value": "$68.9",
+      "color": "pos"
+    },
+    {
+      "label": "중국 위안 (CNY)",
+      "value": "6.80",
+      "color": "neu"
+    }
+  ],
+  "wti": {
+    "values": [
+      80.0,
+      78.94,
+      76.8,
+      73.5,
+      71.0,
+      68.86,
+      68.9
+    ],
+    "labels": [
+      "06/19",
+      "06/22",
+      "06/23",
+      "06/24",
+      "06/25",
+      "06/26",
+      "오늘"
+    ],
+    "trend": "▼ -13.9% (7일)",
+    "min": 65,
+    "max": 82
+  }
+}
