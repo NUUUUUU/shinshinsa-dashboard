@@ -1,0 +1,704 @@
+{
+  "date": "2026-06-30",
+  "date_kr": "2026년 6월 30일 (화)",
+  "generated_at": "2026-06-29 23:42 KST",
+  "summary_line": "원/달러 1,545원으로 금융위기 이후 17년 만 최고치 고착 — 수입 원자재·부품 조달 원가 부담이 커진 가운데, 유럽 폭염발 냉난방공조(HVAC) 수요 폭증과 LG전자 美 관세 환급發 2분기 실적 개선이 협력사 발주 여력을 동시에 키우는 양면 국면.",
+  "top3": [
+    {
+      "rank": 1,
+      "title": "원/달러 1,545원 — 금융위기 이후 17년 만 최고치, 1,600원 우려까지",
+      "reason": "6/29 주간종가 1,545.2원으로 2009년 3월 이후 최고. AI 거품론發 외국인 4.3조원 순매도가 환율을 끌어올림. 수입 원자재·부품 조달 원가가 상시 상승하는 만큼 신신사 환헤지 포지션·결제통화 구조 즉시 재점검 필요"
+    },
+    {
+      "rank": 2,
+      "title": "유럽 기록적 폭염 → HVAC 수요 폭증, LG·中 경쟁사 동시 풀가동",
+      "reason": "40도 폭염으로 유럽 에어컨 수요 급증. LG는 인버터 컴프레서 내재화·OSO 인수로 HVAC 밸류체인을 구축, 64조 시장 최대 수혜주로 거론. 공조·압축기 부품 발주 확대 기회이자 중국 Midea·Gree 증산에 따른 경쟁 심화 신호 — 공조부품 라인 대응 점검"
+    },
+    {
+      "rank": 3,
+      "title": "LG전자, 가전 부품 탐색 AI 에이전트 개발 — 검토시간 수일→30분",
+      "reason": "LG가 신제품 개발 시 부품 검토를 30분 안팎으로 단축하는 AI 에이전트를 도입, 공급망 디지털화 가속. 부품 협력사인 신신사의 사양·견적·납기 대응 프로세스에 직접 영향 — 데이터 연동·표준화 대응 선제 검토 필요"
+    }
+  ],
+  "monitoring": [
+    "원/달러 1,500원대 박스권 고착 및 1,600원 돌파 가능성 — 수입 부품·원자재 조달 원가와 환헤지·결제통화 구조에 직결. 7/1 한국 6월 수출입동향 발표 주시",
+    "유럽 폭염發 글로벌 공조(HVAC) 수요 확대에 따른 LG 공조 B2B 수주·부품 발주 구조 변화와 중국 Midea·Gree·TCL 증산 경쟁 동향",
+    "철스크랩(고철) 가격 — kg당 515원 급등 후 현대제철 7/6 매입가 인하 전환의 지속성, 구리·알루미늄 단가 상승과 함께 가전부품 원가 변곡점 모니터링"
+  ],
+  "ceo_schedule": [
+    {
+      "time": "09:00~11:00",
+      "title": "컨센서스 회의",
+      "location": ""
+    }
+  ],
+  "kpis": [
+    {
+      "type": "neg",
+      "label": "원/달러 환율",
+      "value": "1,545",
+      "unit": "원",
+      "change": "▲ +0.86% (금융위기 이후 최고)",
+      "note": "6/29 주간종가 1,545.2원으로 2009년 3월 이후 17년 3개월 만 최고. AI 거품론發 외국인 4.3조원 순매도. 수입 원자재·부품 조달 원가 상승 부담 — 환헤지·결제통화 구조 점검 필요"
+    },
+    {
+      "type": "pos",
+      "label": "WTI 유가",
+      "value": "$69.7",
+      "unit": "",
+      "change": "▼ 주간 약세 후 반등 (4개월래 최저권)",
+      "note": "미·이란 상호 공격 중단·평화협상 진전으로 4개월래 최저권에서 소폭 반등. 원자재·물류 원가 하향 안정은 단기 우호 — 단 중동 지정학 리스크 잔존"
+    },
+    {
+      "type": "neu",
+      "label": "철스크랩(고철)",
+      "value": "515원",
+      "unit": "/kg",
+      "change": "▲ 급등 후 현대제철 7/6 매입가 인하 전환",
+      "note": "연초 400원대→515원/kg 급등으로 전기로 제강·가전부품 원가 압박. 단 현대제철이 7/6부터 톤당 1만원 인하 — 원자재 단가 변곡점. 중국發 구리·알루미늄 상승은 부담 요인"
+    },
+    {
+      "type": "inf",
+      "label": "오늘의 한 줄",
+      "summary": "원/달러 1,545원으로 금융위기 이후 17년 만 최고치 고착 — 수입 원자재·부품 조달 원가 부담이 커진 가운데, 유럽 폭염발 냉난방공조(HVAC) 수요 폭증과 LG전자 美 관세 환급發 2분기 실적 개선이 협력사 발주 여력을 동시에 키우는 양면 국면."
+    }
+  ],
+  "news": [
+    {
+      "id": "n001",
+      "category": "LG",
+      "importance": 3,
+      "title": "[단독] LG전자, 가전 부품 탐색 AI 에이전트 개발… 수일→30분으로 시간 단축",
+      "title_orig": "",
+      "translated": false,
+      "source": "조선비즈",
+      "pubDate": "2026-06-30",
+      "url": "https://n.news.naver.com/mnews/article/366/0001175348?sid=105",
+      "body": "LG전자가 신규 가전 개발 시 수일씩 걸리던 부품 검토 작업을 30분 안팎으로 줄이는 AI 에이전트를 개발했다. 협력사의 부품 생산·운영 효율을 높여 공급망 전반의 경쟁력 강화를 노린다.",
+      "impact": "⬌ 생산·공급망 — LG 부품 검토 디지털화로 협력사 사양·견적·납기 대응체계 변화, 데이터 연동·표준화 선제 대응 필요",
+      "tags": [
+        "lg전자",
+        "가전부품",
+        "협력사",
+        "AI",
+        "공급망"
+      ]
+    },
+    {
+      "id": "n002",
+      "category": "LG",
+      "importance": 3,
+      "title": "LG전자, 美 관세 환급에 2분기 실적 서프라이즈 기대",
+      "title_orig": "",
+      "translated": false,
+      "source": "연합인포맥스",
+      "pubDate": "2026-06-29",
+      "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4422238",
+      "body": "증권사 예상치 종합 시 LG전자 가전(HS) 사업부의 개선세가 예상되며, LG이노텍도 2분기 1,500억원 내외 영업이익으로 연결 실적에 기여할 전망이다. 미국 관세 환급이 2분기 실적 서프라이즈 기대를 키우고 있다.",
+      "impact": "⬆ 고객사 실적 — LG 가전·이노텍 실적 개선 시 협력사 물량·발주 여력 우호",
+      "tags": [
+        "lg전자",
+        "실적",
+        "2분기",
+        "가전"
+      ]
+    },
+    {
+      "id": "n004",
+      "category": "LG",
+      "importance": 3,
+      "title": "40도 폭염 덮친 유럽, 에어컨 블루오션으로 뜬다",
+      "title_orig": "",
+      "translated": false,
+      "source": "조선일보",
+      "pubDate": "2026-06-30",
+      "url": "https://n.news.naver.com/mnews/article/023/0003984779?sid=105",
+      "body": "삼성·LG전자가 중국 저가 공세에 맞서 냉매 없는 신기술, 현지 맞춤형 이동형 에어컨, 고효율 친환경 프리미엄 솔루션으로 유럽 시장을 공략한다. 에어컨 보급률 20%에 불과한 유럽이 HVAC 블루오션으로 부상하고 있다.",
+      "impact": "⬆ 매출·생산 — LG 공조 B2B 수주 확대 시 협력사 공조·압축기 부품 발주 기회",
+      "tags": [
+        "lg전자",
+        "에어컨",
+        "HVAC",
+        "유럽",
+        "히트펌프"
+      ]
+    },
+    {
+      "id": "n010",
+      "category": "한국",
+      "importance": 3,
+      "title": "원·달러 환율 13.2원 오른 1,545.2원…금융위기 이후 최고 수준",
+      "title_orig": "",
+      "translated": false,
+      "source": "YTN",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/052/0002372470?sid=101",
+      "body": "원·달러 환율이 주간 종가 기준 1,545.2원으로 2009년 3월 이후 17년 3개월 만에 최고 수준을 기록했다. AI 거품론 영향으로 외국인이 유가증권시장에서 4조2,906억원을 순매도하며 환율을 끌어올렸다.",
+      "impact": "⬇ 원가·환율 — 수입 원자재·부품 조달 비용 상승, 환헤지·결제통화 구조 점검 시급",
+      "tags": [
+        "환율",
+        "원달러",
+        "고환율",
+        "외국인순매도"
+      ]
+    },
+    {
+      "id": "n011",
+      "category": "한국",
+      "importance": 3,
+      "title": "현대제철, 철스크랩 매입 가격 인하…7/6부터 톤당 1만원",
+      "title_orig": "",
+      "translated": false,
+      "source": "페로타임즈",
+      "pubDate": "2026-06-29",
+      "url": "http://www.ferrotimes.com/news/articleView.html?idxno=48799",
+      "body": "현대제철 포항공장과 당진제철소가 7월 6일부터 철스크랩(고철) 매입 가격을 전 등급 톤당 1만원 인하한다(생철류는 5,000원). 가전·금형 등 철강 수요 산업의 원자재 가격 흐름에 직접 영향을 주는 지표다.",
+      "impact": "⬇→완화 원가 — 고철 매입가 인하로 가전·금형 원자재 단가 하향 신호, 원가 변곡점",
+      "tags": [
+        "철스크랩",
+        "고철",
+        "현대제철",
+        "원자재"
+      ]
+    },
+    {
+      "id": "n003",
+      "category": "LG",
+      "importance": 2,
+      "title": "美 관세 환급에 분주한 재계… LG전자 6,000억 환급 2분기 반영 전망",
+      "title_orig": "",
+      "translated": false,
+      "source": "조선비즈",
+      "pubDate": "2026-06-30",
+      "url": "https://n.news.naver.com/mnews/article/366/0001175364?sid=101",
+      "body": "다올투자증권은 지난해 6,000억원 관세를 낸 LG전자가 관세 환급 절차를 진행했으며 이르면 2분기에 환급이 확정돼 실적에 반영될 가능성이 있다고 전망했다.",
+      "impact": "⬆ 고객사 실적 — 관세 환급 반영 시 LG 가전 수익성 개선, 발주 여력 확대",
+      "tags": [
+        "lg전자",
+        "관세",
+        "실적",
+        "2분기"
+      ]
+    },
+    {
+      "id": "n005",
+      "category": "LG",
+      "importance": 2,
+      "title": "유럽 '반(反)에어컨' 시대 끝났다…삼성·LG, 64조 시장 최대 수혜주 부상",
+      "title_orig": "",
+      "translated": false,
+      "source": "녹색경제신문",
+      "pubDate": "2026-06-29",
+      "url": "https://www.greened.kr/news/articleView.html?idxno=343636",
+      "body": "LG전자는 인버터 컴프레서 기술을 내재화한 데 이어 유럽 온수 솔루션 기업 OSO를 인수해 히트펌프부터 온수 저장장치까지 아우르는 HVAC 밸류체인을 구축했다. 64조 규모 유럽 시장 최대 수혜주로 거론된다.",
+      "impact": "⬆ 매출 — HVAC 밸류체인 확대로 공조부품 수요 증가, 단 LG 부품 내재화는 양면 변수",
+      "tags": [
+        "lg전자",
+        "HVAC",
+        "컴프레서",
+        "OSO인수",
+        "유럽"
+      ]
+    },
+    {
+      "id": "n006",
+      "category": "LG",
+      "importance": 2,
+      "title": "'폭염 쇼크' 유럽, 韓·中 에어컨 특수…HVAC '씨앗'으로",
+      "title_orig": "",
+      "translated": false,
+      "source": "전자신문",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/030/0003442413?sid=105",
+      "body": "유럽 이동형 에어컨 수요 폭발 속에서 장기적으로 히트펌프 중심 냉난방공조(HVAC) 시장으로 재편이 가속화할 전망이다. 삼성·LG전자는 상반기 유럽 에어컨 시장에서 입지를 넓히고 있다.",
+      "impact": "⬆ 매출 — 히트펌프 HVAC 시장 재편, 공조부품 중장기 수요 확대",
+      "tags": [
+        "lg전자",
+        "에어컨",
+        "HVAC",
+        "히트펌프",
+        "유럽"
+      ]
+    },
+    {
+      "id": "n007",
+      "category": "LG",
+      "importance": 2,
+      "title": "'3대 메가' 첨단산업 거점 육성… 영남권 가전부품기업 로봇부품 전환 지원",
+      "title_orig": "",
+      "translated": false,
+      "source": "경향신문",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/032/0003455071?sid=100",
+      "body": "정부가 3대 메가프로젝트로 첨단산업 지역 거점을 육성하며, 피지컬 AI 분야에서 영남권 자동차·가전 부품기업의 로봇 부품기업 전환을 지원한다.",
+      "impact": "⬆ 정책 — 영남권 가전부품기업 사업 전환 기회·정책 지원, 신신사 신사업 검토 단서",
+      "tags": [
+        "가전부품",
+        "로봇부품",
+        "산업정책",
+        "피지컬AI"
+      ]
+    },
+    {
+      "id": "n012",
+      "category": "한국",
+      "importance": 2,
+      "title": "탄소 줄이려다 원가 부담만↑…K-철강, 전기로에 수익성 '발목'",
+      "title_orig": "",
+      "translated": false,
+      "source": "아주경제",
+      "pubDate": "2026-06-27",
+      "url": "https://www.ajunews.com/view/20260626181248766",
+      "body": "철스크랩 가격이 kg당 515원까지 올라 연초 400원 초반대 대비 단기간 급등했다. 전기로 제강의 핵심 원료인 고철 가격 상승과 산업용 전기요금 인상이 철강업계 수익성을 압박한다.",
+      "impact": "⬇ 원가 — 고철 급등·전기요금 인상으로 가전부품 원가 압박",
+      "tags": [
+        "철스크랩",
+        "고철",
+        "전기로",
+        "철강원가"
+      ]
+    },
+    {
+      "id": "n013",
+      "category": "한국",
+      "importance": 2,
+      "title": "1500원대 고환율 암운…'이러다 1600원' 우려",
+      "title_orig": "",
+      "translated": false,
+      "source": "SBS Biz",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/374/0000518883?sid=101",
+      "body": "달러-원 환율이 글로벌 금융위기 이후 최고치에 달하며 13원 넘게 급등했다. 주식시장의 역대급 변동성과 맞물려 1600원 돌파 우려까지 제기된다.",
+      "impact": "⬇ 환율 — 고환율 지속, 수출 환차익 vs 수입원가 상승 양면",
+      "tags": [
+        "환율",
+        "고환율",
+        "변동성"
+      ]
+    },
+    {
+      "id": "cn001",
+      "category": "중국",
+      "importance": 2,
+      "title": "중국 6월 제조업, 미미한 성장 복귀 전망 — 로이터 설문",
+      "title_orig": "China's factory activity likely returned to meagre growth in June: Reuters poll",
+      "translated": true,
+      "source": "Reuters / Investing.com",
+      "pubDate": "2026-06-29",
+      "url": "https://www.investing.com/news/economy-news/chinas-factory-activity-likely-returned-to-meagre-growth-in-june-reuters-poll-4764207",
+      "body": "로이터 설문 결과 6월 중국 공식 제조업 PMI는 5월 50.0에서 50.1로 소폭 상승해 확장·위축 분기점 50선을 가까스로 넘길 전망이다. AI 붐發 고기술 수출 수요는 견조하나 전반적 경기 모멘텀은 약하다.",
+      "impact": "⬌ 생산 — 중국 가전 공급망 수요 회복 더딤, 발주 모멘텀 약세",
+      "tags": [
+        "중국",
+        "제조업PMI",
+        "가전공급망"
+      ]
+    },
+    {
+      "id": "cn002",
+      "category": "중국",
+      "importance": 2,
+      "title": "중국 고철 시장, 6/29 혼조 — 구리·알루미늄 상승",
+      "title_orig": "Chinese Scrap Metal Market Mixed on June 29, 2026: Copper and Aluminum Rise",
+      "translated": true,
+      "source": "IndexBox",
+      "pubDate": "2026-06-29",
+      "url": "https://www.indexbox.io/blog/chinese-scrap-metal-market-mixed-on-june-29-2026-copper-and-aluminum-rise-stainless-steel-falls/",
+      "body": "6/29 중국 고철 시장에서 구리 가격이 반등(주요 품목 톤당 300위안 상승)했고 알루미늄도 톤당 100위안씩 올라 비철 전반이 강세를 보였다. 반면 스테인리스 고철은 하락, 일반 철스크랩은 보합이었다.",
+      "impact": "⬇ 원가 — 구리·알루미늄 단가 상승, 가전부품 원자재 비용 부담 요인",
+      "tags": [
+        "중국",
+        "고철",
+        "구리",
+        "알루미늄",
+        "원자재"
+      ]
+    },
+    {
+      "id": "cn003",
+      "category": "중국",
+      "importance": 2,
+      "title": "중국 1분기 가전 수출, 물량 +9.5%·금액 +1.5% — 단가 하락",
+      "title_orig": "China's home appliance exports rise 9.5% in volume in Q1 2026",
+      "translated": true,
+      "source": "CHEAA",
+      "pubDate": "2026-06-25",
+      "url": "https://en.cheaa.org/contents/476/12938.html",
+      "body": "2026년 1분기 중국 가전 수출량은 11.74억 대로 +9.5% 증가했으나 수출액은 245억 달러로 +1.5%에 그쳐 단가 하락 압력이 지속됐다. 미국 관세 인상으로 메이디·하이얼·TCL 등이 해외 생산거점·공급망 재편을 검토 중이다.",
+      "impact": "⬇ 매출 — 중국 가전 단가경쟁·생산기지 재편으로 글로벌 공급망 경쟁 심화",
+      "tags": [
+        "중국",
+        "가전수출",
+        "메이디",
+        "하이얼",
+        "TCL"
+      ]
+    },
+    {
+      "id": "th001",
+      "category": "태국",
+      "importance": 2,
+      "title": "태국 바트, 달러당 33선 붕괴 — 업계 '차입비용 상승' 경고",
+      "title_orig": "Weakening baht falls below 33 to the US dollar",
+      "translated": true,
+      "source": "Thai Examiner",
+      "pubDate": "2026-06-24",
+      "url": "https://www.thaiexaminer.com/thai-news-foreigners/2026/06/24/weakening-baht-falls-below-33-to-the-us-dollar-as-industry-leaders-warn-borrowing-costs-will-also-rise/",
+      "body": "태국 바트가 6/23 33.21, 6/24 33.38까지 하락해 13개월래 최저인 달러당 33선이 무너졌다. 연준 추가 금리인상 기대와 미·태 금리차 확대, 경상수지 적자, 자본유출이 복합 작용했다. 태국산업연맹(FTI)은 기업들에 차입비용 상승 대비를 경고했다.",
+      "impact": "⬌ 환율 — 바트 약세, 부품 수입단가 부담 vs 태국 현지생산·수출 채산성 양면",
+      "tags": [
+        "태국",
+        "바트",
+        "환율"
+      ]
+    },
+    {
+      "id": "eg001",
+      "category": "이집트",
+      "importance": 2,
+      "title": "이집트 비석유 민간부문 6월에도 위축 — PMI 48.8",
+      "title_orig": "Egypt's non-oil private sector contracts in June as PMI falls to 48.8",
+      "translated": true,
+      "source": "Arab News (S&P Global)",
+      "pubDate": "2026-06-24",
+      "url": "https://www.arabnews.com/node/2607089/business-economy",
+      "body": "이집트 6월 비석유 민간부문 PMI가 5월 49.5에서 48.8로 하락하며 4개월 연속 위축을 기록했고, 기업 신뢰도는 사상 최저로 추락했다. 가자 분쟁 여파로 관광·송금·수에즈운하 수입이 위축됐다. 다만 투입비용 인플레이션은 3개월래 최저로 둔화됐다.",
+      "impact": "⬇ 생산 — 이집트 현지 가전·부품 생산수요 둔화 신호",
+      "tags": [
+        "이집트",
+        "PMI",
+        "제조업"
+      ]
+    },
+    {
+      "id": "n008",
+      "category": "LG",
+      "importance": 1,
+      "title": "LG전자, 20평대 스마트코티지 출시…주거·기업 연수원 수요 공략",
+      "title_orig": "",
+      "translated": false,
+      "source": "팍스경제TV",
+      "pubDate": "2026-06-29",
+      "url": "http://www.paxetv.com/news/articleView.html?idxno=275803",
+      "body": "LG전자가 AI 가전과 HVAC 기술을 적용한 모듈러 주택 'LG 스마트코티지' 신제품 2종을 출시했다. 모듈러는 주요 부품 70% 이상을 공장에서 사전 제작하는 방식이다.",
+      "impact": "⬌ 매출 — 모듈러 B2B 확장, 공장 사전제작 부품 수요 사례",
+      "tags": [
+        "lg전자",
+        "모듈러주택",
+        "스마트코티지",
+        "B2B"
+      ]
+    },
+    {
+      "id": "n009",
+      "category": "LG",
+      "importance": 1,
+      "title": "LG전자, 아프리카 공략 속도…AI 가전 앞세워 현지 밀착 강화",
+      "title_orig": "",
+      "translated": false,
+      "source": "마이데일리",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/117/0004079559?sid=105",
+      "body": "LG전자는 지난해 연 매출 89조728억원으로 역대 최대 실적을 기록했으며, 중동·아프리카 등 성장시장 공략과 B2B·프리미엄 가전 확대를 핵심 성장 요소로 추진 중이다.",
+      "impact": "⬌ 매출 — 신흥시장 확대로 중장기 물량 성장 기대",
+      "tags": [
+        "lg전자",
+        "아프리카",
+        "AI가전",
+        "B2B"
+      ]
+    },
+    {
+      "id": "n014",
+      "category": "한국",
+      "importance": 1,
+      "title": "삼성증권, 현대제철 목표주가 하향…원재료 가격 부담",
+      "title_orig": "",
+      "translated": false,
+      "source": "토큰포스트",
+      "pubDate": "2026-06-29",
+      "url": "https://www.tokenpost.kr/news/market/373533",
+      "body": "철강업은 철광석·원료탄·고철 등 원재료 가격 변동에 실적이 크게 좌우되는데 최근 비용 부담이 커졌다. 원재료 부담으로 목표주가가 하향됐다.",
+      "impact": "⬌ 원가 — 철강 원재료 부담 지속, 후방 가전부품 원가 모니터링",
+      "tags": [
+        "현대제철",
+        "고철",
+        "원자재"
+      ]
+    },
+    {
+      "id": "n015",
+      "category": "한국",
+      "importance": 1,
+      "title": "\"반도체 쏠림 해소에 순환매\"…코스피 내리고 코스닥 8% 급등",
+      "title_orig": "",
+      "translated": false,
+      "source": "이데일리",
+      "pubDate": "2026-06-29",
+      "url": "https://n.news.naver.com/mnews/article/018/0006318185?sid=101",
+      "body": "코스피는 반도체 차익실현으로 2%대 하락하고 코스닥은 순환매로 8% 급등했다. 미국 6월 고용·ISM 제조업 PMI, 한국 6월 수출 지표 등에 영향을 받을 전망이다.",
+      "impact": "⬌ 기타 — 증시 변동성 확대, 자금조달 환경·투자심리 주시",
+      "tags": [
+        "KOSPI",
+        "코스닥",
+        "제조업PMI",
+        "수출"
+      ]
+    },
+    {
+      "id": "n016",
+      "category": "한국",
+      "importance": 1,
+      "title": "■ 6월 30일(화) 경제 캘린더 — 7/1 수출입동향·개소세 종료",
+      "title_orig": "",
+      "translated": false,
+      "source": "YTN",
+      "pubDate": "2026-06-30",
+      "url": "https://n.news.naver.com/mnews/article/052/0002372558?sid=101",
+      "body": "외환당국 순거래 외환 규모가 공개되고, 자동차 개별소비세 탄력세율 인하 조치가 오늘 종료된다. 7월 1일 한국 6월 수출입 동향 발표를 앞두고 있다.",
+      "impact": "⬌ 기타 — 7/1 수출입동향 등 주요 지표 대기, 환율·수출 영향 주시",
+      "tags": [
+        "환율",
+        "경제캘린더",
+        "수출"
+      ]
+    },
+    {
+      "id": "cn004",
+      "category": "중국",
+      "importance": 1,
+      "title": "구리 가격, 달러 강세에 7주래 최저권",
+      "title_orig": "Copper prices near seven-week lows on stronger dollar",
+      "translated": true,
+      "source": "Trading Economics",
+      "pubDate": "2026-06-27",
+      "url": "https://tradingeconomics.com/commodity/copper",
+      "body": "6월 말 구리 선물은 파운드당 6달러 아래 7주래 최저 수준에 머물렀다. 달러 강세와 연준 추가 긴축 기대가 투자심리를 압박했으며, 중국 신에너지 부문 구리 수요 증가율은 2025년 27%에서 2026년 약 2%로 둔화 전망이다.",
+      "impact": "⬌ 원가 — 구리 약세는 부품 원가 우호이나 고철시장 반등과 방향성 혼재",
+      "tags": [
+        "중국",
+        "구리",
+        "원자재"
+      ]
+    },
+    {
+      "id": "th002",
+      "category": "태국",
+      "importance": 1,
+      "title": "태국 바트, 미·태 금리차 기대에 1년래 최저",
+      "title_orig": "Baht Drops to One-Year Low on Expectations of Rate Gap With US",
+      "translated": true,
+      "source": "Bloomberg",
+      "pubDate": "2026-06-23",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-23/baht-drops-to-one-year-low-on-expectations-of-rate-gap-with-us",
+      "body": "6/23 바트는 장중 0.5% 약세로 달러당 33.09까지 밀려 2025년 5월 이후 최저를 기록했다. 높은 가계부채, 약한 소비, 둔화된 중국 수요와 관광객 감소가 바트 약세를 부추기고 있다.",
+      "impact": "⬌ 환율 — 미·태 금리차로 통화 약세 심화, 현지 비용·수출 환경 주시",
+      "tags": [
+        "태국",
+        "바트",
+        "환율"
+      ]
+    },
+    {
+      "id": "eg002",
+      "category": "이집트",
+      "importance": 1,
+      "title": "이집트 5월 인플레이션 14.6%로 둔화",
+      "title_orig": "Egypt inflation eases to 14.6% in May 2026",
+      "translated": true,
+      "source": "Trading Economics / CBE",
+      "pubDate": "2026-06-23",
+      "url": "https://tradingeconomics.com/egypt/inflation-cpi",
+      "body": "이집트 인플레이션율이 4월 14.9%에서 5월 14.6%로 하락해 2월 이후 최저를 기록했다. 2026년 중반 USD/EGP는 52~53파운드 수준으로 예상되며, IMF 프로그램과 걸프 투자가 급격한 통화 절하 가능성을 낮추고 있다.",
+      "impact": "⬌ 원가 — 인플레 둔화·환율 안정은 이집트 현지 부품 조달 원가에 점진적 우호",
+      "tags": [
+        "이집트",
+        "인플레이션",
+        "환율"
+      ]
+    }
+  ],
+  "fx": [
+    {
+      "flag": "🇰🇷",
+      "currency": "KRW",
+      "country": "한국",
+      "rate_usd": "1,545",
+      "unit": "원/달러",
+      "change": "+0.86%",
+      "dir": "neg",
+      "color": "neg",
+      "history": {
+        "values": [
+          1545,
+          1547,
+          1543,
+          1535,
+          1545,
+          1545
+        ],
+        "labels": [
+          "06/23",
+          "06/24",
+          "06/25",
+          "06/26",
+          "06/29",
+          "오늘"
+        ]
+      },
+      "value": "1,545"
+    },
+    {
+      "flag": "🇨🇳",
+      "currency": "CNY",
+      "country": "중국",
+      "rate_usd": "6.80",
+      "unit": "위안/달러",
+      "change": "-0.06%",
+      "dir": "pos",
+      "color": "pos",
+      "history": {
+        "values": [
+          6.805,
+          6.81,
+          6.8,
+          6.7983,
+          6.8
+        ],
+        "labels": [
+          "06/24",
+          "06/25",
+          "06/26",
+          "06/29",
+          "오늘"
+        ]
+      },
+      "value": "6.80"
+    },
+    {
+      "flag": "🇹🇭",
+      "currency": "THB",
+      "country": "태국",
+      "rate_usd": "33.3",
+      "unit": "바트/달러",
+      "change": "+0.5%",
+      "dir": "neg",
+      "color": "neg",
+      "history": {
+        "values": [
+          32.9,
+          33.0,
+          33.09,
+          33.38,
+          33.3
+        ],
+        "labels": [
+          "06/22",
+          "06/23",
+          "06/24",
+          "06/25",
+          "오늘"
+        ]
+      },
+      "value": "33.3"
+    },
+    {
+      "flag": "🇪🇬",
+      "currency": "EGP",
+      "country": "이집트",
+      "rate_usd": "52.5",
+      "unit": "파운드/달러",
+      "change": "0.00%",
+      "dir": "neu",
+      "color": "neu",
+      "history": {
+        "values": [
+          52.3,
+          52.4,
+          52.5,
+          52.5,
+          52.5
+        ],
+        "labels": [
+          "06/24",
+          "06/25",
+          "06/26",
+          "06/29",
+          "오늘"
+        ]
+      },
+      "value": "52.5"
+    }
+  ],
+  "overseas": [
+    {
+      "flag": "🇨🇳",
+      "country": "중국",
+      "indicators": "CNY/USD 6.80 | 제조업 PMI 참고",
+      "summary": "로이터 설문 결과 6월 중국 공식 제조업 PMI는 50.1로 50선을 가까스로 넘길 전망. 전반적 경기 모멘텀은 약하다.",
+      "status": "주시",
+      "statusType": "w"
+    },
+    {
+      "flag": "🇹🇭",
+      "country": "태국",
+      "indicators": "THB/USD 33.3 | 제조업 PMI 참고",
+      "summary": "태국 바트가 13개월래 최저인 33선 붕괴. 미·태 금리차·자본유출 영향, FTI 차입비용 상승 경고.",
+      "status": "주시",
+      "statusType": "w"
+    },
+    {
+      "flag": "🇪🇬",
+      "country": "이집트",
+      "indicators": "EGP/USD 52.5 | IMF 체계",
+      "summary": "이집트 6월 PMI 48.8로 4개월 연속 위축, 기업신뢰 사상 최저. 단 투입비용 인플레는 둔화.",
+      "status": "경고",
+      "statusType": "r"
+    }
+  ],
+  "markets": [
+    {
+      "label": "LG전자 주가",
+      "value": "211,500원",
+      "color": "neu"
+    },
+    {
+      "label": "한국 기준금리",
+      "value": "2.50%",
+      "color": "neu"
+    },
+    {
+      "label": "WTI 유가",
+      "value": "$69.7",
+      "color": "pos"
+    },
+    {
+      "label": "중국 위안 (CNY)",
+      "value": "6.80",
+      "color": "neu"
+    }
+  ],
+  "wti": {
+    "values": [
+      78.94,
+      76.8,
+      73.5,
+      71.0,
+      68.86,
+      69.7,
+      69.7
+    ],
+    "labels": [
+      "06/22",
+      "06/23",
+      "06/24",
+      "06/25",
+      "06/26",
+      "06/29",
+      "오늘"
+    ],
+    "trend": "▼ -11.7% (7일)",
+    "min": 65,
+    "max": 82
+  }
+}
