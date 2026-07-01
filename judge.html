@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 BP·WP·AX 심사 평가</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root{
+    --rausch:#FF385C; --rausch-dark:#E31C5F; --rausch-soft:#FFF0F3;
+    --ink:#222222; --muted:#717171; --line:#EBEBEB; --line2:#DDDDDD;
+    --bg:#F7F7F7; --card:#FFFFFF;
+    --green:#1A7F55; --green-bg:#EDF5E7;
+    --amber:#B8860B; --amber-bg:#FDF3E7;
+    --red:#C00000;
+    --shadow:0 6px 20px rgba(0,0,0,.08); --shadow-hi:0 10px 34px rgba(0,0,0,.12);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{margin:0;font-family:"Pretendard","맑은 고딕","Malgun Gothic",-apple-system,sans-serif;
+    color:var(--ink);background:var(--bg);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+
+  /* ── header ── */
+  header{background:var(--rausch);color:#fff;padding:16px 20px;box-shadow:0 2px 8px rgba(255,56,92,.3);}
+  header h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.02em;}
+  header .sub{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px;}
+
+  /* ── layout ── */
+  .wrap{max-width:600px;margin:0 auto;padding:20px 16px 80px;}
+
+  /* ── greeting hero ── */
+  .greet{background:linear-gradient(135deg,#fff 0%,#FFF6F8 60%,#FFEDF1 100%);
+    border:1px solid var(--line);border-radius:20px;padding:26px 22px 22px;
+    margin-bottom:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+  .greet::after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;
+    border-radius:50%;background:radial-gradient(circle,rgba(255,56,92,.12),transparent 70%);}
+  .greet .badge{display:inline-block;background:var(--rausch);color:#fff;
+    font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 12px;
+    border-radius:999px;margin-bottom:12px;position:relative;z-index:1;}
+  .greet h2{margin:0 0 10px;font-size:17px;font-weight:800;letter-spacing:-.02em;
+    color:var(--ink);position:relative;z-index:1;}
+  .greet p{margin:0;font-size:13.5px;line-height:1.9;color:#2c3340;word-break:keep-all;
+    position:relative;z-index:1;}
+  .greet .sign{margin-top:14px;text-align:right;font-size:12.5px;color:var(--muted);
+    position:relative;z-index:1;}
+
+  /* ── info card (dept/name) ── */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;margin-bottom:16px;box-shadow:var(--shadow);}
+  label{font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:6px;}
+  select,input[type=text]{width:100%;padding:12px;border:1.5px solid var(--line2);
+    border-radius:10px;font-size:15px;font-family:inherit;background:#fff;
+    color:var(--ink);min-height:44px;appearance:auto;}
+  select:focus,input[type=text]:focus{outline:none;border-color:var(--rausch);}
+  .hint{font-size:12px;color:var(--muted);margin-top:5px;}
+
+  /* ── note banner ── */
+  .note{background:#FFF6F8;border-left:4px solid var(--rausch-soft);
+    padding:11px 14px;border-radius:0 10px 10px 0;font-size:12.5px;
+    color:#333;line-height:1.65;margin:10px 0;border-left-color:var(--rausch);}
+  .note.good{background:var(--green-bg);border-left-color:var(--green);}
+
+  /* ── stepper ── */
+  .stepper{display:flex;gap:8px;margin-bottom:16px;}
+  .stepper .stepitem{flex:1;text-align:center;padding:10px 4px;border:1.5px solid var(--line2);
+    border-radius:12px;background:var(--card);font-weight:700;font-size:13px;
+    color:var(--muted);cursor:pointer;transition:all .15s ease;min-height:44px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .stepper .stepitem small{display:block;font-weight:400;font-size:10px;color:#b0b7c3;margin-top:3px;}
+  .stepper .stepitem .num{display:inline-block;width:20px;height:20px;line-height:20px;
+    border-radius:50%;background:var(--line2);color:#fff;font-size:11px;margin-right:5px;font-weight:800;}
+  .stepper .stepitem.active{border-color:var(--rausch);background:var(--rausch-soft);color:var(--ink);}
+  .stepper .stepitem.active .num{background:var(--rausch);}
+  .stepper .stepitem.active small{color:var(--rausch);}
+
+  /* ── team cards ── */
+  .teamcard{border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px;
+    overflow:hidden;box-shadow:var(--shadow);}
+  .teamcard .thead{background:var(--rausch);color:#fff;padding:12px 16px;font-weight:700;
+    font-size:14px;display:flex;justify-content:space-between;align-items:center;
+    letter-spacing:-.01em;}
+  .teamcard .thead .tot{font-size:12.5px;background:rgba(255,255,255,.2);
+    padding:3px 10px;border-radius:999px;font-weight:600;}
+  .teamcard.off{opacity:.55;}
+  .teamcard.off .thead{background:#9aa3b2;}
+
+  /* ── criteria rows ── */
+  .critrow{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);flex-wrap:wrap;}
+  .critrow .cn{flex:1;min-width:120px;font-size:13.5px;color:var(--ink);font-weight:600;}
+  .critrow .cn small{display:block;color:var(--muted);font-size:11.5px;font-weight:400;margin-top:2px;line-height:1.4;}
+  .critrow .cmax{font-size:11px;color:var(--rausch);font-weight:700;background:var(--rausch-soft);
+    padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+
+  /* ── 1~5 rate buttons (copied from mockup) ── */
+  .rate{display:flex;gap:7px;flex-shrink:0;}
+  .rate button.rbtn{width:46px;height:46px;border-radius:12px;border:1.5px solid var(--line2);
+    background:#fff;font-size:16px;font-weight:800;color:#555;cursor:pointer;
+    transition:all .12s ease;font-family:inherit;}
+  .rate button.rbtn:hover{border-color:var(--rausch);color:var(--rausch);transform:translateY(-2px);}
+  .rate button.rbtn.on{background:var(--rausch);border-color:var(--rausch);color:#fff;
+    box-shadow:0 5px 14px rgba(255,56,92,.35);transform:translateY(-2px);}
+
+  /* ── off message ── */
+  .offmsg{padding:18px 16px;color:#9aa3b2;font-size:13px;text-align:center;}
+
+  /* ── comment section ── */
+  .cmt{display:flex;gap:9px;margin-bottom:10px;flex-wrap:wrap;}
+  .cmt .csel{flex:0 0 130px;min-height:44px;}
+  .cmt .ctxt{flex:1;min-width:160px;min-height:44px;}
+  .addbtn{background:#fff;border:1.5px dashed var(--rausch);color:var(--rausch);
+    padding:11px;border-radius:10px;width:100%;font-weight:700;cursor:pointer;
+    font-family:inherit;font-size:13px;transition:background .12s ease;min-height:44px;}
+  .addbtn:hover{background:var(--rausch-soft);}
+
+  /* ── navigation buttons ── */
+  .navbtns{display:flex;gap:10px;margin-top:10px;}
+  .navb{flex:1;padding:16px;border-radius:12px;font-size:15px;font-weight:700;
+    cursor:pointer;font-family:inherit;border:none;min-height:44px;transition:all .12s ease;}
+  .navb.prev{background:#fff;border:1.5px solid var(--rausch);color:var(--rausch);flex:0 0 32%;}
+  .navb.prev:hover{background:var(--rausch-soft);}
+  .navb.next{background:var(--rausch);color:#fff;box-shadow:0 4px 12px rgba(255,56,92,.3);}
+  .navb.next:hover{background:var(--rausch-dark);}
+  .navb.submit{background:var(--rausch);color:#fff;box-shadow:0 4px 12px rgba(255,56,92,.3);}
+  .navb.submit:hover{background:var(--rausch-dark);}
+  .legend{font-size:11.5px;color:var(--muted);margin-top:10px;}
+
+  /* ── thank-you modal ── */
+  .overlay{display:none;position:fixed;inset:0;background:rgba(20,28,45,.6);
+    z-index:50;align-items:center;justify-content:center;padding:20px;}
+  .overlay.show{display:flex;}
+  .modal{background:#fff;border-radius:20px;max-width:420px;width:100%;
+    padding:30px 24px;text-align:center;box-shadow:var(--shadow-hi);}
+  .modal .ico{width:58px;height:58px;border-radius:50%;background:var(--green-bg);
+    color:var(--green);font-size:30px;line-height:58px;margin:0 auto 16px;font-weight:700;}
+  .modal h3{color:var(--ink);font-size:18px;font-weight:800;margin:0 0 10px;letter-spacing:-.02em;}
+  .modal p{font-size:13.5px;color:#444;margin:0 0 20px;line-height:1.75;}
+  .btn{background:var(--rausch);color:#fff;border:none;padding:15px;border-radius:12px;
+    font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;flex:1;
+    min-height:44px;transition:background .12s ease;}
+  .btn:hover{background:var(--rausch-dark);}
+  .btn.ghost{background:#fff;border:1.5px solid var(--rausch);color:var(--rausch);}
+  .btn.ghost:hover{background:var(--rausch-soft);}
+
+  @media(max-width:520px){
+    .greet{padding:20px 16px 18px;}
+    .greet h2{font-size:15px;}
+    .stepper .stepitem{font-size:11px;padding:8px 3px;}
+    .critrow{padding:10px 12px;gap:8px;}
+    .rate button.rbtn{width:42px;height:42px;font-size:14px;}
+    .navb{padding:14px 10px;font-size:14px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>2026 BP · WP · AX 경진대회 심사 평가</h1>
+  <div class="sub">경영기획팀 · 각 항목 1~5점 (가중치 자동 환산)</div>
+</header>
+<div class="wrap">
+  <div class="greet">
+    <span class="badge">심사위원께 드리는 글</span>
+    <h2>존경하는 심사위원 여러분께</h2>
+    <p>2026년 BP/WP 평가를 위해 바쁘신 와중에도 귀중한 시간과 노력을 아낌없이 기울여 주신 점 진심으로 감사드립니다. 여러분의 세심한 평가와 고견 덕분에 각 법인의 전략과 성과를 객관적으로 조망하고, 향후 방향성을 더욱 명확히 설정할 수 있었습니다. 앞으로도 많은 관심과 성원을 부탁드리며, 다시 한번 진심으로 감사드립니다.</p>
+    <div class="sign">— 경영기획팀 드림</div>
+  </div>
+
+  <div class="card">
+    <div style="margin-bottom:13px;">
+      <label>소속 부서 <span style="color:var(--red)">*</span></label>
+      <select id="dept">
+        <option value="">— 소속을 선택하세요 —</option>
+        <option>중국법인</option><option>태국법인</option><option>HQ</option>
+        <option>한국사업부</option><option>이집트법인</option><option>기술연구소</option>
+        <option value="ceo">대표이사 (전체 평가)</option>
+      </select>
+      <div class="hint">본인 소속 부서는 이해상충 방지를 위해 자동으로 평가에서 제외됩니다.</div>
+    </div>
+    <div><label>성명 <span style="color:var(--red)">*</span></label><input type="text" id="name" placeholder="예) 홍길동"></div>
+  </div>
+
+  <div class="stepper" id="stepper"></div>
+  <div class="note">각 항목을 <b>1~5점</b>으로 선택하면 항목별 <b>가중치(%)</b>가 적용되어 100점 만점으로 자동 환산됩니다. <b>1단계 BP → 2단계 WP → 3단계 AX</b> 순서로 모두 입력 후 최종 제출합니다.</div>
+
+  <div id="panels"></div>
+
+  <div class="card" id="cmtCard" style="display:none">
+    <h3 style="margin:0 0 10px;font-size:15px;font-weight:800;color:var(--ink);">의견(코멘트) <span style="font-weight:400;font-size:12px;color:var(--muted)">— 선택 입력</span></h3>
+    <div class="note good">점수로 다 담기 어려운 고견을 자유롭게 남겨주세요. 대상 부서를 고르고 의견을 적으시면 됩니다.</div>
+    <div id="cmtList"></div>
+    <button class="addbtn" id="addCmt">＋ 의견 추가</button>
+  </div>
+
+  <div class="navbtns" id="navBtns"></div>
+  <div class="legend">※ 제출 마감: 각 발표 종료 10분 전 · 1·2·3단계 점수를 모두 입력해 주세요.</div>
+</div>
+
+<div class="overlay" id="thankModal">
+  <div class="modal">
+    <div class="ico" id="thankIco">✓</div>
+    <h3 id="thankTitle">수고하셨습니다</h3>
+    <p id="thankMsg"></p>
+    <div style="display:flex;gap:10px;">
+      <button class="btn ghost" id="thankEdit">수정</button>
+      <button class="btn" id="thankClose">확인</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== 설정: 진본 config.json 에서 주입됨 (직접 수정 금지) ===== */
+var CONFIG = {
+  "event": {
+    "title": "2026 BP · WP · AX 경진대회 심사 평가",
+    "subtitle": "경영기획팀 · 각 항목 1~5점 (가중치 자동 환산)",
+    "greetingTitle": "존경하는 심사위원 여러분께",
+    "greeting": "2026년 BP/WP 평가를 위해 바쁘신 와중에도 귀중한 시간과 노력을 아낌없이 기울여 주신 점 진심으로 감사드립니다. 여러분의 세심한 평가와 고견 덕분에 각 법인의 전략과 성과를 객관적으로 조망하고, 향후 방향성을 더욱 명확히 설정할 수 있었습니다. 앞으로도 많은 관심과 성원을 부탁드리며, 다시 한번 진심으로 감사드립니다.",
+    "sign": "— 경영기획팀 드림",
+    "adminTitle": "심사 결과 — 관리자 (기획팀)"
+  },
+  "apiUrl": "https://script.google.com/macros/s/AKfycbys-XrSmFQu9nY0z5KLZWPSY0Jxq8M-4aOx0t31Ax9LNokE_jtZo2q6rjdTrU7rO1XC/exec",
+  "teams": [
+    "중국법인",
+    "태국법인",
+    "HQ",
+    "한국사업부",
+    "이집트법인",
+    "기술연구소"
+  ],
+  "pmax": 5,
+  "categories": {
+    "BP": [
+      {
+        "n": "위기 인식 및 대응 전략의 적절성",
+        "w": 20,
+        "d": "비상 상황 인식·원인 분석 / 실행 전략 / 문제·목표의 논리성"
+      },
+      {
+        "n": "성과 및 비용 효과성 (정량 성과)",
+        "w": 20,
+        "d": "원가·고정비 절감, 자산 회수 등 구체 수치 / 실현 가능성"
+      },
+      {
+        "n": "ERP 기반 데이터 검증",
+        "w": 5,
+        "d": "ERP 내 이력추적 / 연동 정보 가시성"
+      },
+      {
+        "n": "실행력 및 추진력",
+        "w": 20,
+        "d": "실행계획 구체성 / 장애 극복 / 리더십·협업"
+      },
+      {
+        "n": "지속가능성 및 확산 가능성",
+        "w": 15,
+        "d": "구조적 개선 / 표준화(SOP)·타부서 전파"
+      },
+      {
+        "n": "창의성 및 돌파력",
+        "w": 20,
+        "d": "한정 조건의 창의적 해결 / 혁신적 전환"
+      }
+    ],
+    "AX": [
+      {
+        "n": "생성형 AI 업무적용",
+        "w": 25,
+        "d": "생성형 AI(ChatGPT·Copilot 등)를 문서·코드·분석 등 실제 업무에 적용한 수준과 성과"
+      },
+      {
+        "n": "지능형 프로세스 자동화",
+        "w": 30,
+        "d": "RPA·AI 에이전트로 반복·정형 업무를 자동화한 범위와 시간·비용 절감 효과 (가점 항목)"
+      },
+      {
+        "n": "데이터 기반 의사결정",
+        "w": 30,
+        "d": "데이터 수집·분석·시각화를 통한 의사결정 개선과 정량적 근거 확보 (가점 항목)"
+      },
+      {
+        "n": "기타 안전분야",
+        "w": 15,
+        "d": "안전·품질·리스크 영역에서의 디지털·AI 적용 및 현장 개선 사례"
+      }
+    ]
+  },
+  "categoryReuse": {
+    "WP": "BP"
+  },
+  "steps": [
+    {
+      "key": "BP",
+      "label": "BP",
+      "sub": "우수사례"
+    },
+    {
+      "key": "WP",
+      "label": "WP",
+      "sub": "개선·반면교사"
+    },
+    {
+      "key": "AX",
+      "label": "AX",
+      "sub": "디지털 전환"
+    }
+  ],
+  "tieRule": {
+    "byDept": "대표이사",
+    "byDeptAlias": "ceo",
+    "multiplier": 1.2
+  },
+  "awards": {
+    "default": [
+      {
+        "rank": 1,
+        "prize": "상금 200만원",
+        "ttl": "대상"
+      },
+      {
+        "rank": 2,
+        "prize": "상금 100만원",
+        "ttl": "우수상"
+      }
+    ],
+    "WP": [
+      {
+        "rank": 1,
+        "prize": "상금 200만원",
+        "ttl": "대상"
+      }
+    ],
+    "AX": [
+      {
+        "rank": 1,
+        "prize": "상금 100만원",
+        "ttl": "대상"
+      }
+    ]
+  },
+  "ceoReportOrder": [
+    "BP",
+    "AX",
+    "WP"
+  ],
+  "anomaly": {
+    "extLow": 35,
+    "extHigh": 90,
+    "sdFlag": 20,
+    "extRatioFlag": 50,
+    "gapHi": 8
+  },
+  "admin": {
+    "password": "1234",
+    "resetKey": "shinshinsa2026"
+  }
+};
+var API_URL = CONFIG.apiUrl;
+var TEAMS = CONFIG.teams;
+var PMAX = CONFIG.pmax;
+var CRIT = {}; Object.keys(CONFIG.categories).forEach(function(k){ CRIT[k]=CONFIG.categories[k]; });
+Object.keys(CONFIG.categoryReuse||{}).forEach(function(k){ CRIT[k]=CONFIG.categories[CONFIG.categoryReuse[k]]; });
+var STEPS = CONFIG.steps.map(function(s){return s.key;}), curStep=0;
+
+function renderInputAll(){
+  var dept=document.getElementById("dept").value, isCeo=dept==="ceo";
+  STEPS.forEach(function(cat){
+    var crit=CRIT[cat], html="";
+    TEAMS.forEach(function(t){
+      var off=(!isCeo&&dept===t);
+      html+="<div class='teamcard"+(off?" off":"")+"' data-team='"+t+"'>";
+      html+="<div class='thead'><span>"+t+"</span>"+(off?"<span class='tot'>본인 소속</span>":"<span class='tot'>합계 <b class='sum'>0</b> / 100</span>")+"</div>";
+      if(off){ html+="<div class='offmsg'>본인 소속 부서로 평가에서 제외됩니다.</div>"; }
+      else{ crit.forEach(function(c){ var btns=""; for(var v=1;v<=PMAX;v++)btns+="<button type='button' class='rbtn' data-v='"+v+"'>"+v+"</button>"; html+="<div class='critrow'><div class='cn'>"+c.n+"<small>"+c.d+"</small></div><span class='cmax'>1~"+PMAX+"점<br>가중 "+c.w+"%</span><div class='rate' data-w='"+c.w+"'>"+btns+"</div></div>"; }); }
+      html+="</div>";
+    });
+    document.getElementById("panel-"+cat).innerHTML=html;
+  });
+  document.querySelectorAll(".steppanel .teamcard").forEach(function(card){
+    var groups=card.querySelectorAll(".rate"), sumEl=card.querySelector(".sum");
+    groups.forEach(function(g){ g.querySelectorAll("button").forEach(function(b){ b.addEventListener("click",function(){
+      g.querySelectorAll("button").forEach(function(x){x.classList.remove("on");}); b.classList.add("on");
+      var tot=0; groups.forEach(function(gg){ var on=gg.querySelector("button.on"); if(on)tot+=(+on.getAttribute("data-v"))*(+gg.getAttribute("data-w"))/PMAX; }); if(sumEl)sumEl.textContent=tot.toFixed(1);
+    }); }); });
+  });
+}
+function showStep(n){
+  curStep=n;
+  STEPS.forEach(function(cat,i){ document.getElementById("panel-"+cat).style.display=(i===n?"block":"none"); });
+  document.querySelectorAll("#stepper .stepitem").forEach(function(el,i){ el.classList.toggle("active",i===n); });
+  document.getElementById("cmtCard").style.display=(n===2?"block":"none");
+  var b="";
+  if(n>0)b+="<button class='navb prev' id='prevBtn'>← 이전</button>";
+  if(n<2)b+="<button class='navb next' id='nextBtn'>다음 →</button>"; else b+="<button class='navb submit' id='submitBtn'>최종 제출</button>";
+  document.getElementById("navBtns").innerHTML=b;
+  var pv=document.getElementById("prevBtn"),nx=document.getElementById("nextBtn"),sb=document.getElementById("submitBtn");
+  if(pv)pv.onclick=function(){showStep(n-1);};
+  if(nx)nx.onclick=function(){showStep(n+1);};
+  if(sb)sb.onclick=finalSubmit;
+  if(window.scrollTo) window.scrollTo(0,0);
+}
+document.getElementById("dept").addEventListener("change",function(){ renderInputAll(); showStep(curStep); });
+
+function cmtRow(){
+  var opts="<option value=''>대상 부서</option>"+TEAMS.map(function(t){return "<option>"+t+"</option>";}).join("");
+  var div=document.createElement("div"); div.className="cmt";
+  div.innerHTML="<select class='csel'>"+opts+"</select><input class='ctxt' type='text' placeholder='예) 전사 확산 가능성이 높음 / 성과 수치가 검증되지 않음 / 현장 적용성이 매우 낮음 / AX 활용 수준이 타 팀 대비 압도적임'>";
+  return div;
+}
+var cmtList=document.getElementById("cmtList");
+cmtList.appendChild(cmtRow()); cmtList.appendChild(cmtRow());
+document.getElementById("addCmt").addEventListener("click",function(){ cmtList.appendChild(cmtRow()); });
+
+/* 각 팀의 가중 합계 산출 (모든 항목 입력 시에만 점수, 미완성이면 null) + 누락 목록 */
+function collectScores(){
+  var scores={BP:{},WP:{},AX:{}}, miss=[];
+  STEPS.forEach(function(cat){
+    document.querySelectorAll("#panel-"+cat+" .teamcard").forEach(function(card){
+      if(card.classList.contains("off")) return;
+      var team=card.getAttribute("data-team"), groups=card.querySelectorAll(".rate"), empty=false, tot=0;
+      groups.forEach(function(g){ var on=g.querySelector("button.on"); if(!on){empty=true;} else {tot+=(+on.getAttribute("data-v"))*(+g.getAttribute("data-w"))/PMAX;} });
+      if(empty){ miss.push(cat+" · "+team); scores[cat][team]=null; }
+      else { scores[cat][team]=Math.round(tot*10)/10; }
+    });
+  });
+  return {scores:scores, miss:miss};
+}
+function collectComments(){
+  var arr=[];
+  document.querySelectorAll("#cmtList .cmt").forEach(function(row){
+    var t=row.querySelector(".csel").value, v=row.querySelector(".ctxt").value.trim();
+    if(t&&v) arr.push({team:t,text:v});
+  });
+  return arr;
+}
+
+/* JSONP */
+function jsonp(params){
+  return new Promise(function(res,rej){
+    var cb="cb_"+Date.now()+Math.floor(Math.random()*10000);
+    var s=document.createElement("script");
+    var timer=setTimeout(function(){ cleanup(); rej("시간 초과"); },15000);
+    function cleanup(){ clearTimeout(timer); delete window[cb]; if(s.parentNode)s.parentNode.removeChild(s); }
+    window[cb]=function(d){ cleanup(); res(d); };
+    s.onerror=function(){ cleanup(); rej("네트워크 오류"); };
+    s.src=API_URL+"?callback="+cb+"&"+params;
+    document.body.appendChild(s);
+  });
+}
+
+var pendingMiss="";
+function finalSubmit(){
+  var dept=document.getElementById("dept").value, name=document.getElementById("name").value.trim();
+  if(!dept||!name){ alert("상단에 소속과 성명을 입력해 주세요."); showStep(0); return; }
+  var r=collectScores();
+  var ico=document.getElementById("thankIco"), title=document.getElementById("thankTitle"), msg=document.getElementById("thankMsg"), edit=document.getElementById("thankEdit");
+  pendingMiss=r.miss.length?r.miss[0]:"";
+  if(r.miss.length){
+    ico.textContent="!"; ico.style.background="#FDF3E7"; ico.style.color="#B8860B";
+    title.textContent="미입력 항목 확인";
+    msg.innerHTML="아직 점수를 입력하지 않은 항목이 있습니다:<br><b style='color:#C00000'>"+r.miss.join(" · ")+"</b><br><br>수고 많으셨습니다. ‘수정’을 눌러 마저 입력하시거나, ‘확인’을 누르면 입력한 항목만 제출됩니다.";
+    document.getElementById("thankEdit").style.display="";
+  } else {
+    ico.textContent="✓"; ico.style.background="#EDF5E7"; ico.style.color="#548235";
+    title.textContent="제출 확인";
+    msg.innerHTML="누락된 항목 없이 모든 평가(BP·WP·AX)가 입력되었습니다.<br>‘확인’을 누르면 제출됩니다.";
+    document.getElementById("thankEdit").style.display="";
+  }
+  document.getElementById("thankModal").classList.add("show");
+}
+document.getElementById("thankEdit").addEventListener("click",function(){
+  document.getElementById("thankModal").classList.remove("show");
+  if(pendingMiss) showStep(STEPS.indexOf(pendingMiss.split(" · ")[0]));
+});
+document.getElementById("thankClose").addEventListener("click",function(){
+  var dept=document.getElementById("dept").value, name=document.getElementById("name").value.trim();
+  var r=collectScores();
+  var payload={name:name,dept:dept,scores:r.scores,comments:collectComments()};
+  document.getElementById("thankMsg").innerHTML="제출 중입니다...";
+  document.getElementById("thankEdit").style.display="none";
+  document.getElementById("thankClose").style.display="none";
+  jsonp("action=submit&data="+encodeURIComponent(JSON.stringify(payload))).then(function(d){
+    document.getElementById("thankIco").textContent="✓";
+    document.getElementById("thankIco").style.background="#EDF5E7";
+    document.getElementById("thankIco").style.color="#548235";
+    document.getElementById("thankTitle").textContent="평가에 참여하여 주셔서 감사합니다";
+    document.getElementById("thankMsg").innerHTML="소중한 평가가 정상적으로 제출되었습니다.<br><b>이 창을 닫으셔도 됩니다.</b>";
+    window.open('','_self'); window.close();
+  }).catch(function(e){
+    document.getElementById("thankMsg").innerHTML="제출 중 오류가 발생했습니다 ("+e+").<br>네트워크를 확인 후 다시 시도해 주세요.";
+    document.getElementById("thankClose").style.display="";
+  });
+});
+
+document.querySelector("header h1").textContent = CONFIG.event.title;
+document.querySelector("header .sub").textContent = CONFIG.event.subtitle;
+document.querySelector(".greet h2").textContent = CONFIG.event.greetingTitle;
+document.querySelector(".greet p").textContent = CONFIG.event.greeting;
+document.querySelector(".greet .sign").textContent = CONFIG.event.sign;
+document.title = CONFIG.event.title;
+document.getElementById("stepper").innerHTML = CONFIG.steps.map(function(s,i){
+  return "<div data-s='"+i+"' class='"+(i===0?"stepitem active":"stepitem")+"'><span class='num'>"+(i+1)+"</span>"+s.label+"<small>"+s.sub+"</small></div>";
+}).join("");
+document.querySelectorAll("#stepper .stepitem").forEach(function(el){ el.addEventListener("click",function(){ showStep(+el.dataset.s); }); });
+document.getElementById("panels").innerHTML = CONFIG.steps.map(function(s){
+  return "<div id='panel-"+s.key+"' class='steppanel' style='display:none'></div>";
+}).join("");
+renderInputAll(); showStep(0);
+</script>
+</body>
+</html>
