@@ -184,7 +184,7 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .sc-body{overflow-y:auto;min-height:0;flex:1;}
 .sc-sct{font-size:11.5px;font-weight:800;margin:10px 0 6px;padding-bottom:3px;border-bottom:2px solid var(--bdr);}
 .sc-sct:first-child{margin-top:0;}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;}
 .sc-card{border:1px solid var(--bdr);border-radius:9px;padding:8px 9px;background:var(--bg);}
 .sc-card h4{margin:0;font-size:11px;font-weight:700;color:var(--txt);display:flex;justify-content:space-between;align-items:center;gap:4px;}
 .sc-bdg{font-size:8px;padding:1px 5px;border-radius:4px;white-space:nowrap;}
@@ -192,7 +192,7 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .sc-val{font-size:15px;font-weight:800;color:var(--txt);margin:2px 0 1px;}
 .sc-chg{font-size:10px;font-weight:700;}
 .sc-chg.up{color:var(--neg);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);}
-.sc-canvas-wrap{height:64px;position:relative;margin-top:4px;}
+.sc-canvas-wrap{height:100px;position:relative;margin-top:4px;}
 .sc-imp{font-size:9.5px;color:var(--txt-sub);background:rgba(37,99,235,.08);border-radius:5px;padding:3px 6px;margin-top:5px;line-height:1.4;}
 .sc-src{font-size:8.5px;color:var(--txt-lbl);margin-top:4px;}
 .sc-err{font-size:9.5px;color:var(--neg);background:rgba(220,38,38,.08);border-radius:5px;padding:3px 6px;margin-top:4px;}
@@ -385,6 +385,7 @@ function fmtReason(reason){
   for(var k=0;k<pts.length;k++){
     var seg=s.slice(pts[k], k+1<pts.length?pts[k+1]:s.length).trim();
     var cls = seg.indexOf('💡')===0?'tr-impact':(seg.indexOf('➡️')===0?'tr-action':'tr-trend');
+    if(cls==='tr-action'||cls==='tr-trend') continue;   // 대시보드는 요약+INSIGHT만(ACTION·추세는 전체보고서에서)
     var body = stripPrefix(seg, cls);
     out.push('<span class="tr-seg '+cls+'"><span class="tr-label">'+labelFor(cls)+'</span>'+body+'</span>');
   }
