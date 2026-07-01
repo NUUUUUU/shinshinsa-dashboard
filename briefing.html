@@ -32,7 +32,9 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 
 /* Top bar */
 .top-bar{background:var(--red);padding:calc(8px + var(--safe-top)) 16px 8px;
-  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+  display:flex;align-items:center;justify-content:space-between;}
+/* 헤더+칩바를 한 덩어리로 고정 — 모바일서 헤더가 줄바꿈돼 높아져도 칩바가 안 가려짐 */
+.sticky-head{position:sticky;top:0;z-index:200;background:var(--bg);}
 .bar-left{display:flex;align-items:center;gap:10px;}
 .bar-title{color:#fff;font-size:15px;font-weight:600;}
 .bar-date{color:rgba(255,255,255,.75);font-size:12px;}
@@ -57,10 +59,12 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   white-space:nowrap;}
 
 /* Chip nav bar — §4-1 */
-.chipbar{position:sticky;top:44px;z-index:100;background:var(--bg);
+.chipbar{background:var(--bg);
   border-bottom:1px solid var(--divider);
   padding:8px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;
   scrollbar-width:none;}
+/* 칩 클릭 시 섹션이 고정 헤더 아래로 오도록(높이는 JS가 --sticky-h로 갱신) */
+.wrap .card{scroll-margin-top:var(--sticky-h, 150px);}
 .chipbar::-webkit-scrollbar{display:none;}
 
 /* Page layout */
@@ -282,6 +286,8 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 <!-- ── Theme Toggle ── -->
 <button class="theme-toggle" id="theme-btn" aria-label="다크/라이트 전환" title="다크/라이트 전환">🌙</button>
 
+<!-- ── 고정 헤더(상단바 + 칩내비 한 덩어리) ── -->
+<div class="sticky-head">
 <!-- ── Top Bar ── -->
 <div class="top-bar" id="top-bar">
   <div class="bar-left">
@@ -296,9 +302,6 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   </div>
 </div>
 
-<!-- ── Archive Banner ── -->
-<div id="archive-banner-wrap"></div>
-
 <!-- ── §4-1 Chip Nav Bar ── -->
 <nav class="chipbar" id="chipbar" aria-label="섹션 이동">
   <button class="chip active" data-sec="exec-section">★ 요약</button>
@@ -308,6 +311,10 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   <button class="chip" data-sec="market-section">📊 시장</button>
   <button class="chip" data-sec="indicators-section">🔢 지표</button>
 </nav>
+</div>
+
+<!-- ── Archive Banner ── -->
+<div id="archive-banner-wrap"></div>
 
 <div class="wrap">
 
@@ -505,6 +512,14 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
     if(el) observer.observe(el);
   });
 })();
+
+/* 고정 헤더 높이 → CSS 변수 --sticky-h 동기화 (칩 스크롤 오프셋용). 모바일 헤더 줄바꿈 대응 */
+function syncStickyH(){
+  var sh = document.querySelector('.sticky-head');
+  if(sh) document.documentElement.style.setProperty('--sticky-h', (sh.offsetHeight + 8) + 'px');
+}
+window.addEventListener('load', syncStickyH);
+window.addEventListener('resize', syncStickyH);
 
 /* ══════════════════════════════════════════════
    데이터 & 렌더링
@@ -927,6 +942,7 @@ async function load(){
     const d = await r.json();
 
     document.getElementById('bar-date').textContent = d.date_kr || d.date || fmtDateKr(dt) || '—';
+    syncStickyH();   // 날짜 채워지며 헤더 높이 변할 수 있음 → 재계산
     document.getElementById('footer-ts').textContent = '발행: ' + (d.generated_at || '—');
 
     renderExec(d);
