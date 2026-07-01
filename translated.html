@@ -47,7 +47,7 @@
 <body>
   <div class="wrap">
     <div class="top">
-      <a class="back" href="javascript:history.length>1?history.back():location.href='briefing.html'">← 보고서로</a>
+      <a class="back" id="back-link" href="briefing.html">← 보고서로</a>
       <span class="brand">신신사 경영 브리핑 · 한국어 번역</span>
     </div>
     <div id="root"><div class="err">불러오는 중…</div></div>
@@ -117,6 +117,11 @@ async function load(){
   }
   document.title = (it.title_ko||'한국어 번역') + ' — 신신사 브리핑';
 }
+(function(){
+  var fromPage = qp('from') || 'briefing.html';
+  var b = document.getElementById('back-link');
+  if(b){ b.href = fromPage; b.textContent = fromPage.indexOf('index')>=0 ? '← 대시보드로' : '← 보고서로'; }
+})();
 load();
 </script>
 </body>
