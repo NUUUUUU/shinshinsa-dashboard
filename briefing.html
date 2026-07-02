@@ -118,6 +118,7 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .kc{font-size:11px;margin-top:2px;}
 .kc.pos{color:var(--pos);} .kc.neg{color:var(--neg);} .kc.neu{color:var(--accent);}
 .kc.gld{color:var(--accent);}
+.ki{font-size:10px;color:var(--txt-sub);line-height:1.4;margin-top:5px;border-top:1px solid var(--divider);padding-top:4px;}
 
 /* CEO schedule */
 .sched-row{display:flex;align-items:center;gap:10px;padding:8px 0;
@@ -602,6 +603,7 @@ function renderExec(d){
         <div class="kl">${k.label}</div>
         <div class="kv">${k.value||'—'}${k.unit?`<sup>${k.unit}</sup>`:''}</div>
         <div class="kc ${cls}">${k.change||''}</div>
+        ${k.note?`<div class="ki">${k.note}</div>`:''}
       </div>`;
   }).join('');
 }
