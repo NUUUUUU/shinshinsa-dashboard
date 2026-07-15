@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T08:06:01+09:00",
+  "generated_at": "2026-07-16T07:57:03+09:00",
   "indicators": [
     {
       "id": "usdkrw",
@@ -11,11 +11,6 @@
       "source": "Frankfurter(ECB)",
       "impact": "수입 원자재·부품 조달 원가 직접 부담",
       "history": [
-        [
-          "2024-07-15",
-          1382.85,
-          true
-        ],
         [
           "2024-07-16",
           1382.8,
@@ -2560,10 +2555,15 @@
           "2026-07-14",
           1495.49,
           true
+        ],
+        [
+          "2026-07-15",
+          1492.17,
+          true
         ]
       ],
-      "latest": 1495.49,
-      "change": 1.4
+      "latest": 1492.17,
+      "change": -3.32
     },
     {
       "id": "usdcny",
@@ -2575,11 +2575,6 @@
       "source": "Frankfurter(ECB)",
       "impact": "중국법인 손익·구매 단가",
       "history": [
-        [
-          "2024-07-15",
-          7.2619,
-          true
-        ],
         [
           "2024-07-16",
           7.2668,
@@ -5124,10 +5119,15 @@
           "2026-07-14",
           6.7801,
           true
+        ],
+        [
+          "2026-07-15",
+          6.7743,
+          true
         ]
       ],
-      "latest": 6.7801,
-      "change": 0.0025
+      "latest": 6.7743,
+      "change": -0.0058
     },
     {
       "id": "usdthb",
@@ -5139,11 +5139,6 @@
       "source": "Frankfurter(ECB)",
       "impact": "태국법인 손익",
       "history": [
-        [
-          "2024-07-15",
-          36.19,
-          true
-        ],
         [
           "2024-07-16",
           36.075,
@@ -7688,10 +7683,15 @@
           "2026-07-14",
           33.525,
           true
+        ],
+        [
+          "2026-07-15",
+          33.645,
+          true
         ]
       ],
-      "latest": 33.525,
-      "change": 0.14
+      "latest": 33.645,
+      "change": 0.12
     },
     {
       "id": "usdegp",
@@ -7820,7 +7820,7 @@
         ],
         [
           "2026-06-30",
-          49.6038,
+          50.2221,
           true
         ],
         [
@@ -7872,10 +7872,15 @@
           "2026-07-14",
           50.67,
           true
+        ],
+        [
+          "2026-07-15",
+          50.53,
+          true
         ]
       ],
-      "latest": 50.67,
-      "change": 0.48
+      "latest": 50.53,
+      "change": -0.14
     },
     {
       "id": "wti",
@@ -7984,7 +7989,7 @@
         ],
         [
           "2026-07-01",
-          71.41,
+          79.34,
           true
         ],
         [
@@ -8036,10 +8041,15 @@
           "2026-07-14",
           79.93,
           true
+        ],
+        [
+          "2026-07-15",
+          80.36,
+          true
         ]
       ],
-      "latest": 79.93,
-      "change": 1.6
+      "latest": 80.36,
+      "change": 0.43
     },
     {
       "id": "kospi",
@@ -8168,7 +8178,7 @@
         ],
         [
           "2026-06-30",
-          7475.9399,
+          6856.8301,
           true
         ],
         [
@@ -8220,10 +8230,15 @@
           "2026-07-14",
           6856.8301,
           true
+        ],
+        [
+          "2026-07-15",
+          7284.4102,
+          true
         ]
       ],
-      "latest": 6856.8301,
-      "change": 49.8999
+      "latest": 7284.4102,
+      "change": 427.5801
     },
     {
       "id": "gold",
@@ -8327,7 +8342,7 @@
         ],
         [
           "2026-07-01",
-          4104.1001,
+          4061.1001,
           true
         ],
         [
@@ -8379,10 +8394,15 @@
           "2026-07-14",
           4055.1001,
           true
+        ],
+        [
+          "2026-07-15",
+          4066.6001,
+          true
         ]
       ],
-      "latest": 4055.1001,
-      "change": 43.7002
+      "latest": 4066.6001,
+      "change": 11.5
     },
     {
       "id": "dxy",
@@ -8511,7 +8531,7 @@
         ],
         [
           "2026-07-01",
-          100.97,
+          100.94,
           true
         ],
         [
@@ -8563,10 +8583,15 @@
           "2026-07-14",
           100.941,
           true
+        ],
+        [
+          "2026-07-15",
+          100.495,
+          true
         ]
       ],
-      "latest": 100.941,
-      "change": -0.336
+      "latest": 100.495,
+      "change": -0.446
     },
     {
       "id": "natgas",
@@ -8670,7 +8695,7 @@
         ],
         [
           "2026-07-01",
-          2.94,
+          2.904,
           true
         ],
         [
@@ -8722,10 +8747,15 @@
           "2026-07-14",
           2.913,
           true
+        ],
+        [
+          "2026-07-15",
+          2.914,
+          true
         ]
       ],
-      "latest": 2.913,
-      "change": 0.015
+      "latest": 2.914,
+      "change": 0.001
     },
     {
       "id": "silver",
@@ -8829,7 +8859,7 @@
         ],
         [
           "2026-07-01",
-          59.809,
+          58.772,
           true
         ],
         [
@@ -8881,10 +8911,15 @@
           "2026-07-14",
           59.005,
           true
+        ],
+        [
+          "2026-07-15",
+          58.12,
+          true
         ]
       ],
-      "latest": 59.005,
-      "change": 1.01
+      "latest": 58.12,
+      "change": -0.885
     },
     {
       "id": "vix",
@@ -9018,7 +9053,7 @@
         ],
         [
           "2026-07-01",
-          15.03,
+          16.5,
           true
         ],
         [
@@ -9065,10 +9100,15 @@
           "2026-07-14",
           16.5,
           true
+        ],
+        [
+          "2026-07-15",
+          15.67,
+          true
         ]
       ],
-      "latest": 16.5,
-      "change": -0.66
+      "latest": 15.67,
+      "change": -0.83
     },
     {
       "id": "sse",
@@ -9197,7 +9237,7 @@
         ],
         [
           "2026-06-30",
-          3996.1621,
+          3967.126,
           true
         ],
         [
@@ -9249,10 +9289,15 @@
           "2026-07-14",
           3967.1262,
           true
+        ],
+        [
+          "2026-07-15",
+          3955.5781,
+          true
         ]
       ],
-      "latest": 3967.1262,
-      "change": 53.3323
+      "latest": 3955.5781,
+      "change": -11.5481
     },
     {
       "id": "copper",
@@ -9356,7 +9401,7 @@
         ],
         [
           "2026-07-01",
-          6.2335,
+          6.33,
           true
         ],
         [
@@ -9408,10 +9453,15 @@
           "2026-07-14",
           6.364,
           true
+        ],
+        [
+          "2026-07-15",
+          6.3795,
+          true
         ]
       ],
-      "latest": 6.364,
-      "change": 0.089
+      "latest": 6.3795,
+      "change": 0.0155
     },
     {
       "id": "aluminum",
@@ -9515,7 +9565,7 @@
         ],
         [
           "2026-07-01",
-          3409.75,
+          3448.0,
           true
         ],
         [
@@ -9562,10 +9612,15 @@
           "2026-07-14",
           3360.5,
           true
+        ],
+        [
+          "2026-07-15",
+          3368.25,
+          true
         ]
       ],
-      "latest": 3360.5,
-      "change": 35.0
+      "latest": 3368.25,
+      "change": 7.75
     },
     {
       "id": "kr_mfg_pmi",
@@ -9589,8 +9644,7 @@
         ]
       ],
       "latest": 52.1,
-      "change": -2.7,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": -2.7
     },
     {
       "id": "kr_ccsi",
@@ -9614,8 +9668,7 @@
         ]
       ],
       "latest": 106.6,
-      "change": 0.5,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": 0.5
     },
     {
       "id": "kr_bsi",
@@ -9639,8 +9692,7 @@
         ]
       ],
       "latest": 79.0,
-      "change": -1.0,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": -1.0
     },
     {
       "id": "cn_caixin_pmi",
@@ -9664,8 +9716,7 @@
         ]
       ],
       "latest": 51.7,
-      "change": -0.1,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": -0.1
     },
     {
       "id": "cn_cci",
@@ -9686,11 +9737,15 @@
           "2026-04-01",
           89.0,
           true
+        ],
+        [
+          "2026-05-01",
+          89.9,
+          true
         ]
       ],
-      "latest": 89.0,
-      "change": -1.0,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "latest": 89.9,
+      "change": 0.9
     },
     {
       "id": "th_bsi",
@@ -9719,8 +9774,7 @@
         ]
       ],
       "latest": 46.1,
-      "change": 3.6,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": 3.6
     },
     {
       "id": "th_cci",
@@ -9749,8 +9803,7 @@
         ]
       ],
       "latest": 50.7,
-      "change": 1.2,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": 1.2
     },
     {
       "id": "eg_mfg_pmi",
@@ -9779,8 +9832,7 @@
         ]
       ],
       "latest": 46.0,
-      "change": -1.1,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": -1.1
     },
     {
       "id": "us_ism_pmi",
@@ -9809,8 +9861,7 @@
         ]
       ],
       "latest": 53.3,
-      "change": -0.7,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": -0.7
     },
     {
       "id": "us_cci",
@@ -9834,8 +9885,7 @@
         ]
       ],
       "latest": 49.5,
-      "change": 4.7,
-      "_error": "Failed to perform, curl: (6) Could not resolve host: tradingeconomics.com. See https://curl.se/libcurl/c/libcurl-errors."
+      "change": 4.7
     }
   ]
 }
