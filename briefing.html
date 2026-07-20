@@ -926,8 +926,9 @@ async function load(){
   try{
     const p = new URLSearchParams(location.search);
     const dt = p.get('date');
-    /* 아카이브: ?date=YYYYMMDD → data-YYYYMMDD.json 로드 */
-    const dataFile = dt ? `data-${dt}.json?t=${Date.now()}` : `data.json?t=${Date.now()}`;
+    /* 아카이브: ?date=YYYYMMDD → data-YYYYMMDD.json 로드 (없거나 손상 시 data.json 폴백) */
+    const cacheBust = Date.now();
+    const dataFile = dt ? `data-${dt}.json?t=${cacheBust}` : `data.json?t=${cacheBust}`;
 
     // 아카이브 UI
     if(dt){
@@ -940,8 +941,35 @@ async function load(){
         </div></div>`;
     }
 
-    const r = await fetch(dataFile);
-    const d = await r.json();
+    /* 로드 + 폴백 (2026-07-20 재발방지):
+       특정 날짜 파일이 404 이거나 JSON 파싱 실패 시 data.json 시도,
+       data.json 의 date 필드가 요청한 날짜와 일치할 때만 채택. */
+    async function fetchJsonSafe(url){
+      const r = await fetch(url);
+      if(!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+      const ct = (r.headers.get('content-type')||'').toLowerCase();
+      const text = await r.text();
+      if(ct.includes('html') || text.trim().startsWith('<')){
+        throw new Error(`Non-JSON response for ${url} (Pages CDN 미반영 추정)`);
+      }
+      return JSON.parse(text);
+    }
+
+    let d;
+    try{
+      d = await fetchJsonSafe(dataFile);
+    }catch(primaryErr){
+      if(!dt) throw primaryErr;   // 최신 로드는 폴백 없음
+      console.warn('[briefing] 1차 로드 실패:', primaryErr.message, '→ data.json 폴백 시도');
+      const fbData = await fetchJsonSafe(`data.json?t=${cacheBust}`);
+      const fbDate = (fbData.date||'').replace(/-/g,'');
+      if(fbDate === dt){
+        console.info('[briefing] data.json 폴백 성공 (date 일치:', fbData.date, ')');
+        d = fbData;
+      }else{
+        throw new Error(`data-${dt}.json 없음 + data.json 은 다른 날짜(${fbData.date}) — Pages CDN 반영 대기`);
+      }
+    }
 
     document.getElementById('bar-date').textContent = d.date_kr || d.date || fmtDateKr(dt) || '—';
     syncStickyH();   // 날짜 채워지며 헤더 높이 변할 수 있음 → 재계산
