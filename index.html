@@ -380,7 +380,16 @@ function fmtReason(reason){
     if(cls==='tr-trend') return seg.replace(new RegExp('^추세\\s*[—-]?\\s*'),'');
     return seg;
   }
-  if(!pts.length) return '<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+s+'</span>';
+  if(!pts.length){
+    // 라벨 없고 빈 줄로 문단 구분되어 있으면 문단별로 분리 렌더 (2026-07-27 지침)
+    if(s.indexOf('\n\n')>=0 || s.indexOf('\n')>=0){
+      var paras = s.split(/\n{2,}|\n/).map(function(p){return p.trim();}).filter(Boolean);
+      if(paras.length>1){
+        return paras.map(function(p){ return '<span class="tr-seg tr-lead">'+p+'</span>'; }).join('');
+      }
+    }
+    return '<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+s+'</span>';
+  }
   var out=[]; var lead=s.slice(0,pts[0]).trim();
   if(lead) out.push('<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+lead+'</span>');
   for(var k=0;k<pts.length;k++){
