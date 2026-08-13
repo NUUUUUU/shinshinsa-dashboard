@@ -663,7 +663,7 @@ function renderTrips(t){
       <div class="trip-period">${md(v.depart)} ~ ${md(v.ret)}</div>
       <div class="trip-dest">${v.dest || ''}</div>
     </div>`).join('')
-    + (t.as_of ? `<div class="trip-asof">${md(t.as_of)} 접수 기준</div>` : '');
+    + (t.as_of ? `<div class="trip-asof">${md(t.as_of)} 캘린더 기준</div>` : '');
 }
 
 /* ── 뉴스 (Briefing.filterNews + Briefing.stars) ── */
