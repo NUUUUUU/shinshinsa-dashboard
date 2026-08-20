@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<!-- 구글시트(gviz CSV)를 읽어 신신사 매출을 집계·시각화하는 단일 파일 대시보드 -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신신사 매출 대시보드</title>
+<script>
+/* 다크 토글 IIFE — DOM 렌더 전 적용 (일일 브리핑과 동일 규약) */
+(function(){
+  var saved = localStorage.getItem('theme');
+  if(saved){ document.documentElement.dataset.theme = saved; }
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches){
+    document.documentElement.dataset.theme = 'dark';
+  }
+})();
+</script>
+<style>
+/* ── 디자인 토큰 — briefing/tokens.css 와 동일 값 + 시리즈 색상 슬롯 ── */
+:root{
+  --bg:#f7f7f7; --card:#fff;
+  --txt:#222222; --txt-body:#3f3f3f; --txt-sub:#6a6a6a; --txt-lbl:#929292;
+  --bdr:#dddddd; --divider:#ebebeb; --grid:#ebebeb;
+  --neg:#dc2626; --pos:#16a34a; --info:#428bff; --accent:#ff385c;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#8a8f98;
+}
+[data-theme="dark"]{
+  --bg:#0f172a; --card:#1e293b;
+  --txt:#f1f5f9; --txt-body:#e2e8f0; --txt-sub:#94a3b8; --txt-lbl:#64748b;
+  --bdr:#334155; --divider:#1e293b; --grid:#334155;
+  --neg:#f87171; --pos:#4ade80; --info:#60a5fa; --accent:#ff5a7a;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#94a3b8;
+}
+*{box-sizing:border-box}
+body{
+  font-family:-apple-system,"Pretendard","Apple SD Gothic Neo",BlinkMacSystemFont,sans-serif;
+  background:var(--bg); color:var(--txt); margin:0; padding:16px 14px 56px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px;margin:0 auto}
+.card{
+  background:var(--card); border:1px solid var(--bdr); border-radius:16px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 16px rgba(0,0,0,.05); padding:16px;
+}
+.lbl{font-size:9px;font-weight:800;text-transform:uppercase;color:var(--txt-lbl);letter-spacing:.05em}
+.sub{font-size:12px;color:var(--txt-sub)}
+
+/* 헤더 */
+header{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+header h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.02em}
+header .meta{font-size:12px;color:var(--txt-sub);margin-top:3px}
+header .meta a{color:var(--info);text-decoration:none}
+header .meta a:hover{text-decoration:underline}
+.spacer{flex:1}
+.btn{
+  padding:7px 13px;border:1px solid var(--bdr);background:var(--card);color:var(--txt-body);
+  border-radius:999px;font-size:12px;cursor:pointer;font-family:inherit;
+}
+.btn:hover{border-color:var(--txt-sub)}
+
+/* 필터 — 차트 위 한 줄 */
+.filters{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.frow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.frow > .lbl{min-width:62px;flex:none}
+.chip{
+  padding:5px 12px;border:1px solid var(--bdr);background:var(--card);border-radius:999px;
+  font-size:12px;color:var(--txt-body);cursor:pointer;white-space:nowrap;font-family:inherit;
+}
+.chip:hover{border-color:var(--txt-sub)}
+.chip.active{background:var(--txt);color:var(--card);border-color:var(--txt);font-weight:600}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi .val{font-size:26px;font-weight:800;margin-top:5px;letter-spacing:-.02em;line-height:1.15}
+.kpi.hero .val{font-size:48px;line-height:1.05}
+.kpi .val small{font-size:.42em;font-weight:700;color:var(--txt-sub);margin-left:3px}
+.kpi.hero .val small{font-size:.3em}
+.kpi .note{font-size:11px;color:var(--txt-sub);margin-top:6px}
+.delta{font-weight:800}
+.delta.up{color:var(--pos)} .delta.dn{color:var(--neg)} .delta.fl{color:var(--txt-sub)}
+
+/* 차트 */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.charts > .card{min-width:0}      /* 그리드 열이 자기 SVG 폭에 끌려가지 않게 */
+.charts .full{grid-column:1 / -1}
+.chart-card{position:relative}
+.chart-head{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.chart-head h2{font-size:14px;font-weight:700;margin:0}
+.chart-head .unit{font-size:11px;color:var(--txt-lbl)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 2px}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--txt-sub)}
+.legend i{display:inline-block;flex:none}
+.legend i.line{width:14px;height:3px;border-radius:2px}
+.legend i.rect{width:11px;height:11px;border-radius:3px}
+.plot{overflow-x:auto;overflow-y:hidden}
+.plot svg{display:block}
+.empty{padding:38px 0;text-align:center;color:var(--txt-sub);font-size:13px}
+.figure{padding:34px 0 30px;text-align:center}
+.figure-n{font-size:12px;color:var(--txt-sub)}
+.figure-v{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-top:5px}
+
+/* 툴팁 */
+.tip{
+  position:absolute;z-index:20;pointer-events:none;background:var(--card);
+  border:1px solid var(--bdr);border-radius:10px;padding:8px 10px;
+  box-shadow:0 6px 22px rgba(0,0,0,.14);min-width:118px;
+}
+.tip-t{font-size:10.5px;font-weight:700;color:var(--txt-lbl);margin-bottom:5px}
+.tip-r{display:flex;align-items:center;gap:6px;font-size:12px;line-height:1.7;white-space:nowrap}
+.tip-r b{color:var(--txt);font-weight:800;font-variant-numeric:tabular-nums}
+.tip-k{width:12px;height:3px;border-radius:2px;flex:none}
+.tip-n{color:var(--txt-sub);font-size:11px}
+
+/* 표 */
+.table-wrap{max-height:440px;overflow:auto;margin-top:10px;border-top:1px solid var(--divider)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{
+  position:sticky;top:0;background:var(--card);z-index:2;text-align:left;padding:9px 8px;
+  font-size:10px;font-weight:800;color:var(--txt-lbl);text-transform:uppercase;letter-spacing:.04em;
+  border-bottom:1px solid var(--bdr);cursor:pointer;white-space:nowrap;user-select:none;
+}
+thead th:hover{color:var(--txt-body)}
+thead th.num,tbody td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody td{padding:8px;border-bottom:1px solid var(--divider);color:var(--txt-body);white-space:nowrap}
+tbody tr:hover td{background:var(--bg)}
+
+.status{padding:44px 0;text-align:center;color:var(--txt-sub);font-size:13px}
+.status.err{color:var(--neg)}
+
+@media (max-width:820px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .charts{grid-template-columns:1fr}
+  .kpi.hero .val{font-size:38px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>신신사 매출 대시보드</h1>
+      <div class="meta">
+        출처 · <a id="srcLink" href="#" target="_blank" rel="noopener">신신사_매출데이터 (Google Sheets)</a>
+        <span id="stamp"></span>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="reload" type="button">새로고침</button>
+    <button class="btn" id="theme" type="button">테마</button>
+  </header>
+
+  <div id="status" class="status">구글시트를 불러오는 중…</div>
+
+  <main id="app" hidden>
+
+    <section class="filters" id="filters"></section>
+
+    <section class="kpis">
+      <div class="card kpi hero">
+        <div class="lbl">총 매출액</div>
+        <div class="val" id="kpiRev">—</div>
+        <div class="note" id="kpiRevNote"></div>
+      </div>
+      <div class="card kpi">
+        <div class="lbl">총 판매수량</div>
+        <div class="val" id="kpiQty">—</div>
+        <div class="note" id="kpiQtyNote"></div>
+      </div>
+      <div class="card kpi">
+        <div class="lbl">평균 단가</div>
+        <div class="val" id="kpiPrice">—</div>
+        <div class="note">매출액 ÷ 판매수량</div>
+      </div>
+      <div class="card kpi">
+        <div class="lbl">연간 성장률</div>
+        <div class="val" id="kpiYoy">—</div>
+        <div class="note" id="kpiYoyNote"></div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="card chart-card full" id="cTrend">
+        <div class="chart-head"><h2>월별 매출 추이</h2><span class="unit">단위 · 억원</span></div>
+        <div class="sub">연도별 같은 달을 겹쳐 비교합니다.</div>
+        <div class="legend"></div>
+        <div class="plot"></div>
+      </div>
+
+      <div class="card chart-card" id="cSite">
+        <div class="chart-head"><h2>생산거점별 매출</h2><span class="unit">단위 · 억원</span></div>
+        <div class="sub">선택 기간 누적, 매출 순.</div>
+        <div class="plot"></div>
+      </div>
+
+      <div class="card chart-card" id="cProduct">
+        <div class="chart-head"><h2>제품군별 매출</h2><span class="unit">단위 · 억원</span></div>
+        <div class="sub">선택 기간 누적, 매출 순.</div>
+        <div class="plot"></div>
+      </div>
+
+      <div class="card chart-card full" id="cCountry">
+        <div class="chart-head"><h2>국가별 월 매출 구성</h2><span class="unit">단위 · 억원</span></div>
+        <div class="sub">월 매출을 판매 국가로 나눠 쌓았습니다.</div>
+        <div class="legend"></div>
+        <div class="plot"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="chart-head"><h2>상세 데이터</h2><span class="unit" id="rowCount"></span></div>
+      <div class="sub">머리글을 누르면 정렬됩니다.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr id="thead"></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ──────────────────────────── 설정 ──────────────────────────── */
+var SHEET_ID = '1qVXO3Bv8hkRlRXuQdixSHuerXBR7qFPk470iBvlNhrI';
+var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit';
+var CSV_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv';
+var NS = 'http://www.w3.org/2000/svg';
+var EOK = 1e8; /* 억 */
+
+document.getElementById('srcLink').href = SHEET_URL;
+
+/* ──────────────────────────── 유틸 ──────────────────────────── */
+function css(name){
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+function slot(i){ return css('--s' + (i < 8 ? i + 1 : 9)); }
+
+/* RFC4180 CSV 파서 — gviz는 숫자에 천단위 쉼표를 넣어 내보내므로 따옴표 처리가 필수 */
+function parseCSV(text){
+  var rows = [], row = [], field = '', inQuote = false, i, c;
+  for(i = 0; i < text.length; i++){
+    c = text[i];
+    if(inQuote){
+      if(c === '"'){
+        if(text[i+1] === '"'){ field += '"'; i++; } else { inQuote = false; }
+      } else { field += c; }
+    } else if(c === '"'){ inQuote = true; }
+    else if(c === ','){ row.push(field); field = ''; }
+    else if(c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; }
+    else if(c !== '\r'){ field += c; }
+  }
+  if(field !== '' || row.length){ row.push(field); rows.push(row); }
+  return rows;
+}
+function num(v){
+  var n = parseFloat(String(v).replace(/[^0-9.\-]/g, ''));
+  return isFinite(n) ? n : 0;
+}
+function fmtWon(v){
+  var a = Math.abs(v);
+  if(a >= 1e12) return trim1(v / 1e12) + '조';
+  if(a >= EOK)  return trim1(v / EOK) + '억';
+  if(a >= 1e4)  return Math.round(v / 1e4).toLocaleString('ko-KR') + '만';
+  return Math.round(v).toLocaleString('ko-KR');
+}
+function fmtQty(v){
+  if(Math.abs(v) >= 1e4) return trim1(v / 1e4) + '만';
+  return Math.round(v).toLocaleString('ko-KR');
+}
+function trim1(v){
+  var s = Math.abs(v) >= 100 ? String(Math.round(v)) : v.toFixed(1);
+  return s.replace(/\.0$/, '').replace(/\B(?=(\d{3})+(?!\d))/, ',');
+}
+function comma(v){ return Math.round(v).toLocaleString('ko-KR'); }
+/* 축 눈금은 억 단위 소수 — 자릿수는 최대값에 맞춰 결정 */
+function fmtEok(v, step){
+  var d = step / EOK < 1 ? 2 : (step / EOK < 10 ? 1 : 0);
+  return (v / EOK).toFixed(d).replace(/\.?0+$/, '') || '0';
+}
+function niceTicks(max){
+  if(!(max > 0)) return [0, 1];
+  var raw = max / 4;
+  var mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  var n = raw / mag;
+  var step = (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * mag;
+  var t = [], v = 0;
+  while(v < max - step * 1e-9){ t.push(v); v += step; }
+  t.push(v);
+  return t;
+}
+function el(tag, attrs, text){
+  var e = document.createElementNS(NS, tag), k;
+  for(k in attrs){ if(attrs[k] != null) e.setAttribute(k, attrs[k]); }
+  if(text != null) e.textContent = text;   /* 시트에서 온 라벨은 항상 textContent */
+  return e;
+}
+/* 데이터 끝(오른쪽/위)만 둥근 막대 — 베이스라인 쪽은 각지게 */
+function barRightPath(x, y, w, h, r){
+  r = Math.min(r, w, h / 2);
+  if(r <= 0.5) return 'M' + x + ',' + y + 'h' + w + 'v' + h + 'h' + (-w) + 'Z';
+  return 'M' + x + ',' + y + 'H' + (x + w - r) + 'A' + r + ',' + r + ' 0 0 1 ' + (x + w) + ',' + (y + r) +
+         'V' + (y + h - r) + 'A' + r + ',' + r + ' 0 0 1 ' + (x + w - r) + ',' + (y + h) + 'H' + x + 'Z';
+}
+function barTopPath(x, y, w, h, r){
+  r = Math.min(r, w / 2, h);
+  if(r <= 0.5) return 'M' + x + ',' + y + 'h' + w + 'v' + h + 'h' + (-w) + 'Z';
+  return 'M' + x + ',' + (y + h) + 'V' + (y + r) + 'A' + r + ',' + r + ' 0 0 1 ' + (x + r) + ',' + y +
+         'H' + (x + w - r) + 'A' + r + ',' + r + ' 0 0 1 ' + (x + w) + ',' + (y + r) +
+         'V' + (y + h) + 'Z';
+}
+
+/* ──────────────────────────── 툴팁 ──────────────────────────── */
+function tipFor(card){
+  var t = card.querySelector('.tip');
+  if(!t){ t = document.createElement('div'); t.className = 'tip'; t.hidden = true; card.appendChild(t); }
+  return t;
+}
+function showTip(card, x, y, title, rows){
+  var t = tipFor(card);
+  t.replaceChildren();
+  var h = document.createElement('div');
+  h.className = 'tip-t'; h.textContent = title; t.appendChild(h);
+  rows.forEach(function(r){
+    var line = document.createElement('div'); line.className = 'tip-r';
+    var key = document.createElement('span'); key.className = 'tip-k'; key.style.background = r.color;
+    var val = document.createElement('b'); val.textContent = r.value;          /* 값이 앞 */
+    var nm  = document.createElement('span'); nm.className = 'tip-n'; nm.textContent = r.name;
+    line.append(key, val, nm); t.appendChild(line);
+  });
+  t.hidden = false;
+  var w = t.offsetWidth, hgt = t.offsetHeight, cw = card.clientWidth;
+  t.style.left = Math.max(6, Math.min(cw - w - 6, x - w / 2)) + 'px';
+  t.style.top  = Math.max(4, y - hgt - 12) + 'px';
+}
+function hideTip(card){ var t = card.querySelector('.tip'); if(t) t.hidden = true; }
+/* SVG 좌표 → 카드 기준 좌표 (패딩·가로 스크롤·확대 모두 반영) */
+function anchor(card, svg, sx, sy, W, H){
+  var b = svg.getBoundingClientRect(), c = card.getBoundingClientRect();
+  return { x: b.left - c.left + sx * (b.width / W), y: b.top - c.top + sy * (b.height / H) };
+}
+
+/* ──────────────────────────── 상태 ──────────────────────────── */
+var ALL = [];                     /* 시트 전체 행 */
+var COLS = ['연월','생산거점','국가','제품군','고객사','수출구분','판매수량','단가_원','매출액_원'];
+var YEARS = [], SITES = [], PRODUCTS = [], CHANNELS = [], COUNTRIES = [];
+var COLOR = { year: {}, country: {} };   /* 색은 엔티티에 고정 — 필터로 다시 칠하지 않음 */
+var F = { year: 'ALL', site: 'ALL', product: 'ALL', channel: 'ALL' };
+var SORT = { key: '연월', dir: 1 };
+
+/* ──────────────────────────── 로드 ──────────────────────────── */
+function load(){
+  var status = document.getElementById('status');
+  var app = document.getElementById('app');
+  status.className = 'status';
+  status.textContent = '구글시트를 불러오는 중…';
+  status.hidden = false;
+  if(!ALL.length) app.hidden = true;
+
+  fetch(CSV_URL + '&_=' + Date.now(), { cache: 'no-store' })
+    .then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function(text){
+      var rows = parseCSV(text).filter(function(r){ return r.length > 1; });
+      if(rows.length < 2) throw new Error('시트에 데이터 행이 없습니다.');
+      var head = rows[0].map(function(s){ return s.trim(); });
+      var ix = COLS.map(function(name){
+        var i = head.indexOf(name);
+        return i >= 0 ? i : COLS.indexOf(name);   /* 머리글이 바뀌면 위치로 대체 */
+      });
+      ALL = rows.slice(1)
+        .filter(function(r){ return r[ix[0]] && /^\d{4}-\d{2}/.test(r[ix[0]].trim()); })
+        .map(function(r){
+          return {
+            '연월': r[ix[0]].trim(),
+            '생산거점': (r[ix[1]] || '').trim(),
+            '국가': (r[ix[2]] || '').trim(),
+            '제품군': (r[ix[3]] || '').trim(),
+            '고객사': (r[ix[4]] || '').trim(),
+            '수출구분': (r[ix[5]] || '').trim(),
+            '판매수량': num(r[ix[6]]),
+            '단가_원': num(r[ix[7]]),
+            '매출액_원': num(r[ix[8]])
+          };
+        });
+      if(!ALL.length) throw new Error('읽을 수 있는 매출 행이 없습니다.');
+      buildMeta();
+      status.hidden = true;
+      app.hidden = false;
+      document.getElementById('stamp').textContent =
+        ' · ' + new Date().toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }) + ' 기준';
+      buildFilters();
+      renderAll();
+    })
+    .catch(function(e){
+      status.className = 'status err';
+      status.hidden = false;
+      status.textContent = '시트를 불러오지 못했습니다 — ' + e.message +
+        ' (시트가 "링크가 있는 모든 사용자에게 공개"인지 확인하세요)';
+    });
+}
+
+function uniq(key, sortFn){
+  var seen = {}, out = [];
+  ALL.forEach(function(r){ if(r[key] && !seen[r[key]]){ seen[r[key]] = 1; out.push(r[key]); } });
+  return sortFn ? out.sort(sortFn) : out.sort();
+}
+function buildMeta(){
+  YEARS = uniq2(ALL.map(function(r){ return r['연월'].slice(0, 4); })).sort();
+  SITES = uniq('생산거점'); PRODUCTS = uniq('제품군'); CHANNELS = uniq('수출구분');
+
+  /* 국가 순서는 전체 데이터 기준 매출 내림차순으로 한 번만 고정 */
+  var tot = {};
+  ALL.forEach(function(r){ tot[r['국가']] = (tot[r['국가']] || 0) + r['매출액_원']; });
+  COUNTRIES = Object.keys(tot).sort(function(a, b){ return tot[b] - tot[a]; });
+
+  COLOR.year = {}; COLOR.country = {};
+  YEARS.forEach(function(y, i){ COLOR.year[y] = i; });
+  COUNTRIES.forEach(function(c, i){ COLOR.country[c] = i; });
+}
+function uniq2(arr){
+  var seen = {}, out = [];
+  arr.forEach(function(v){ if(v && !seen[v]){ seen[v] = 1; out.push(v); } });
+  return out;
+}
+
+/* ──────────────────────────── 필터 ──────────────────────────── */
+function buildFilters(){
+  var host = document.getElementById('filters');
+  host.replaceChildren();
+  addRow(host, '기간', 'year', YEARS.map(function(y){ return y + '년'; }), YEARS);
+  addRow(host, '생산거점', 'site', SITES, SITES);
+  addRow(host, '제품군', 'product', PRODUCTS, PRODUCTS);
+  addRow(host, '수출구분', 'channel', CHANNELS, CHANNELS);
+}
+function addRow(host, label, key, labels, values){
+  var row = document.createElement('div'); row.className = 'frow';
+  var lb = document.createElement('div'); lb.className = 'lbl'; lb.textContent = label;
+  row.appendChild(lb);
+  row.appendChild(chip('전체', 'ALL', key));
+  values.forEach(function(v, i){ row.appendChild(chip(labels[i], v, key)); });
+  host.appendChild(row);
+}
+function chip(text, value, key){
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'chip' + (F[key] === value ? ' active' : '');
+  b.textContent = text;
+  b.addEventListener('click', function(){
+    F[key] = value;
+    Array.prototype.forEach.call(b.parentNode.querySelectorAll('.chip'), function(c){
+      c.classList.remove('active');
+    });
+    b.classList.add('active');
+    renderAll();
+  });
+  return b;
+}
+function filtered(ignoreYear){
+  return ALL.filter(function(r){
+    if(!ignoreYear && F.year !== 'ALL' && r['연월'].slice(0, 4) !== F.year) return false;
+    if(F.site !== 'ALL' && r['생산거점'] !== F.site) return false;
+    if(F.product !== 'ALL' && r['제품군'] !== F.product) return false;
+    if(F.channel !== 'ALL' && r['수출구분'] !== F.channel) return false;
+    return true;
+  });
+}
+function sum(rows, key){
+  return rows.reduce(function(a, r){ return a + r[key]; }, 0);
+}
+function groupSum(rows, key, valKey){
+  var m = new Map();
+  rows.forEach(function(r){ m.set(r[key], (m.get(r[key]) || 0) + r[valKey]); });
+  return m;
+}
+
+/* ──────────────────────────── 렌더 ──────────────────────────── */
+function renderAll(){
+  var rows = filtered(false);
+  renderKPI(rows);
+  renderTrend(rows);
+  renderRank(document.getElementById('cSite'), rows, '생산거점');
+  renderRank(document.getElementById('cProduct'), rows, '제품군');
+  renderCountry(rows);
+  renderTable(rows);
+}
+
+function renderKPI(rows){
+  var rev = sum(rows, '매출액_원'), qty = sum(rows, '판매수량');
+  var months = uniq2(rows.map(function(r){ return r['연월']; })).length;
+
+  setVal('kpiRev', fmtWon(rev), '원');
+  document.getElementById('kpiRevNote').textContent =
+    months ? months + '개월 · 월평균 ' + fmtWon(rev / months) + '원' : '해당 데이터 없음';
+
+  setVal('kpiQty', fmtQty(qty), '대');
+  document.getElementById('kpiQtyNote').textContent = comma(qty) + '대';
+
+  setVal('kpiPrice', qty ? comma(rev / qty) : '—', qty ? '원' : '');
+
+  /* 연간 성장률 — 기간 칩과 무관하게 연도 전체를 비교 */
+  var yRows = filtered(true), box = document.getElementById('kpiYoy');
+  var note = document.getElementById('kpiYoyNote');
+  if(YEARS.length < 2){
+    box.textContent = '—'; note.textContent = '비교할 연도가 없습니다.';
+    return;
+  }
+  var prev = YEARS[YEARS.length - 2], cur = YEARS[YEARS.length - 1];
+  var pv = sum(yRows.filter(function(r){ return r['연월'].slice(0, 4) === prev; }), '매출액_원');
+  var cv = sum(yRows.filter(function(r){ return r['연월'].slice(0, 4) === cur; }), '매출액_원');
+  box.replaceChildren();
+  if(!pv){
+    box.textContent = '—';
+    note.textContent = cv ? cur + '년 ' + fmtWon(cv) + '원 · ' + prev + '년 실적 없음'
+                          : '해당 조건의 비교 데이터가 없습니다.';
+    return;
+  } else {
+    var pct = (cv - pv) / pv * 100;
+    var s = document.createElement('span');
+    s.className = 'delta ' + (pct > 0.05 ? 'up' : pct < -0.05 ? 'dn' : 'fl');
+    s.textContent = (pct > 0 ? '+' : '') + pct.toFixed(1) + '%';
+    box.appendChild(s);
+  }
+  note.textContent = cur + '년 ' + fmtWon(cv) + ' vs ' + prev + '년 ' + fmtWon(pv) + '원';
+}
+function setVal(id, text, unit){
+  var e = document.getElementById(id);
+  e.replaceChildren(document.createTextNode(text));
+  if(unit){ var s = document.createElement('small'); s.textContent = unit; e.appendChild(s); }
+}
+
+function plotOf(card){
+  var p = card.querySelector('.plot');
+  p.replaceChildren();
+  hideTip(card);
+  return p;
+}
+function noData(card){
+  var p = plotOf(card);
+  var d = document.createElement('div'); d.className = 'empty';
+  d.textContent = '선택한 조건에 해당하는 데이터가 없습니다.';
+  p.appendChild(d);
+  var lg = card.querySelector('.legend'); if(lg) lg.replaceChildren();
+}
+function legendOf(card, items, shape){
+  var lg = card.querySelector('.legend');
+  if(!lg) return;
+  lg.replaceChildren();
+  if(items.length < 2) return;              /* 시리즈가 하나면 제목이 곧 범례 */
+  items.forEach(function(it){
+    var s = document.createElement('span');
+    var i = document.createElement('i');
+    i.className = shape; i.style.background = it.color;
+    var t = document.createTextNode(it.name);
+    s.append(i, t); lg.appendChild(s);
+  });
+}
+
+/* 1. 월별 매출 추이 — 연도별 라인 */
+function renderTrend(rows){
+  var card = document.getElementById('cTrend');
+  if(!rows.length) return noData(card);
+
+  var years = (F.year === 'ALL' ? YEARS : [F.year]).filter(function(y){
+    return rows.some(function(r){ return r['연월'].slice(0, 4) === y; });
+  });
+  var series = years.map(function(y){
+    var v = new Array(12).fill(0), has = new Array(12).fill(false);
+    rows.forEach(function(r){
+      if(r['연월'].slice(0, 4) !== y) return;
+      var m = parseInt(r['연월'].slice(5, 7), 10) - 1;
+      v[m] += r['매출액_원']; has[m] = true;
+    });
+    return { name: y + '년', color: slot(COLOR.year[y]), v: v, has: has };
+  });
+  legendOf(card, series, 'line');
+
+  var host = plotOf(card);
+  var W = Math.max(560, host.clientWidth || card.clientWidth - 32);
+  var H = 300, PL = 54, PR = 66, PT = 14, PB = 30;
+  var iw = W - PL - PR, ih = H - PT - PB;
+
+  var max = 0;
+  series.forEach(function(s){ s.v.forEach(function(x){ if(x > max) max = x; }); });
+  var ticks = niceTicks(max), top = ticks[ticks.length - 1];
+  var step = ticks.length > 1 ? ticks[1] - ticks[0] : top;
+  var X = function(i){ return PL + i * iw / 11; };
+  var Y = function(v){ return PT + ih - (top ? v / top * ih : 0); };
+
+  var svg = el('svg', { width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, role: 'img' });
+  svg.appendChild(el('title', {}, '월별 매출 추이'));
+
+  ticks.forEach(function(t){
+    svg.appendChild(el('line', { x1: PL, x2: PL + iw, y1: Y(t), y2: Y(t), stroke: css('--grid'), 'stroke-width': 1 }));
+    svg.appendChild(el('text', {
+      x: PL - 9, y: Y(t) + 4, 'text-anchor': 'end', fill: css('--txt-lbl'),
+      'font-size': 10.5, 'font-variant-numeric': 'tabular-nums'
+    }, fmtEok(t, step)));
+  });
+  for(var m = 0; m < 12; m++){
+    svg.appendChild(el('text', {
+      x: X(m), y: H - 9, 'text-anchor': 'middle', fill: css('--txt-lbl'), 'font-size': 10.5
+    }, (m + 1) + '월'));
+  }
+
+  series.forEach(function(s){
+    var pts = [], last = -1;
+    for(var i = 0; i < 12; i++){ if(s.has[i]){ pts.push([X(i), Y(s.v[i])]); last = i; } }
+    if(!pts.length) return;
+    svg.appendChild(el('path', {
+      d: pts.map(function(p, i){ return (i ? 'L' : 'M') + p[0] + ',' + p[1]; }).join(' '),
+      fill: 'none', stroke: s.color, 'stroke-width': 2,
+      'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+    }));
+    s.endX = pts[pts.length - 1][0]; s.endY = pts[pts.length - 1][1]; s.endV = s.v[last];
+  });
+  /* 끝점 마커 + 표면색 링 */
+  series.forEach(function(s){
+    if(s.endX == null) return;
+    svg.appendChild(el('circle', {
+      cx: s.endX, cy: s.endY, r: 4.5, fill: s.color, stroke: css('--card'), 'stroke-width': 2
+    }));
+  });
+  /* 끝값 직접 라벨 — 서로 겹치면 범례에 맡기고 생략 */
+  var placed = [];
+  series.forEach(function(s){
+    if(s.endX == null) return;
+    if(placed.some(function(y){ return Math.abs(y - s.endY) < 16; })) return;
+    placed.push(s.endY);
+    svg.appendChild(el('text', {
+      x: s.endX + 10, y: s.endY + 4, fill: css('--txt-body'),
+      'font-size': 11.5, 'font-weight': 700, 'font-variant-numeric': 'tabular-nums'
+    }, fmtEok(s.endV, step)));
+  });
+
+  /* 크로스헤어 — X를 먼저 찾고 모든 시리즈 값을 한 번에 읽어준다 */
+  var hair = el('line', { y1: PT, y2: PT + ih, stroke: css('--txt-lbl'), 'stroke-width': 1, opacity: 0 });
+  svg.appendChild(hair);
+  var hit = el('rect', { x: PL - iw / 22, y: PT, width: iw + iw / 11, height: ih, fill: 'transparent' });
+  svg.appendChild(hit);
+  hit.addEventListener('pointermove', function(ev){
+    var box = svg.getBoundingClientRect();
+    var rel = (ev.clientX - box.left) * (W / box.width);
+    var i = Math.max(0, Math.min(11, Math.round((rel - PL) / (iw / 11))));
+    hair.setAttribute('x1', X(i)); hair.setAttribute('x2', X(i)); hair.setAttribute('opacity', .45);
+    var lines = series.filter(function(s){ return s.has[i]; }).map(function(s){
+      return { color: s.color, value: fmtWon(s.v[i]) + '원', name: s.name };
+    });
+    if(!lines.length){ hideTip(card); return; }
+    var yTop = Math.min.apply(null, series.filter(function(s){ return s.has[i]; }).map(function(s){ return Y(s.v[i]); }));
+    var a = anchor(card, svg, X(i), yTop, W, H);
+    showTip(card, a.x, a.y, (i + 1) + '월', lines);
+  });
+  hit.addEventListener('pointerleave', function(){ hair.setAttribute('opacity', 0); hideTip(card); });
+
+  host.appendChild(svg);
+}
+
+/* 2·3. 순위 가로 막대 — 단일 색(항목에 자연 순서가 없으므로 값-램프 금지) */
+function renderRank(card, rows, key){
+  if(!rows.length) return noData(card);
+  var m = groupSum(rows, key, '매출액_원');
+  var items = Array.from(m, function(e){ return { name: e[0], v: e[1] }; })
+                   .sort(function(a, b){ return b.v - a.v; });
+
+  var host = plotOf(card);
+  if(items.length === 1){          /* 막대 하나짜리 차트 대신 수치로 */
+    var fig = document.createElement('div');
+    fig.className = 'figure';
+    var nm = document.createElement('div'); nm.className = 'figure-n'; nm.textContent = items[0].name;
+    var vl = document.createElement('div'); vl.className = 'figure-v';
+    vl.textContent = fmtWon(items[0].v) + '원';
+    fig.append(nm, vl); host.appendChild(fig);
+    return;
+  }
+  var W = Math.max(260, host.clientWidth || card.clientWidth - 32);
+  var narrow = W < 420;
+  var PL = narrow ? 68 : 84, PR = narrow ? 58 : 74, PT = 6, PB = 24;
+  var band = 34, ih = items.length * band;
+  var H = PT + ih + PB, iw = W - PL - PR;
+  var max = items.length ? items[0].v : 0;
+  var ticks = niceTicks(max), top = ticks[ticks.length - 1];
+  var step = ticks.length > 1 ? ticks[1] - ticks[0] : top;
+
+  var svg = el('svg', { width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, role: 'img' });
+  svg.appendChild(el('title', {}, key + '별 매출'));
+
+  ticks.forEach(function(t){
+    var x = PL + (top ? t / top * iw : 0);
+    svg.appendChild(el('line', { x1: x, x2: x, y1: PT, y2: PT + ih, stroke: css('--grid'), 'stroke-width': 1 }));
+    svg.appendChild(el('text', {
+      x: x, y: H - 8, 'text-anchor': 'middle', fill: css('--txt-lbl'),
+      'font-size': 10.5, 'font-variant-numeric': 'tabular-nums'
+    }, fmtEok(t, step)));
+  });
+
+  var bh = Math.min(24, band - 10);
+  items.forEach(function(it, i){
+    var y = PT + i * band + (band - bh) / 2;
+    var w = top ? Math.max(1, it.v / top * iw) : 1;
+    svg.appendChild(el('text', {
+      x: PL - 10, y: y + bh / 2 + 4, 'text-anchor': 'end', fill: css('--txt-body'), 'font-size': 12
+    }, it.name));
+    var bar = el('path', { d: barRightPath(PL, y, w, bh, 4), fill: slot(0) });
+    svg.appendChild(bar);
+    svg.appendChild(el('text', {
+      x: PL + w + 9, y: y + bh / 2 + 4, fill: css('--txt-body'),
+      'font-size': 11.5, 'font-weight': 700, 'font-variant-numeric': 'tabular-nums'
+    }, fmtEok(it.v, step)));
+
+    /* 히트 영역은 막대보다 넉넉하게 */
+    var hit = el('rect', { x: PL, y: PT + i * band, width: iw, height: band, fill: 'transparent' });
+    hit.addEventListener('pointerenter', function(){ bar.setAttribute('opacity', .78); });
+    hit.addEventListener('pointerleave', function(){ bar.setAttribute('opacity', 1); hideTip(card); });
+    hit.addEventListener('pointermove', function(){
+      var a = anchor(card, svg, PL + w, y, W, H);
+      showTip(card, a.x, a.y, it.name,
+        [{ color: slot(0), value: fmtWon(it.v) + '원', name: '매출액' }]);
+    });
+    svg.appendChild(hit);
+  });
+  host.appendChild(svg);
+}
+
+/* 4. 국가별 월 매출 구성 — 누적 세로 막대 */
+function renderCountry(rows){
+  var card = document.getElementById('cCountry');
+  if(!rows.length) return noData(card);
+
+  var months = uniq2(rows.map(function(r){ return r['연월']; })).sort();
+  var used = COUNTRIES.filter(function(c){ return rows.some(function(r){ return r['국가'] === c; }); });
+  var series = used.map(function(c){ return { name: c, color: slot(COLOR.country[c]) }; });
+  legendOf(card, series, 'rect');
+
+  var byMonth = {};
+  months.forEach(function(m){ byMonth[m] = {}; used.forEach(function(c){ byMonth[m][c] = 0; }); });
+  rows.forEach(function(r){ byMonth[r['연월']][r['국가']] += r['매출액_원']; });
+
+  var host = plotOf(card);
+  var avail = Math.max(560, host.clientWidth || card.clientWidth - 32);
+  var W = Math.max(avail, months.length * 34 + 120);
+  var H = 320, PL = 54, PR = 12, PT = 14, PB = 38;
+  var iw = W - PL - PR, ih = H - PT - PB;
+
+  var max = 0;
+  months.forEach(function(m){
+    var t = 0; used.forEach(function(c){ t += byMonth[m][c]; });
+    if(t > max) max = t;
+  });
+  var ticks = niceTicks(max), top = ticks[ticks.length - 1];
+  var step = ticks.length > 1 ? ticks[1] - ticks[0] : top;
+  var band = iw / months.length, cw = Math.min(24, band * 0.62);
+
+  var svg = el('svg', { width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, role: 'img' });
+  svg.appendChild(el('title', {}, '국가별 월 매출 구성'));
+
+  ticks.forEach(function(t){
+    var y = PT + ih - (top ? t / top * ih : 0);
+    svg.appendChild(el('line', { x1: PL, x2: PL + iw, y1: y, y2: y, stroke: css('--grid'), 'stroke-width': 1 }));
+    svg.appendChild(el('text', {
+      x: PL - 9, y: y + 4, 'text-anchor': 'end', fill: css('--txt-lbl'),
+      'font-size': 10.5, 'font-variant-numeric': 'tabular-nums'
+    }, fmtEok(t, step)));
+  });
+
+  months.forEach(function(m, i){
+    var cx = PL + band * (i + 0.5), y0 = PT + ih, total = 0;
+    used.forEach(function(c){ total += byMonth[m][c]; });
+
+    var acc = 0, segs = [];
+    used.forEach(function(c){
+      var v = byMonth[m][c];
+      if(v <= 0) return;
+      var h = top ? v / top * ih : 0;
+      segs.push({ c: c, v: v, y: y0 - (acc + v) / (top || 1) * ih, h: h });
+      acc += v;
+    });
+    segs.forEach(function(s, k){
+      var gap = k === segs.length - 1 ? 0 : 2;      /* 표면색 2px 간격이 구분자 */
+      var h = Math.max(1, s.h - gap);
+      var isTop = k === segs.length - 1;
+      var d = isTop ? barTopPath(cx - cw / 2, s.y, cw, h, 4)
+                    : 'M' + (cx - cw / 2) + ',' + (s.y + gap) + 'h' + cw + 'v' + h + 'h' + (-cw) + 'Z';
+      svg.appendChild(el('path', { d: d, fill: slot(COLOR.country[s.c]) }));
+    });
+
+    /* x축은 촘촘하면 솎아낸다 */
+    var everyN = band < 26 ? 3 : (band < 40 ? 2 : 1);
+    if(i % everyN === 0){
+      svg.appendChild(el('text', {
+        x: cx, y: H - 22, 'text-anchor': 'middle', fill: css('--txt-lbl'), 'font-size': 10
+      }, m.slice(5) + '월'));
+      svg.appendChild(el('text', {
+        x: cx, y: H - 9, 'text-anchor': 'middle', fill: css('--txt-lbl'), 'font-size': 9.5, opacity: .8
+      }, m.slice(0, 4)));
+    }
+
+    var hit = el('rect', { x: PL + band * i, y: PT, width: band, height: ih, fill: 'transparent' });
+    hit.addEventListener('pointermove', function(){
+      var lines = used.filter(function(c){ return byMonth[m][c] > 0; }).map(function(c){
+        return { color: slot(COLOR.country[c]), value: fmtWon(byMonth[m][c]) + '원', name: c };
+      });
+      lines.push({ color: css('--txt-lbl'), value: fmtWon(total) + '원', name: '합계' });
+      var a = anchor(card, svg, cx, y0 - (top ? total / top * ih : 0), W, H);
+      showTip(card, a.x, a.y, m, lines);
+    });
+    hit.addEventListener('pointerleave', function(){ hideTip(card); });
+    svg.appendChild(hit);
+  });
+  host.appendChild(svg);
+}
+
+/* 표 — 툴팁 없이도 모든 값에 닿는 경로 */
+var TCOLS = [
+  { k: '연월', num: false }, { k: '생산거점', num: false }, { k: '국가', num: false },
+  { k: '제품군', num: false }, { k: '고객사', num: false }, { k: '수출구분', num: false },
+  { k: '판매수량', num: true }, { k: '단가_원', num: true }, { k: '매출액_원', num: true }
+];
+function renderTable(rows){
+  var head = document.getElementById('thead');
+  if(!head.childElementCount){
+    TCOLS.forEach(function(c){
+      var th = document.createElement('th');
+      if(c.num) th.className = 'num';
+      th.textContent = c.k.replace('_원', '(원)');
+      th.addEventListener('click', function(){
+        SORT.dir = SORT.key === c.k ? -SORT.dir : (c.num ? -1 : 1);
+        SORT.key = c.k;
+        renderTable(filtered(false));
+      });
+      head.appendChild(th);
+    });
+  }
+  var col = TCOLS.filter(function(c){ return c.k === SORT.key; })[0] || TCOLS[0];
+  var sorted = rows.slice().sort(function(a, b){
+    var x = a[SORT.key], y = b[SORT.key];
+    if(col.num) return (x - y) * SORT.dir;
+    return String(x).localeCompare(String(y), 'ko') * SORT.dir;
+  });
+
+  var body = document.getElementById('tbody');
+  var frag = document.createDocumentFragment();
+  sorted.forEach(function(r){
+    var tr = document.createElement('tr');
+    TCOLS.forEach(function(c){
+      var td = document.createElement('td');
+      if(c.num){ td.className = 'num'; td.textContent = comma(r[c.k]); }
+      else { td.textContent = r[c.k]; }
+      tr.appendChild(td);
+    });
+    frag.appendChild(tr);
+  });
+  body.replaceChildren(frag);
+  document.getElementById('rowCount').textContent = sorted.length.toLocaleString('ko-KR') + '행';
+}
+
+/* ──────────────────────────── 이벤트 ──────────────────────────── */
+document.getElementById('reload').addEventListener('click', load);
+document.getElementById('theme').addEventListener('click', function(){
+  var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  if(ALL.length) renderAll();               /* 색 토큰이 바뀌므로 다시 그린다 */
+});
+var rt;
+window.addEventListener('resize', function(){
+  clearTimeout(rt);
+  rt = setTimeout(function(){ if(ALL.length) renderAll(); }, 160);
+});
+
+load();
+})();
+</script>
+</body>
+</html>
