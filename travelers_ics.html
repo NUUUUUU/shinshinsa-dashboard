@@ -1,0 +1,209 @@
+<!-- 담당자가 엑셀에서 복사한 출장자 명단을 구글 캘린더 일괄 가져오기용 .ics 파일로 변환하는 도구 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>출장자 캘린더 등록 도구</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#fff; --line:#e3e6ea; --txt:#1f2328; --sub:#5b636d;
+    --lbl:#8b939d; --accent:#1a56db; --ok:#0f7b3f; --err:#c0392b; --warn:#a8710a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:24px 18px 60px;background:var(--bg);color:var(--txt);
+    font:14px/1.6 "Malgun Gothic","맑은 고딕",system-ui,sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;}
+  h1{font-size:20px;margin:0 0 4px;}
+  .lead{color:var(--sub);font-size:13px;margin:0 0 20px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:18px;margin-bottom:16px;}
+  .card h2{font-size:14px;margin:0 0 10px;display:flex;align-items:center;gap:7px;}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+    border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:700;}
+  textarea{width:100%;height:150px;padding:11px;border:1px solid var(--line);border-radius:7px;
+    font:13px/1.7 Consolas,"D2Coding",monospace;resize:vertical;color:var(--txt);}
+  textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;}
+  .hint{font-size:12px;color:var(--lbl);margin-top:8px;}
+  .hint code{background:#eef0f3;padding:1px 5px;border-radius:3px;font-size:11px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  th{font-size:11px;color:var(--lbl);font-weight:600;letter-spacing:.02em;
+    border-bottom:1px solid #cfd4da;white-space:nowrap;}
+  td.title{font-family:Consolas,"D2Coding",monospace;font-size:12px;color:var(--accent);}
+  tr.bad td{background:#fdf3f2;}
+  .st-ok{color:var(--ok);font-weight:600;}
+  .st-bad{color:var(--err);font-weight:600;}
+  .scroll{overflow-x:auto;}
+  button{padding:11px 22px;border:0;border-radius:7px;background:var(--accent);color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
+  button:disabled{background:#b9bfc7;cursor:not-allowed;}
+  button.ghost{background:#eef0f3;color:var(--sub);font-weight:500;font-size:13px;padding:9px 16px;}
+  .row{display:flex;gap:9px;align-items:center;flex-wrap:wrap;}
+  .summary{font-size:13px;color:var(--sub);}
+  ol{margin:0;padding-left:19px;} ol li{margin-bottom:7px;}
+  .warn{background:#fdf8ec;border:1px solid #f0e0bd;border-radius:7px;padding:11px 13px;
+    font-size:12.5px;color:var(--warn);margin-top:12px;}
+  .empty{color:var(--lbl);font-size:13px;padding:14px 2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>출장자 캘린더 등록 도구</h1>
+  <p class="lead">엑셀에서 복사해 붙여넣으면 구글 캘린더로 한 번에 가져올 파일을 만들어 줍니다. 몇 명이든 가져오기 한 번으로 끝납니다.</p>
+
+  <div class="card">
+    <h2><span class="num">1</span>명단 붙여넣기</h2>
+    <textarea id="src" spellcheck="false" placeholder="소속	이름	출국일	귀국일	출장지
+기술연구센터	홍길동	8/12	8/15	베트남 하노이
+원가실	김철수	8/13	8/13	중국 광저우"></textarea>
+    <div class="hint">
+      순서는 <code>소속 · 이름 · 출국일 · 귀국일 · 출장지</code>입니다.
+      엑셀에서 그 5개 열을 선택해 복사한 뒤 그대로 붙여넣으면 됩니다. 쉼표로 구분해 직접 적어도 됩니다.
+      날짜는 <code>8/12</code> · <code>2026-08-12</code> · <code>2026.8.12</code> 모두 인식하고,
+      맨 윗줄이 제목행이면 알아서 건너뜁니다.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">2</span>확인</h2>
+    <div class="scroll"><table id="tbl">
+      <thead><tr><th>소속</th><th>이름</th><th>출국일</th><th>귀국일</th><th>출장지</th><th>캘린더 제목</th><th>상태</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+    <div class="empty" id="empty">위에 명단을 붙여넣으면 여기에 나타납니다.</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">3</span>파일 받기</h2>
+    <div class="row">
+      <button id="dl" disabled>ICS 파일 다운로드</button>
+      <button class="ghost" id="demo">예시 채우기</button>
+      <span class="summary" id="sum"></span>
+    </div>
+    <div class="warn">
+      받은 파일은 구글 캘린더에서 <b>설정 → 가져오기/내보내기 → 가져오기</b>로 올리고,
+      <b>대상 캘린더를 반드시 <u>출장자_현황</u>으로 선택</b>하세요. 기본값은 개인 캘린더라 그대로 두면 엉뚱한 곳에 들어갑니다.
+      같은 사람을 고쳐서 다시 가져오면 새로 생기지 않고 기존 일정이 갱신됩니다.
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* 종일 일정의 DTEND는 exclusive다. 화면에 8/15까지 보이려면 20260816을 써야 한다. */
+const HEADER_HINT = ['소속','부서','이름','성명','출국','귀국','출장지','행선지'];
+
+function parseDate(raw, baseYear){
+  const s = String(raw||'').trim().replace(/[.\-]/g,'/').replace(/\s/g,'');
+  if(!s) return null;
+  const p = s.split('/').filter(x=>x!=='').map(Number);
+  if(p.some(isNaN)) return null;
+  let y,m,d;
+  if(p.length===3){ [y,m,d]=p; if(y<100) y+=2000; }
+  else if(p.length===2){ y=baseYear; [m,d]=p; }
+  else return null;
+  if(m<1||m>12||d<1||d>31) return null;
+  const dt = new Date(y,m-1,d);
+  return (dt.getMonth()===m-1 && dt.getDate()===d) ? dt : null;
+}
+const iso = dt => dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
+const ymd = dt => iso(dt).replace(/-/g,'');
+const plusDay = dt => new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()+1);
+
+function parseRows(text){
+  const baseYear = new Date().getFullYear();
+  const out = [];
+  text.split(/\r?\n/).forEach((line, i) => {
+    if(!line.trim()) return;
+    const cells = (line.includes('\t') ? line.split('\t') : line.split(','))
+                    .map(c => c.trim());
+    /* 제목행 건너뛰기 */
+    if(i===0 && cells.filter(c => HEADER_HINT.some(h => c.includes(h))).length >= 2) return;
+    const [dept,name,depS,retS,dest] = [0,1,2,3,4].map(k => cells[k] || '');
+    const r = {dept,name,dest,depS,retS,errs:[]};
+    if(!dept) r.errs.push('소속 없음');
+    if(!name) r.errs.push('이름 없음');
+    if(!dest) r.errs.push('출장지 없음');
+    const dep = parseDate(depS, baseYear);
+    let ret = parseDate(retS, baseYear);
+    if(!dep) r.errs.push('출국일 인식 불가');
+    if(!ret) r.errs.push('귀국일 인식 불가');
+    if(dep && ret && ret < dep){           /* 연말 → 연초로 넘어가는 출장 */
+      ret = new Date(ret.getFullYear()+1, ret.getMonth(), ret.getDate());
+    }
+    r.dep = dep; r.ret = ret;
+    r.title = [dept,name,dest].join('/');
+    out.push(r);
+  });
+  return out;
+}
+
+function esc(s){ return String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n'); }
+function uid(r){
+  let h = 0; const key = r.title + '|' + ymd(r.dep);
+  for(let i=0;i<key.length;i++){ h = (h*31 + key.charCodeAt(i)) | 0; }
+  return 'trav-' + Math.abs(h).toString(36) + '-' + ymd(r.dep) + '@shinshinsa';
+}
+
+function buildICS(rows){
+  const now = new Date();
+  const stamp = now.getUTCFullYear()+String(now.getUTCMonth()+1).padStart(2,'0')+String(now.getUTCDate()).padStart(2,'0')
+              +'T'+String(now.getUTCHours()).padStart(2,'0')+String(now.getUTCMinutes()).padStart(2,'0')+String(now.getUTCSeconds()).padStart(2,'0')+'Z';
+  const L = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ShinShinsa//Travelers//KO',
+             'CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  rows.forEach(r => {
+    L.push('BEGIN:VEVENT', 'UID:'+uid(r), 'DTSTAMP:'+stamp,
+           'DTSTART;VALUE=DATE:'+ymd(r.dep),
+           'DTEND;VALUE=DATE:'+ymd(plusDay(r.ret)),   /* exclusive */
+           'SUMMARY:'+esc(r.title), 'TRANSP:TRANSPARENT', 'END:VEVENT');
+  });
+  L.push('END:VCALENDAR');
+  return L.join('\r\n') + '\r\n';
+}
+
+const $ = id => document.getElementById(id);
+let good = [];
+
+function render(){
+  const rows = parseRows($('src').value);
+  good = rows.filter(r => !r.errs.length);
+  $('tb').innerHTML = rows.map(r => {
+    const ok = !r.errs.length;
+    return `<tr class="${ok?'':'bad'}">
+      <td>${r.dept||'—'}</td><td>${r.name||'—'}</td>
+      <td>${r.dep?iso(r.dep):(r.depS||'—')}</td><td>${r.ret?iso(r.ret):(r.retS||'—')}</td>
+      <td>${r.dest||'—'}</td>
+      <td class="title">${ok?r.title:'—'}</td>
+      <td class="${ok?'st-ok':'st-bad'}">${ok?'정상':r.errs.join(', ')}</td>
+    </tr>`;
+  }).join('');
+  $('empty').style.display = rows.length ? 'none' : '';
+  $('dl').disabled = !good.length;
+  const bad = rows.length - good.length;
+  $('sum').textContent = rows.length
+    ? `${good.length}명 등록 대상${bad ? ` · ${bad}줄은 오류라 제외됩니다` : ''}`
+    : '';
+}
+
+$('src').addEventListener('input', render);
+$('demo').addEventListener('click', () => {
+  $('src').value = '소속\t이름\t출국일\t귀국일\t출장지\n'
+    + '기술연구센터\t홍길동\t8/12\t8/15\t베트남 하노이\n'
+    + '원가실\t김철수\t8/13\t8/13\t중국 광저우\n'
+    + '기획실\t박영희\t2026-08-20\t2026-08-27\t태국 방콕';
+  render();
+});
+$('dl').addEventListener('click', () => {
+  const blob = new Blob([buildICS(good)], {type:'text/calendar;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '출장자_' + iso(new Date()).replace(/-/g,'') + '.ics';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+render();
+</script>
+</body>
+</html>
