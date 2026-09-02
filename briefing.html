@@ -228,6 +228,15 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .mpt-dot{width:6px;height:6px;border-radius:50%;background:var(--neg);
   flex-shrink:0;margin-top:6px;}
 
+/* ── 용어집 (2026-09-02 신설) ── */
+.gl-cat{font-size:11px;color:var(--txt-lbl);font-weight:600;margin:10px 0 4px;letter-spacing:.02em;}
+.gl-cat:first-child{margin-top:0;}
+.gl-row{padding:7px 0;border-bottom:1px solid var(--line);}
+.gl-row:last-child{border-bottom:none;padding-bottom:0;}
+.gl-term{font-size:12.5px;font-weight:600;color:var(--txt);}
+.gl-short{font-size:11.5px;color:var(--accent);margin-left:6px;font-weight:500;}
+.gl-desc{font-size:11.5px;color:var(--txt-sub);line-height:1.55;margin-top:3px;}
+.gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -321,6 +330,7 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   <button class="chip" data-sec="news-section">📰 뉴스</button>
   <button class="chip" data-sec="market-section">📊 시장</button>
   <button class="chip" data-sec="indicators-section">🔢 지표</button>
+  <button class="chip" id="chip-glossary" data-sec="glossary-section">📖 용어</button>
 </nav>
 </div>
 
@@ -416,6 +426,12 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   <div class="card" id="monitor-section">
     <div class="sec-label"><span class="sec-dot"></span>모니터링 포인트</div>
     <div id="mpt-list"></div>
+  </div>
+
+  <!-- ── 용어집 (2026-09-02 신설) ── -->
+  <div class="card" id="glossary-section">
+    <div class="sec-label"><span class="sec-dot"></span>용어집</div>
+    <div id="gl-list"></div>
   </div>
 
   <!-- ── §4-3 📊 지표 섹션 (아코디언, 기본 접힘) ── -->
@@ -856,6 +872,32 @@ function renderMonitoring(pts){
     <div class="mpt-row"><div class="mpt-dot"></div><div>${p}</div></div>`).join('');
 }
 
+/* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
+   glossary.json 레지스트리에서 골라 넣는다. 비어 있으면 섹션을 숨긴다. */
+function renderGlossary(items){
+  const sec = document.getElementById('glossary-section');
+  const el  = document.getElementById('gl-list');
+  if(!sec || !el) return;
+  const chip = document.getElementById('chip-glossary');
+  if(!items || !items.length){
+    sec.style.display='none';
+    if(chip) chip.style.display='none';   // 섹션만 숨기면 칩이 빈 곳으로 점프한다
+    return;
+  }
+  sec.style.display='';
+  if(chip) chip.style.display='';
+  const esc = t => String(t==null?'':t)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const byCat = {};
+  items.forEach(t=>{ (byCat[t.cat||'기타'] = byCat[t.cat||'기타'] || []).push(t); });
+  el.innerHTML = Object.keys(byCat).map(cat=>`
+    <div class="gl-cat">${esc(cat)}</div>` + byCat[cat].map(t=>`
+    <div class="gl-row">
+      <div><span class="gl-term">${esc(t.term)}</span><span class="gl-short">${esc(t.short)}</span></div>
+      <div class="gl-desc">${esc(t.desc)}</div>
+    </div>`).join('')).join('');
+}
+
 /* ══════════════════════════════════════════════
    §4-3 주요 경제 지표 = index.html 스코어보드 임베드
    (Chart.js + scorecard/render.js 사용. Briefing.*와 별도 유지)
@@ -1026,6 +1068,7 @@ async function load(){
     renderFX(d.fx || []);
     renderMarkets(d.markets || []);
     renderMonitoring(d.monitoring || []);
+    renderGlossary(d.glossary || []);
   }catch(e){
     console.error('data.json 로드 실패:', e);
     document.getElementById('bar-date').textContent = '로드 실패';
