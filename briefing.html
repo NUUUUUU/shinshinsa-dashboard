@@ -237,6 +237,17 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .gl-short{font-size:11.5px;color:var(--accent);margin-left:6px;font-weight:500;}
 .gl-desc{font-size:11.5px;color:var(--txt-sub);line-height:1.55;margin-top:3px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
+/* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
+.gl-tip{border-bottom:1px dotted var(--accent);cursor:help;}
+.gl-tip:focus{outline:2px solid var(--accent);outline-offset:1px;border-radius:2px;}
+#gl-pop{position:fixed;z-index:9999;max-width:min(300px,calc(100vw - 24px));
+  background:var(--card,#fff);color:var(--txt);border:1px solid var(--line);
+  border-radius:8px;padding:9px 11px;box-shadow:0 6px 24px rgba(0,0,0,.18);
+  font-size:11.5px;line-height:1.55;display:none;}
+#gl-pop.on{display:block;}
+#gl-pop .glp-term{font-weight:700;font-size:12px;}
+#gl-pop .glp-short{color:var(--accent);font-weight:500;margin-left:5px;font-size:11px;}
+#gl-pop .glp-desc{color:var(--txt-sub);margin-top:4px;}
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -323,6 +334,7 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 </div>
 
 <!-- ── §4-1 Chip Nav Bar ── -->
+<div id="gl-pop" role="tooltip" aria-hidden="true"></div>
 <nav class="chipbar" id="chipbar" aria-label="섹션 이동">
   <button class="chip active" data-sec="exec-section">★ 요약</button>
   <button class="chip" data-sec="fx-section">💱 환율</button>
@@ -738,6 +750,8 @@ function renderNews(f){
       <div class="tags">${(n.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     </div>`;
   }).join('');
+  // 필터를 바꾸면 뉴스가 통째로 다시 그려지므로 툴팁도 다시 붙여야 한다
+  annotateTerms(document.getElementById('news-list'));
 }
 
 function updateBadges(news){
@@ -872,9 +886,108 @@ function renderMonitoring(pts){
     <div class="mpt-row"><div class="mpt-dot"></div><div>${p}</div></div>`).join('');
 }
 
+/* ══════════════════════════════════════════════
+   용어 툴팁 (2026-09-02)
+   **데이터에는 HTML 을 넣지 않는다.** data.json 의 본문은 순수 텍스트여야 한다 —
+   카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
+   그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
+══════════════════════════════════════════════ */
+let _GLOSS = [];
+const _GL_LATIN = /^[A-Za-z0-9 .\-]+$/;
+
+function _glEsc(t){ return String(t==null?'':t)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function _glRe(m){
+  const e = m.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  // 라틴 약어는 앞뒤 경계를 요구한다 — APF 가 APFx 에 걸리면 안 된다
+  return _GL_LATIN.test(m) ? new RegExp('(?<![A-Za-z0-9])'+e+'(?![A-Za-z0-9])')
+                           : new RegExp(e);
+}
+
+/* 컨테이너 안의 텍스트 노드를 훑어 **용어별 첫 등장 1회만** 감싼다.
+   전부 감싸면 같은 단어에 밑줄이 도배돼 오히려 읽기 나빠진다.
+   한 텍스트 노드에서는 가장 먼저 나오는 용어 하나만 처리한다 — 노드를 쪼개며
+   반복 치환하면 ref 가 꼬이고, 실제로 한 문장에 두 용어가 겹치는 일은 드물다. */
+function annotateTerms(root){
+  if(!root || !_GLOSS.length) return;
+  const done = new Set();
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = n.parentElement;
+      if(p && p.closest('.gl-tip,#glossary-section,#gl-pop')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  for(let n; (n = walker.nextNode()); ) nodes.push(n);
+
+  nodes.forEach(node=>{
+    const txt = node.nodeValue;
+    let best = null;                       // {idx, at, len, hit}
+    _GLOSS.forEach((t,idx)=>{
+      if(done.has(idx)) return;
+      const m = txt.match(_glRe(t.term));
+      if(m && (best===null || m.index < best.at))
+        best = {idx, at:m.index, len:m[0].length, hit:m[0]};
+    });
+    if(!best) return;
+    done.add(best.idx);
+    const span = document.createElement('span');
+    span.innerHTML = _glEsc(txt.slice(0, best.at))
+      + '<span class="gl-tip" tabindex="0" role="button" data-gi="' + best.idx + '">'
+      + _glEsc(best.hit) + '</span>'
+      + _glEsc(txt.slice(best.at + best.len));
+    node.parentNode.replaceChild(span, node);
+  });
+}
+
+function _glPopShow(el){
+  const t = _GLOSS[+el.dataset.gi]; if(!t) return;
+  const pop = document.getElementById('gl-pop'); if(!pop) return;
+  pop.innerHTML = '<div><span class="glp-term">'+_glEsc(t.term)+'</span>'
+    + '<span class="glp-short">'+_glEsc(t.short)+'</span></div>'
+    + '<div class="glp-desc">'+_glEsc(t.desc)+'</div>';
+  pop.classList.add('on'); pop.setAttribute('aria-hidden','false');
+  const r = el.getBoundingClientRect(), pr = pop.getBoundingClientRect();
+  let left = Math.min(Math.max(8, r.left), window.innerWidth - pr.width - 8);
+  let top  = r.bottom + 6;
+  if(top + pr.height > window.innerHeight - 8) top = Math.max(8, r.top - pr.height - 6);
+  pop.style.left = left+'px'; pop.style.top = top+'px';
+}
+function _glPopHide(){
+  const pop = document.getElementById('gl-pop'); if(!pop) return;
+  pop.classList.remove('on'); pop.setAttribute('aria-hidden','true');
+}
+
+/* 데스크톱은 마우스오버, 모바일은 탭. 둘 다 지원한다 —
+   모바일엔 hover 가 없어서 마우스오버만 달면 화면의 절반에서 안 뜬다. */
+document.addEventListener('mouseover', e=>{
+  const el = e.target.closest && e.target.closest('.gl-tip');
+  if(el) _glPopShow(el);
+});
+document.addEventListener('mouseout', e=>{
+  if(e.target.closest && e.target.closest('.gl-tip')) _glPopHide();
+});
+document.addEventListener('click', e=>{
+  const el = e.target.closest && e.target.closest('.gl-tip');
+  if(el){ e.stopPropagation(); _glPopShow(el); }
+  else if(!(e.target.closest && e.target.closest('#gl-pop'))) _glPopHide();
+});
+document.addEventListener('focusin', e=>{
+  const el = e.target.closest && e.target.closest('.gl-tip');
+  if(el) _glPopShow(el);
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') _glPopHide(); });
+window.addEventListener('scroll', _glPopHide, {passive:true});
+window.addEventListener('resize', _glPopHide);
+
 /* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
    glossary.json 레지스트리에서 골라 넣는다. 비어 있으면 섹션을 숨긴다. */
 function renderGlossary(items){
+  // 긴 용어부터 찾아야 「가이드 포스트」가 「가이드」에 먼저 먹히지 않는다
+  _GLOSS = (items||[]).slice().sort((a,b)=>(b.term||'').length-(a.term||'').length);
   const sec = document.getElementById('glossary-section');
   const el  = document.getElementById('gl-list');
   if(!sec || !el) return;
@@ -1069,6 +1182,10 @@ async function load(){
     renderMarkets(d.markets || []);
     renderMonitoring(d.monitoring || []);
     renderGlossary(d.glossary || []);
+    // 모든 렌더가 끝난 뒤 화면 텍스트에 용어 툴팁을 붙인다.
+    // 뉴스는 필터 전환마다 다시 그리므로 renderNews 안에서도 호출한다.
+    ['summary-text','top3-list','mpt-list','ov-list','news-list','exec-kpi-row']
+      .forEach(id=>annotateTerms(document.getElementById(id)));
   }catch(e){
     console.error('data.json 로드 실패:', e);
     document.getElementById('bar-date').textContent = '로드 실패';
