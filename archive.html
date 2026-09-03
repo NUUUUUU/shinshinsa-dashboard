@@ -3,46 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#C8102E">
+<meta name="theme-color" content="#E5003E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>신신사 브리핑 아카이브</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 :root{
-  --red:#C8102E; --red-lt:#FBEAF0; --red-bd:rgba(200,16,46,.22);
-  --gold:#9A7D30; --gold-lt:#FAEEDA;
-  --blue:#185FA5; --blue-lt:#E6F1FB; --blue-bd:rgba(55,138,221,.3);
-  --green:#3B6D11; --green-lt:#EAF3DE;
-  --gray:#888780; --gray-lt:#F1EFE8;
-  --card:#ffffff; --bg:#F4F5F8; --txt:#1A1A2E; --txt2:#6B7480; --txt3:#9AA3AE;
-  --bdr:rgba(0,0,0,.09);
+  /* briefing/tokens.css 와 같은 Radix 12단계 스케일. 변수 이름은 그대로 두고
+     값만 맞춰 두 화면이 같은 색을 쓰게 한다. 브랜드 빨강은 국문 CI 실측 #E5003E(글자용 #D8003B). */
+  --red:#D8003B; --red-lt:#feebec; --red-bd:#dad9d6;
+  --gold:#ab6400; --gold-lt:#fff7c2;
+  --blue:#0d74ce; --blue-lt:#e6f4fe; --blue-bd:#dad9d6;
+  --green:#2a7e3b; --green-lt:#e9f6e9;
+  --gray:#8d8d86; --gray-lt:#f1f0ef;
+  --card:#fdfdfc; --bg:#f9f9f8; --txt:#21201c; --txt2:#63635e; --txt3:#8d8d86;
+  --bdr:#dad9d6;
   --safe-top:env(safe-area-inset-top,0px);
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 @media(prefers-color-scheme:dark){
   :root{
-    --card:#1E1E2A; --bg:#12121C; --txt:#E8E8F0; --txt2:#9AA3AE; --txt3:#5C6370;
-    --bdr:rgba(255,255,255,.09);
-    --red-lt:rgba(200,16,46,.15); --gold-lt:rgba(186,117,23,.15);
-    --blue-lt:rgba(55,138,221,.15); --green-lt:rgba(99,153,34,.15); --gray-lt:rgba(136,135,128,.12);
+    --card:#191918; --bg:#111110; --txt:#eeeeec; --txt2:#b5b3ad; --txt3:#6f6d66;
+    --bdr:#3b3a37;
+    --red:#ff9592;   /* #E5003E 는 다크 배경 대비 3.96:1 이라 글자로 못 쓴다 */
+    --gold:#ffca16; --blue:#70b8ff; --green:#71d083; --gray:#8d8d86;
+    --red-lt:#3b1219; --gold-lt:#302008;
+    --blue-lt:#0d2847; --green-lt:#1b2a1e; --gray-lt:#222221;
   }
 }
 html{font-size:16px;}
-body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFont,'Segoe UI',sans-serif;
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',system-ui,sans-serif;
   background:var(--bg);color:var(--txt);line-height:1.6;
   padding-bottom:calc(20px + var(--safe-bottom));}
 
-.top-bar{background:var(--red);padding:calc(8px + var(--safe-top)) 16px 8px;
-  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.bar-left{display:flex;align-items:center;gap:10px;}
-.bar-title{color:#fff;font-size:15px;font-weight:500;}
-.bar-sub{color:rgba(255,255,255,.7);font-size:12px;}
+/* 제호 — briefing.html 과 같은 규칙. 빨간 띠 대신 흰 바탕 + 우측 로고 */
+.top-bar{background:var(--card);border-bottom:1px solid var(--bdr);
+  padding:calc(9px + var(--safe-top)) 16px 8px;
+  display:flex;flex-direction:column;gap:7px;position:sticky;top:0;z-index:100;}
+.bar-row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;}
+.bar-row-1{align-items:flex-end;}
+.bar-left{display:flex;align-items:baseline;gap:10px;}
+.bar-title{color:var(--txt);font-size:15px;font-weight:700;letter-spacing:-.02em;}
+.bar-sub{color:var(--txt2);font-size:12px;}
 .bar-right{display:flex;align-items:center;gap:8px;}
-.back-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 10px;
-  border-radius:5px;font-size:11px;font-weight:500;background:rgba(255,255,255,.15);
-  color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);}
-.conf{font-size:10px;font-weight:500;padding:3px 8px;border-radius:3px;
-  background:rgba(255,255,255,.2);color:#fff;letter-spacing:.5px;}
+.ic-sm{width:12px;height:12px;stroke-width:2.2;flex-shrink:0;}
+.bar-logo{height:26px;width:auto;display:block;flex-shrink:0;}
+.bar-logo-wrap{display:flex;align-items:center;padding:3px 7px;border-radius:4px;}
+@media (prefers-color-scheme:dark){ .bar-logo-wrap{background:#fff;} }
+.back-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;min-height:32px;
+  border-radius:5px;font-size:11.5px;font-weight:500;background:var(--gray-lt);
+  color:var(--txt);text-decoration:none;border:1px solid var(--bdr);}
+.back-btn:hover{background:var(--card);}
+.conf{font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:3px;
+  background:var(--gray-lt);color:var(--txt3);letter-spacing:.08em;border:1px solid var(--bdr);}
 
 .wrap{max-width:540px;margin:0 auto;padding:12px 12px 0;}
 
@@ -91,16 +107,25 @@ body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',BlinkMacSystemFon
 
 .footer{text-align:center;font-size:11px;color:var(--txt3);padding:20px 12px 0;line-height:1.7;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
+<script>
+/* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
+document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
+</script>
 </head>
 <body>
 
 <div class="top-bar">
-  <div class="bar-left">
-    <span class="bar-title">브리핑 아카이브</span>
-    <span class="bar-sub" id="bar-sub">—</span>
+  <div class="bar-row bar-row-1">
+    <div class="bar-left">
+      <span class="bar-title">브리핑 아카이브</span>
+      <span class="bar-sub" id="bar-sub">—</span>
+    </div>
+    <span class="bar-logo-wrap"><img class="bar-logo" src="assets/logo-lockup.png"
+      alt="(주)신신사" width="550" height="83" decoding="async"></span>
   </div>
-  <div class="bar-right">
-    <a class="back-btn" href="briefing.html">최신 ↗</a>
+  <div class="bar-row bar-row-2">
+    <a class="back-btn" href="briefing.html"><i data-lucide="arrow-right" class="ic-sm"></i>최신 브리핑</a>
     <span class="conf">CONFIDENTIAL</span>
   </div>
 </div>
@@ -209,7 +234,7 @@ function renderList(dates){
   Object.keys(groups).sort((a,b)=>b.localeCompare(a)).forEach(mk=>{
     const days=groups[mk];
     html+=`<div class="month-group">
-      <div class="month-label">📅 ${fmtMonthLabel(mk)} <span class="month-count">${days.length}건</span></div>`;
+      <div class="month-label">${fmtMonthLabel(mk)} <span class="month-count">${days.length}건</span></div>`;
     days.forEach(d=>{
       html+=`<a class="day-item" href="briefing.html?date=${d}">
         <div class="day-left">

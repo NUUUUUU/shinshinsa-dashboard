@@ -38,6 +38,17 @@
     }).join(' ');
   }
   function discBadge(importance) { return stars(importance); }
+
+  /* 환율 라벨 — 'KRW' 와 '한국' 을 나란히 두면 같은 말이 두 번이다.
+     임원이 읽는 건 통화쌍이므로 「원/달러」처럼 한 줄로 만든다 (2026-09-03). */
+  var FX_KO = {KRW:'원', CNY:'위안', THB:'바트', EGP:'이집트파운드', JPY:'엔', EUR:'유로'};
+  function fxPairLabel(f) {
+    var c = (f && f.currency) || '';
+    var ko = FX_KO[c];
+    return ko ? (ko + '/달러') : (c ? (c + '/USD') : ((f && f.country) || ''));
+  }
+
   return { MINI_IDS: MINI_IDS, classifyNews: classifyNews, filterNews: filterNews, stars: stars,
-           kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath, discBadge: discBadge };
+           kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
+           discBadge: discBadge, FX_KO: FX_KO, fxPairLabel: fxPairLabel };
 });

@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>신신사 경영 브리핑</title>
-<link rel="stylesheet" href="briefing/tokens.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
+<link rel="stylesheet" href="briefing/tokens.css?v=20260903a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -16,14 +18,16 @@
   }
 })();
 </script>
-<script src="briefing/render.js"></script>
+<script src="briefing/render.js?v=20260903a"></script>
+<script src="briefing/annotate.js?v=20260903a"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js"></script>
+<script src="scorecard/render.js?v=20260903a"></script>
 <style>
 /* ── 페이지 전용 레이아웃·컴포넌트 (토큰 변수 사용) ── */
 *{margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+/* ⚠ 색은 briefing/tokens.css 한 곳에서만 정의한다.
+   여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
-  --red:#C8102E;
   --safe-top:env(safe-area-inset-top,0px);
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -31,31 +35,50 @@ html{font-size:16px;}
 body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 
 /* Top bar */
-.top-bar{background:var(--red);padding:calc(8px + var(--safe-top)) 16px 8px;
-  display:flex;align-items:center;justify-content:space-between;}
+/* 제호 — 빨강은 마크에만. 띠 전체를 칠하지 않는다(Economist 지면 방식) */
+.top-bar{background:var(--card);border-bottom:1px solid var(--bdr);
+  padding:calc(9px + var(--safe-top)) 16px 8px;
+  display:flex;flex-direction:column;gap:7px;}
 /* 헤더+칩바를 한 덩어리로 고정 — 모바일서 헤더가 줄바꿈돼 높아져도 칩바가 안 가려짐 */
 .sticky-head{position:sticky;top:0;z-index:200;background:var(--bg);}
 .bar-left{display:flex;align-items:center;gap:10px;}
-.bar-title{color:#fff;font-size:15px;font-weight:600;}
-.bar-date{color:rgba(255,255,255,.75);font-size:12px;}
+/* ── 회사 로고 (우측 상단) ──
+   shinshinsa.com CI 페이지 원본. **로고는 색을 바꾸지 않는다** — 다크에서는
+   흰 판을 깔아 원본 그대로 얹는다. 필터로 반전하면 브랜드 빨강이 망가진다. */
+.bar-row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;}
+.bar-row-1{align-items:flex-end;}
+.bar-logo{height:26px;width:auto;display:block;flex-shrink:0;}
+.bar-logo-wrap{display:flex;align-items:center;padding:3px 7px;border-radius:4px;}
+[data-theme="dark"] .bar-logo-wrap{background:#fff;}
+
+.bar-mark{background:var(--brand);color:#fff;font-size:10px;font-weight:800;
+  letter-spacing:.08em;padding:3px 6px;border-radius:3px;flex-shrink:0;}
+.bar-title{color:var(--txt);font-size:17px;font-weight:700;letter-spacing:-.02em;}
+.bar-date{color:var(--txt-sub);font-size:13px;}
 .bar-right{display:flex;align-items:center;gap:8px;}
-.conf{font-size:10px;font-weight:500;padding:3px 8px;border-radius:3px;
-  background:rgba(255,255,255,.2);color:#fff;letter-spacing:.5px;}
-.macro-btn,.arch-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;
-  border-radius:5px;font-size:11px;font-weight:500;background:rgba(255,255,255,.15);
-  color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);}
-.latest-btn{display:none;align-items:center;gap:3px;padding:3px 8px;border-radius:5px;
-  font-size:11px;font-weight:500;background:rgba(255,255,255,.2);color:#fff;
-  text-decoration:none;border:1px solid rgba(255,255,255,.4);}
+.conf{font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:3px;
+  background:var(--fill);color:var(--txt-lbl);letter-spacing:.08em;
+  border:1px solid var(--bdr);}
+.macro-btn,.arch-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;
+  min-height:36px;border-radius:7px;font-size:13px;font-weight:600;
+  background:var(--card);border:1px solid var(--sand-8);
+  color:var(--txt);text-decoration:none;}
+.macro-btn svg,.arch-btn svg,.latest-btn svg{width:14px;height:14px;}
+.macro-btn:hover,.arch-btn:hover,.latest-btn:hover{background:var(--card);border-color:var(--sand-8);}
+.latest-btn{display:none;align-items:center;gap:6px;padding:8px 13px;min-height:36px;
+  border-radius:7px;font-size:13px;font-weight:600;background:var(--card);color:var(--txt);
+  text-decoration:none;border:1px solid var(--sand-8);}
 .latest-btn.show{display:inline-flex;}
 
 /* Archive banner */
-.archive-banner{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.35);border-radius:10px;
-  padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.ab-txt{font-size:13px;font-weight:500;color:var(--accent);}
+.archive-banner{background:var(--fill);border:1px solid var(--bdr);border-radius:8px;
+  padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;
+  justify-content:space-between;gap:10px;}
+.ab-txt{font-size:13px;font-weight:600;color:var(--txt);display:flex;align-items:center;gap:6px;}
 .ab-sub{font-size:11px;color:var(--txt-lbl);margin-top:2px;}
-.ab-link{font-size:12px;font-weight:500;color:var(--info);text-decoration:none;
-  padding:4px 10px;border-radius:5px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);
+.ab-link{font-size:13px;font-weight:600;color:var(--txt);text-decoration:none;
+  padding:8px 14px;min-height:36px;display:inline-flex;align-items:center;
+  border-radius:7px;background:var(--card);border:1px solid var(--sand-8);
   white-space:nowrap;}
 
 /* Chip nav bar — §4-1 */
@@ -66,32 +89,99 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 /* 칩 클릭 시 섹션이 고정 헤더 아래로 오도록(높이는 JS가 --sticky-h로 갱신) */
 .wrap .card{scroll-margin-top:var(--sticky-h, 150px);}
 .chipbar::-webkit-scrollbar{display:none;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;
+  padding:9px 15px;min-height:40px;}
+.chip svg{width:15px;height:15px;}
+.chip svg{opacity:.7}
+.chip.active svg{opacity:1}
+
+/* ── 좌측 목차 (데스크톱 전용) ── */
+.rail{display:none;}
+@media (min-width:1180px){
+  .rail{
+    display:block;position:fixed;left:max(20px,calc((100vw - 720px)/2 - 250px));
+    top:var(--rail-top,150px);width:214px;z-index:100;
+  }
+  .rail a{
+    display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:8px;
+    font-size:15px;font-weight:500;color:var(--txt-body);text-decoration:none;line-height:1.4;
+    min-height:44px;                       /* 일반 메뉴바 높이 */
+    border-left:3px solid transparent;
+    transition:color .18s ease,background .18s ease,border-color .18s ease;
+  }
+  .rail a + a{margin-top:2px;}
+  .rail a:hover{color:var(--txt);background:var(--fill);}
+  .rail a.on{color:var(--txt);font-weight:600;background:var(--fill);
+    border-left-color:var(--accent);}
+  .rail a svg{width:17px;height:17px;stroke-width:1.9;opacity:.6;flex-shrink:0;}
+  .rail a.on svg{opacity:1;color:var(--accent);}
+  .rail-hd{font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--txt-lbl);
+    padding:0 14px 10px;}
+  /* 목차가 있으면 칩바는 중복이다 */
+  .chipbar{display:none;}
+}
+/* 아주 넓은 화면에서는 본문도 목차만큼 오른쪽으로 밀리지 않게 중앙을 유지한다 */
+@media (min-width:1600px){
+  .rail{left:calc((100vw - 720px)/2 - 260px);}
+}
+
+/* ── 지표 티커 ── */
+.ticker{background:var(--ticker-bg);color:var(--ticker-fg);
+  padding:9px 16px;display:flex;gap:20px;overflow-x:auto;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.ticker::-webkit-scrollbar{display:none;}
+.ticker:empty{display:none;}
+.tk{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.tk-lbl{font-size:10.5px;color:var(--ticker-lbl);letter-spacing:.04em;}
+.tk-val{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;}
+.tk-chg{font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;
+  font-variant-numeric:tabular-nums;}
+/* 오르내림이 아니라 **우리에게 좋은지 나쁜지**로 칠한다 (2026-09-03 사용자 결정).
+   유가·구리가 오르면 원가가 오르니 나쁨. LG전자·코스피가 오르면 좋음.
+   환율은 수입 원가(불리)와 LG 수출 채산성(유리)이 맞물려 한쪽으로 못 정한다 → 중립. */
+.tk-chg.bad{background:rgba(229,72,77,.2);color:#ff9592;}
+.tk-chg.good{background:rgba(70,167,88,.22);color:#71d083;}
+.tk-chg.flat{background:rgba(255,255,255,.12);color:var(--ticker-lbl);}
 
 /* Page layout */
-.wrap{max-width:540px;margin:0 auto;padding:12px 12px 0;}
+/* 540px 은 모바일 기준이라 데스크톱에서 양옆이 텅 빈다.
+   한글 본문의 읽기 좋은 한 줄 길이(35~45자)를 지키는 선에서 넓힌다. */
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 0;}
+@media (max-width:640px){ .wrap{max-width:540px;padding:12px 12px 0;} }
 
 /* Section cards */
-.sec-label{font-size:11px;font-weight:600;color:var(--txt-lbl);text-transform:uppercase;
-  letter-spacing:.8px;margin-bottom:10px;display:flex;align-items:center;gap:5px;}
-.sec-dot{width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;}
+/* 섹션 라벨 — 이모지·점 대신 브랜드색 글씨 + 오른쪽으로 뻗는 hairline (Axios) */
+/* 섹션 제목 — 11.5px 은 라벨이지 제목이 아니었다. 임원이 훑을 때 걸리도록 키운다. */
+.sec-label{font-size:14px;font-weight:700;color:var(--accent);
+  letter-spacing:.02em;margin-bottom:14px;display:flex;align-items:center;gap:5px;}
+.sec-dot{display:none;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
 
 /* ★ Executive summary card */
-.exec-hero{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);
-  border-radius:10px;padding:13px 14px;margin-bottom:12px;}
-.exec-hero-lbl{font-size:10px;font-weight:700;color:var(--neg);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
-.exec-hero-text{font-size:14px;font-weight:500;color:var(--txt);line-height:1.65;white-space:pre-line;}
+/* 카드 안의 카드를 없앤다 — 리드문은 배경 없이 크기로 구분한다 */
+.exec-hero{padding:0 0 4px;margin-bottom:18px;}
+.exec-hero-lbl{font-size:11.5px;font-weight:700;color:var(--accent);
+  letter-spacing:.09em;margin-bottom:10px;display:flex;align-items:center;}
+.exec-hero-lbl::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
+.exec-hero-text{font-size:16px;font-weight:500;color:var(--txt);line-height:1.78;
+  white-space:pre-line;letter-spacing:-.01em;}
 
-.top3-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;
-  border-bottom:1px solid var(--divider);}
+.top3-item{display:flex;gap:14px;align-items:flex-start;padding:18px 0;
+  border-bottom:1px solid var(--bdr);}
 .top3-item:last-child{border-bottom:none;padding-bottom:0;}
-.rank-badge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;}
-.r1{background:rgba(220,38,38,.12);color:var(--neg);}
-.r2{background:rgba(245,158,11,.15);color:var(--accent);}
-.r3{background:rgba(37,99,235,.1);color:var(--info);}
-.top3-title{font-size:13px;font-weight:500;color:var(--txt);margin-bottom:3px;}
-.top3-reason{font-size:12px;color:var(--txt-sub);line-height:1.5;}
-.top3-reason .tr-seg{display:block;margin-top:5px;line-height:1.5;}
+/* 원형 색배지 대신 조판 번호 — 색을 아껴 제목이 서게 한다 */
+.rank-badge{min-width:22px;font-size:12px;font-weight:700;flex-shrink:0;margin-top:6px;
+  color:var(--txt-lbl);font-variant-numeric:tabular-nums;letter-spacing:.02em;}
+
+
+.top3-title{font-size:18px;font-weight:700;color:var(--txt);margin-bottom:8px;
+  line-height:1.38;letter-spacing:-.02em;}
+.top3-reason{font-size:14px;color:var(--txt-body);line-height:1.72;}
+.top3-reason .tr-seg{display:block;margin-top:14px;line-height:1.72;}
+/* 액션 문단 — 라벨 대신 왼쪽 선으로 "할 일"임을 표시한다.
+   매일 같은 라벨 글자가 반복되면 지면이 어수선해진다. */
+.top3-reason .tr-act{border-left:2px solid var(--bdr);padding-left:12px;
+  margin-top:16px;color:var(--txt-sub);}
 .top3-reason .tr-seg.tr-lead{margin-top:0;}
 .top3-reason .tr-seg.tr-trend{color:var(--txt-lbl);font-size:.95em;}
 .tr-label{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.03em;
@@ -100,18 +190,22 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .tr-impact .tr-label{background:rgba(37,99,235,.12);color:var(--info);}
 .tr-action .tr-label{background:rgba(220,38,38,.1);color:var(--neg);}
 .tr-trend .tr-label{background:rgba(245,158,11,.14);color:var(--accent);}
-.news-region-hdr{font-weight:800;font-size:12px;color:var(--accent);
-  margin:10px 0 2px;padding-bottom:3px;border-bottom:1.5px solid var(--bdr);}
+.news-region-hdr{font-weight:700;font-size:11.5px;color:var(--accent);
+  letter-spacing:.09em;margin:22px 0 4px;padding-bottom:7px;border-bottom:1px solid var(--bdr);}
 .news-region-hdr:first-child{margin-top:0;}
 
 /* KPI cells */
-.kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;}
-.kpi-cell{background:var(--bg);border-radius:10px;padding:11px 12px;
-  border-left:3px solid var(--txt-lbl);}
-.kpi-cell.pos{border-left-color:var(--pos);}
-.kpi-cell.neg{border-left-color:var(--neg);}
-.kpi-cell.gld{border-left-color:var(--accent);}
-.kpi-cell.neu{border-left-color:var(--accent);}
+.kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:4px;}
+@media (max-width:520px){.kpi-row{grid-template-columns:1fr}
+  .kpi-cell + .kpi-cell{border-left:none;padding-left:0}}
+/* 색 막대로 구분하지 않는다 — 숫자 크기와 배지가 위계를 만든다 */
+.kpi-cell{background:transparent;border-radius:0;padding:12px 12px 12px 0;
+  border-left:none;border-top:1px solid var(--bdr);}
+.kpi-cell + .kpi-cell{border-left:1px solid var(--divider);padding-left:12px;}
+
+
+
+
 .kl{font-size:10px;color:var(--txt-lbl);margin-bottom:3px;}
 .kv{font-size:18px;font-weight:700;color:var(--txt);line-height:1.2;}
 .kv sup{font-size:11px;font-weight:400;color:var(--txt-sub);}
@@ -129,24 +223,26 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .sched-loc{font-size:11px;color:var(--txt-lbl);margin-top:1px;}
 
 /* 출장자 현황 */
-.trip-row{display:flex;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap;
-  border-bottom:1px solid var(--divider);}
+.trip-row{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap;
+  border-bottom:1px solid var(--bdr);}
 .trip-row:last-child{border-bottom:none;padding-bottom:0;}
-.trip-who{font-size:13px;color:var(--txt);min-width:118px;}
+.trip-who{font-size:14px;color:var(--txt);font-weight:600;min-width:118px;}
 .trip-dept{font-size:11px;color:var(--txt-lbl);margin-right:5px;}
-.trip-period{font-size:12px;font-weight:600;color:var(--neg);min-width:104px;flex-shrink:0;}
-.trip-dest{font-size:12px;color:var(--txt-sub);}
+.trip-period{font-size:12.5px;font-weight:600;color:var(--txt-sub);min-width:104px;
+  flex-shrink:0;font-variant-numeric:tabular-nums;}
+.trip-dest{font-size:13px;color:var(--txt-body);}
 .trip-asof{font-size:10px;color:var(--txt-lbl);margin-top:9px;}
 
 /* News filter chips */
-.fbar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
-.fb{padding:5px 11px;border-radius:20px;font-size:12px;font-weight:500;
-  border:1px solid var(--bdr);background:var(--bg);color:var(--txt-sub);
+.fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.fb{padding:9px 15px;min-height:40px;border-radius:20px;font-size:13.5px;font-weight:600;
+  border:1px solid var(--sand-8);background:var(--card);color:var(--txt-sub);
   cursor:pointer;white-space:nowrap;line-height:1.4;}
 .fb.active{background:var(--txt);color:var(--bg);border-color:var(--txt);}
-.fb[data-f="lg"].active{background:var(--info);border-color:var(--info);color:#fff;}
+.fb[data-f="lg"].active{background:var(--info);border-color:var(--info);color:var(--card);}
 .fb.empty{opacity:.35;pointer-events:none;}
-.fbdg{font-size:10px;padding:0 4px;border-radius:8px;background:rgba(0,0,0,.1);}
+.fbdg{font-size:10px;padding:0 5px;border-radius:8px;background:var(--fill);
+  color:var(--txt-sub);font-variant-numeric:tabular-nums;}
 .fb.active .fbdg{background:rgba(255,255,255,.3);}
 .news-hdr-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:9px;}
 .lg-links{display:none;align-items:center;gap:5px;margin-left:auto;}
@@ -156,57 +252,93 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 
 /* News cards */
 .news-list{display:flex;flex-direction:column;gap:8px;}
-.nc{background:var(--card);border:1px solid var(--bdr);border-radius:12px;
-  padding:11px 13px;border-left:3px solid var(--txt-lbl);}
-.nc.s3{border-left-color:var(--neg);}
-.nc.s2{border-left-color:var(--accent);}
+/* 등급을 왼쪽 색 막대로 표시하던 것을 뺀다 — ★ 배지가 이미 등급을 말한다.
+   카드 테두리도 없애고 hairline 목록으로 바꾼다(Economist 지면 방식). */
+.nc{background:transparent;border:none;border-bottom:1px solid var(--bdr);
+  border-radius:0;padding:16px 0;}
+
+
 .nc-hd{display:flex;gap:7px;align-items:flex-start;margin-bottom:5px;}
 .star{font-size:10px;font-weight:600;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:1px;}
-.star.s3{background:rgba(220,38,38,.1);color:var(--neg);}
-.star.s2{background:rgba(245,158,11,.12);color:var(--accent);}
-.star.s1{background:var(--divider);color:var(--txt-lbl);}
-.nc-title{font-size:13px;font-weight:500;color:var(--txt);line-height:1.35;}
+.star.s3{background:var(--neg-bg);color:var(--neg);}
+.star.s2{background:var(--warn-bg);color:var(--warn);}
+.star.s1{background:var(--fill);color:var(--txt-lbl);}
+.nc-title{font-size:16.5px;font-weight:700;color:var(--txt);line-height:1.45;
+  letter-spacing:-.015em;}
+/* 번역 버튼 — 인라인 스타일이던 것을 클래스로 뺐다. 인라인은 토큰이 안 먹어
+   다크모드에서 혼자 옛 색으로 남는다(2026-09-03 실측). */
+.tr-btn{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.03em;
+  color:var(--txt-sub);background:var(--fill);border:1px solid var(--bdr);
+  border-radius:4px;padding:1px 6px;margin-left:6px;white-space:nowrap;
+  text-decoration:none;vertical-align:2px;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;}
+a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card);}
+.tr-btn-off{opacity:.55;}
+.nc-orig{font-size:11.5px;color:var(--txt-lbl);margin:2px 0 6px;line-height:1.5;}
 .nc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;gap:6px;}
-.nc-src{font-size:11px;color:var(--txt-lbl);}
-.nc-link{font-size:11px;color:var(--info);text-decoration:none;
-  padding:1px 7px;border-radius:3px;border:1px solid rgba(37,99,235,.2);background:rgba(37,99,235,.08);
+.nc-src{font-size:11.5px;color:var(--txt-lbl);}
+.nc-link{font-size:12px;font-weight:600;color:var(--txt-body);text-decoration:none;
+  padding:5px 10px;min-height:30px;display:inline-flex;align-items:center;
+  border-radius:5px;border:1px solid var(--sand-8);background:var(--card35,.08);
   white-space:nowrap;}
-.nc-body{font-size:12px;color:var(--txt-sub);line-height:1.55;margin-bottom:5px;}
-.nc-impact{font-size:11px;background:rgba(245,158,11,.1);border-left:2px solid rgba(245,158,11,.4);
-  padding:4px 9px;border-radius:0 5px 5px 0;color:var(--txt-sub);line-height:1.5;}
-.nc-ins-lbl{font-size:9.5px;font-weight:800;color:var(--accent);letter-spacing:.4px;margin-right:3px;white-space:nowrap;}
+.nc-body{font-size:13.5px;color:var(--txt-body);line-height:1.72;margin-bottom:8px;}
+/* 부가 정보가 본문보다 눈에 띄면 안 된다 — 색 상자 대신 왼쪽 선 하나 */
+.nc-impact{font-size:12.5px;background:var(--fill);border-left:2px solid var(--bdr);
+  padding:8px 11px;border-radius:0 5px 5px 0;line-height:1.65;color:var(--txt-sub);line-height:1.5;}
+.nc-ins-lbl{display:block;font-size:10px;font-weight:700;color:var(--txt-lbl);
+  letter-spacing:.09em;margin-bottom:3px;white-space:nowrap;}
 .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
-.tag{font-size:10px;padding:2px 7px;border-radius:4px;
-  background:var(--divider);color:var(--txt-lbl);border:1px solid var(--bdr);}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:4px;
+  background:var(--fill);color:var(--txt-sub);border:1px solid var(--bdr);}
 
 /* Overseas */
-.ov-card{display:flex;align-items:flex-start;gap:10px;padding:9px 0;
-  border-bottom:1px solid var(--divider);}
+.ov-card{padding:18px 0;border-bottom:1px solid var(--bdr);}
+/* 국가명이 13px 이라 어느 나라 얘긴지 눈에 안 들어왔다. 제목처럼 키우고
+   상태 배지를 같은 행에 올려 「중국 — 주의」가 한 눈에 붙어 읽히게 한다. */
+.ov-head{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
 .ov-card:last-child{border-bottom:none;padding-bottom:0;}
-.ov-flag{font-size:20px;line-height:1;flex-shrink:0;margin-top:2px;}
+.ov-flag{display:none;}   /* 국기 이모지 제거 — 국가명이 이미 있다 */
 .ov-info{flex:1;min-width:0;}
-.ov-name{font-size:13px;font-weight:500;color:var(--txt);margin-bottom:2px;}
-.ov-inds{font-size:11px;color:var(--accent);font-weight:500;margin-bottom:2px;}
-.ov-sum{font-size:12px;color:var(--txt-sub);line-height:1.5;white-space:pre-line;}
-.os{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;flex-shrink:0;margin-top:2px;}
-.os.g{background:rgba(22,163,74,.1);color:var(--pos);}
-.os.w{background:rgba(245,158,11,.12);color:var(--accent);}
-.os.d{background:rgba(220,38,38,.1);color:var(--neg);}
+.ov-name{font-size:19px;font-weight:700;color:var(--txt);letter-spacing:-.02em;line-height:1.2;}
+.ov-inds{font-size:12.5px;color:var(--txt-sub);font-weight:500;margin-bottom:8px;
+  font-variant-numeric:tabular-nums;line-height:1.65;}
+.ov-sum{font-size:14px;color:var(--txt-body);line-height:1.75;white-space:pre-line;}
+.ov-sum strong{font-weight:700;color:var(--txt);}
+.os{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:4px;flex-shrink:0;
+  letter-spacing:.02em;}
+.os.g{background:var(--pos-bg);color:var(--pos);}
+.os.w{background:var(--warn-bg);color:var(--warn);}
+.os.d{background:var(--neg-bg);color:var(--neg);}
 
 /* FX */
-.fx-row{display:flex;align-items:center;justify-content:space-between;
-  padding:8px 0;border-bottom:1px solid var(--divider);}
+/* 2주(10거래일) 그래프를 넣으려면 가로가 필요하다 → 그리드로 3칸을 명시한다.
+   좁은 화면에서는 이름·값을 한 줄에 두고 그래프를 아래로 내린다. */
+.fx-asof{font-size:11.5px;color:var(--txt-lbl);margin:-6px 0 10px;}
+.fx-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:15px 0;border-bottom:1px solid var(--bdr);}
+@media (max-width:520px){
+  .fx-row{grid-template-columns:auto auto;grid-template-areas:'name val' 'spark spark';
+    row-gap:8px;}
+  .fx-left{grid-area:name;} .fx-right{grid-area:val;justify-self:end;}
+  .fx-spark{grid-area:spark;margin:0;}
+}
 .fx-row:last-child{border-bottom:none;padding-bottom:0;}
 .fx-left{display:flex;align-items:center;gap:8px;}
-.fx-flag{font-size:18px;line-height:1;}
+/* 국기 이모지는 윈도우에서 렌더되지 않는다 → 통화코드 활자로 대체 */
+.fx-flag{display:none;}
+.fx-code{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--txt-lbl);
+  min-width:38px;font-variant-numeric:tabular-nums;}
 .fx-name{font-size:13px;font-weight:500;color:var(--txt);}
-.fx-country{font-size:11px;color:var(--txt-lbl);}
+.fx-name{font-size:15px;color:var(--txt);font-weight:700;letter-spacing:-.01em;white-space:nowrap;}
+.fx-country{display:none;}
 .fx-right{text-align:right;}
-.fx-val{font-size:16px;font-weight:600;color:var(--txt);}
-.fx-chg{font-size:11px;}
+.fx-val{font-size:21px;font-weight:700;color:var(--txt);letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;line-height:1.15;text-align:right;}
+.fx-chg{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;margin-top:2px;}
 .fx-chg.pos{color:var(--pos);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);}
-.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 10px;
-  min-width:120px;position:relative;}
+.fx-spark{display:flex;justify-content:center;align-items:center;
+  min-width:0;position:relative;}
+.fx-spark svg{width:100%;height:46px;max-width:260px;}
 .fx-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;
   background:var(--txt);color:var(--bg);font-size:10px;font-weight:700;padding:2px 7px;
   border-radius:5px;white-space:nowrap;pointer-events:none;z-index:50;display:none;
@@ -229,25 +361,17 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   flex-shrink:0;margin-top:6px;}
 
 /* ── 용어집 (2026-09-02 신설) ── */
-.gl-cat{font-size:11px;color:var(--txt-lbl);font-weight:600;margin:10px 0 4px;letter-spacing:.02em;}
+.gl-cat{font-size:11px;color:var(--txt-lbl);font-weight:700;margin:18px 0 6px;
+  letter-spacing:.09em;}
 .gl-cat:first-child{margin-top:0;}
-.gl-row{padding:7px 0;border-bottom:1px solid var(--line);}
+.gl-row{padding:11px 0;border-bottom:1px solid var(--bdr);}
 .gl-row:last-child{border-bottom:none;padding-bottom:0;}
-.gl-term{font-size:12.5px;font-weight:600;color:var(--txt);}
-.gl-short{font-size:11.5px;color:var(--accent);margin-left:6px;font-weight:500;}
-.gl-desc{font-size:11.5px;color:var(--txt-sub);line-height:1.55;margin-top:3px;}
+.gl-term{font-size:14px;font-weight:700;color:var(--txt);}
+.gl-short{font-size:12.5px;color:var(--accent);margin-left:7px;font-weight:600;}
+.gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-.gl-tip{border-bottom:1px dotted var(--accent);cursor:help;}
-.gl-tip:focus{outline:2px solid var(--accent);outline-offset:1px;border-radius:2px;}
-#gl-pop{position:fixed;z-index:9999;max-width:min(300px,calc(100vw - 24px));
-  background:var(--card,#fff);color:var(--txt);border:1px solid var(--line);
-  border-radius:8px;padding:9px 11px;box-shadow:0 6px 24px rgba(0,0,0,.18);
-  font-size:11.5px;line-height:1.55;display:none;}
-#gl-pop.on{display:block;}
-#gl-pop .glp-term{font-weight:700;font-size:12px;}
-#gl-pop .glp-short{color:var(--accent);font-weight:500;margin-left:5px;font-size:11px;}
-#gl-pop .glp-desc{color:var(--txt-sub);margin-top:4px;}
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -259,34 +383,36 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 /* ── §4-3 지표 패널: 스코어카드 임베드 (index.html 스코어보드 이식) ── */
 .sc-toolbar{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
 .sc-toolbar .lbl{font-size:10px;color:var(--txt-lbl);font-weight:700;}
-.sc-range-btn,.sc-country-btn{padding:3px 9px;border:1px solid var(--bdr);background:var(--card);border-radius:6px;
-  font-size:10.5px;cursor:pointer;color:var(--txt-sub);}
-.sc-range-btn.active,.sc-country-btn.active{background:var(--txt);color:var(--bg);border-color:var(--txt);}
+.sc-range-btn,.sc-country-btn{padding:8px 13px;min-height:38px;border:1px solid var(--sand-8);
+  background:var(--card);border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--txt-sub);}
+.sc-range-btn.active,.sc-country-btn.active{background:var(--txt);color:var(--card);border-color:var(--txt);font-weight:600;}
 .sc-body{padding-top:4px;}
-.sc-sct{font-size:11.5px;font-weight:800;margin:10px 0 6px;padding-bottom:3px;border-bottom:2px solid var(--bdr);}
+.sc-sct{font-size:11.5px;font-weight:700;letter-spacing:.09em;color:var(--accent);
+  margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
 .sc-sct:first-child{margin-top:0;}
 .sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
-.sc-card{border:1px solid var(--bdr);border-radius:9px;padding:8px 9px;background:var(--bg);}
+.sc-card{border:1px solid var(--bdr);border-radius:8px;padding:11px 12px;background:var(--card);}
 .sc-card h4{margin:0;font-size:11px;font-weight:700;color:var(--txt);display:flex;justify-content:space-between;align-items:center;gap:4px;}
-.sc-bdg{font-size:8px;padding:1px 5px;border-radius:4px;white-space:nowrap;}
-.sc-bdg.obs{background:rgba(22,163,74,.14);color:var(--pos);} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);}
-.sc-val{font-size:15px;font-weight:800;color:var(--txt);margin:2px 0 1px;}
-.sc-chg{font-size:10px;font-weight:700;}
+.sc-bdg{font-size:9.5px;padding:2px 6px;border-radius:4px;white-space:nowrap;font-weight:600;}
+.sc-bdg.obs{background:var(--pos-bg);color:var(--pos);} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);}
+.sc-val{font-size:18px;font-weight:700;color:var(--txt);margin:4px 0 2px;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.sc-chg{font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;}
 .sc-chg.up{color:var(--neg);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);}
 .sc-canvas-wrap{height:64px;position:relative;margin-top:4px;}
-.sc-imp{font-size:9.5px;color:var(--txt-sub);background:rgba(37,99,235,.08);border-radius:5px;padding:3px 6px;margin-top:5px;line-height:1.4;}
-.sc-src{font-size:8.5px;color:var(--txt-lbl);margin-top:4px;}
-.sc-err{font-size:9.5px;color:var(--neg);background:rgba(220,38,38,.08);border-radius:5px;padding:3px 6px;margin-top:4px;}
+.sc-imp{font-size:11px;color:var(--txt-sub);background:var(--fill);border-radius:5px;padding:5px 7px;margin-top:7px;line-height:1.4;}
+.sc-src{font-size:10.5px;color:var(--txt-lbl);margin-top:6px;}
+.sc-err{font-size:11px;color:var(--neg);background:var(--neg-bg);border-radius:5px;padding:5px 7px;margin-top:5px;}
 .up{color:var(--neg);} .dn{color:var(--info);} .fl{color:var(--txt-sub);}
 
 /* Comments */
 .cmt-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-.cmt-item{background:var(--bg);border-radius:8px;padding:10px 12px;border:1px solid var(--bdr);}
+.cmt-item{background:var(--fill);border-radius:8px;padding:12px 14px;border:1px solid var(--bdr);}
 .cmt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
 .cmt-author{font-size:13px;font-weight:700;color:var(--txt);}
 .cmt-time{font-size:11px;color:var(--txt-lbl);}
-.cmt-body{font-size:13px;color:var(--txt-sub);line-height:1.55;white-space:pre-wrap;word-break:break-all;}
-.cmt-empty{text-align:center;padding:16px;font-size:12px;color:var(--txt-lbl);}
+.cmt-body{font-size:14px;color:var(--txt-body);line-height:1.7;white-space:pre-wrap;word-break:break-word;}
+.cmt-empty{text-align:center;padding:20px;font-size:13px;color:var(--txt-lbl);}
 .cmt-form{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--bdr);padding-top:12px;}
 .cmt-form-row{display:flex;gap:8px;align-items:flex-start;}
 .cmt-select{flex-shrink:0;width:110px;padding:7px 8px;border:1px solid var(--bdr);border-radius:6px;
@@ -295,8 +421,8 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   background:var(--bg);color:var(--txt);font-size:12px;display:none;}
 .cmt-textarea{flex:1;padding:7px 8px;border:1px solid var(--bdr);border-radius:6px;
   background:var(--bg);color:var(--txt);font-size:12px;min-height:64px;resize:vertical;line-height:1.5;}
-.cmt-submit{padding:7px 16px;background:var(--neg);color:#fff;border:none;border-radius:6px;
-  font-size:12px;font-weight:700;cursor:pointer;}
+.cmt-submit{padding:9px 18px;min-height:38px;background:var(--brand);color:#fff;border:none;
+  border-radius:6px;font-size:12.5px;font-weight:700;cursor:pointer;}
 .cmt-submit:disabled{opacity:.45;cursor:not-allowed;}
 .cmt-status{font-size:12px;color:var(--txt-lbl);text-align:right;min-height:16px;}
 
@@ -310,25 +436,92 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .skeleton{background:var(--divider);border-radius:6px;height:14px;margin:4px 0;
   animation:pulse 1.4s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   모바일 보완 (2026-09-03)
+   근거: ui-ux-pro-max UX 가이드라인 — Touch Target Size(iOS 44pt / Android 48dp),
+        Touch Spacing(최소 8px), Tap Delay(touch-action: manipulation)
+   이 보고서는 **카카오톡 링크로 열리므로 모바일이 주 화면**이다.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* 300ms 탭 지연 제거 — 누르면 바로 반응해야 한다 */
+a,button,.chip,.fb,.tk{touch-action:manipulation;}
+
+@media (max-width:768px){
+  /* ① 터치 대상 — 손가락은 커서가 아니다 */
+  .chipbar{padding:9px 12px;gap:8px;}
+  .chipbar .chip{min-height:40px;padding:9px 14px;font-size:13.5px;}
+  .fb{min-height:38px;padding:8px 12px;}
+  .arch-btn,.macro-btn,.latest-btn{min-height:34px;padding:7px 11px;font-size:12px;}
+  .ab-link{min-height:36px;display:inline-flex;align-items:center;}
+
+  /* ② 본문 — 12px 대는 모바일에서 작다 */
+  .exec-hero-text{font-size:15.5px;line-height:1.8;}
+  .top3-title{font-size:17px;}
+  .top3-reason{font-size:14.5px;line-height:1.78;}
+  .sub,.ki{font-size:13px;}
+
+  /* ③ 제호 — 세로 공간을 아낀다. 로고는 유지하되 작게 */
+  .top-bar{padding:calc(8px + var(--safe-top)) 13px 7px;gap:6px;}
+  .bar-title{font-size:15px;}
+  .bar-logo{height:20px;}
+  .conf{font-size:9px;padding:2px 6px;}
+
+  /* ④ 티커 — 옆으로 밀리는 것이 보이게 오른쪽을 흐린다 */
+  .ticker{padding:9px 13px;gap:16px;
+    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+    mask-image:linear-gradient(90deg,#000 92%,transparent);}
+  .ticker::after{content:'';flex:0 0 12px;}
+
+  /* ⑤ 카드 — 화면 폭을 더 쓴다 */
+  .wrap{padding:10px 10px 0;}
+  .card{padding:14px 13px;border-radius:10px;}
+}
+
+@media (max-width:400px){
+  /* 아주 좁은 화면 — 제호 2행이 눌리지 않게 */
+  .bar-row-1{flex-wrap:wrap;gap:4px;}
+  .bar-logo{height:18px;}
+  .kpi-row{grid-template-columns:1fr;}
+}
+
+/* 키보드 초점이 보이게 — 임원이 아니라 담당자가 키보드로 훑는 경우 */
+a:focus-visible,button:focus-visible,.chip:focus-visible,.gl-tip:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;border-radius:4px;
+}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
+<script>
+/* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. 데이터 로드가 실패해도
+   아이콘은 나와야 하므로 DOM 준비 시점에 한 번 더 그린다. */
+document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
+</script>
 </head>
 <body>
 
 <!-- ── Theme Toggle ── -->
-<button class="theme-toggle" id="theme-btn" aria-label="다크/라이트 전환" title="다크/라이트 전환">🌙</button>
+<button class="theme-toggle" id="theme-btn" aria-label="다크/라이트 전환" title="다크/라이트 전환"><i data-lucide="moon"></i></button>
 
 <!-- ── 고정 헤더(상단바 + 칩내비 한 덩어리) ── -->
 <div class="sticky-head">
 <!-- ── Top Bar ── -->
 <div class="top-bar" id="top-bar">
-  <div class="bar-left">
-    <span class="bar-title">신신사 경영 브리핑</span>
-    <span class="bar-date" id="bar-date">—</span>
+  <!-- 1행: 문서 제목 ←→ 회사 로고. 편지지 관례대로 마주 본다. -->
+  <div class="bar-row bar-row-1">
+    <div class="bar-left">
+      <span class="bar-title">신신사 경영 브리핑</span>
+      <span class="bar-date" id="bar-date">—</span>
+    </div>
+    <span class="bar-logo-wrap"><img class="bar-logo" src="assets/logo-lockup.png"
+      alt="(주)신신사" width="550" height="83" decoding="async"></span>
   </div>
-  <div class="bar-right">
-    <a class="arch-btn" href="archive.html" id="arch-nav">📅 목록</a>
-    <a class="latest-btn" href="briefing.html" id="latest-nav">← 최신</a>
-    <a class="macro-btn" href="https://NUUUUUU.github.io/weekly-briefing/" target="_blank" rel="noopener">📈 경영지표</a>
+  <!-- 2행: 기능 버튼. 로고와 섞이지 않게 아래로 내렸다. -->
+  <div class="bar-row bar-row-2">
+    <div class="bar-right">
+      <a class="arch-btn" href="archive.html" id="arch-nav"><i data-lucide="calendar-days" class="ic-sm"></i>목록</a>
+      <a class="latest-btn" href="briefing.html" id="latest-nav"><i data-lucide="arrow-left" class="ic-sm"></i>최신</a>
+      <a class="macro-btn" href="https://NUUUUUU.github.io/weekly-briefing/" target="_blank" rel="noopener"><i data-lucide="trending-up" class="ic-sm"></i>경영지표</a>
+    </div>
     <span class="conf">CONFIDENTIAL</span>
   </div>
 </div>
@@ -336,15 +529,24 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 <!-- ── §4-1 Chip Nav Bar ── -->
 <div id="gl-pop" role="tooltip" aria-hidden="true"></div>
 <nav class="chipbar" id="chipbar" aria-label="섹션 이동">
-  <button class="chip active" data-sec="exec-section">★ 요약</button>
-  <button class="chip" data-sec="fx-section">💱 환율</button>
-  <button class="chip" data-sec="overseas-section">🌏 해외</button>
-  <button class="chip" data-sec="news-section">📰 뉴스</button>
-  <button class="chip" data-sec="market-section">📊 시장</button>
-  <button class="chip" data-sec="indicators-section">🔢 지표</button>
-  <button class="chip" id="chip-glossary" data-sec="glossary-section">📖 용어</button>
+  <button class="chip active" data-sec="exec-section"><i data-lucide="star" class="ic-sm"></i>요약</button>
+  <button class="chip" data-sec="fx-section"><i data-lucide="arrow-left-right" class="ic-sm"></i>환율</button>
+  <button class="chip" data-sec="overseas-section"><i data-lucide="globe" class="ic-sm"></i>해외</button>
+  <button class="chip" data-sec="news-section"><i data-lucide="newspaper" class="ic-sm"></i>뉴스</button>
+  <button class="chip" data-sec="indicators-section"><i data-lucide="layout-grid" class="ic-sm"></i>지표</button>
+  <button class="chip" id="chip-glossary" data-sec="glossary-section"><i data-lucide="book-open" class="ic-sm"></i>용어</button>
 </nav>
 </div>
+
+<!-- ── 지표 티커 (제호 아래 · 고정 5종 · FT markets 방식) ──
+     매일 같은 자리에 같은 지표가 있어야 "어제보다" 비교가 된다.
+     그날 중요한 것은 아래 「핵심 지표」 3장이 맡는다. 역할이 다르다. -->
+<div class="ticker" id="ticker" aria-label="주요 지표"></div>
+
+<!-- ── 좌측 목차 (≥1100px 에서만) ──
+     넓은 화면에서 양옆이 비는 것을 목차로 쓴다. 본문 폭은 그대로 둔다 —
+     한글은 한 줄 35~45자를 넘기면 오히려 읽기 어려워진다. -->
+<nav class="rail" id="rail" aria-label="목차"></nav>
 
 <!-- ── Archive Banner ── -->
 <div id="archive-banner-wrap"></div>
@@ -353,11 +555,10 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 
   <!-- ── §4-4 ★ 임원 요약 카드 ── -->
   <div class="card" id="exec-section">
-    <div class="sec-label"><span class="sec-dot"></span>★ 임원 요약</div>
 
     <!-- Hero: 오늘의 한 줄 -->
     <div class="exec-hero">
-      <div class="exec-hero-lbl">🔍 오늘의 한 줄</div>
+      <div class="exec-hero-lbl">오늘의 한 줄</div>
       <div class="exec-hero-text" id="summary-text">
         <div class="skeleton" style="width:100%"></div>
         <div class="skeleton" style="width:80%"></div>
@@ -371,6 +572,7 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
     </div>
 
     <!-- 핵심지표 3셀 -->
+    <div class="sec-label" style="margin-top:22px;"><span class="sec-dot"></span>핵심 지표</div>
     <div class="kpi-row" id="exec-kpi-row">
       <div class="skeleton" style="height:64px"></div>
       <div class="skeleton" style="height:64px"></div>
@@ -381,7 +583,8 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 
   <!-- ── 환율 ── -->
   <div class="card" id="fx-section">
-    <div class="sec-label"><span class="sec-dot"></span>환율 (vs USD)</div>
+    <div class="sec-label"><span class="sec-dot"></span>환율 · 달러 대비</div>
+    <div class="fx-asof" id="fx-asof">전일 종가 기준 · 최근 2주</div>
     <div id="fx-list"></div>
   </div>
 
@@ -416,11 +619,12 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
     </div>
     <div class="fbar" id="fbar">
       <button class="fb active" data-f="all">전체 <span class="fbdg" id="b-all">—</span></button>
-      <button class="fb" data-f="lg">🔵 LG <span class="fbdg" id="b-lg">—</span></button>
-      <button class="fb" data-f="한국">🇰🇷 한국 <span class="fbdg" id="b-kr">—</span></button>
-      <button class="fb" data-f="중국">🇨🇳 중국 <span class="fbdg" id="b-cn">—</span></button>
-      <button class="fb" data-f="태국">🇹🇭 태국 <span class="fbdg" id="b-th">—</span></button>
-      <button class="fb" data-f="이집트">🇪🇬 이집트 <span class="fbdg" id="b-eg">—</span></button>
+      <!-- 국기 이모지는 윈도우에서 글자 두 개로 보인다 → 국가명만 쓴다 -->
+      <button class="fb" data-f="lg">LG <span class="fbdg" id="b-lg">—</span></button>
+      <button class="fb" data-f="한국">한국 <span class="fbdg" id="b-kr">—</span></button>
+      <button class="fb" data-f="중국">중국 <span class="fbdg" id="b-cn">—</span></button>
+      <button class="fb" data-f="태국">태국 <span class="fbdg" id="b-th">—</span></button>
+      <button class="fb" data-f="이집트">이집트 <span class="fbdg" id="b-eg">—</span></button>
     </div>
     <div class="news-list" id="news-list">
       <div class="skeleton" style="height:90px"></div>
@@ -428,17 +632,11 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
     </div>
   </div>
 
-  <!-- ── 시장 지표 ── -->
-  <div class="card" id="market-section">
-    <div class="sec-label"><span class="sec-dot"></span>시장 지표</div>
-    <div class="mkt-grid" id="mkt-grid"></div>
-  </div>
-
-  <!-- ── 모니터링 포인트 ── -->
-  <div class="card" id="monitor-section">
-    <div class="sec-label"><span class="sec-dot"></span>모니터링 포인트</div>
-    <div id="mpt-list"></div>
-  </div>
+  <!-- ⛔ 「시장 지표」·「모니터링 포인트」 섹션은 2026-09-03 에 뺐다.
+       시장 지표 → 제호 아래 티커가 같은 숫자를 더 먼저 보여준다.
+       모니터링 포인트 → TOP3 의 세 번째(액션) 문단과 내용이 겹친다.
+       **데이터는 계속 만든다** — data.json 의 markets·monitoring 은 위키 적재가 쓴다.
+       되살리려면 이 자리에 카드를 다시 넣고 render 호출의 가드를 풀면 된다. -->
 
   <!-- ── 용어집 (2026-09-02 신설) ── -->
   <div class="card" id="glossary-section">
@@ -449,17 +647,17 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   <!-- ── §4-3 📊 지표 섹션 (아코디언, 기본 접힘) ── -->
   <div class="card" id="indicators-section">
     <div class="acc-header" id="indicators-acc-hdr" role="button" aria-expanded="false">
-      <div class="sec-label" style="margin-bottom:0;"><span class="sec-dot"></span>📊 주요 경제 지표</div>
+      <div class="sec-label" style="margin-bottom:0;"><span class="sec-dot"></span>주요 경제 지표</div>
       <span class="acc-arrow">▼</span>
     </div>
     <div class="acc-body" id="indicators-acc-body">
       <div class="sc-toolbar" style="justify-content:space-between;padding-top:10px;">
         <div id="sc-country-bar" style="display:flex;gap:5px;flex-wrap:wrap;">
           <button data-country="GLOBAL" class="sc-country-btn active">GLOBAL</button>
-          <button data-country="KR" class="sc-country-btn">🇰🇷 KR</button>
-          <button data-country="TH" class="sc-country-btn">🇹🇭 TH</button>
-          <button data-country="CN" class="sc-country-btn">🇨🇳 CN</button>
-          <button data-country="EG" class="sc-country-btn">🇪🇬 EG</button>
+          <button data-country="KR" class="sc-country-btn">한국</button>
+          <button data-country="TH" class="sc-country-btn">태국</button>
+          <button data-country="CN" class="sc-country-btn">중국</button>
+          <button data-country="EG" class="sc-country-btn">이집트</button>
         </div>
         <div id="sc-toolbar" style="display:flex;gap:5px;flex-wrap:wrap;">
           <button data-range="24" class="sc-range-btn active">2년</button>
@@ -516,7 +714,10 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 (function(){
   var btn = document.getElementById('theme-btn');
   function updateIcon(){
-    btn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀️' : '🌙';
+    if(!btn) return;
+    var dark = document.documentElement.dataset.theme === 'dark';
+    btn.innerHTML = '<i data-lucide="'+(dark?'sun':'moon')+'"></i>';
+    if(window.lucide) lucide.createIcons();
   }
   updateIcon();
   btn.addEventListener('click', function(){
@@ -556,6 +757,42 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
     var el = document.getElementById(id);
     if(el) observer.observe(el);
   });
+
+  // ── 좌측 목차 — 칩과 같은 섹션 목록을 그대로 쓴다(진실원천 하나) ──
+  var rail = document.getElementById('rail');
+  if(rail){
+    var ICON = {'exec-section':'star','fx-section':'arrow-left-right','overseas-section':'globe',
+                'news-section':'newspaper','market-section':'chart-line',
+                'indicators-section':'layout-grid','glossary-section':'book-open'};
+    rail.innerHTML = '<div class="rail-hd">목차</div>' + Array.from(chips).map(function(c){
+      var label = c.textContent.trim();
+      return '<a href="#'+c.dataset.sec+'" data-sec="'+c.dataset.sec+'">'+
+             '<i data-lucide="'+(ICON[c.dataset.sec]||'circle')+'"></i>'+label+'</a>';
+    }).join('');
+    rail.addEventListener('click', function(e){
+      var a = e.target.closest('a'); if(!a) return;
+      e.preventDefault();
+      var t = document.getElementById(a.dataset.sec);
+      if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    // 칩의 active 를 목차에 그대로 반영한다 — 상태를 두 곳에서 계산하지 않는다
+    var syncRail = function(){
+      var cur = document.querySelector('.chipbar .chip.active');
+      var id = cur && cur.dataset.sec;
+      rail.querySelectorAll('a').forEach(function(a){ a.classList.toggle('on', a.dataset.sec===id); });
+    };
+    new MutationObserver(syncRail).observe(document.getElementById('chipbar'),
+      {subtree:true, attributes:true, attributeFilter:['class']});
+    syncRail();
+    // 용어 섹션이 비면 칩과 함께 목차에서도 감춘다
+    var glChip = document.getElementById('chip-glossary');
+    if(glChip){
+      new MutationObserver(function(){
+        var a = rail.querySelector('a[data-sec="glossary-section"]');
+        if(a) a.style.display = (glChip.style.display==='none') ? 'none' : '';
+      }).observe(glChip, {attributes:true, attributeFilter:['style']});
+    }
+  }
 })();
 
 /* 고정 헤더 높이 → CSS 변수 --sticky-h 동기화 (칩 스크롤 오프셋용). 모바일 헤더 줄바꿈 대응 */
@@ -602,7 +839,12 @@ function fmtReason(reason){
     if(s.indexOf('\n\n')>=0 || s.indexOf('\n')>=0){
       var paras = s.split(/\n{2,}|\n/).map(function(p){return p.trim();}).filter(Boolean);
       if(paras.length>1){
-        return paras.map(function(p){ return '<span class="tr-seg tr-lead">'+p+'</span>'; }).join('');
+        // 스펙상 3문단은 팩트 → 함의 → **액션** 이다. 마지막을 액션으로 표시해
+        // 라벨 없이도 "할 일"임이 보이게 한다 (2026-09-03 사용자 결정).
+        return paras.map(function(p,i){
+          var cls = (paras.length>=3 && i===paras.length-1) ? 'tr-seg tr-act' : 'tr-seg tr-lead';
+          return '<span class="'+cls+'">'+p+'</span>';
+        }).join('');
       }
     }
     return '<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+s+'</span>';
@@ -640,7 +882,7 @@ function renderExec(d){
   const rc = ['r1','r2','r3'];
   document.getElementById('top3-list').innerHTML = (d.top3||[]).map((t,i)=>`
     <div class="top3-item">
-      <div class="rank-badge ${rc[i]||'r3'}">${t.rank}</div>
+      <div class="rank-badge">${String(t.rank).padStart(2,"0")}</div>
       <div>
         <div class="top3-title">${t.title}</div>
         <div class="top3-reason">${fmtReason(t.reason)}</div>
@@ -732,26 +974,25 @@ function renderNews(f){
       <div class="nc-hd">
         <span class="star ${cs[n.importance]||'s1'}">${Briefing.stars(n.importance)}</span>
         <div class="nc-title">${n.title}${n.translated&&n.id
-          ?` <a href="translated.html?id=${encodeURIComponent(n.id)}&from=briefing.html" target="_blank" rel="noopener"
-              style="font-size:10px;font-weight:700;color:var(--accent);border:1px solid var(--accent);
-              border-radius:4px;padding:0 4px;margin-left:4px;white-space:nowrap;text-decoration:none;">🌐 번역</a>`
-          :(n.translated?` <span style="font-size:10px;font-weight:700;color:var(--accent);
-              border:1px solid var(--accent);border-radius:4px;padding:0 4px;margin-left:4px;">🌐</span>`:'')}
+          ?` <a class="tr-btn" href="translated.html?id=${encodeURIComponent(n.id)}&from=briefing.html"
+              target="_blank" rel="noopener">번역</a>`
+          :(n.translated?` <span class="tr-btn tr-btn-off">번역</span>`:'')}
         </div>
       </div>
       ${n.translated&&n.title_orig
-        ?`<div style="font-size:11px;color:var(--txt-lbl);margin:-2px 0 4px 0;">원제: ${n.title_orig}</div>`:''}
+        ?`<div class="nc-orig">원제: ${n.title_orig}</div>`:''}
       <div class="nc-meta">
         <span class="nc-src">${n.source} · ${n.pubDate}</span>
         ${n.url?`<a class="nc-link" href="${n.url}" target="_blank" rel="noopener">원문 ↗</a>`:''}
       </div>
       <div class="nc-body">${shortBody(n.body)}</div>
-      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">💡 INSIGHT</span>${n.impact}</div>`:''}
+      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${n.impact}</div>`:''}
       <div class="tags">${(n.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     </div>`;
   }).join('');
   // 필터를 바꾸면 뉴스가 통째로 다시 그려지므로 툴팁도 다시 붙여야 한다
-  annotateTerms(document.getElementById('news-list'));
+  // 뉴스는 필터 전환마다 다시 그려진다 → 용어·수치를 다시 입힌다
+  if(window.Annotate) Annotate.run(['news-list'], {cap:2});
 }
 
 function updateBadges(news){
@@ -768,22 +1009,30 @@ function updateBadges(news){
 }
 
 /* ── 해외 ── */
+/* 해외 요약은 `**강조**` 마크다운으로 들어온다. 렌더러가 안 풀면 별표가 화면에
+   그대로 보인다(2026-09-03 실측). 강조만 처리하고 나머지 태그는 허용하지 않는다. */
+function mdBold(t){
+  return String(t==null?'':t)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+}
 function renderOverseas(items){
   const sm = {u:'g',w:'w',d:'d',g:'g',r:'d','양호':'g','주시':'w','경고':'d','위험':'d','주의':'w'};
   document.getElementById('ov-list').innerHTML = (items||[]).map(o=>`
     <div class="ov-card">
-      <span class="ov-flag">${o.flag||''}</span>
-      <div class="ov-info">
-        <div class="ov-name">${o.country}</div>
-        ${o.indicators?`<div class="ov-inds">${o.indicators}</div>`:''}
-        <div class="ov-sum">${o.summary||''}</div>
+      <div class="ov-head">
+        <span class="ov-name">${o.country}</span>
+        <span class="os ${sm[o.statusType]||sm[o.status]||'w'}">${o.status||''}</span>
       </div>
-      <span class="os ${sm[o.statusType]||sm[o.status]||'w'}">${o.status||''}</span>
+      ${o.indicators?`<div class="ov-inds">${mdBold(o.indicators)}</div>`:''}
+      <div class="ov-sum">${mdBold(o.summary||'')}</div>
     </div>`).join('');
 }
 
 /* ── 시장 ── */
+/* 섹션을 뺐으므로 대상이 없으면 조용히 통과한다. 데이터는 계속 들어온다. */
 function renderMarkets(items){
+  if(!document.getElementById('mkt-grid')) return;
   document.getElementById('mkt-grid').innerHTML = (items||[]).map(m=>`
     <div class="mkt-cell">
       <div class="mkt-lbl">${m.label}</div>
@@ -806,7 +1055,7 @@ function fxMockHistory(baseStr, changeStr, currency){
 }
 
 function fxSparklineSVG(values, isNeg, idx){
-  const W=130,H=38,PX=5,PY=6;
+  const W=210,H=46,PX=6,PY=7;
   const min=Math.min(...values),max=Math.max(...values),range=max-min||values[0]*0.001||1,n=values.length;
   const color=isNeg?'var(--neg)':'var(--pos)';
   const colorHex=isNeg?'#dc2626':'#16a34a';
@@ -843,8 +1092,7 @@ function renderFX(items){
     const spark=fxSparklineSVG(hist, f.dir==='neg', i);
     return `<div class="fx-row">
       <div class="fx-left">
-        <span class="fx-flag">${f.flag||''}</span>
-        <div><div class="fx-name">${f.currency}</div><div class="fx-country">${f.country}</div></div>
+        <div class="fx-name">${Briefing.fxPairLabel ? Briefing.fxPairLabel(f) : (f.country||f.currency||'')}</div>
       </div>
       <div class="fx-spark">${spark}<div class="fx-tooltip" id="fxtt-${i}"></div></div>
       <div class="fx-right">
@@ -881,7 +1129,89 @@ function bindFXTip(i){
 }
 
 /* ── 모니터링 ── */
+/* ── 지표 티커 ────────────────────────────────────────────────────────────
+   **고정 5종이다.** 매일 같은 자리에 같은 지표가 있어야 "어제보다 올랐네"가 된다.
+   그날 중요한 것을 고르는 일은 아래 「핵심 지표」 3장이 맡는다 — 역할이 다르다.
+
+   출처는 이미 data.json 에 다 있다. 새로 수집할 것이 없다:
+     원/달러 ← fx    ·  LG전자·KOSPI ← markets  ·  WTI ← wti  ·  구리 ← indicators.json
+
+   > 소재 자리는 프레스·금형 기준으로는 구리보다 **열연**이 맞다. 다만 열연 유통가는
+   > 지금 뉴스에서만 들어와 자동 수집이 안 된다. 자동화되면 이 자리를 바꾼다.
+   ------------------------------------------------------------------------- */
+/* 지표마다 "오르면 좋은가"가 다르다. 여기 없는 지표는 중립으로 둔다 —
+   모르는 것을 색으로 단정하지 않는다. */
+var TK_POLARITY = {
+  'WTI':    -1,   // 유가 상승 = 원가 상승 = 나쁨
+  '구리':    -1,   // 소재 상승 = 나쁨
+  'LG전자':  +1,   // 고객사 주가 = 좋음
+  'KOSPI':  +1,   // 시장 = 좋음
+  '원/달러':  0    // 수입 원가엔 불리, LG 수출 채산성엔 유리 — 한쪽으로 못 정한다
+};
+function _tkClass(label, txt){
+  var pol = TK_POLARITY[label];
+  if(pol === 0 || pol === undefined) return 'flat';
+  var t = String(txt||'');
+  var dir = /▲|\+/.test(t) ? 1 : (/▼|−|-\d/.test(t) ? -1 : 0);
+  if(!dir) return 'flat';
+  return (dir * pol > 0) ? 'good' : 'bad';
+}
+function _tkPct(txt){
+  var m = String(txt||'').match(/[-+]?[\d.]+\s*%p?/);
+  return m ? m[0].replace(/\s+/g,'') : '';
+}
+function renderTicker(d){
+  var box = document.getElementById('ticker'); if(!box) return;
+  var rows = [];
+
+  var krw = (d.fx||[]).find(function(f){ return (f.currency||'')==='KRW'; });
+  if(krw) rows.push({lbl:'원/달러', val:krw.rate_usd, chg:krw.change});
+
+  var mk = d.markets||[];
+  var pick = function(kw){ return mk.find(function(m){ return (m.label||'').indexOf(kw)>=0; }); };
+  var wti = d.wti;
+  if(wti && wti.values && wti.values.length){
+    var last = wti.values[wti.values.length-1];
+    var prev = wti.values.length>1 ? wti.values[wti.values.length-2] : last;
+    var pct = prev ? ((last-prev)/prev*100) : 0;
+    rows.push({lbl:'WTI', val:Number(last).toFixed(2),
+               chg:(pct>=0?'+':'')+pct.toFixed(2)+'%'});
+  }
+  var lg = pick('LG전자');   if(lg) rows.push({lbl:'LG전자', val:lg.value, chg:lg.change});
+  var ks = pick('KOSPI');    if(ks) rows.push({lbl:'KOSPI',  val:ks.value, chg:ks.change});
+
+  // 구리는 indicators.json 에서 비동기로 붙인다(없으면 그냥 빠진다)
+  box.innerHTML = rows.map(function(r){
+    var cls = _tkClass(r.lbl, r.chg), pct = _tkPct(r.chg);
+    return '<div class="tk"><span class="tk-lbl">'+r.lbl+'</span>'+
+           '<span class="tk-val">'+(r.val==null?'—':r.val)+'</span>'+
+           (pct ? '<span class="tk-chg '+cls+'">'+pct+'</span>' : '')+'</div>';
+  }).join('');
+}
+async function appendTickerCopper(){
+  try{
+    var box = document.getElementById('ticker'); if(!box || !box.children.length) return;
+    var r = await fetch('indicators.json?t='+Date.now()); if(!r.ok) return;
+    var j = await r.json();
+    var cu = (j.indicators||[]).find(function(x){ return (x.label||'').indexOf('구리')>=0; });
+    if(!cu) return;
+    var h = (cu.history||[]).filter(function(x){ return x[1]!=null; });
+    if(h.length<2) return;
+    var last=h[h.length-1][1], prev=h[h.length-2][1];
+    var pct=((last-prev)/prev*100);
+    // ⚠ _tkClass 는 '-' 뒤에 숫자를 요구한다. 실제 표기 문자열을 그대로 넘긴다.
+    var pctTxt=(pct>=0?'+':'')+pct.toFixed(2)+'%';
+    var cls=_tkClass('구리', pctTxt);
+    var el=document.createElement('div'); el.className='tk';
+    el.innerHTML='<span class="tk-lbl">구리</span>'+
+      '<span class="tk-val">'+Number(last).toFixed(2)+'</span>'+
+      '<span class="tk-chg '+cls+'">'+pctTxt+'</span>';
+    box.appendChild(el);
+  }catch(e){ /* 티커는 보조 정보다 — 실패해도 본문에 영향 주지 않는다 */ }
+}
+
 function renderMonitoring(pts){
+  if(!document.getElementById('mpt-list')) return;
   document.getElementById('mpt-list').innerHTML=(pts||[]).map(p=>`
     <div class="mpt-row"><div class="mpt-dot"></div><div>${p}</div></div>`).join('');
 }
@@ -892,102 +1222,15 @@ function renderMonitoring(pts){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-let _GLOSS = [];
-const _GL_LATIN = /^[A-Za-z0-9 .\-]+$/;
-
-function _glEsc(t){ return String(t==null?'':t)
-  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function _glRe(m){
-  const e = m.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  // 라틴 약어는 앞뒤 경계를 요구한다 — APF 가 APFx 에 걸리면 안 된다
-  return _GL_LATIN.test(m) ? new RegExp('(?<![A-Za-z0-9])'+e+'(?![A-Za-z0-9])')
-                           : new RegExp(e);
-}
-
-/* 컨테이너 안의 텍스트 노드를 훑어 **용어별 첫 등장 1회만** 감싼다.
-   전부 감싸면 같은 단어에 밑줄이 도배돼 오히려 읽기 나빠진다.
-   한 텍스트 노드에서는 가장 먼저 나오는 용어 하나만 처리한다 — 노드를 쪼개며
-   반복 치환하면 ref 가 꼬이고, 실제로 한 문장에 두 용어가 겹치는 일은 드물다. */
-function annotateTerms(root){
-  if(!root || !_GLOSS.length) return;
-  const done = new Set();
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(n){
-      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-      const p = n.parentElement;
-      if(p && p.closest('.gl-tip,#glossary-section,#gl-pop')) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
-  const nodes = [];
-  for(let n; (n = walker.nextNode()); ) nodes.push(n);
-
-  nodes.forEach(node=>{
-    const txt = node.nodeValue;
-    let best = null;                       // {idx, at, len, hit}
-    _GLOSS.forEach((t,idx)=>{
-      if(done.has(idx)) return;
-      const m = txt.match(_glRe(t.term));
-      if(m && (best===null || m.index < best.at))
-        best = {idx, at:m.index, len:m[0].length, hit:m[0]};
-    });
-    if(!best) return;
-    done.add(best.idx);
-    const span = document.createElement('span');
-    span.innerHTML = _glEsc(txt.slice(0, best.at))
-      + '<span class="gl-tip" tabindex="0" role="button" data-gi="' + best.idx + '">'
-      + _glEsc(best.hit) + '</span>'
-      + _glEsc(txt.slice(best.at + best.len));
-    node.parentNode.replaceChild(span, node);
-  });
-}
-
-function _glPopShow(el){
-  const t = _GLOSS[+el.dataset.gi]; if(!t) return;
-  const pop = document.getElementById('gl-pop'); if(!pop) return;
-  pop.innerHTML = '<div><span class="glp-term">'+_glEsc(t.term)+'</span>'
-    + '<span class="glp-short">'+_glEsc(t.short)+'</span></div>'
-    + '<div class="glp-desc">'+_glEsc(t.desc)+'</div>';
-  pop.classList.add('on'); pop.setAttribute('aria-hidden','false');
-  const r = el.getBoundingClientRect(), pr = pop.getBoundingClientRect();
-  let left = Math.min(Math.max(8, r.left), window.innerWidth - pr.width - 8);
-  let top  = r.bottom + 6;
-  if(top + pr.height > window.innerHeight - 8) top = Math.max(8, r.top - pr.height - 6);
-  pop.style.left = left+'px'; pop.style.top = top+'px';
-}
-function _glPopHide(){
-  const pop = document.getElementById('gl-pop'); if(!pop) return;
-  pop.classList.remove('on'); pop.setAttribute('aria-hidden','true');
-}
-
-/* 데스크톱은 마우스오버, 모바일은 탭. 둘 다 지원한다 —
-   모바일엔 hover 가 없어서 마우스오버만 달면 화면의 절반에서 안 뜬다. */
-document.addEventListener('mouseover', e=>{
-  const el = e.target.closest && e.target.closest('.gl-tip');
-  if(el) _glPopShow(el);
-});
-document.addEventListener('mouseout', e=>{
-  if(e.target.closest && e.target.closest('.gl-tip')) _glPopHide();
-});
-document.addEventListener('click', e=>{
-  const el = e.target.closest && e.target.closest('.gl-tip');
-  if(el){ e.stopPropagation(); _glPopShow(el); }
-  else if(!(e.target.closest && e.target.closest('#gl-pop'))) _glPopHide();
-});
-document.addEventListener('focusin', e=>{
-  const el = e.target.closest && e.target.closest('.gl-tip');
-  if(el) _glPopShow(el);
-});
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') _glPopHide(); });
-window.addEventListener('scroll', _glPopHide, {passive:true});
-window.addEventListener('resize', _glPopHide);
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js 로 옮겼다.
+   index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
+function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 
 /* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
    glossary.json 레지스트리에서 골라 넣는다. 비어 있으면 섹션을 숨긴다. */
 function renderGlossary(items){
   // 긴 용어부터 찾아야 「가이드 포스트」가 「가이드」에 먼저 먹히지 않는다
-  _GLOSS = (items||[]).slice().sort((a,b)=>(b.term||'').length-(a.term||'').length);
+  const _G = window.Annotate ? Annotate.setGlossary(items) : [];
   const sec = document.getElementById('glossary-section');
   const el  = document.getElementById('gl-list');
   if(!sec || !el) return;
@@ -1052,7 +1295,7 @@ function scCardHtml(ind){
     + (hasData ? '<div class="sc-val">'+Scorecard.formatValue(ci.latest,ind.unit)+' <span class="sc-chg '+cls+'">'+chg+'</span></div>'
                  + '<div class="sc-canvas-wrap"><canvas id="sc_ch_'+ind.id+'"></canvas></div>'
                : '<div class="sc-err">데이터 없음'+(ind._error?(' ('+ind._error+')'):'')+'</div>')
-    + (ind.impact ? '<div class="sc-imp">💡 '+ind.impact+'</div>' : '')
+    + (ind.impact ? '<div class="sc-imp">'+ind.impact+'</div>' : '')
     + '<div class="sc-src">출처: '+(ind.source||'')+'</div></div>';
 }
 
@@ -1131,7 +1374,7 @@ async function load(){
       document.getElementById('latest-nav').classList.add('show');
       document.getElementById('archive-banner-wrap').innerHTML=`
         <div class="wrap"><div class="archive-banner">
-          <div><div class="ab-txt">📅 아카이브 열람 중</div>
+          <div><div class="ab-txt"><i data-lucide="calendar-days" class="ic-sm"></i>아카이브 열람 중</div>
           <div class="ab-sub">${fmtDateKr(dt)} 브리핑</div></div>
           <a class="ab-link" href="archive.html">전체 목록</a>
         </div></div>`;
@@ -1182,16 +1425,25 @@ async function load(){
     renderMarkets(d.markets || []);
     renderMonitoring(d.monitoring || []);
     renderGlossary(d.glossary || []);
+    renderTicker(d);
+    appendTickerCopper();
+    if(window.lucide) lucide.createIcons();   // 렌더 후 삽입된 아이콘까지
     // 모든 렌더가 끝난 뒤 화면 텍스트에 용어 툴팁을 붙인다.
     // 뉴스는 필터 전환마다 다시 그리므로 renderNews 안에서도 호출한다.
-    ['summary-text','top3-list','mpt-list','ov-list','news-list','exec-kpi-row']
-      .forEach(id=>annotateTerms(document.getElementById(id)));
+    if(window.Annotate){
+      // 한 줄·TOP3 는 임원이 3~5초에 스캔하는 곳이라 수치를 넉넉히 칠한다.
+      Annotate.run(['summary-text'], {cap:4});   // 문단당 4개
+      Annotate.run(['top3-list'],    {cap:3});
+      // 카드·목록은 이미 숫자가 큼직해서 형광펜이 겹치면 지저분하다 → 용어만
+      Annotate.run(['exec-kpi-row','ov-list'], {termsOnly:true});
+      Annotate.run(['news-list'], {cap:2});   // 목록은 절제한다
+    }
   }catch(e){
     console.error('data.json 로드 실패:', e);
     document.getElementById('bar-date').textContent = '로드 실패';
     document.getElementById('archive-banner-wrap').innerHTML = `
       <div class="wrap"><div class="archive-banner" style="border-color:var(--neg);">
-        <div><div class="ab-txt" style="color:var(--neg);">⚠️ 데이터 로드 실패</div>
+        <div><div class="ab-txt" style="color:var(--neg);"><i data-lucide="triangle-alert" class="ic-sm"></i>데이터 로드 실패</div>
         <div class="ab-sub">해당 날짜의 보고서 파일이 손상되었거나 존재하지 않습니다. (${e.message||e})</div></div>
         <a class="ab-link" href="archive.html">전체 목록</a>
       </div></div>`;

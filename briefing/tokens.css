@@ -1,27 +1,224 @@
-/* briefing/tokens.css — §4-5 디자인 토큰(단일 진실원천) + 다크 토글. index·briefing 공유. */
+/* ═══════════════════════════════════════════════════════════════════════════
+   briefing/tokens.css — 디자인 토큰 단일 진실원천. index·briefing·archive 공유.
+
+   ## 2026-09-03 개편 — 색을 지어내지 않는다
+
+   이전 팔레트는 임의 hex 였고 `--accent:#ff385c` 는 에어비앤비 Rausch 였다.
+   그래서 **밝기 단계가 고르지 않고 다크 팔레트를 손으로 다시 골라야 했다.**
+
+   이제 색은 전부 **Radix Colors @3.0.0 의 12단계 스케일**에서 가져온다.
+   단계마다 쓰임이 정해져 있고, 그 규칙대로 쓰면 명암 대비가 설계상 보장된다.
+
+     1~2  페이지·표면 배경
+     3~5  요소 배경 (배지·강조 블록)
+     6~8  테두리·구분선
+     9~10 솔리드 (채운 배경)
+     11   보조 글자 — 배경 대비 4.5:1 보장
+     12   본문 글자 — 최대 대비
+
+   라이트와 다크가 **같은 단계 번호로 짝을 이룬다.** 그래서 다크 팔레트를
+   따로 고를 필요가 없다 — 이게 이 스케일을 고른 이유다.
+
+   > ⚠ **여기 없는 색을 컴포넌트에 직접 쓰지 마라.** 임의 hex 가 하나 들어오면
+   > 다크모드에서 그 색만 어긋나고, 아무도 그걸 눈치채지 못한다.
+
+   ## 브랜드 빨강은 정체성 전용
+
+   `--brand`(#E5003E)는 **제호 마크와 섹션 라벨(kicker)에만** 쓴다.
+   Economist 지면이 그렇게 한다 — 빨강이 보이면 "여기가 무슨 꼭지인지" 하나만 뜻한다.
+   등락·상태 표시에는 `--neg`·`--pos`(Radix red/grass 11단계)를 쓴다.
+
+   출처: https://www.radix-ui.com/colors  ·  값은 npm @radix-ui/colors@3.0.0 에서 추출
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 :root{
-  --bg:#f7f7f7; --card:#fff;
-  --txt:#222222; --txt-body:#3f3f3f; --txt-sub:#6a6a6a; --txt-lbl:#929292;
-  --bdr:#dddddd; --divider:#ebebeb;
-  --neg:#dc2626; --pos:#16a34a; --info:#428bff; --disc:#166534; --accent:#ff385c; /* airbnb Rausch */
+  /* ── primitive : Radix sand (따뜻한 무채색) ── */
+  --sand-1:#fdfdfc; --sand-2:#f9f9f8; --sand-3:#f1f0ef; --sand-6:#dad9d6;
+  --sand-8:#bcbbb5; --sand-9:#8d8d86; --sand-11:#63635e; --sand-12:#21201c;
+  /* ── primitive : 상태색 (11단계 = 대비 보장 글자색) ── */
+  --red-3:#feebec;  --red-11:#ce2c31;
+  --grass-3:#e9f6e9; --grass-11:#2a7e3b;
+  --blue-3:#e6f4fe;  --blue-11:#0d74ce;
+  --amber-3:#fff7c2; --amber-11:#ab6400;
+
+  /* ── 브랜드 ── */
+  /* ── 신신사 CI (2026-09-03 정정) ──────────────────────────────────────
+     MAIN COLOR = PANTONE 1925M / CMYK M100 Y65.
+     **국문 시그니처 원본(ci_sign02_01.png)에서 샘플링한 #E5003E 가 맞다.**
+     처음엔 shinect_logo.png 를 받아 #D6133C 를 썼는데 그건 SHINECT 브랜드였다.
+     그전에 짐작으로 쓰던 #C8102E 는 아예 근거가 없었다.
+
+     빨강이 둘인 이유 — 원색 #E5003E 는 라이트 배경 대비가 **4.53:1** 로
+     기준(4.5:1)에 겨우 걸린다. 배경이 한 단계만 밝아져도 미달이다.
+     그래서 **로고·마크에는 원색**, **글자에는 명도만 낮춘 #D8003B**(5.00:1)를 쓴다.
+     색상(343.8°)과 채도(100%)가 같아 나란히 놓아도 이질감이 없다. */
+  --brand:#E5003E;            /* 원색 — 로고·마크·채운 배경 */
+  --brand-text:#D8003B;       /* 글자용 — 대비 5.00:1 */
+  --brand-ink:#3E3A39;        /* 로고 먹 — 순검정이 아니다 */
+  --brand-gray:#707070;       /* 로고 회색 */
+  --red:var(--brand-text);     /* 구 이름 유지 — 대부분 글자로 쓰인다 */
+
+  /* ── semantic : 배경·표면 ── */
+  --bg:var(--sand-2);
+  --card:var(--sand-1);
+  --fill:var(--sand-3);        /* 은은한 요소 배경 (INSIGHT 블록 등) */
+
+  /* ── semantic : 글자 ── */
+  --txt:var(--sand-12);
+  --txt-body:#3b3a35;
+  --txt-sub:var(--sand-11);
+  --txt-lbl:var(--sand-9);
+
+  /* ── semantic : 선 ── */
+  --bdr:var(--sand-6);
+  --divider:var(--sand-3);
+
+  /* ── semantic : 상태 ── */
+  --neg:var(--red-11);   --neg-bg:var(--red-3);
+  --pos:var(--grass-11); --pos-bg:var(--grass-3);
+  --info:var(--blue-11); --info-bg:var(--blue-3);
+  --warn:var(--amber-11);--warn-bg:var(--amber-3);
+  --disc:var(--grass-11);
+  --accent:var(--brand-text);  /* 섹션 라벨 등 글자 자리 */
+
+  /* ── 티커 (제호 아래 지표 띠) ── */
+  --ticker-bg:var(--sand-12); --ticker-fg:var(--sand-1); --ticker-lbl:var(--sand-9);
+
+  /* ── 타이포 스케일 (한글 기준) ── */
+  --lh-body:1.75;              /* 한글은 라틴보다 넉넉해야 읽힌다 */
+  --lh-tight:1.35;
+
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
 }
+
+/* ── 다크 : 같은 단계 번호의 Radix 다크 스케일 ── */
 [data-theme="dark"]{
-  --bg:#0f172a; --card:#1e293b;
-  --txt:#f1f5f9; --txt-body:#e2e8f0; --txt-sub:#94a3b8; --txt-lbl:#64748b;
-  --bdr:#334155; --divider:#1e293b;
-  --neg:#f87171; --pos:#4ade80; --info:#60a5fa; --disc:#4ade80; --accent:#ff5a7a;
+  --sand-1:#111110; --sand-2:#191918; --sand-3:#222221; --sand-6:#3b3a37;
+  --sand-8:#62605b; --sand-9:#6f6d66; --sand-11:#b5b3ad; --sand-12:#eeeeec;
+  --red-3:#3b1219;  --red-11:#ff9592;
+  --grass-3:#1b2a1e; --grass-11:#71d083;
+  --blue-3:#0d2847;  --blue-11:#70b8ff;
+  --amber-3:#302008; --amber-11:#ffca16;
+
+  --bg:var(--sand-1);
+  --card:var(--sand-2);
+  --fill:var(--sand-3);
+  --txt-body:#d0cfcb;
+
+  /* 다크에서 브랜드 빨강(#E5003E)은 배경 대비가 3:1 미만이라 글자로 못 쓴다.
+     정체성 색은 마크 배경에만 남기고, 글자로 쓰는 자리는 red-11 로 바꾼다. */
+  --red:var(--red-11);
+  --accent:var(--red-11);
+  --ticker-bg:#000000; --ticker-fg:var(--sand-12); --ticker-lbl:var(--sand-9);
 }
+
+/* ═══════════ 기본 ═══════════ */
 *{box-sizing:border-box}
-body{font-family:-apple-system,"Pretendard","Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--txt);margin:0}
-.card{background:var(--card);border:1px solid var(--bdr);border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 16px rgba(0,0,0,.05);padding:14px}
-.card.accent{border-left:4px solid var(--accent)}
-.lbl{font-size:8.5px;font-weight:800;text-transform:uppercase;color:var(--txt-lbl);letter-spacing:.04em}
-.val{font-size:20px;font-weight:800;color:var(--txt)}
-.sub{font-size:12px;color:var(--txt-sub)}
-.chip{padding:6px 12px;border:1px solid var(--bdr);background:var(--card);border-radius:999px;font-size:12px;color:var(--txt-body);cursor:pointer;white-space:nowrap}
-.chip.active{background:var(--txt);color:var(--bg);border-color:var(--txt)}
-.bdg{font-size:9px;padding:1px 6px;border-radius:4px;font-weight:700}
-.bdg.neg{background:rgba(220,38,38,.12);color:var(--neg)} .bdg.pos{background:rgba(22,163,74,.14);color:var(--pos)}
-.bdg.disc{background:rgba(22,101,52,.14);color:var(--disc)} .bdg.info{background:rgba(37,99,235,.12);color:var(--info)}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,
+              'Apple SD Gothic Neo',system-ui,sans-serif;
+  background:var(--bg); color:var(--txt); margin:0;
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+/* 숫자는 어디서든 자릿수가 흔들리지 않게 */
+.val,.num,.kpi-value,.tick-value,td,th,time{font-variant-numeric:tabular-nums}
+
+/* ═══════════ 컴포넌트 ═══════════ */
+.card{
+  background:var(--card); border:1px solid var(--bdr); border-radius:10px;
+  padding:16px; box-shadow:none;      /* 그림자 제거 — 선으로 층을 만든다 */
+}
+.card.accent{border-left:3px solid var(--accent)}
+
+/* 섹션 라벨 — Axios "Catch up quick" 방식. 이모지 대신 짧은 선 */
+.lbl{
+  font-size:11px; font-weight:700; color:var(--txt-lbl);
+  letter-spacing:.09em; text-transform:uppercase;
+}
+.kicker{
+  display:flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:700; letter-spacing:.09em;
+  color:var(--accent); margin-bottom:8px;
+}
+.kicker::after{content:''; flex:1; height:1px; background:var(--bdr)}
+
+.val{font-size:20px;font-weight:700;color:var(--txt);letter-spacing:-.02em}
+.sub{font-size:12.5px;color:var(--txt-sub)}
+
+.chip{
+  padding:6px 12px; border:1px solid var(--bdr); background:var(--card);
+  border-radius:999px; font-size:12.5px; color:var(--txt-body); cursor:pointer;
+  white-space:nowrap; transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.chip:hover{border-color:var(--sand-8)}
+.chip.active{background:var(--txt);color:var(--card);border-color:var(--txt);font-weight:600}
+
+.bdg{font-size:10px;padding:1.5px 6px;border-radius:4px;font-weight:700}
+.bdg.neg{background:var(--neg-bg);color:var(--neg)}
+.bdg.pos{background:var(--pos-bg);color:var(--pos)}
+.bdg.disc{background:var(--pos-bg);color:var(--disc)}
+.bdg.info{background:var(--info-bg);color:var(--info)}
+.bdg.warn{background:var(--warn-bg);color:var(--warn)}
+
+/* 한국 관행 — 상승은 빨강, 하락은 파랑 */
 .up{color:var(--neg)} .dn{color:var(--info)} .fl{color:var(--txt-sub)}
-.theme-toggle{position:fixed;top:8px;right:8px;z-index:50;width:34px;height:34px;border-radius:999px;border:1px solid var(--bdr);background:var(--card);color:var(--txt);cursor:pointer;font-size:15px}
+
+.theme-toggle{
+  position:fixed;top:8px;right:8px;z-index:50;width:34px;height:34px;
+  border-radius:999px;border:1px solid var(--bdr);background:var(--card);
+  color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .18s ease;
+}
+.theme-toggle:hover{background:var(--fill)}
+.theme-toggle svg{width:16px;height:16px;stroke-width:2}
+
+/* Lucide 아이콘 기본 — 이모지를 대체한다 */
+.ic{width:14px;height:14px;stroke-width:2;vertical-align:-2px;flex-shrink:0}
+.ic-sm{width:12px;height:12px;stroke-width:2.2;vertical-align:-1px;flex-shrink:0}
+.ic-lg{width:16px;height:16px;stroke-width:2;vertical-align:-3px;flex-shrink:0}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   용어 툴팁 · 수치 하이라이트 (briefing/annotate.js 와 짝)
+   briefing · index · translated 가 함께 쓴다.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 어려운 용어 — 점선 밑줄. 실선은 링크로 오해된다 */
+.gl-tip{border-bottom:1px dotted var(--accent);cursor:help;}
+.gl-tip:focus{outline:2px solid var(--accent);outline-offset:1px;border-radius:2px;}
+
+#gl-pop{
+  position:fixed;z-index:9999;display:none;
+  max-width:min(300px,calc(100vw - 24px));
+  background:var(--card);color:var(--txt);
+  border:1px solid var(--bdr);border-radius:8px;
+  padding:10px 12px;font-size:12px;line-height:1.6;
+  box-shadow:0 6px 20px rgba(0,0,0,.14);
+}
+#gl-pop.on{display:block;}
+#gl-pop .glp-term{font-weight:700;font-size:12.5px;}
+#gl-pop .glp-short{color:var(--accent);font-weight:600;margin-left:6px;font-size:11.5px;}
+#gl-pop .glp-desc{color:var(--txt-sub);margin-top:5px;}
+
+/* 수치 하이라이트 — 형광펜 자국.
+   배경을 통째로 칠하면 글자가 뜨고 인쇄에서 뭉갠다. 밑에서 60%만 올린다. */
+.hl{
+  background:linear-gradient(to top,
+    var(--hl-bg) 0, var(--hl-bg) 58%, transparent 58%);
+  font-weight:600;color:var(--txt);
+  padding:0 1px;border-radius:1px;
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+:root{ --hl-bg:#FCE9AE; }                 /* amber 계열 — 상태색(빨강·초록)과 안 겹친다 */
+[data-theme="dark"]{ --hl-bg:rgba(255,202,22,.24); }
+
+@media print{
+  .hl{background:none;text-decoration:underline;text-underline-offset:3px;}
+  .gl-tip{border-bottom:none;}
+}
