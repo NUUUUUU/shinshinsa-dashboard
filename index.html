@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
 <link rel="stylesheet" href="briefing/tokens.css?v=20260904a">
+<link rel="stylesheet" href="briefing/components.css?v=20260904a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -21,27 +22,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <script src="scorecard/render.js?v=20260904a"></script>
 <style>
-/* ── 워룸 전체화면 대시보드 전용 레이아웃·컴포넌트 (briefing/tokens.css 변수 사용) ── */
-*{margin:0;padding:0;}
 html,body{height:100%;margin:0;overflow:hidden;}
-html{font-size:16px;}
-body{line-height:1.5;display:flex;flex-direction:column;}
-
-/* Top bar */
-.bar-row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;}
-.bar-row-1{align-items:flex-end;}
-.bar-logo{height:26px;width:auto;display:block;flex-shrink:0;}
-.bar-logo-wrap{display:flex;align-items:center;padding:3px 7px;border-radius:4px;}
-[data-theme="dark"] .bar-logo-wrap{background:#fff;}
 .byline{font-size:11.5px;color:var(--txt-lbl);}
-.top-bar{background:var(--card);border-bottom:1px solid var(--bdr);
-  flex-direction:column;gap:7px;align-items:stretch;
-  padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.bar-left{display:flex;align-items:center;gap:14px;}
-.bar-title{font-size:18px;font-weight:700;color:var(--txt);letter-spacing:-.02em;}
-.bar-date{font-size:13px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);}
-.conf{font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:3px;letter-spacing:.08em;
-  background:var(--fill);color:var(--txt-lbl);border:1px solid var(--bdr);}
 .exec-hero-inline{font-size:13px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);
   max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .exec-hero-inline b{color:var(--txt);font-weight:700;}
@@ -55,7 +37,6 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .oneline-label::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
 .oneline-text{font-size:14.5px;font-weight:500;color:var(--txt);line-height:1.75;
   letter-spacing:-.01em;white-space:pre-line;}
-.bar-right{display:flex;align-items:center;gap:8px;}
 .nav-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;min-height:36px;
   border-radius:7px;font-size:13px;font-weight:600;background:var(--card);color:var(--txt);
   text-decoration:none;border:1px solid var(--sand-8);white-space:nowrap;
@@ -70,175 +51,43 @@ body{line-height:1.5;display:flex;flex-direction:column;}
   padding:10px;overflow:hidden;}
 .col{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden;}
 .col-scroll{overflow-y:auto;min-height:0;}
-
-.sec-label{font-size:13.5px;font-weight:700;color:var(--accent);
-  letter-spacing:.7px;margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-shrink:0;}
-.sec-dot{display:none;}
-.sec-label::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
 .card{margin-bottom:0;padding:14px 15px;display:flex;flex-direction:column;min-height:0;}
 .card-fixed{flex-shrink:0;}
 .card-grow{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;}
 
 /* ★ Executive TOP3 card */
 .top3-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0;}
-.top3-item{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;
-  background:var(--bg);border-radius:9px;border:1px solid var(--bdr);flex-shrink:0;}
-.rank-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;}
 .r1{background:rgba(220,38,38,.12);color:var(--neg);}
 .r2{background:rgba(245,158,11,.15);color:var(--accent);}
-.r3{background:rgba(37,99,235,.1);color:var(--info);}
-.top3-title{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:3px;line-height:1.3;}
-.top3-reason{font-size:11.5px;color:var(--txt-sub);line-height:1.5;}
-
-/* KPI cells */
-.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;flex-shrink:0;}
-.kpi-cell{background:transparent;border-radius:0;padding:10px 10px 10px 0;
-  border-left:none;border-top:1px solid var(--bdr);}
-.kpi-cell + .kpi-cell{border-left:1px solid var(--divider);padding-left:10px;}
-.kl{font-size:11px;color:var(--txt-lbl);margin-bottom:4px;letter-spacing:.05em;font-weight:500;}
-.kv{font-size:20px;font-weight:800;color:var(--txt);line-height:1.1;}
-.kv sup{font-size:11px;font-weight:400;color:var(--txt-sub);}
-.kc{font-size:11px;margin-top:2px;font-weight:600;}
-.kc.pos{color:var(--pos);} .kc.neg{color:var(--neg);} .kc.neu,.kc.gld{color:var(--accent);}
-.ki{font-size:10px;color:var(--txt-sub);line-height:1.4;margin-top:5px;border-top:1px solid var(--divider);padding-top:4px;}
-
-/* Markets (글로벌 시장 지표 — 컴팩트) */
-.mkt-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0;}
-.mkt-cell{background:var(--bg);border-radius:8px;padding:7px 9px;}
-.mkt-lbl{font-size:10px;color:var(--txt-lbl);margin-bottom:2px;}
-.mkt-val{font-size:13.5px;font-weight:700;}
-.mkt-val.pos{color:var(--pos);} .mkt-val.neg{color:var(--neg);} .mkt-val.gld{color:var(--accent);}
-
-/* CEO schedule */
-.sched-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--divider);}
-.sched-row:last-child{border-bottom:none;padding-bottom:0;}
-.sched-time{font-size:11px;font-weight:700;color:var(--neg);min-width:82px;flex-shrink:0;}
-.sched-title{font-size:13px;color:var(--txt);}
-.sched-loc{font-size:10px;color:var(--txt-lbl);margin-top:1px;}
-
-/* News filter chips */
-.news-hdr-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;flex-shrink:0;}
-.lg-links{display:none;align-items:center;gap:6px;}
-.lg-active .lg-links{display:flex;}
-.lg-lnk{font-size:11px;font-weight:600;color:var(--info);padding:2px 8px;border-radius:4px;
-  background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);text-decoration:none;}
-.fbar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;flex-shrink:0;}
-.fb{padding:8px 14px;min-height:38px;border-radius:20px;font-size:13px;font-weight:600;
-  border:1px solid var(--sand-8);background:var(--card);color:var(--txt-sub);cursor:pointer;white-space:nowrap;}
-.fb.active{background:var(--txt);color:var(--bg);border-color:var(--txt);}
-.fb[data-f="lg"].active{background:var(--info);border-color:var(--info);color:var(--card);}
-.fb.empty{opacity:.35;pointer-events:none;}
-.fbdg{font-size:10px;padding:0 5px;border-radius:8px;background:var(--fill);color:var(--txt-sub);}
-.fb.active .fbdg{background:rgba(255,255,255,.22);color:inherit;}
-
-/* News cards — 기사 열 (내부 스크롤만 발생) */
-.news-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0;flex:1;}
-.nc{background:transparent;border:none;border-bottom:1px solid var(--bdr);
-  border-radius:0;padding:14px 0;}
-.nc-hd{display:flex;gap:8px;align-items:flex-start;}
-.star{font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;flex-shrink:0;margin-top:2px;}
-.star.s3{background:var(--neg-bg);color:var(--neg);}
-.star.s2{background:var(--warn-bg);color:var(--warn);}
-.star.s1{background:var(--fill);color:var(--txt-lbl);}
-.nc-title{font-size:14.5px;font-weight:600;color:var(--txt);line-height:1.45;letter-spacing:-.01em;}
-.nc-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.nc-src{font-size:10.5px;color:var(--txt-lbl);}
-.nc-link{font-size:11px;color:var(--txt-sub);text-decoration:none;padding:3px 8px;border-radius:4px;
-  border:1px solid var(--bdr);background:var(--card);border-color:rgba(37,99,235,.2);background:rgba(37,99,235,.08);white-space:nowrap;}
-.nc-body{font-size:13px;color:var(--txt-body);line-height:1.7;}
-.nc-impact{font-size:12px;background:var(--fill);border-left:2px solid var(--bdr);
-  padding:5px 10px;border-radius:0 5px 5px 0;color:var(--txt-sub);line-height:1.5;}
-.nc-ins-lbl{display:block;font-size:10px;font-weight:700;color:var(--txt-lbl);
-  letter-spacing:.09em;margin-bottom:3px;white-space:nowrap;}
-.tags{display:flex;gap:5px;flex-wrap:wrap;}
-.tag{font-size:10.5px;padding:2px 8px;border-radius:4px;background:var(--fill);color:var(--txt-sub);border:1px solid var(--bdr);}
-
-/* Overseas */
-.ov-card{padding:14px 0;border-bottom:1px solid var(--bdr);}
-.ov-card:last-child{border-bottom:none;padding-bottom:0;}
-.ov-flag{font-size:17px;line-height:1;flex-shrink:0;margin-top:2px;}
-.ov-info{flex:1;min-width:0;}
-/* 국가명이 작아 어느 나라인지 안 보였다 → 제목 크기로 올리고 상태를 같은 행에 둔다 */
-.ov-name{font-size:17px;font-weight:700;color:var(--txt);letter-spacing:-.02em;line-height:1.2;}
-.ov-head{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
-.ov-inds{font-size:10.5px;color:var(--accent);font-weight:600;margin-bottom:2px;}
-.ov-sum{font-size:11.5px;color:var(--txt-sub);line-height:1.45;white-space:pre-line;}
-.os{font-size:11px;font-weight:700;padding:3px 9px;border-radius:4px;flex-shrink:0;letter-spacing:.02em;}
-.os.g{background:rgba(22,163,74,.1);color:var(--pos);}
-.os.w{background:rgba(245,158,11,.12);color:var(--accent);}
-.os.d{background:rgba(220,38,38,.1);color:var(--neg);}
-
-/* FX */
-.fx-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
-  padding:13px 0;border-bottom:1px solid var(--bdr);}
-.fx-row:last-child{border-bottom:none;padding-bottom:0;}
-.fx-left{display:flex;align-items:center;gap:8px;}
-.fx-flag{display:none;}
-.fx-asof{font-size:11px;color:var(--txt-lbl);margin:-4px 0 8px;}
-.fx-name{font-size:15px;font-weight:700;color:var(--txt);letter-spacing:-.01em;white-space:nowrap;}
-.fx-country{display:none;}
-.fx-spark{display:flex;justify-content:center;align-items:center;min-width:0;position:relative;}
-.fx-spark svg{width:100%;height:44px;max-width:220px;}
-.fx-right{text-align:right;}
-.fx-val{font-size:19px;font-weight:700;color:var(--txt);letter-spacing:-.03em;
-  font-variant-numeric:tabular-nums;line-height:1.15;text-align:right;}
-.fx-chg{font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;margin-top:2px;}
-.fx-chg.pos{color:var(--pos);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);}
-.fx-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;
-  background:var(--txt);color:var(--bg);font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;
-  white-space:nowrap;pointer-events:none;z-index:50;display:none;box-shadow:0 2px 8px rgba(0,0,0,.2);}
-.fx-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:4px solid transparent;border-top-color:var(--txt);}
-
-/* Monitoring */
-.mpt-row{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--divider);font-size:12.5px;color:var(--txt);}
-.mpt-row:last-child{border-bottom:none;padding-bottom:0;}
-.mpt-dot{width:5px;height:5px;border-radius:50%;background:var(--neg);flex-shrink:0;margin-top:6px;}
-
-/* ── §5 지표 패널: 스코어카드 임베드 (카테고리 카드 그리드 + 미니 라인차트) ── */
-.sc-toolbar{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;flex-shrink:0;}
-.sc-toolbar .lbl{font-size:10px;color:var(--txt-lbl);font-weight:700;}
-.sc-range-btn,.sc-country-btn{min-height:34px;font-weight:600;padding:7px 12px;border:1px solid var(--bdr);background:var(--card);border-radius:6px;
-  font-size:10.5px;cursor:pointer;color:var(--txt-sub);}
-.sc-range-btn.active,.sc-country-btn.active{background:var(--txt);color:var(--bg);border-color:var(--txt);}
-.sc-body{overflow-y:auto;min-height:0;flex:1;}
-.sc-sct{font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--accent);
-  margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--bdr);}
-.sc-sct:first-child{margin-top:0;}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;}
-.sc-card{border:1px solid var(--bdr);border-radius:8px;padding:10px 11px;background:var(--card);}
-.sc-card h4{margin:0;font-size:11px;font-weight:700;color:var(--txt);display:flex;justify-content:space-between;align-items:center;gap:4px;}
-.sc-bdg{font-size:8px;padding:1px 5px;border-radius:4px;white-space:nowrap;}
-.sc-bdg.obs{background:rgba(22,163,74,.14);color:var(--pos);} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);}
-.sc-val{font-size:15px;font-weight:800;color:var(--txt);margin:2px 0 1px;}
-.sc-chg{font-size:10px;font-weight:700;}
-.sc-chg.up{color:var(--neg);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);}
-.sc-canvas-wrap{height:100px;position:relative;margin-top:4px;}
-.sc-imp{font-size:10.5px;color:var(--txt-sub);background:var(--fill);border-radius:5px;padding:4px 7px;margin-top:6px;line-height:1.4;}
-.sc-src{font-size:8.5px;color:var(--txt-lbl);margin-top:4px;}
-.sc-err{font-size:9.5px;color:var(--neg);background:rgba(220,38,38,.08);border-radius:5px;padding:3px 6px;margin-top:4px;}
-
-/* Utility */
-.empty-msg{text-align:center;padding:16px;font-size:11px;color:var(--txt-lbl);
-  border:1px dashed var(--bdr);border-radius:10px;}
-.skeleton{background:var(--divider);border-radius:6px;height:14px;margin:4px 0;animation:pulse 1.4s ease-in-out infinite;}
+.r3{background:rgba(37,99,235,.1);color:var(--info);} .kc.neg{color:var(--neg);} .kc.neu,.kc.gld{color:var(--accent);} .mkt-val.neg{color:var(--neg);} .mkt-val.gld{color:var(--accent);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.up{color:var(--neg);} .dn{color:var(--info);} .fl{color:var(--txt-sub);}
+ .dn{color:var(--info);} .fl{color:var(--txt-sub);}
 
-/* 뉴스 국가별 헤더 + TOP3 요약/INSIGHT/ACTION 뱃지 (검수 피드백 반영) */
-.news-region-hdr{font-weight:700;font-size:11.5px;color:var(--accent);letter-spacing:.09em;
-  margin:18px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
-.news-region-hdr:first-child{margin-top:0;}
-.top3-reason .tr-seg{display:block;margin-top:5px;line-height:1.5;}
-.top3-reason .tr-seg.tr-lead{margin-top:0;}
-.top3-reason .tr-seg.tr-trend{color:var(--txt-lbl);font-size:.95em;}
-.tr-label{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.03em;
-  padding:1px 6px;border-radius:4px;margin-right:5px;vertical-align:middle;}
-.tr-lead .tr-label{background:var(--divider);color:var(--txt-lbl);}
-.tr-impact .tr-label{background:rgba(37,99,235,.12);color:var(--info);}
-.tr-action .tr-label{background:rgba(220,38,38,.1);color:var(--neg);}
-.tr-trend .tr-label{background:rgba(245,158,11,.14);color:var(--accent);}
+
+/* ═══════════════════════════════════════════════════════════════════
+   대시보드 전용 레이아웃 override
+   3칸이 각각 스크롤되는 구조라 이 속성들만 컴포넌트와 달라야 한다.
+   ⛔ 여기에 글자 크기·색·여백을 추가하지 마라 — components.css 를 고쳐라.
+   ═══════════════════════════════════════════════════════════════════ */
+.fb{min-height:38px;}
+.fbar{flex-shrink:0;}
+.fx-spark svg{height:44px;}
+.kpi-row{grid-template-columns:repeat(3,1fr);flex-shrink:0;}
+.mkt-grid{flex-shrink:0;}
+.mpt-dot{height:5px;}
+.news-hdr-row{flex-shrink:0;}
+.news-list{overflow-y:auto;min-height:0;flex:1;}
+.ov-flag{flex-shrink:0;}
+.rank-badge{height:22px;display:flex;}
+.sc-body{overflow-y:auto;min-height:0;flex:1;}
+.sc-canvas-wrap{height:100px;}
+.sc-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}
+.sc-range-btn,.sc-country-btn{min-height:34px;}
+.sc-toolbar{flex-shrink:0;}
+.sec-label{flex-shrink:0;}
+.top-bar{flex-shrink:0;}
+.top3-item{flex-shrink:0;}
+body{display:flex;flex-direction:column;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
 <script src="briefing/annotate.js?v=20260904a"></script>
