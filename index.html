@@ -6,7 +6,7 @@
 <title>신신사 일일 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=20260903a">
+<link rel="stylesheet" href="briefing/tokens.css?v=20260904a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -17,9 +17,9 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=20260903a"></script>
+<script src="briefing/render.js?v=20260904a"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=20260903a"></script>
+<script src="scorecard/render.js?v=20260904a"></script>
 <style>
 /* ── 워룸 전체화면 대시보드 전용 레이아웃·컴포넌트 (briefing/tokens.css 변수 사용) ── */
 *{margin:0;padding:0;}
@@ -39,9 +39,9 @@ body{line-height:1.5;display:flex;flex-direction:column;}
   padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .bar-left{display:flex;align-items:center;gap:14px;}
 .bar-title{font-size:18px;font-weight:700;color:var(--txt);letter-spacing:-.02em;}
-.bar-date{font-size:12.5px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);}
-.conf{font-size:10px;font-weight:700;padding:2px 9px;border-radius:3px;letter-spacing:.6px;
-  background:rgba(220,38,38,.1);color:var(--neg);border:1px solid rgba(220,38,38,.25);}
+.bar-date{font-size:13px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);}
+.conf{font-size:9.5px;font-weight:600;padding:3px 7px;border-radius:3px;letter-spacing:.08em;
+  background:var(--fill);color:var(--txt-lbl);border:1px solid var(--bdr);}
 .exec-hero-inline{font-size:13px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);
   max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .exec-hero-inline b{color:var(--txt);font-weight:700;}
@@ -75,7 +75,7 @@ body{line-height:1.5;display:flex;flex-direction:column;}
   letter-spacing:.7px;margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-shrink:0;}
 .sec-dot{display:none;}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
-.card{margin-bottom:0;padding:12px 14px;display:flex;flex-direction:column;min-height:0;}
+.card{margin-bottom:0;padding:14px 15px;display:flex;flex-direction:column;min-height:0;}
 .card-fixed{flex-shrink:0;}
 .card-grow{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;}
 
@@ -96,7 +96,7 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .kpi-cell{background:transparent;border-radius:0;padding:10px 10px 10px 0;
   border-left:none;border-top:1px solid var(--bdr);}
 .kpi-cell + .kpi-cell{border-left:1px solid var(--divider);padding-left:10px;}
-.kl{font-size:10px;color:var(--txt-lbl);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;}
+.kl{font-size:11px;color:var(--txt-lbl);margin-bottom:4px;letter-spacing:.05em;font-weight:500;}
 .kv{font-size:20px;font-weight:800;color:var(--txt);line-height:1.1;}
 .kv sup{font-size:11px;font-weight:400;color:var(--txt-sub);}
 .kc{font-size:11px;margin-top:2px;font-weight:600;}
@@ -127,7 +127,7 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .fb{padding:8px 14px;min-height:38px;border-radius:20px;font-size:13px;font-weight:600;
   border:1px solid var(--sand-8);background:var(--card);color:var(--txt-sub);cursor:pointer;white-space:nowrap;}
 .fb.active{background:var(--txt);color:var(--bg);border-color:var(--txt);}
-.fb[data-f="lg"].active{background:var(--info);border-color:var(--info);color:#fff;}
+.fb[data-f="lg"].active{background:var(--info);border-color:var(--info);color:var(--card);}
 .fb.empty{opacity:.35;pointer-events:none;}
 .fbdg{font-size:10px;padding:0 5px;border-radius:8px;background:var(--fill);color:var(--txt-sub);}
 .fb.active .fbdg{background:rgba(255,255,255,.22);color:inherit;}
@@ -170,17 +170,20 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .os.d{background:rgba(220,38,38,.1);color:var(--neg);}
 
 /* FX */
-.fx-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--divider);}
+.fx-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:13px 0;border-bottom:1px solid var(--bdr);}
 .fx-row:last-child{border-bottom:none;padding-bottom:0;}
 .fx-left{display:flex;align-items:center;gap:8px;}
 .fx-flag{display:none;}
 .fx-asof{font-size:11px;color:var(--txt-lbl);margin:-4px 0 8px;}
-.fx-name{font-size:14px;font-weight:700;color:var(--txt);letter-spacing:-.01em;white-space:nowrap;}
+.fx-name{font-size:15px;font-weight:700;color:var(--txt);letter-spacing:-.01em;white-space:nowrap;}
 .fx-country{display:none;}
-.fx-spark{flex:1;display:flex;justify-content:center;align-items:center;margin:0 8px;min-width:80px;position:relative;}
+.fx-spark{display:flex;justify-content:center;align-items:center;min-width:0;position:relative;}
+.fx-spark svg{width:100%;height:44px;max-width:220px;}
 .fx-right{text-align:right;}
-.fx-val{font-size:14px;font-weight:700;color:var(--txt);}
-.fx-chg{font-size:10.5px;}
+.fx-val{font-size:19px;font-weight:700;color:var(--txt);letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;line-height:1.15;text-align:right;}
+.fx-chg{font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;margin-top:2px;}
 .fx-chg.pos{color:var(--pos);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);}
 .fx-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;
   background:var(--txt);color:var(--bg);font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;
@@ -238,7 +241,8 @@ body{line-height:1.5;display:flex;flex-direction:column;}
 .tr-trend .tr-label{background:rgba(245,158,11,.14);color:var(--accent);}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
-<script src="briefing/annotate.js?v=20260903a"></script>
+<script src="briefing/annotate.js?v=20260904a"></script>
+<script src="briefing/charts.js?v=20260904a"></script>
 <script>
 /* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
 document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
@@ -384,6 +388,9 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
     document.documentElement.dataset.theme = next;
     localStorage.setItem('theme', next);
     updateIcon();
+    /* 그래프는 그릴 때 CSS 변수를 읽어 색을 굳힌다 → 테마가 바뀌면 다시 그려야 한다.
+       안 그러면 다크에서 선만 라이트 색으로 남는다 (2026-09-04 실측). */
+    if(window.__redrawCharts) window.__redrawCharts();
   });
 })();
 
@@ -491,6 +498,11 @@ function renderSched(sched){
 }
 
 /* ── 뉴스 (Briefing.filterNews + Briefing.stars) ── */
+/* 테마 전환 시 그래프 다시 그리기 — 색을 CSS 변수에서 읽기 때문이다. */
+window.__redrawCharts = function(){
+  try{ if(window.__lastFX && window.__lastFX.length) renderFX(window.__lastFX); }catch(e){}
+  try{ if(typeof scRender === 'function') scRender(); }catch(e){}
+};
 function _annotateNews(){
   if(window.Annotate) Annotate.run(['news-list'], {cap:2});
 }
@@ -614,30 +626,13 @@ function fxMockHistory(baseStr, changeStr, currency){
     return main + Math.sin(i*1.4+seed*0.07)*base*0.003;
   });
 }
+/* 구현은 briefing/charts.js 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
-  const W=210,H=46,PX=6,PY=7;
-  const min=Math.min(...values),max=Math.max(...values),range=max-min||values[0]*0.001||1,n=values.length;
-  const colorHex=isNeg?'#dc2626':'#16a34a';
-  const px=i=>PX+i/(n-1)*(W-PX*2), py=v=>PY+(1-(v-min)/range)*(H-PY*2);
-  const pts=values.map((v,i)=>({x:px(i),y:py(v)}));
-  let d=`M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
-  for(let i=1;i<n;i++){
-    const cpx=((pts[i-1].x+pts[i].x)/2).toFixed(1);
-    d+=` C ${cpx} ${pts[i-1].y.toFixed(1)}, ${cpx} ${pts[i].y.toFixed(1)}, ${pts[i].x.toFixed(1)} ${pts[i].y.toFixed(1)}`;
-  }
-  const fillD=`${d} L ${pts[n-1].x.toFixed(1)} ${H} L ${pts[0].x.toFixed(1)} ${H} Z`;
-  const dots=pts.map(({x,y},i)=>i===n-1
-    ?`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${colorHex}"/>`
-    :`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${colorHex}" opacity="0.4"/>`
-  ).join('');
-  return `<svg id="fxsp-${idx}" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="touch-action:none;cursor:pointer;overflow:visible;">
-    <rect x="0" y="0" width="${W}" height="${H}" fill="transparent" pointer-events="all"/>
-    <path d="${fillD}" fill="${colorHex}" opacity="0.09"/>
-    <path d="${d}" fill="none" stroke="${colorHex}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    ${dots}
-  </svg>`;
+  return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
+
 function renderFX(items){
+  window.__lastFX = items || [];   // 테마 전환 시 다시 그리려면 원본이 필요하다
   _fxSeries=[];
   document.getElementById('fx-list').innerHTML=(items||[]).map((f,i)=>{
     const _h=f.history;
@@ -699,25 +694,14 @@ const SC_CATEGORY_ORDER = ["환율","원가·원자재","시장·지수","경기
 const SC_ACCENT = { "원가·원자재":"#dc2626", "환율":"#2563eb", "시장·지수":"#0891b2", "경기·심리":"#0d9488",
                     "제조업":"#0284c7", "금융·물가":"#7c3aed", "무역":"#16a34a", "국가리스크":"#b45309" };
 let SC_RANGE = 24, SC_COUNTRY = 'GLOBAL', SC_ASOF = null, SC_DATA = null;
-const SC_CHARTS = {};
+const SC_CHARTS = window.BriefingCharts ? BriefingCharts.charts : {};  // 공용 모듈이 관리한다
 
 function scDrawChart(canvasId, points, color, neutral, unit){
-  const ctx = document.getElementById(canvasId); if(!ctx) return;
-  if(SC_CHARTS[canvasId]) SC_CHARTS[canvasId].destroy();
-  const labels = points.map(p=>p[0]), values = points.map(p=>p[1]), obs = points.map(p=>p[2]);
-  const ds = [{ data:values, borderColor:color, backgroundColor:color+'1e', tension:0.2,
-    pointStyle: obs.map(o=>o?'circle':'rectRot'),
-    pointRadius: obs.map(()=> points.length>60?0:2),
-    pointBackgroundColor: obs.map(o=>o?color:'rgba(156,163,175,0.7)'),
-    fill:true, order:2, borderWidth:1.5 }];
-  if(neutral!=null) ds.push({ data:labels.map(()=>neutral), borderColor:'#9ca3af', borderDash:[5,4], borderWidth:1, pointRadius:0, fill:false, order:1 });
-  SC_CHARTS[canvasId] = new Chart(ctx, { type:'line', data:{labels,datasets:ds},
-    options:{ responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{
-        afterLabel:(c)=> c.datasetIndex===0 ? (obs[c.dataIndex]?'● 관측':'◇ 추정') : null }}},
-      scales:{ x:{ ticks:{font:{size:8},color:'#9ca3af',maxRotation:0,autoSkip:true,maxTicksLimit:5}, grid:{display:false} },
-               y:{ ticks:{font:{size:8},color:'#9ca3af',callback:v=>Scorecard.formatValue(v,'')}, grid:{color:'rgba(128,128,128,.12)'} } } } });
+  if(!window.BriefingCharts) return;
+  BriefingCharts.miniLine(canvasId, points, color, neutral, unit,
+    function(v){ return Scorecard.formatValue(v,''); });
 }
+
 
 function scCardHtml(ind){
   const ci = Scorecard.changeInfo(ind.history);
