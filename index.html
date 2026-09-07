@@ -6,8 +6,8 @@
 <title>신신사 일일 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=20260904a">
-<link rel="stylesheet" href="briefing/components.css?v=20260904a">
+<link rel="stylesheet" href="briefing/tokens.css?v=20260907a">
+<link rel="stylesheet" href="briefing/components.css?v=20260907a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -18,9 +18,9 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=20260904a"></script>
+<script src="briefing/render.js?v=20260907a"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=20260904a"></script>
+<script src="scorecard/render.js?v=20260907a"></script>
 <style>
 html,body{height:100%;margin:0;overflow:hidden;}
 .byline{font-size:11.5px;color:var(--txt-lbl);}
@@ -90,8 +90,8 @@ html,body{height:100%;margin:0;overflow:hidden;}
 body{display:flex;flex-direction:column;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
-<script src="briefing/annotate.js?v=20260904a"></script>
-<script src="briefing/charts.js?v=20260904a"></script>
+<script src="briefing/annotate.js?v=20260907a"></script>
+<script src="briefing/charts.js?v=20260907a"></script>
 <script>
 /* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
 document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
@@ -406,7 +406,7 @@ function renderNews(f){
         ${n.url?`<a class="nc-link" href="${n.url}" target="_blank" rel="noopener">원문 ↗</a>`:''}
       </div>
       <div class="nc-body">${shortBody(n.body)}</div>
-      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${n.impact}</div>`:''}
+      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${mdBold(n.impact)}</div>`:''}
       <div class="tags">${(n.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     </div>`;
   }).join('');

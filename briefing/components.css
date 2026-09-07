@@ -249,3 +249,10 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   border:1px dashed var(--bdr);border-radius:10px;}
 .skeleton{background:var(--divider);border-radius:6px;height:14px;margin:4px 0;
   animation:pulse 1.4s ease-in-out infinite;}
+
+/* 뉴스 INSIGHT 안의 강조 — `**…**` 를 렌더러(mdBold)가 <strong> 으로 바꾼다.
+   이 필드는 카카오톡에 나가지 않으므로 마크업을 허용한다.
+   ⛔ summary_line·top3.reason 은 카톡으로 나가므로 여전히 금지다
+      (generate_data_json._strip_md_emphasis 가 기계적으로 벗긴다). */
+.nc-impact strong{font-weight:700;color:var(--txt);}
+.ov-sum strong{font-weight:700;color:var(--txt);}

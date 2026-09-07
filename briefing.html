@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=20260904a">
-<link rel="stylesheet" href="briefing/components.css?v=20260904a">
+<link rel="stylesheet" href="briefing/tokens.css?v=20260907a">
+<link rel="stylesheet" href="briefing/components.css?v=20260907a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,11 +19,11 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=20260904a"></script>
-<script src="briefing/annotate.js?v=20260904a"></script>
-<script src="briefing/charts.js?v=20260904a"></script>
+<script src="briefing/render.js?v=20260907a"></script>
+<script src="briefing/annotate.js?v=20260907a"></script>
+<script src="briefing/charts.js?v=20260907a"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=20260904a"></script>
+<script src="scorecard/render.js?v=20260907a"></script>
 <style>
 /* ⚠ 색은 briefing/tokens.css 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
@@ -771,7 +771,7 @@ function renderNews(f){
         ${n.url?`<a class="nc-link" href="${n.url}" target="_blank" rel="noopener">원문 ↗</a>`:''}
       </div>
       <div class="nc-body">${shortBody(n.body)}</div>
-      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${n.impact}</div>`:''}
+      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${mdBold(n.impact)}</div>`:''}
       <div class="tags">${(n.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     </div>`;
   }).join('');
