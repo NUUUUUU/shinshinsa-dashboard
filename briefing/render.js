@@ -119,8 +119,44 @@
     }).join('');
   }
 
+
+  /* ── 단기 모니터링 포인트 ────────────────────────────────────────────────
+     2026-09-10 — TOP3 의 `□ 조치` 절을 없애고 **할 일을 여기 한 곳으로 모았다**
+     (사용자 결정). 그래서 이 목록이 「지켜볼 것」과 「할 것」을 함께 담는다.
+
+     둘을 눈으로 가르기 위해 **기한이 적힌 항목에 배지**를 붙인다.
+       기한 있음 → 조치. (금일)·(금주)·(차주)·(금월 내)
+       기한 없음 → 관찰. 조건이 차면 그때 움직인다(트리거).
+
+     ⚠ 이 함수가 세 벌로 갈라져 있었다 — briefing.html 1벌, index.html **2벌**
+     (뒤엣것이 앞엣것을 덮고 있었다). 순수 문자열 생성만 여기 두고 DOM 주입은
+     페이지가 한다. 그래야 Node 에서 시험할 수 있다. */
+  var MON_DUE = /[(（]\s*(금일|오늘|금주|이번\s*주|차주|다음\s*주|금월\s*내|이달\s*내)\s*[)）]/;
+
+  function monitoringHtml(items, bold) {
+    bold = bold || esc;
+    var arr = (items || []).filter(Boolean);
+    if (!arr.length) return '<div class="empty-msg">모니터링 포인트 없음</div>';
+    return arr.map(function (m) {
+      var t = (typeof m === 'string') ? m : (m && (m.text || m.point || m.title) || '');
+      var due = String(t).match(MON_DUE);
+      // 배지로 뽑았으면 본문에서는 뺀다 — 같은 말이 두 번 보이지 않게
+      // 배지를 떼면 「확인 . LME」처럼 구두점 앞에 공백이 남는다 — 같이 정리한다
+      var body = due
+        ? String(t).replace(MON_DUE, '')
+                   .replace(/\s+([.,·)\]])/g, '$1')
+                   .replace(/\s{2,}/g, ' ').trim()
+        : String(t);
+      return '<div class="mpt-row' + (due ? ' mpt-due' : '') + '">'
+           + '<div class="mpt-dot"></div><div>'
+           + (due ? '<span class="mpt-badge">' + esc(due[1].replace(/\s+/g, ' ')) + '</span>' : '')
+           + bold(body) + '</div></div>';
+    }).join('');
+  }
+
   return { MINI_IDS: MINI_IDS, classifyNews: classifyNews, filterNews: filterNews, stars: stars,
            kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
            discBadge: discBadge, FX_KO: FX_KO, fxPairLabel: fxPairLabel,
-           fmtReason: fmtReason, isGaejo: isGaejo };
+           fmtReason: fmtReason, isGaejo: isGaejo,
+           monitoringHtml: monitoringHtml, MON_DUE: MON_DUE };
 });

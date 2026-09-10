@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609101015a">
-<link rel="stylesheet" href="briefing/components.css?v=202609101015a">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609101312">
+<link rel="stylesheet" href="briefing/components.css?v=202609101312">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,13 +19,13 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609101015a"></script>
-<script src="briefing/annotate.js?v=202609101015a"></script>
-<script src="briefing/charts.js?v=202609101015a"></script>
+<script src="briefing/render.js?v=202609101312"></script>
+<script src="briefing/annotate.js?v=202609101312"></script>
+<script src="briefing/charts.js?v=202609101312"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <script src="scorecard/render.js?v=20260907a"></script>
 <style>
-/* ⚠ 색은 briefing/tokens.css?v=202609101015 한 곳에서만 정의한다.
+/* ⚠ 색은 briefing/tokens.css?v=202609101312 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
   --safe-top:env(safe-area-inset-top,0px);
@@ -184,7 +184,7 @@ a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card
 .gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609101015 로 옮겼다 (공용) */
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609101312 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -414,11 +414,17 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
     </div>
   </div>
 
-  <!-- ⛔ 「시장 지표」·「모니터링 포인트」 섹션은 2026-09-03 에 뺐다.
-       시장 지표 → 제호 아래 티커가 같은 숫자를 더 먼저 보여준다.
-       모니터링 포인트 → TOP3 의 세 번째(액션) 문단과 내용이 겹친다.
-       **데이터는 계속 만든다** — data.json 의 markets·monitoring 은 위키 적재가 쓴다.
-       되살리려면 이 자리에 카드를 다시 넣고 render 호출의 가드를 풀면 된다. -->
+  <!-- ⛔ 「시장 지표」는 2026-09-03 에 뺐다 — 제호 아래 티커가 같은 숫자를 더 먼저 보여준다.
+       **데이터는 계속 만든다** — data.json 의 markets 는 위키 적재가 쓴다. -->
+
+  <!-- ✅ 「모니터링 포인트」는 2026-09-10 에 되살렸다.
+       뺐던 이유가 「TOP3 의 액션 문단과 겹친다」였는데, 그 조치 절을 없애고
+       **할 일을 이 카드 한 곳으로 모으기로** 했다(사용자 결정). 지금은 여기가
+       할 일의 유일한 자리다 — 이 카드를 다시 빼면 조치가 보고서에서 사라진다. -->
+  <div class="card" id="monitoring-section">
+    <div class="sec-label"><span class="sec-dot"></span>단기 모니터링 포인트</div>
+    <div id="mpt-list"></div>
+  </div>
 
   <!-- ── 용어집 (2026-09-02 신설) ── -->
   <div class="card" id="glossary-section">
@@ -602,7 +608,7 @@ function fmtDateKr(yyyymmdd){
 }
 
 /* ── TOP3 reason: 요약/INSIGHT/ACTION/추세 라벨 카드 분리 ── */
-// TOP3 reason 렌더는 briefing/render.js?v=202609101015 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202609101312 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -777,6 +783,13 @@ function renderOverseas(items){
 
 /* ── 시장 ── */
 /* 섹션을 뺐으므로 대상이 없으면 조용히 통과한다. 데이터는 계속 들어온다. */
+// 모니터링 렌더는 briefing/render.js?v=202609101312 로 옮겼다 (2026-09-10).
+// 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
+function renderMonitoring(pts){
+  var el = document.getElementById('mpt-list'); if(!el) return;
+  el.innerHTML = Briefing.monitoringHtml(pts, mdBold);
+}
+
 function renderMarkets(items){
   if(!document.getElementById('mkt-grid')) return;
   document.getElementById('mkt-grid').innerHTML = (items||[]).map(m=>`
@@ -800,7 +813,7 @@ function fxMockHistory(baseStr, changeStr, currency){
   });
 }
 
-/* 구현은 briefing/charts.js?v=202609101015 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609101312 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -938,11 +951,7 @@ async function appendTickerCopper(){
   }catch(e){ /* 티커는 보조 정보다 — 실패해도 본문에 영향 주지 않는다 */ }
 }
 
-function renderMonitoring(pts){
-  if(!document.getElementById('mpt-list')) return;
-  document.getElementById('mpt-list').innerHTML=(pts||[]).map(p=>`
-    <div class="mpt-row"><div class="mpt-dot"></div><div>${p}</div></div>`).join('');
-}
+
 
 /* ══════════════════════════════════════════════
    용어 툴팁 (2026-09-02)
@@ -950,7 +959,7 @@ function renderMonitoring(pts){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609101015 로 옮겼다.
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609101312 로 옮겼다.
    index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
 function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 
