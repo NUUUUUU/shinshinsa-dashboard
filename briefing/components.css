@@ -256,3 +256,18 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
       (generate_data_json._strip_md_emphasis 가 기계적으로 벗긴다). */
 .nc-impact strong{font-weight:700;color:var(--txt);}
 .ov-sum strong{font-weight:700;color:var(--txt);}
+
+/* ── 개조식(보고문) 절·항 — 2026-09-10 문체 규정 ──────────────────────────
+   `white-space:pre-line` 은 **줄 앞 공백을 뭉갠다.** 그래서 들여쓰기를 공백으로
+   주면 화면에서 사라진다(실측). 매달림 들여쓰기를 CSS 로 준다 —
+   항이 두 줄로 넘어가도 글자가 ○ 아래가 아니라 글자 아래에 붙는다. */
+.tr-seg.tr-gj, .tr-seg.tr-act{white-space:normal;}
+.gj-h{display:block;font-weight:700;font-size:13px;color:var(--txt-sub);
+  letter-spacing:.04em;margin:14px 0 6px;}
+.tr-seg > .gj-h:first-child{margin-top:0;}
+.gj-i{display:block;padding-left:1.15em;text-indent:-1.15em;margin:0 0 5px;}
+.gj-i::before{content:'○ ';color:var(--txt-lbl);}
+.gj-s{display:block;padding-left:2.4em;text-indent:-0.9em;margin:0 0 4px;
+  color:var(--txt-sub);font-size:.96em;}
+.gj-s::before{content:'- ';color:var(--txt-lbl);}
+.gj-p{display:block;margin:0 0 6px;}

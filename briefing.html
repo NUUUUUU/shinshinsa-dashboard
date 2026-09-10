@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=20260907a">
-<link rel="stylesheet" href="briefing/components.css?v=20260907a">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609101015a">
+<link rel="stylesheet" href="briefing/components.css?v=202609101015a">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,13 +19,13 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=20260907a"></script>
-<script src="briefing/annotate.js?v=20260907a"></script>
-<script src="briefing/charts.js?v=20260907a"></script>
+<script src="briefing/render.js?v=202609101015a"></script>
+<script src="briefing/annotate.js?v=202609101015a"></script>
+<script src="briefing/charts.js?v=202609101015a"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <script src="scorecard/render.js?v=20260907a"></script>
 <style>
-/* ⚠ 색은 briefing/tokens.css 한 곳에서만 정의한다.
+/* ⚠ 색은 briefing/tokens.css?v=202609101015 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
   --safe-top:env(safe-area-inset-top,0px);
@@ -184,7 +184,7 @@ a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card
 .gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css 로 옮겼다 (공용) */
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609101015 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -602,48 +602,9 @@ function fmtDateKr(yyyymmdd){
 }
 
 /* ── TOP3 reason: 요약/INSIGHT/ACTION/추세 라벨 카드 분리 ── */
-function fmtReason(reason){
-  var s = (reason||'').trim(); if(!s) return '';
-  var marks=['💡','➡️','추세 —','추세—']; var pts=[];
-  marks.forEach(function(m){ var i=s.indexOf(m); if(i>=0) pts.push(i); });
-  pts=pts.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
-  function labelFor(cls){
-    if(cls==='tr-impact') return 'INSIGHT';
-    if(cls==='tr-action') return 'ACTION';
-    if(cls==='tr-trend') return '추세';
-    return '요약';
-  }
-  function stripPrefix(seg, cls){
-    if(cls==='tr-impact') return seg.replace(new RegExp('^💡\\s*신신사\\s*시사점\\s*[—-]?\\s*'),'');
-    if(cls==='tr-action') return seg.replace(new RegExp('^➡️\\s*그래서\\s*무엇을\\s*[—-]?\\s*'),'');
-    if(cls==='tr-trend') return seg.replace(new RegExp('^추세\\s*[—-]?\\s*'),'');
-    return seg;
-  }
-  if(!pts.length){
-    // 라벨 없고 빈 줄로 문단 구분되어 있으면 문단별로 분리 렌더 (2026-07-27 지침)
-    if(s.indexOf('\n\n')>=0 || s.indexOf('\n')>=0){
-      var paras = s.split(/\n{2,}|\n/).map(function(p){return p.trim();}).filter(Boolean);
-      if(paras.length>1){
-        // 스펙상 3문단은 팩트 → 함의 → **액션** 이다. 마지막을 액션으로 표시해
-        // 라벨 없이도 "할 일"임이 보이게 한다 (2026-09-03 사용자 결정).
-        return paras.map(function(p,i){
-          var cls = (paras.length>=3 && i===paras.length-1) ? 'tr-seg tr-act' : 'tr-seg tr-lead';
-          return '<span class="'+cls+'">'+p+'</span>';
-        }).join('');
-      }
-    }
-    return '<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+s+'</span>';
-  }
-  var out=[]; var lead=s.slice(0,pts[0]).trim();
-  if(lead) out.push('<span class="tr-seg tr-lead"><span class="tr-label">'+labelFor('tr-lead')+'</span>'+lead+'</span>');
-  for(var k=0;k<pts.length;k++){
-    var seg=s.slice(pts[k], k+1<pts.length?pts[k+1]:s.length).trim();
-    var cls = seg.indexOf('💡')===0?'tr-impact':(seg.indexOf('➡️')===0?'tr-action':'tr-trend');
-    var body = stripPrefix(seg, cls);
-    out.push('<span class="tr-seg '+cls+'"><span class="tr-label">'+labelFor(cls)+'</span>'+body+'</span>');
-  }
-  return out.join('');
-}
+// TOP3 reason 렌더는 briefing/render.js?v=202609101015 로 옮겼다 (2026-09-10).
+// 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
+function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
 /* ── 뉴스 body 축약(약 110자, 문장경계 컷) ── */
 function shortBody(s){
@@ -839,7 +800,7 @@ function fxMockHistory(baseStr, changeStr, currency){
   });
 }
 
-/* 구현은 briefing/charts.js 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609101015 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -989,7 +950,7 @@ function renderMonitoring(pts){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js 로 옮겼다.
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609101015 로 옮겼다.
    index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
 function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 
