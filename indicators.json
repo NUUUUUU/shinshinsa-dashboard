@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T09:30:59+09:00",
+  "generated_at": "2026-09-11T10:41:41+09:00",
   "indicators": [
     {
       "id": "usdkrw",
@@ -5189,10 +5189,15 @@
           "2026-09-09",
           6.7105,
           true
+        ],
+        [
+          "2026-09-10",
+          6.7105,
+          true
         ]
       ],
       "latest": 6.7105,
-      "change": -0.0003
+      "change": 0.0
     },
     {
       "id": "usdthb",
@@ -15335,11 +15340,15 @@
           "2026-09-08",
           6954.52,
           true
+        ],
+        [
+          "2026-09-09",
+          7051.6401,
+          true
         ]
       ],
-      "latest": 6954.52,
-      "change": -40.8701,
-      "_error": "Remote end closed connection without response"
+      "latest": 7051.6401,
+      "change": 97.1201
     },
     {
       "id": "gold",
