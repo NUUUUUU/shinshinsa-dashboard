@@ -279,3 +279,10 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   padding:3px 6px;margin-right:6px;border-radius:3px;vertical-align:1px;
   background:var(--brand);color:#fff;letter-spacing:.02em;white-space:nowrap;}
 .mpt-row.mpt-due .mpt-dot{background:var(--brand);}
+
+/* 출장자 — 비어 있어도 무엇 때문에 비었는지 말한다 (2026-09-15).
+   목록을 숨기면 「0명」과 「수집 실패」를 구분할 수 없다. */
+.trip-empty{font-size:13px;color:var(--txt-sub);padding:6px 0;}
+.trip-kind{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;
+  line-height:1;padding:3px 5px;border-radius:3px;vertical-align:1px;
+  background:var(--info,#0d74ce);color:#fff;}

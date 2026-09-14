@@ -154,9 +154,44 @@
     }).join('');
   }
 
+
+  /* ── 출장자 현황 ─────────────────────────────────────────────────────────
+     2026-09-15 — 옛 `renderTrips` 는 목록이 비면 **섹션을 통째로 숨겼다.**
+     그래서 「오늘 출장자가 0명」과 「수집이 실패했다」가 화면에서 완전히 같았다.
+     그날 실제로 그룹웨어 세션이 만료(401)돼 아무것도 안 받았는데 보고서는
+     조용히 그 자리를 비웠다. 09-14 에 카톡에서 고친 문제가 화면에는 남아 있었다.
+
+     상태가 셋이다.
+       목록 있음      → 표로 보여준다
+       목록 비고 note → **note 를 보여준다** (수집 실패 등)
+       목록 비고 무   → 「등록 없음」 (0명이 사실인 경우)
+     어느 경우에도 **섹션을 숨기지 않는다** — 빈 자리는 아무것도 말해 주지 않는다. */
+  function travelersHtml(t, bold) {
+    bold = bold || esc;
+    var list = (t && t.travelers) || [];
+    var md = function (d) { return d ? String(d).slice(5).replace('-', '/') : ''; };
+    if (!list.length) {
+      var note = t && t.note;
+      return '<div class="trip-empty">' + (note ? bold(note) : '등록 없음') + '</div>';
+    }
+    var rows = list.map(function (v) {
+      var kind = v.kind === 'inbound' ? '<span class="trip-kind">입국</span>' : '';
+      return '<div class="trip-row">'
+        + '<div class="trip-who">'
+        + (v.dept ? '<span class="trip-dept">' + esc(v.dept) + '</span>' : '')
+        + esc(v.name || '') + '</div>'
+        + '<div class="trip-period">' + esc(md(v.depart)) + ' ~ ' + esc(md(v.ret)) + '</div>'
+        + '<div class="trip-dest">' + esc(v.dest || '') + kind + '</div>'
+        + '</div>';
+    }).join('');
+    return rows + (t.as_of
+      ? '<div class="trip-asof">' + esc(md(t.as_of)) + ' 기준</div>' : '');
+  }
+
   return { MINI_IDS: MINI_IDS, classifyNews: classifyNews, filterNews: filterNews, stars: stars,
            kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
            discBadge: discBadge, FX_KO: FX_KO, fxPairLabel: fxPairLabel,
            fmtReason: fmtReason, isGaejo: isGaejo,
-           monitoringHtml: monitoringHtml, MON_DUE: MON_DUE };
+           monitoringHtml: monitoringHtml, MON_DUE: MON_DUE,
+           travelersHtml: travelersHtml };
 });
