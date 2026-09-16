@@ -101,13 +101,15 @@ function mount(root, data, opts) {
   }
 
   function detailHtml(ind) {
+    var guide = (opts.guides || {})[ind.id];
+    /* 차트 아래에 **보고 형식 설명**이 온다 (2026-09-16 사용자 요청).
+       지표 이름만으로는 무엇을 보는 숫자인지, 기준선이 얼마인지 알 수 없다. */
     return '<div class="ms-chart"><canvas id="msc_' + S.esc(ind.id) + '"></canvas></div>'
-      + (ind.impact ? '<p class="ms-imp">' + S.esc(ind.impact) + '</p>' : '')
-      + '<p class="ms-src">출처 ' + S.esc(ind.source || '—')
-      + ' · 기준 ' + S.esc(ind.as_of || '—')
-      + (ind.stale ? ' · <b class="ms-stale">갱신 지연</b>' : '')
-      + (ind._error ? ' · <b class="ms-err">최근 수집 실패: ' + S.esc(ind._error) + '</b>' : '')
-      + '</p>';
+      + S.guideHtml(ind, guide)
+      // 설명이 있으면 한 줄 impact 는 겹친다 — 없을 때만 남긴다
+      + (!guide && ind.impact ? '<p class="ms-imp">' + S.esc(ind.impact) + '</p>' : '')
+      + (ind._error ? '<p class="ms-src"><b class="ms-err">최근 수집 실패: '
+                      + S.esc(ind._error) + '</b></p>' : '');
   }
 
   function draw(ind) {

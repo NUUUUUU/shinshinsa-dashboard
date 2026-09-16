@@ -16,8 +16,8 @@
 -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609151900">
-<link rel="stylesheet" href="briefing/components.css?v=202609151900">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609161000">
+<link rel="stylesheet" href="briefing/components.css?v=202609161000">
 <script>
 (function(){
   var saved = localStorage.getItem('theme');
@@ -27,10 +27,10 @@
   }
 })();
 </script>
-<script src="briefing/charts.js?v=202609151900"></script>
+<script src="briefing/charts.js?v=202609161000"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=202609151900"></script>
-<script src="scorecard/view.js?v=202609151900"></script>
+<script src="scorecard/render.js?v=202609161000"></script>
+<script src="scorecard/view.js?v=202609161000"></script>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
 <style>
 /* 레이아웃만. 글자·색·여백은 components.css 에서 정한다. */
@@ -117,11 +117,14 @@ var VIEW = null;
 fetch('indicators.json?t='+Date.now()).then(function(r){
   if(!r.ok) throw new Error('HTTP '+r.status);
   return r.json();
-}).then(function(data){
+}).then(async function(data){
   var g = String(data.generated_at||'');
   document.getElementById('asof').textContent = g ? ('기준 '+g.slice(5,7)+'/'+g.slice(8,10)+' '+g.slice(11,16)) : '—';
   renderTicker(data);
-  VIEW = ScorecardView.mount(document.getElementById('board'), data, {});
+  var guides = await fetch('indicator_guide.json?t='+Date.now())
+    .then(function(r){ return r.ok ? r.json() : {guides:{}}; })
+    .catch(function(){ return {guides:{}}; });   // 설명이 없어도 지표는 보여야 한다
+  VIEW = ScorecardView.mount(document.getElementById('board'), data, {guides: guides.guides});
   var stale = (data.indicators||[]).filter(function(i){ return i.stale; }).length;
   if(stale){
     var n = document.getElementById('note');

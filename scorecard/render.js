@@ -200,6 +200,42 @@
       + '<div class="ms-detail" data-for="' + esc(ind.id) + '" hidden></div>';
   }
 
+  /* ── 지표 설명 (임원용) ────────────────────────────────────────────────
+     2026-09-16 사용자 요청 — 「지표마다 설명을 보고 형식으로 세부 그래프 아래에」.
+     지표 이름만 보고는 무엇을 보는 숫자인지 알 수 없다. 기준선이 50인지 100인지,
+     올라가면 좋은지 나쁜지가 지표마다 다르다. 설명은 `indicator_guide.json` 에 있고
+     **새 지표를 넣으면 설명도 채워야 한다**(테스트가 막는다). */
+  var TREND_MIN = 6;        // 점이 이보다 적으면 추세가 아니라 점 몇 개다
+  function currentLine(ind) {
+    var ci = changeInfo(ind.history), c = change(ind), s = side(ind);
+    if (ci.latest == null) return '수집된 값이 없다';
+    var bits = [formatValue(ci.latest, ind.unit) + ' (' + asOfLabel(ind) + ')'];
+    if (s) bits.push(s.word + ' 구간');
+    if (c.dir) bits.push(c.basis + ' ' + c.text);
+    else if (c.text === '보합') bits.push(c.basis + ' 보합');
+    /* 이력이 짧으면 그렇다고 말한다 — 2~3개 점을 추세로 읽으면 안 된다.
+       2026-09-16 에 과거 2년치를 채웠고, 남은 것은 출처가 막힌 지표뿐이다. */
+    var n = valid(ind.history).length;
+    if (n < TREND_MIN) bits.push('이력 ' + n + '개월 — 추세로 읽기 이르다');
+    return bits.join(' · ');
+  }
+
+  function guideHtml(ind, guide) {
+    var rows = [['현재', currentLine(ind)]];
+    if (guide) {
+      rows.push(['무엇을 보는 지표인가', guide.what]);
+      rows.push(['읽는 법', guide.read]);
+      rows.push(['신신사에는', guide.ours]);
+    }
+    var src = (ind.source || '—') + (guide && guide.cycle ? ' · ' + guide.cycle : '')
+            + (ind.as_of ? ' · 기준 ' + ind.as_of : '')
+            + (ind.stale ? ' · 갱신 지연' : '');
+    rows.push(['출처·주기', src]);
+    return '<div class="ms-guide">' + rows.map(function (r) {
+      return '<div class="gj-h">□ ' + esc(r[0]) + '</div><div class="gj-i">' + esc(r[1]) + '</div>';
+    }).join('') + '</div>';
+  }
+
   function filterCountry(indicators, code) {
     if (!code || code === 'ALL') return (indicators || []).slice();
     return (indicators || []).filter(function (i) { return i.country === code; });
@@ -215,5 +251,6 @@
            changeInfo: changeInfo, aggregate: aggregate, formatValue: formatValue,
            groupByCategory: groupByCategory, change: change, tone: tone, side: side,
            signals: signals, asOfLabel: asOfLabel, sparkPoints: sparkPoints, sparkSvg: sparkSvg,
-           rowHtml: rowHtml, filterCountry: filterCountry, countryName: countryName, esc: esc };
+           rowHtml: rowHtml, filterCountry: filterCountry, countryName: countryName, esc: esc,
+           guideHtml: guideHtml, currentLine: currentLine };
 });

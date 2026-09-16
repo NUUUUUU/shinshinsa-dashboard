@@ -400,3 +400,12 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
   text-decoration:none;letter-spacing:0;white-space:nowrap;}
 .sc-more:hover{color:var(--txt);text-decoration:underline;}
 .sec-label::after{order:1;}
+
+/* 지표 설명 — 차트 아래 보고 형식 (2026-09-16).
+   개조식 머리표는 TOP3 와 같은 .gj-h/.gj-i 를 쓴다 — 화면에서 같은 것은 같게 보여야 한다. */
+.ms-guide{margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr);}
+.ms-guide .gj-h{font-size:12px;margin:10px 0 3px;color:var(--txt-lbl);letter-spacing:.02em;}
+.ms-guide .gj-h:first-child{margin-top:0;}
+.ms-guide .gj-i{font-size:13px;color:var(--txt-body);line-height:1.65;margin-bottom:0;}
+.ms-guide .gj-i::before{color:var(--sand-8);}
+.ms-compact .ms-guide .gj-i{font-size:12.5px;}
