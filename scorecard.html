@@ -2,138 +2,153 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>신신사 Macro & Cost Scorecard v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>신신사 경영지표</title>
+<!--
+  경영지표 — 2026-09-15 개편
+
+  주간 매크로 스코어카드(NUUUUUU.github.io/weekly-briefing)를 여기로 합쳤다.
+  그쪽은 매주 월요일 네이버 화면을 긁었는데 38주차엔 0건이었고, 12개 중 9개가 5월에
+  멈춰 있었고, 원/위안은 29주 내내 250.0 이었다(실제 약 200원).
+
+  이 페이지는 일일 브리핑이 매일 갱신하는 indicators.json 하나만 읽는다.
+  렌더는 scorecard/render.js(문자열) + scorecard/view.js(DOM) — 대시보드·보고서와 같은 코드다.
+-->
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-
-<style>
-  :root{color-scheme:light}
-  *{box-sizing:border-box}
-  body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,
-    'Apple SD Gothic Neo',system-ui,sans-serif;
-  background:#f9f9f8;color:#21201c;margin:0;padding:16px;line-height:1.75}
-  /* briefing/tokens.css?v=202609150832 와 같은 Radix sand 스케일 */
-  h1{font-size:17px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-  .ic-sm{width:14px;height:14px;stroke-width:2.2;flex-shrink:0;color:#D8003B}
-  h1{font-size:18px;margin:0 0 2px}
-  .sub{color:#6b7280;font-size:12px;margin-bottom:12px}
-  .toolbar{display:flex;gap:6px;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 10px;margin-bottom:12px;flex-wrap:wrap}
-  .toolbar .lbl{font-size:12px;color:#374151;font-weight:700}
-  .toolbar button{padding:5px 11px;border:1px solid #d1d5db;background:#fff;border-radius:6px;font-size:12px;cursor:pointer;color:#374151}
-  .toolbar button.active{background:#111827;color:#fff;border-color:#111827}
-  .toolbar .hint{font-size:11px;color:#9ca3af;margin-left:auto}
-  .banner{font-size:12px;padding:8px 12px;border-radius:8px;margin-bottom:14px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
-  .sct{font-size:14px;font-weight:800;margin:18px 0 8px;padding-bottom:4px;border-bottom:2px solid #e5e7eb}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
-  .card{border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-  .card h3{margin:0;font-size:13px;font-weight:700;color:#111827;display:flex;justify-content:space-between;align-items:center}
-  .bdg{font-size:9px;padding:1px 6px;border-radius:4px}
-  .bdg.obs{background:#dcfce7;color:#166534}.bdg.est{background:#fef3c7;color:#92400e}
-  .val{font-size:20px;font-weight:800;color:#111827;margin:3px 0 1px}
-  .chg{font-size:11px;font-weight:700}.up{color:#dc2626}.dn{color:#2563eb}.fl{color:#6b7280}
-  .imp{font-size:10px;color:#3730a3;background:#eef2ff;border-radius:6px;padding:3px 7px;margin-top:7px;line-height:1.4}
-  .canvas-wrap{height:130px;position:relative;margin-top:6px}
-  .src{font-size:9px;color:#9ca3af;margin-top:6px}
-  .err{font-size:10px;color:#b91c1c;background:#fef2f2;border-radius:6px;padding:4px 7px;margin-top:6px}
-</style>
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
+<link rel="stylesheet" href="briefing/tokens.css?v=202609151900">
+<link rel="stylesheet" href="briefing/components.css?v=202609151900">
 <script>
-/* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
-document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
+(function(){
+  var saved = localStorage.getItem('theme');
+  if(saved){ document.documentElement.dataset.theme = saved; }
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches){
+    document.documentElement.dataset.theme = 'dark';
+  }
+})();
 </script>
+<script src="briefing/charts.js?v=202609151900"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="scorecard/render.js?v=202609151900"></script>
+<script src="scorecard/view.js?v=202609151900"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
+<style>
+/* 레이아웃만. 글자·색·여백은 components.css 에서 정한다. */
+.sticky-head{position:sticky;top:0;z-index:200;background:var(--bg);}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;min-height:36px;
+  border-radius:7px;font-size:13px;font-weight:600;background:var(--card);
+  border:1px solid var(--sand-8);color:var(--txt);text-decoration:none;}
+.nav-btn svg{width:14px;height:14px;}
+.wrap{max-width:1040px;margin:0 auto;padding:18px 16px 0;}
+.page-note{font-size:12.5px;color:var(--txt-sub);margin:0 0 16px;line-height:1.6;}
+.page-note b{color:var(--txt);font-weight:600;}
+.load-msg{padding:40px 0;text-align:center;color:var(--txt-lbl);font-size:13px;}
+.load-msg.err{color:var(--neg);}
+.foot{border-top:1px solid var(--bdr);margin-top:12px;padding:16px 0 28px;
+  font-size:11.5px;color:var(--txt-lbl);line-height:1.8;}
+.foot b{color:var(--txt-sub);font-weight:600;}
+@media (max-width:640px){
+  .wrap{padding:12px 12px 0;}
+  .bar-title{font-size:15px;} .bar-logo{height:20px;}
+  .nav-btn{min-height:34px;padding:6px 10px;font-size:12px;}
+}
+</style>
 </head>
 <body>
-<h1><i data-lucide="chart-column" class="ic-sm"></i>신신사 Macro &amp; Cost Scorecard
-  <span style="font-size:11px;color:#8d8d86;font-weight:500">v2</span></h1>
-<div class="sub" id="subtitle">indicators.json 데이터주도 · 7카테고리 2년 추세 · ●관측 ◇추정</div>
+<button class="theme-toggle" id="theme-btn" aria-label="다크/라이트 전환" title="다크/라이트 전환"><i data-lucide="moon"></i></button>
 
-<div class="toolbar">
-  <span class="lbl">기간</span>
-  <button data-range="24" class="range-btn active">2년</button>
-  <button data-range="12" class="range-btn">1년</button>
-  <button data-range="6" class="range-btn">6개월</button>
-  <button data-range="3" class="range-btn">3개월</button>
-  <span class="hint">※ 일별 환율은 월 집계로 표시</span>
+<div class="sticky-head">
+  <div class="top-bar">
+    <div class="bar-row bar-row-1">
+      <div class="bar-left">
+        <span class="bar-title">신신사 경영지표</span>
+        <span class="bar-date" id="asof">—</span>
+      </div>
+      <span class="bar-logo-wrap"><img class="bar-logo" src="assets/logo-lockup.png"
+        alt="(주)신신사" width="550" height="83" decoding="async"></span>
+    </div>
+    <div class="bar-row bar-row-2">
+      <div class="bar-right">
+        <a class="nav-btn" href="briefing.html"><i data-lucide="file-text"></i>오늘 보고서</a>
+        <a class="nav-btn" href="index.html"><i data-lucide="layout-dashboard"></i>대시보드</a>
+      </div>
+      <span class="conf">CONFIDENTIAL</span>
+    </div>
+  </div>
+  <div class="ticker" id="ticker" aria-label="핵심 지표"></div>
 </div>
 
-<div class="banner" id="banner">⏳ indicators.json 로딩 중…</div>
-<div id="sections"></div>
+<main class="wrap">
+  <p class="page-note" id="note">
+    <b>색은 우리에게 유리한지 불리한지</b>로 칠합니다 — 유가·소재가 오르면 빨강, 경기지표가 오르면 초록.
+    환율·금리·물가는 한쪽으로 단정하지 않아 회색입니다. 줄을 누르면 추세 차트가 펼쳐집니다.
+  </p>
+  <div id="board"><div class="load-msg">지표를 불러오는 중…</div></div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js"></script>
+  <div class="foot">
+    <b>갱신</b> 일일 브리핑 실행 시(평일 오전) 자동 수집 · 기준일이 일별 6일·월별 3개월을 넘기면 「지연」 표시<br>
+    <b>출처</b> 한국은행 ECOS(원화 크로스 매매기준율·생산자물가·BSI·CCSI·ESI·산업생산·선행지수·기준금리·소비자물가) ·
+    TradingEconomics 국가별 일람표(해외 PMI·심리·산업생산·금리·물가) · LME 공식 결제가(Westmetall) ·
+    상해선물거래소(Sina) · Yahoo Finance · 네이버 증권<br>
+    <b>대체 지표</b> 열연·냉연 국내 유통가는 무료 자동 소스가 없어 생산자물가 품목지수(2020=100)로 봅니다<br>
+    <b>이전</b> 주간 매크로 스코어카드는 2026-09-15 이 페이지로 통합됐습니다
+  </div>
+</main>
+
 <script>
-const CATEGORY_ORDER = ["환율","원가·원자재","경기·심리","제조업","금융·물가","무역","국가리스크"];
-const ACCENT = { "원가·원자재":"#dc2626", "환율":"#2563eb", "경기·심리":"#0d9488",
-                 "제조업":"#0284c7", "금융·물가":"#7c3aed", "무역":"#16a34a", "국가리스크":"#b45309" };
-let RANGE = 24, ASOF = "2026-06-26", DATA = null;
-const charts = {};
-
-function drawChart(canvasId, points, color, neutral, unit){
-  const ctx = document.getElementById(canvasId); if(!ctx) return;
-  if(charts[canvasId]) charts[canvasId].destroy();
-  const labels = points.map(p=>p[0]), values = points.map(p=>p[1]), obs = points.map(p=>p[2]);
-  const ds = [{ data:values, borderColor:color, backgroundColor:color+'1e', tension:0.2,
-    pointStyle: obs.map(o=>o?'circle':'rectRot'),
-    pointRadius: obs.map(()=> points.length>60?0:3),
-    pointBackgroundColor: obs.map(o=>o?color:'rgba(156,163,175,0.7)'),
-    fill:true, order:2, borderWidth:1.8 }];
-  if(neutral!=null) ds.push({ data:labels.map(()=>neutral), borderColor:'#9ca3af', borderDash:[5,4], borderWidth:1, pointRadius:0, fill:false, order:1 });
-  charts[canvasId] = new Chart(ctx, { type:'line', data:{labels,datasets:ds},
-    options:{ responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{
-        afterLabel:(c)=> c.datasetIndex===0 ? (obs[c.dataIndex]?'● 관측':'◇ 추정') : null }}},
-      scales:{ x:{ ticks:{font:{size:9},color:'#6b7280',maxRotation:0,autoSkip:true,maxTicksLimit:8}, grid:{display:false} },
-               y:{ ticks:{font:{size:10},color:'#6b7280',callback:v=>Scorecard.formatValue(v,'')}, grid:{color:'#f3f4f6'} } } } });
-}
-
-function cardHtml(ind){
-  const ci = Scorecard.changeInfo(ind.history);
-  const cls = ci.up==null?'fl':(ci.up?'up':'dn'), arrow = ci.up==null?'—':(ci.up?'▲':'▼');
-  const chg = ci.pct==null?'—':(arrow+' '+(ci.pct>=0?'+':'')+ci.pct.toFixed(2)+'%');
-  const hasData = ind.history && ind.history.some(p=>p[1]!=null);
-  const anyEst = (ind.history||[]).some(p=>p[2]===false);
-  const badge = !hasData?'' : (anyEst?'<span class="bdg est">◇ 추정포함</span>':'<span class="bdg obs">● 관측</span>');
-  return '<div class="card">'
-    + '<h3><span>'+ind.label+'</span>'+badge+'</h3>'
-    + (hasData ? '<div class="val">'+Scorecard.formatValue(ci.latest,ind.unit)+' <span class="chg '+cls+'">'+chg+'</span></div>'
-                 + '<div class="canvas-wrap"><canvas id="ch_'+ind.id+'"></canvas></div>'
-               : '<div class="err">데이터 없음'+(ind._error?(' ('+ind._error+')'):'')+'</div>')
-    + (ind.impact ? '<div class="imp">💡 '+ind.impact+'</div>' : '')
-    + '<div class="src">출처: '+(ind.source||'')+'</div></div>';
-}
-
-function render(){
-  if(!DATA) return;
-  const groups = Scorecard.groupByCategory(DATA.indicators, CATEGORY_ORDER);
-  const root = document.getElementById('sections');
-  root.innerHTML = groups.map(function(g){
-    return '<div class="sct" style="border-color:'+(ACCENT[g[0]]||'#e5e7eb')+'">'+g[0]+'</div>'
-         + '<div class="grid">'+g[1].map(cardHtml).join('')+'</div>';
+/* ── 티커: 매일 같은 자리에 같은 지표 ── */
+var TICKER_IDS = ['usdkrw', 'cnykrw', 'wti', 'lme_copper', 'shfe_hrc', 'lge', 'kospi'];
+function renderTicker(data){
+  var S = window.Scorecard, box = document.getElementById('ticker');
+  var byId = {}; (data.indicators||[]).forEach(function(i){ byId[i.id]=i; });
+  box.innerHTML = TICKER_IDS.map(function(id){
+    var i = byId[id]; if(!i) return '';
+    var c = S.change(i), t = S.tone(i);
+    var h = (i.history||[]).filter(function(p){ return p[1]!=null; });
+    if(!h.length) return '';
+    var pct = c.dir ? c.text.replace('▲ ','+').replace('▼ ','−') : '0.00%';
+    return '<div class="tk"><span class="tk-lbl">'+S.esc(i.label)+'</span>'
+      + '<span class="tk-val">'+S.esc(S.formatValue(h[h.length-1][1], i.unit))+'</span>'
+      + '<span class="tk-chg '+t+'">'+S.esc(pct)+'</span></div>';
   }).join('');
-  groups.forEach(function(g){ g[1].forEach(function(ind){
-    if(!(ind.history && ind.history.some(p=>p[1]!=null))) return;
-    const pts = Scorecard.aggregate(Scorecard.filterRange(ind.history, RANGE, ASOF), 'month');
-    drawChart('ch_'+ind.id, pts, ACCENT[g[0]]||'#111827', ind.neutral, ind.unit||'');
-  });});
 }
 
-document.querySelectorAll('.range-btn').forEach(function(b){
-  b.addEventListener('click', function(){
-    document.querySelectorAll('.range-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active'); RANGE = parseInt(b.dataset.range,10); render();
-  });
+var VIEW = null;
+fetch('indicators.json?t='+Date.now()).then(function(r){
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  return r.json();
+}).then(function(data){
+  var g = String(data.generated_at||'');
+  document.getElementById('asof').textContent = g ? ('기준 '+g.slice(5,7)+'/'+g.slice(8,10)+' '+g.slice(11,16)) : '—';
+  renderTicker(data);
+  VIEW = ScorecardView.mount(document.getElementById('board'), data, {});
+  var stale = (data.indicators||[]).filter(function(i){ return i.stale; }).length;
+  if(stale){
+    var n = document.getElementById('note');
+    n.insertAdjacentHTML('beforeend', ' <b class="ms-stale">지연 '+stale+'개</b>');
+  }
+}).catch(function(e){
+  document.getElementById('board').innerHTML =
+    '<div class="load-msg err">지표를 불러오지 못했습니다 ('+String(e).replace(/</g,'&lt;')+')</div>';
 });
 
-fetch('indicators.json').then(r=>r.json()).then(function(d){
-  DATA = d; ASOF = (d.generated_at||ASOF).slice(0,10);
-  document.getElementById('banner').style.display='none';
-  document.getElementById('subtitle').textContent =
-    'indicators.json 데이터주도 · '+d.indicators.length+'개 지표 · 기준 '+ASOF+' · ●관측 ◇추정';
-  render();
-}).catch(function(e){
-  document.getElementById('banner').textContent = '⚠ indicators.json 로드 실패: '+e+' (python fetch_indicators.py 실행 필요)';
-});
+/* ── 테마 ── 차트는 그릴 때 CSS 변수로 색을 굳히므로 바뀌면 다시 그린다 */
+(function(){
+  var btn = document.getElementById('theme-btn');
+  function icon(){
+    var dark = document.documentElement.dataset.theme === 'dark';
+    btn.innerHTML = '<i data-lucide="'+(dark?'sun':'moon')+'"></i>';
+    if(window.lucide) lucide.createIcons();
+  }
+  document.addEventListener('DOMContentLoaded', icon);
+  btn.addEventListener('click', function(){
+    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    icon();
+    if(VIEW) VIEW.redraw();
+  });
+})();
 </script>
 </body>
 </html>

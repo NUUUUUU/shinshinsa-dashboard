@@ -6,8 +6,8 @@
 <title>신신사 일일 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609150832">
-<link rel="stylesheet" href="briefing/components.css?v=202609150832">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609151900">
+<link rel="stylesheet" href="briefing/components.css?v=202609151900">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -18,9 +18,10 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609150832"></script>
+<script src="briefing/render.js?v=202609151900"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=20260907a"></script>
+<script src="scorecard/render.js?v=202609151900"></script>
+<script src="scorecard/view.js?v=202609151900"></script>
 <style>
 html,body{height:100%;margin:0;overflow:hidden;}
 .byline{font-size:11.5px;color:var(--txt-lbl);}
@@ -59,7 +60,7 @@ html,body{height:100%;margin:0;overflow:hidden;}
 .top3-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0;}
 .r1{background:rgba(220,38,38,.12);color:var(--neg);}
 .r2{background:rgba(245,158,11,.15);color:var(--accent);}
-.r3{background:rgba(37,99,235,.1);color:var(--info);} .kc.neg{color:var(--neg);} .kc.neu,.kc.gld{color:var(--accent);} .mkt-val.neg{color:var(--neg);} .mkt-val.gld{color:var(--accent);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);}
+.r3{background:rgba(37,99,235,.1);color:var(--info);} .kc.neg{color:var(--neg);} .kc.neu,.kc.gld{color:var(--accent);} .mkt-val.neg{color:var(--neg);} .mkt-val.gld{color:var(--accent);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
  .dn{color:var(--info);} .fl{color:var(--txt-sub);}
 
@@ -80,18 +81,19 @@ html,body{height:100%;margin:0;overflow:hidden;}
 .ov-flag{flex-shrink:0;}
 .rank-badge{height:22px;display:flex;}
 .sc-body{overflow-y:auto;min-height:0;flex:1;}
-.sc-canvas-wrap{height:100px;}
-.sc-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}
-.sc-range-btn,.sc-country-btn{min-height:34px;}
-.sc-toolbar{flex-shrink:0;}
 .sec-label{flex-shrink:0;}
 .top-bar{flex-shrink:0;}
 .top3-item{flex-shrink:0;}
 body{display:flex;flex-direction:column;}
+/* 가운데 칸 — TOP3 와 경제지표가 높이를 나눠 갖는다 (2026-09-15).
+   TOP3 가 card-fixed 라 줄어들지 않았고, 9/10 문체 개편으로 본문이 길어진 뒤
+   **지표 카드가 30px 로 눌려 사실상 안 보였다.** 둘 다 칸 안에서 각자 스크롤한다. */
+#exec-section{flex:1.35 1 0;}
+#indicators-section{flex:1 1 0;min-height:260px;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
-<script src="briefing/annotate.js?v=202609150832"></script>
-<script src="briefing/charts.js?v=202609150832"></script>
+<script src="briefing/annotate.js?v=202609151900"></script>
+<script src="briefing/charts.js?v=202609151900"></script>
 <script>
 /* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
 document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
@@ -163,31 +165,16 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
 
     <!-- ── 열B(중): TOP3(요약/INSIGHT/ACTION) + KPI + 📊지표(스코어카드) ── -->
     <div class="col">
-      <div class="card card-fixed" id="exec-section">
+      <div class="card card-grow" id="exec-section">
         <div class="sec-label"><span class="sec-dot"></span>주목 이슈 TOP 3</div>
-        <div class="top3-list" id="top3-list" style="overflow-y:visible;">
+        <div class="top3-list" id="top3-list">
           <div class="skeleton" style="height:60px"></div>
           <div class="skeleton" style="height:60px"></div>
           <div class="skeleton" style="height:60px"></div>
         </div>
       </div>
       <div class="card card-grow" id="indicators-section">
-        <div class="sec-label"><span class="sec-dot"></span>주요 경제 지표</div>
-        <div class="sc-toolbar" style="justify-content:space-between;">
-          <div id="sc-country-bar" style="display:flex;gap:5px;flex-wrap:wrap;">
-            <button data-country="GLOBAL" class="sc-country-btn active">GLOBAL</button>
-            <button data-country="KR" class="sc-country-btn">한국</button>
-            <button data-country="TH" class="sc-country-btn">태국</button>
-            <button data-country="CN" class="sc-country-btn">중국</button>
-            <button data-country="EG" class="sc-country-btn">이집트</button>
-          </div>
-          <div id="sc-toolbar" style="display:flex;gap:5px;flex-wrap:wrap;">
-            <button data-range="24" class="sc-range-btn active">2년</button>
-            <button data-range="12" class="sc-range-btn">1년</button>
-            <button data-range="6" class="sc-range-btn">6개월</button>
-            <button data-range="3" class="sc-range-btn">3개월</button>
-          </div>
-        </div>
+        <div class="sec-label"><span class="sec-dot"></span>주요 경제 지표<a class="sc-more" href="scorecard.html" target="_blank" rel="noopener">전체 보기</a></div>
         <div class="sc-body col-scroll" id="sc-body">
           <div class="empty-msg">지표 로딩 중…</div>
         </div>
@@ -258,7 +245,7 @@ function shortBody(s){
   if(p>55) return s.slice(0,p+1);
   return cut.replace(/\s+\S*$/,'') + '…';
 }
-// TOP3 reason 렌더는 briefing/render.js?v=202609150832 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202609151900 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -315,7 +302,7 @@ function renderSched(sched){
 /* 테마 전환 시 그래프 다시 그리기 — 색을 CSS 변수에서 읽기 때문이다. */
 window.__redrawCharts = function(){
   try{ if(window.__lastFX && window.__lastFX.length) renderFX(window.__lastFX); }catch(e){}
-  try{ if(typeof scRender === 'function') scRender(); }catch(e){}
+  try{ if(SC_VIEW) SC_VIEW.redraw(); }catch(e){}
 };
 function _annotateNews(){
   if(window.Annotate) Annotate.run(['news-list'], {cap:2});
@@ -410,7 +397,7 @@ function renderOverseas(items){
 
 
 /* ── 시장 ── */
-// 모니터링 렌더는 briefing/render.js?v=202609150832 로 옮겼다 (2026-09-10).
+// 모니터링 렌더는 briefing/render.js?v=202609151900 로 옮겼다 (2026-09-10).
 // 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
 function renderMonitoring(pts){
   var el = document.getElementById('mpt-list'); if(!el) return;
@@ -438,7 +425,7 @@ function fxMockHistory(baseStr, changeStr, currency){
     return main + Math.sin(i*1.4+seed*0.07)*base*0.003;
   });
 }
-/* 구현은 briefing/charts.js?v=202609150832 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609151900 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -496,83 +483,20 @@ function bindFXTip(i){
 
 
 /* ══════════════════════════════════════════════
-   §5 주요 경제 지표 = scorecard.html 스코어카드 임베드
-   (scorecard.html의 drawChart/cardHtml/render 로직 이식 — Chart.js + scorecard/render.js 사용)
+   §5 주요 경제 지표 — scorecard/view.js 공용 시세표 (2026-09-15)
+   여기 있던 카드 렌더 복사본(분류 순서·색표 포함)은 지웠다. 세 화면이 같은 코드를 쓴다.
 ══════════════════════════════════════════════ */
-const SC_CATEGORY_ORDER = ["환율","원가·원자재","시장·지수","경기·심리","제조업","금융·물가","무역","국가리스크"];
-const SC_ACCENT = { "원가·원자재":"#dc2626", "환율":"#2563eb", "시장·지수":"#0891b2", "경기·심리":"#0d9488",
-                    "제조업":"#0284c7", "금융·물가":"#7c3aed", "무역":"#16a34a", "국가리스크":"#b45309" };
-let SC_RANGE = 24, SC_COUNTRY = 'GLOBAL', SC_ASOF = null, SC_DATA = null;
-const SC_CHARTS = window.BriefingCharts ? BriefingCharts.charts : {};  // 공용 모듈이 관리한다
-
-function scDrawChart(canvasId, points, color, neutral, unit){
-  if(!window.BriefingCharts) return;
-  BriefingCharts.miniLine(canvasId, points, color, neutral, unit,
-    function(v){ return Scorecard.formatValue(v,''); });
-}
-
-
-function scCardHtml(ind){
-  const ci = Scorecard.changeInfo(ind.history);
-  const cls = ci.up==null?'fl':(ci.up?'up':'dn'), arrow = ci.up==null?'—':(ci.up?'▲':'▼');
-  const chg = ci.pct==null?'—':(arrow+' '+(ci.pct>=0?'+':'')+ci.pct.toFixed(2)+'%');
-  const hasData = ind.history && ind.history.some(p=>p[1]!=null);
-  const anyEst = (ind.history||[]).some(p=>p[2]===false);
-  const badge = !hasData?'' : (anyEst?'<span class="sc-bdg est">◇ 추정포함</span>':'<span class="sc-bdg obs">● 관측</span>');
-  return '<div class="sc-card">'
-    + '<h4><span>'+ind.label+'</span>'+badge+'</h4>'
-    + (hasData ? '<div class="sc-val">'+Scorecard.formatValue(ci.latest,ind.unit)+' <span class="sc-chg '+cls+'">'+chg+'</span></div>'
-                 + '<div class="sc-canvas-wrap"><canvas id="sc_ch_'+ind.id+'"></canvas></div>'
-               : '<div class="sc-err">데이터 없음'+(ind._error?(' ('+ind._error+')'):'')+'</div>')
-    + (ind.impact ? '<div class="sc-imp">'+ind.impact+'</div>' : '')
-    + '<div class="sc-src">출처: '+(ind.source||'')+'</div></div>';
-}
-
-function scRender(){
-  if(!SC_DATA) return;
-  const inds = SC_DATA.indicators.filter(function(i){ return (i.country||'GLOBAL')===SC_COUNTRY; });
-  const groups = Scorecard.groupByCategory(inds, SC_CATEGORY_ORDER);
-  const root = document.getElementById('sc-body');
-  if(!groups.length){ root.innerHTML = '<div class="empty-msg">지표 데이터 없음</div>'; return; }
-  root.innerHTML = groups.map(function(g){
-    return '<div class="sc-sct" style="border-color:'+(SC_ACCENT[g[0]]||'#e5e7eb')+'">'+g[0]+'</div>'
-         + '<div class="sc-grid">'+g[1].map(scCardHtml).join('')+'</div>';
-  }).join('');
-  groups.forEach(function(g){ g[1].forEach(function(ind){
-    if(!(ind.history && ind.history.some(p=>p[1]!=null))) return;
-    const pts = Scorecard.aggregate(Scorecard.filterRange(ind.history, SC_RANGE, SC_ASOF), 'month');
-    scDrawChart('sc_ch_'+ind.id, pts, SC_ACCENT[g[0]]||'#111827', ind.neutral, ind.unit||'');
-  });});
-}
-
+var SC_VIEW = null;
 async function loadScorecard(){
   try{
     const r = await fetch(`indicators.json?t=${Date.now()}`);
-    const data = await r.json();
-    SC_DATA = data;
-    SC_ASOF = (data.generated_at || SC_ASOF || '').slice(0,10) || new Date().toISOString().slice(0,10);
-    scRender();
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    SC_VIEW = ScorecardView.mount(document.getElementById('sc-body'), await r.json(), {compact:true});
   }catch(e){
     console.warn('indicators.json 로드 실패:', e);
     document.getElementById('sc-body').innerHTML = '<div class="empty-msg">지표 로딩 실패</div>';
   }
 }
-document.getElementById('sc-toolbar').addEventListener('click', function(e){
-  const b = e.target.closest('.sc-range-btn');
-  if(!b) return;
-  document.querySelectorAll('.sc-range-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  SC_RANGE = parseInt(b.dataset.range, 10);
-  scRender();
-});
-document.getElementById('sc-country-bar').addEventListener('click', function(e){
-  const b = e.target.closest('.sc-country-btn');
-  if(!b) return;
-  document.querySelectorAll('.sc-country-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  SC_COUNTRY = b.dataset.country;
-  scRender();
-});
 
 /* ══════════════════════════════════════════════
    메인 데이터 로드 (5분 폴링)
@@ -592,7 +516,7 @@ async function load(){
     renderMonitoring(d.monitoring || []);
     renderFX(d.fx || []);
 
-    /* 용어 툴팁 + 수치 하이라이트 — briefing.html 과 같은 briefing/annotate.js?v=202609150832 를 쓴다.
+    /* 용어 툴팁 + 수치 하이라이트 — briefing.html 과 같은 briefing/annotate.js?v=202609151900 를 쓴다.
        용어집은 data.glossary(본문에 실제 등장한 것만)에서 온다. */
     if(window.Annotate){
       Annotate.setGlossary(d.glossary || []);

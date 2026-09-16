@@ -3,7 +3,7 @@
   if (typeof module === 'object' && module.exports) module.exports = factory();
   else root.Briefing = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
-  var MINI_IDS = ["usdkrw", "wti", "copper", "kr_base_rate", "us_sent", "us_cpi"];
+  var MINI_IDS = ["usdkrw", "wti", "lme_copper", "kr_base_rate", "us_cci", "us_cpi_yoy"];   // 2026-09-15 id 정리
   function _hasLG(item) {
     var t = (item.tags || []).join(' ').toLowerCase();
     return t.indexOf('lg') >= 0 || (item.title || '').toLowerCase().indexOf('lg') >= 0;

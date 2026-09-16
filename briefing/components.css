@@ -219,25 +219,133 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .mpt-dot{width:6px;height:6px;border-radius:50%;background:var(--neg);
   flex-shrink:0;margin-top:6px;}
 
-/* ── §4-3 지표 패널: 스코어카드 임베드 (index.html 스코어보드 이식) ── */
-.sc-toolbar{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
-.sc-toolbar .lbl{font-size:10px;color:var(--txt-lbl);font-weight:700;}
-.sc-range-btn,.sc-country-btn{padding:8px 13px;min-height:38px;border:1px solid var(--sand-8);
-  background:var(--card);border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--txt-sub);}
-.sc-range-btn.active,.sc-country-btn.active{background:var(--txt);color:var(--card);border-color:var(--txt);font-weight:600;}
-.sc-body{padding-top:4px;}
-.sc-sct{font-size:11.5px;font-weight:700;letter-spacing:.09em;color:var(--accent);
-  margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
-.sc-sct:first-child{margin-top:0;}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
-.sc-card{border:1px solid var(--bdr);border-radius:8px;padding:11px 12px;background:var(--card);}
-.sc-card h4{margin:0;font-size:11px;font-weight:700;color:var(--txt);display:flex;justify-content:space-between;align-items:center;gap:4px;}
-.sc-bdg{font-size:9.5px;padding:2px 6px;border-radius:4px;white-space:nowrap;font-weight:600;}
-.sc-bdg.obs{background:var(--pos-bg);color:var(--pos);}
-.sc-val{font-size:18px;font-weight:700;color:var(--txt);margin:4px 0 2px;
-  letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
-.sc-chg{font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;}
-.sc-chg.up{color:var(--neg);}
+/* ═══════════════════════════════════════════════════════════════════════════
+   경영지표 시세표 (scorecard/view.js 와 짝) — 2026-09-15
+   scorecard · index · briefing 이 함께 쓴다.
+
+   카드 격자를 버리고 **한 줄 한 지표**로 바꿨다. 52개를 카드로 늘어놓으면 훑어지지 않는다.
+   열: 지표 | 최신 | 변동 | 추세 | 기준.  좁은 칸(대시보드·모바일)은 두 줄로 접는다.
+   색은 오르내림이 아니라 유불리(tone-good/bad/flat)다 — 티커와 같은 규칙.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ms-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:8px 14px;margin-bottom:14px;}
+.ms-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.ms-chips .chip{min-height:36px;padding:6px 12px;font-size:13px;font-weight:600;}
+.ms-n{font-size:11px;font-weight:600;color:var(--txt-lbl);margin-left:2px;}
+.chip.active .ms-n{color:inherit;opacity:.7;}
+.ms-range{display:flex;align-items:center;gap:8px;}
+.ms-range-lbl{font-size:11px;font-weight:700;color:var(--txt-lbl);letter-spacing:.06em;}
+
+.ms-signals-wrap{margin:4px 0 22px;}
+.ms-signals{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;}
+.ms-sig{display:grid;grid-template-columns:1fr auto;gap:2px 10px;text-align:left;cursor:pointer;
+  background:var(--card);border:1px solid var(--bdr);border-left:3px solid var(--txt-lbl);
+  border-radius:8px;padding:9px 12px;font-family:inherit;color:var(--txt);}
+.ms-sig:hover{border-color:var(--sand-8);}
+.ms-sig.tone-good{border-left-color:var(--pos);}
+.ms-sig.tone-bad{border-left-color:var(--neg);}
+.ms-sig-lbl{font-size:13px;font-weight:600;}
+.ms-sig-val{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;}
+.ms-sig-txt{grid-column:1 / -1;font-size:12px;color:var(--txt-sub);}
+.ms-sig.tone-good .ms-sig-txt{color:var(--pos);}
+.ms-sig.tone-bad .ms-sig-txt{color:var(--neg);}
+
+.ms-sec{margin-bottom:24px;}
+.ms-sec .sec-label{margin-bottom:6px;}
+.ms-sec-n{font-size:11px;font-weight:600;color:var(--txt-lbl);margin-left:6px;letter-spacing:0;}
+
+.ms-head,.ms-row{display:grid;align-items:center;column-gap:14px;
+  grid-template-columns:minmax(0,1.7fr) minmax(90px,.8fr) minmax(96px,.8fr) 100px minmax(118px,.9fr);}
+.ms-head{padding:2px 6px 6px;border-bottom:1px solid var(--bdr);
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--txt-lbl);}
+.ms-head span:nth-child(n+2){text-align:right;}
+.ms-head span:nth-child(4){text-align:center;}
+.ms-row{padding:10px 6px;border-bottom:1px solid var(--divider);cursor:pointer;
+  transition:background .15s ease;}
+.ms-row:hover,.ms-row[aria-expanded="true"]{background:var(--fill);}
+.ms-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px;}
+.ms-name{min-width:0;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+.ms-lbl{font-size:14px;font-weight:600;color:var(--txt);line-height:1.35;}
+.ms-cty{font-size:11px;color:var(--txt-lbl);white-space:nowrap;}
+.ms-val{font-size:15px;font-weight:700;color:var(--txt);text-align:right;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em;white-space:nowrap;}
+.ms-none{font-style:normal;font-size:12px;font-weight:600;color:var(--neg);}
+.ms-chg{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.ms-chg b{font-size:13px;font-weight:700;color:var(--txt-sub);}
+.ms-chg i{font-style:normal;font-size:10.5px;color:var(--txt-lbl);margin-left:4px;}
+.tone-good .ms-chg b{color:var(--pos);}
+.tone-bad  .ms-chg b{color:var(--neg);}
+.ms-spark{display:flex;justify-content:center;color:var(--txt-sub);}
+.tone-good .ms-spark{color:var(--pos);}
+.tone-bad  .ms-spark{color:var(--neg);}
+.ms-spark-svg{width:100px;height:26px;display:block;overflow:visible;}
+.ms-spark-svg path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;}
+.ms-spark-svg circle{fill:currentColor;}
+.ms-spark-base{stroke:var(--sand-8);stroke-width:1;stroke-dasharray:2 3;}
+.ms-meta{display:flex;justify-content:flex-end;align-items:center;gap:6px;white-space:nowrap;}
+.ms-asof{font-size:12px;color:var(--txt-lbl);font-variant-numeric:tabular-nums;}
+.ms-side,.ms-stale{font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:4px;line-height:1.2;}
+.ms-side.above{background:var(--pos-bg);color:var(--pos);}
+.ms-side.below{background:var(--neg-bg);color:var(--neg);}
+.ms-stale{background:var(--warn-bg);color:var(--warn);}
+.is-stale .ms-val{color:var(--txt-sub);}
+
+.ms-detail{padding:8px 6px 16px;border-bottom:1px solid var(--divider);background:var(--fill);}
+.ms-chart{position:relative;height:190px;}
+.ms-imp{font-size:13px;color:var(--txt-body);margin-top:10px;line-height:1.6;}
+.ms-src{font-size:11.5px;color:var(--txt-lbl);margin-top:4px;}
+.ms-err{color:var(--neg);font-weight:600;}
+
+/* 좁은 자리 — 대시보드 칸·모바일. 두 줄로 접고 추세선은 뺀다(펼치면 차트가 있다) */
+.ms-compact .ms-head{display:none;}
+.ms-compact .ms-row{grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"name val" "meta chg";row-gap:3px;padding:9px 4px;}
+.ms-compact .ms-name{grid-area:name;} .ms-compact .ms-val{grid-area:val;}
+.ms-compact .ms-chg{grid-area:chg;} .ms-compact .ms-meta{grid-area:meta;justify-content:flex-start;}
+.ms-compact .ms-spark{display:none;}
+.ms-compact .ms-lbl{font-size:13px;}
+.ms-compact .ms-val{font-size:14px;}
+.ms-compact .ms-signals{grid-template-columns:1fr;gap:5px;}
+.ms-compact .ms-toolbar{margin-bottom:10px;}
+.ms-compact .ms-chips{gap:4px;}
+.ms-compact .ms-chips .chip{min-height:30px;padding:3px 9px;font-size:12px;}
+.ms-compact .ms-range{display:none;}               /* 좁은 칸에선 차트 기간을 고르지 않는다 — 1년 기본 */
+.ms-compact .ms-signals-wrap{margin:0 0 14px;}
+.ms-compact .ms-signals-wrap .sec-label{font-size:12px;margin-bottom:6px;}
+.ms-compact .ms-sig{padding:6px 10px;grid-template-columns:auto 1fr auto;align-items:baseline;}
+.ms-compact .ms-sig-txt{grid-column:auto;grid-row:1;grid-column-start:2;text-align:right;font-size:11.5px;}
+.ms-compact .ms-sig-val{grid-column-start:3;}
+.ms-compact .ms-chart{height:150px;}
+@media (max-width:680px){
+  .ms-head{display:none;}
+  .ms-row{grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"name val" "meta chg";row-gap:3px;padding:10px 4px;}
+  .ms-name{grid-area:name;} .ms-val{grid-area:val;} .ms-chg{grid-area:chg;}
+  .ms-meta{grid-area:meta;justify-content:flex-start;} .ms-spark{display:none;}
+  .ms-range-lbl{display:none;}
+  .ms-chips[data-kind="country"]{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+    max-width:100%;-webkit-overflow-scrolling:touch;}
+  .ms-chips[data-kind="country"] .chip{flex-shrink:0;}
+  .ms-toolbar{flex-direction:column;align-items:stretch;}
+  .ms-chart{height:160px;}
+}
+
+/* ── 지표 티커 (제호 아래) — briefing · scorecard 공용 ── */
+.ticker{background:var(--ticker-bg);color:var(--ticker-fg);
+  padding:9px 16px;display:flex;gap:20px;overflow-x:auto;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.ticker::-webkit-scrollbar{display:none;}
+.ticker:empty{display:none;}
+.tk{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.tk-lbl{font-size:10.5px;color:var(--ticker-lbl);letter-spacing:.04em;}
+.tk-val{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;}
+.tk-chg{font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;
+  font-variant-numeric:tabular-nums;}
+/* 오르내림이 아니라 **우리에게 좋은지 나쁜지**로 칠한다 (2026-09-03 사용자 결정). */
+.tk-chg.bad{background:rgba(229,72,77,.2);color:#ff9592;}
+.tk-chg.good{background:rgba(70,167,88,.22);color:#71d083;}
+.tk-chg.flat{background:rgba(255,255,255,.12);color:var(--ticker-lbl);}
+.up{color:var(--neg);}
 .sc-canvas-wrap{height:64px;position:relative;margin-top:4px;}
 .sc-imp{font-size:11px;color:var(--txt-sub);background:var(--fill);border-radius:5px;padding:5px 7px;margin-top:7px;line-height:1.4;}
 .sc-src{font-size:10.5px;color:var(--txt-lbl);margin-top:6px;}
@@ -286,3 +394,9 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .trip-kind{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;
   line-height:1;padding:3px 5px;border-radius:3px;vertical-align:1px;
   background:var(--info,#0d74ce);color:#fff;}
+
+/* 섹션 라벨 오른쪽 끝의 「전체 보기」 — 라벨 뒤 hairline 보다 뒤에 둔다 */
+.sc-more{order:2;margin-left:8px;font-size:12px;font-weight:600;color:var(--txt-sub);
+  text-decoration:none;letter-spacing:0;white-space:nowrap;}
+.sc-more:hover{color:var(--txt);text-decoration:underline;}
+.sec-label::after{order:1;}

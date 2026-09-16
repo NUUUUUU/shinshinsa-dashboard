@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609150832">
-<link rel="stylesheet" href="briefing/components.css?v=202609150832">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609151900">
+<link rel="stylesheet" href="briefing/components.css?v=202609151900">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,13 +19,14 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609150832"></script>
-<script src="briefing/annotate.js?v=202609150832"></script>
-<script src="briefing/charts.js?v=202609150832"></script>
+<script src="briefing/render.js?v=202609151900"></script>
+<script src="briefing/annotate.js?v=202609151900"></script>
+<script src="briefing/charts.js?v=202609151900"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=20260907a"></script>
+<script src="scorecard/render.js?v=202609151900"></script>
+<script src="scorecard/view.js?v=202609151900"></script>
 <style>
-/* ⚠ 색은 briefing/tokens.css?v=202609150832 한 곳에서만 정의한다.
+/* ⚠ 색은 briefing/tokens.css?v=202609151900 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
   --safe-top:env(safe-area-inset-top,0px);
@@ -102,23 +103,7 @@
   .rail{left:calc((100vw - 720px)/2 - 260px);}
 }
 
-/* ── 지표 티커 ── */
-.ticker{background:var(--ticker-bg);color:var(--ticker-fg);
-  padding:9px 16px;display:flex;gap:20px;overflow-x:auto;
-  scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.ticker::-webkit-scrollbar{display:none;}
-.ticker:empty{display:none;}
-.tk{display:flex;align-items:center;gap:6px;white-space:nowrap;}
-.tk-lbl{font-size:10.5px;color:var(--ticker-lbl);letter-spacing:.04em;}
-.tk-val{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;}
-.tk-chg{font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;
-  font-variant-numeric:tabular-nums;}
-/* 오르내림이 아니라 **우리에게 좋은지 나쁜지**로 칠한다 (2026-09-03 사용자 결정).
-   유가·구리가 오르면 원가가 오르니 나쁨. LG전자·코스피가 오르면 좋음.
-   환율은 수입 원가(불리)와 LG 수출 채산성(유리)이 맞물려 한쪽으로 못 정한다 → 중립. */
-.tk-chg.bad{background:rgba(229,72,77,.2);color:#ff9592;}
-.tk-chg.good{background:rgba(70,167,88,.22);color:#71d083;}
-.tk-chg.flat{background:rgba(255,255,255,.12);color:var(--ticker-lbl);}
+/* ── 지표 티커 스타일은 briefing/components.css 로 옮겼다 (scorecard.html 과 공용, 2026-09-15) ── */
 
 /* Page layout */
 /* 540px 은 모바일 기준이라 데스크톱에서 양옆이 텅 빈다.
@@ -184,14 +169,14 @@ a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card
 .gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609150832 로 옮겼다 (공용) */
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609151900 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
 .acc-arrow{font-size:14px;color:var(--txt-lbl);transition:transform .2s;}
 .acc-header.open .acc-arrow{transform:rotate(180deg);}
 .acc-body{overflow:hidden;transition:max-height .3s ease;max-height:0;}
-.acc-body.open{max-height:4000px;} .sc-bdg.est{background:rgba(245,158,11,.16);color:var(--accent);} .sc-chg.dn{color:var(--info);} .sc-chg.fl{color:var(--txt-sub);} .dn{color:var(--info);} .fl{color:var(--txt-sub);}
+.acc-body.open{max-height:16000px;}   /* 지표 52줄 + 펼친 차트 (2026-09-15) */ .dn{color:var(--info);} .fl{color:var(--txt-sub);}
 
 /* Comments */
 .cmt-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
@@ -302,7 +287,7 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
     <div class="bar-right">
       <a class="arch-btn" href="archive.html" id="arch-nav"><i data-lucide="calendar-days" class="ic-sm"></i>목록</a>
       <a class="latest-btn" href="briefing.html" id="latest-nav"><i data-lucide="arrow-left" class="ic-sm"></i>최신</a>
-      <a class="macro-btn" href="https://NUUUUUU.github.io/weekly-briefing/" target="_blank" rel="noopener"><i data-lucide="trending-up" class="ic-sm"></i>경영지표</a>
+      <a class="macro-btn" href="scorecard.html" target="_blank" rel="noopener"><i data-lucide="trending-up" class="ic-sm"></i>경영지표</a>
     </div>
     <span class="conf">CONFIDENTIAL</span>
   </div>
@@ -439,22 +424,7 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
       <span class="acc-arrow">▼</span>
     </div>
     <div class="acc-body" id="indicators-acc-body">
-      <div class="sc-toolbar" style="justify-content:space-between;padding-top:10px;">
-        <div id="sc-country-bar" style="display:flex;gap:5px;flex-wrap:wrap;">
-          <button data-country="GLOBAL" class="sc-country-btn active">GLOBAL</button>
-          <button data-country="KR" class="sc-country-btn">한국</button>
-          <button data-country="TH" class="sc-country-btn">태국</button>
-          <button data-country="CN" class="sc-country-btn">중국</button>
-          <button data-country="EG" class="sc-country-btn">이집트</button>
-        </div>
-        <div id="sc-toolbar" style="display:flex;gap:5px;flex-wrap:wrap;">
-          <button data-range="24" class="sc-range-btn active">2년</button>
-          <button data-range="12" class="sc-range-btn">1년</button>
-          <button data-range="6" class="sc-range-btn">6개월</button>
-          <button data-range="3" class="sc-range-btn">3개월</button>
-        </div>
-      </div>
-      <div class="sc-body" id="sc-body">
+      <div class="sc-body" id="sc-body" style="padding-top:12px;">
         <div class="empty-msg">지표 로딩 중…</div>
       </div>
     </div>
@@ -608,7 +578,7 @@ function fmtDateKr(yyyymmdd){
 }
 
 /* ── TOP3 reason: 요약/INSIGHT/ACTION/추세 라벨 카드 분리 ── */
-// TOP3 reason 렌더는 briefing/render.js?v=202609150832 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202609151900 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -673,7 +643,7 @@ function renderSched(sched){
 }
 
 /* ── 출장자 현황 ── */
-// 출장자 렌더는 briefing/render.js?v=202609150832 로 옮겼다 (2026-09-15).
+// 출장자 렌더는 briefing/render.js?v=202609151900 로 옮겼다 (2026-09-15).
 // 옛 판본은 목록이 비면 섹션을 숨겨 「0명」과 「수집 실패」가 같아 보였다.
 function renderTrips(t){
   const box=document.getElementById('trip-section'); if(!box) return;
@@ -776,7 +746,7 @@ function renderOverseas(items){
 
 /* ── 시장 ── */
 /* 섹션을 뺐으므로 대상이 없으면 조용히 통과한다. 데이터는 계속 들어온다. */
-// 모니터링 렌더는 briefing/render.js?v=202609150832 로 옮겼다 (2026-09-10).
+// 모니터링 렌더는 briefing/render.js?v=202609151900 로 옮겼다 (2026-09-10).
 // 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
 function renderMonitoring(pts){
   var el = document.getElementById('mpt-list'); if(!el) return;
@@ -806,7 +776,7 @@ function fxMockHistory(baseStr, changeStr, currency){
   });
 }
 
-/* 구현은 briefing/charts.js?v=202609150832 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609151900 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -938,7 +908,7 @@ async function appendTickerCopper(){
     var cls=_tkClass('구리', pctTxt);
     var el=document.createElement('div'); el.className='tk';
     el.innerHTML='<span class="tk-lbl">구리</span>'+
-      '<span class="tk-val">'+Number(last).toFixed(2)+'</span>'+
+      '<span class="tk-val">'+(window.Scorecard ? Scorecard.formatValue(last, cu.unit||'') : Number(last).toFixed(2))+'</span>'+
       '<span class="tk-chg '+cls+'">'+pctTxt+'</span>';
     box.appendChild(el);
   }catch(e){ /* 티커는 보조 정보다 — 실패해도 본문에 영향 주지 않는다 */ }
@@ -952,14 +922,14 @@ async function appendTickerCopper(){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609150832 로 옮겼다.
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609151900 로 옮겼다.
    index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
 function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 
 /* 테마 전환 시 그래프 다시 그리기 — 색을 CSS 변수에서 읽기 때문이다. */
 window.__redrawCharts = function(){
   try{ if(_lastFX && _lastFX.length) renderFX(_lastFX); }catch(e){}
-  try{ if(typeof scRender === 'function') scRender(); }catch(e){}
+  try{ if(SC_VIEW) SC_VIEW.redraw(); }catch(e){}
 };
 
 /* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
@@ -991,84 +961,20 @@ function renderGlossary(items){
 }
 
 /* ══════════════════════════════════════════════
-   §4-3 주요 경제 지표 = index.html 스코어보드 임베드
-   (Chart.js + scorecard/render.js 사용. Briefing.*와 별도 유지)
-   ⚠ 아코디언 접힘 상태(max-height:0)에선 canvas 폭이 0 → 첫 펼침 때 로드·렌더.
+   §4-3 주요 경제 지표 — scorecard/view.js 공용 시세표 (2026-09-15)
+   ⚠ 아코디언이 접혀 있으면 폭이 0 이라 첫 펼침 때 붙인다.
 ══════════════════════════════════════════════ */
-const SC_CATEGORY_ORDER = ["환율","원가·원자재","시장·지수","경기·심리","제조업","금융·물가","무역","국가리스크"];
-const SC_ACCENT = { "원가·원자재":"#dc2626", "환율":"#2563eb", "시장·지수":"#0891b2", "경기·심리":"#0d9488",
-                    "제조업":"#0284c7", "금융·물가":"#7c3aed", "무역":"#16a34a", "국가리스크":"#b45309" };
-let SC_RANGE = 24, SC_COUNTRY = 'GLOBAL', SC_ASOF = null, SC_DATA = null, SC_LOADED = false;
-const SC_CHARTS = window.BriefingCharts ? BriefingCharts.charts : {};  // 공용 모듈이 관리한다
-
-function scDrawChart(canvasId, points, color, neutral, unit){
-  if(!window.BriefingCharts) return;
-  BriefingCharts.miniLine(canvasId, points, color, neutral, unit,
-    function(v){ return Scorecard.formatValue(v,''); });
-}
-
-
-function scCardHtml(ind){
-  const ci = Scorecard.changeInfo(ind.history);
-  const cls = ci.up==null?'fl':(ci.up?'up':'dn'), arrow = ci.up==null?'—':(ci.up?'▲':'▼');
-  const chg = ci.pct==null?'—':(arrow+' '+(ci.pct>=0?'+':'')+ci.pct.toFixed(2)+'%');
-  const hasData = ind.history && ind.history.some(p=>p[1]!=null);
-  const anyEst = (ind.history||[]).some(p=>p[2]===false);
-  const badge = !hasData?'' : (anyEst?'<span class="sc-bdg est">◇ 추정포함</span>':'<span class="sc-bdg obs">● 관측</span>');
-  return '<div class="sc-card">'
-    + '<h4><span>'+ind.label+'</span>'+badge+'</h4>'
-    + (hasData ? '<div class="sc-val">'+Scorecard.formatValue(ci.latest,ind.unit)+' <span class="sc-chg '+cls+'">'+chg+'</span></div>'
-                 + '<div class="sc-canvas-wrap"><canvas id="sc_ch_'+ind.id+'"></canvas></div>'
-               : '<div class="sc-err">데이터 없음'+(ind._error?(' ('+ind._error+')'):'')+'</div>')
-    + (ind.impact ? '<div class="sc-imp">'+ind.impact+'</div>' : '')
-    + '<div class="sc-src">출처: '+(ind.source||'')+'</div></div>';
-}
-
-function scRender(){
-  if(!SC_DATA) return;
-  const inds = SC_DATA.indicators.filter(function(i){ return (i.country||'GLOBAL')===SC_COUNTRY; });
-  const groups = Scorecard.groupByCategory(inds, SC_CATEGORY_ORDER);
-  const root = document.getElementById('sc-body');
-  if(!groups.length){ root.innerHTML = '<div class="empty-msg">지표 데이터 없음</div>'; return; }
-  root.innerHTML = groups.map(function(g){
-    return '<div class="sc-sct" style="border-color:'+(SC_ACCENT[g[0]]||'#e5e7eb')+'">'+g[0]+'</div>'
-         + '<div class="sc-grid">'+g[1].map(scCardHtml).join('')+'</div>';
-  }).join('');
-  groups.forEach(function(g){ g[1].forEach(function(ind){
-    if(!(ind.history && ind.history.some(p=>p[1]!=null))) return;
-    const pts = Scorecard.aggregate(Scorecard.filterRange(ind.history, SC_RANGE, SC_ASOF), 'month');
-    scDrawChart('sc_ch_'+ind.id, pts, SC_ACCENT[g[0]]||'#111827', ind.neutral, ind.unit||'');
-  });});
-}
-
+let SC_VIEW = null, SC_LOADED = false;
 async function loadScorecard(){
   try{
     const r = await fetch(`indicators.json?t=${Date.now()}`);
-    const data = await r.json();
-    SC_DATA = data;
-    SC_ASOF = (data.generated_at || SC_ASOF || '').slice(0,10) || new Date().toISOString().slice(0,10);
-    scRender();
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    SC_VIEW = ScorecardView.mount(document.getElementById('sc-body'), await r.json(), {});
   }catch(e){
     console.warn('indicators.json 로드 실패:', e);
     document.getElementById('sc-body').innerHTML = '<div class="empty-msg">지표 로딩 실패</div>';
   }
 }
-document.getElementById('sc-toolbar').addEventListener('click', function(e){
-  const b = e.target.closest('.sc-range-btn');
-  if(!b) return;
-  document.querySelectorAll('.sc-range-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  SC_RANGE = parseInt(b.dataset.range, 10);
-  scRender();
-});
-document.getElementById('sc-country-bar').addEventListener('click', function(e){
-  const b = e.target.closest('.sc-country-btn');
-  if(!b) return;
-  document.querySelectorAll('.sc-country-btn').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  SC_COUNTRY = b.dataset.country;
-  scRender();
-});
 
 /* ── 아코디언 (열림 시 onOpen 훅 — 지표 lazy 렌더용) ── */
 function initAccordion(hdrId, bodyId, onOpen){
@@ -1190,7 +1096,7 @@ initAccordion('indicators-acc-hdr', 'indicators-acc-body', function(){
   // 접힘→펼침 트랜지션 후 canvas가 실제 폭을 갖도록 rAF 2회 뒤 렌더
   requestAnimationFrame(function(){ requestAnimationFrame(function(){
     if(!SC_LOADED){ SC_LOADED = true; loadScorecard(); }
-    else { scRender(); }
+    else if(SC_VIEW){ SC_VIEW.redraw(); }
   }); });
 });
 
