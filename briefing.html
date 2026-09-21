@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609161000">
-<link rel="stylesheet" href="briefing/components.css?v=202609161000">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609220900">
+<link rel="stylesheet" href="briefing/components.css?v=202609220900">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,14 +19,14 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609161000"></script>
-<script src="briefing/annotate.js?v=202609161000"></script>
-<script src="briefing/charts.js?v=202609161000"></script>
+<script src="briefing/render.js?v=202609220900"></script>
+<script src="briefing/annotate.js?v=202609220900"></script>
+<script src="briefing/charts.js?v=202609220900"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=202609161000"></script>
-<script src="scorecard/view.js?v=202609161000"></script>
+<script src="scorecard/render.js?v=202609220900"></script>
+<script src="scorecard/view.js?v=202609220900"></script>
 <style>
-/* ⚠ 색은 briefing/tokens.css?v=202609161000 한 곳에서만 정의한다.
+/* ⚠ 색은 briefing/tokens.css?v=202609220900 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
   --safe-top:env(safe-area-inset-top,0px);
@@ -169,7 +169,7 @@ a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card
 .gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609161000 로 옮겼다 (공용) */
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609220900 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -578,7 +578,7 @@ function fmtDateKr(yyyymmdd){
 }
 
 /* ── TOP3 reason: 요약/INSIGHT/ACTION/추세 라벨 카드 분리 ── */
-// TOP3 reason 렌더는 briefing/render.js?v=202609161000 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -643,7 +643,7 @@ function renderSched(sched){
 }
 
 /* ── 출장자 현황 ── */
-// 출장자 렌더는 briefing/render.js?v=202609161000 로 옮겼다 (2026-09-15).
+// 출장자 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-15).
 // 옛 판본은 목록이 비면 섹션을 숨겨 「0명」과 「수집 실패」가 같아 보였다.
 function renderTrips(t){
   const box=document.getElementById('trip-section'); if(!box) return;
@@ -746,7 +746,7 @@ function renderOverseas(items){
 
 /* ── 시장 ── */
 /* 섹션을 뺐으므로 대상이 없으면 조용히 통과한다. 데이터는 계속 들어온다. */
-// 모니터링 렌더는 briefing/render.js?v=202609161000 로 옮겼다 (2026-09-10).
+// 모니터링 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-10).
 // 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
 function renderMonitoring(pts){
   var el = document.getElementById('mpt-list'); if(!el) return;
@@ -776,7 +776,7 @@ function fxMockHistory(baseStr, changeStr, currency){
   });
 }
 
-/* 구현은 briefing/charts.js?v=202609161000 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609220900 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -869,7 +869,9 @@ function renderTicker(d){
   var rows = [];
 
   var krw = (d.fx||[]).find(function(f){ return (f.currency||'')==='KRW'; });
-  if(krw) rows.push({lbl:'원/달러', val:krw.rate_usd, chg:krw.change});
+  var krwMk = (d.markets||[]).find(function(m){ return (m.label||'')==='원/달러'; });
+  if(krw) rows.push({lbl:'원/달러', val:krw.rate_usd, chg:krw.change,
+                     day:Briefing.tickerDate(krwMk ? krwMk.change : '')});
 
   var mk = d.markets||[];
   var pick = function(kw){ return mk.find(function(m){ return (m.label||'').indexOf(kw)>=0; }); };
@@ -878,18 +880,21 @@ function renderTicker(d){
     var last = wti.values[wti.values.length-1];
     var prev = wti.values.length>1 ? wti.values[wti.values.length-2] : last;
     var pct = prev ? ((last-prev)/prev*100) : 0;
+    var wlab = (wti.labels||[])[wti.labels ? wti.labels.length-1 : -1] || '';
     rows.push({lbl:'WTI', val:Number(last).toFixed(2),
-               chg:(pct>=0?'+':'')+pct.toFixed(2)+'%'});
+               chg:(pct>=0?'+':'')+pct.toFixed(2)+'%',
+               day:String(wlab).replace(/\s*종가\s*$/,'').replace(/^0/,'')});
   }
-  var lg = pick('LG전자');   if(lg) rows.push({lbl:'LG전자', val:lg.value, chg:lg.change});
-  var ks = pick('KOSPI');    if(ks) rows.push({lbl:'KOSPI',  val:ks.value, chg:ks.change});
+  var lg = pick('LG전자');   if(lg) rows.push({lbl:'LG전자', val:lg.value, chg:lg.change, day:Briefing.tickerDate(lg.change)});
+  var ks = pick('KOSPI');    if(ks) rows.push({lbl:'KOSPI',  val:ks.value, chg:ks.change, day:Briefing.tickerDate(ks.change)});
 
   // 구리는 indicators.json 에서 비동기로 붙인다(없으면 그냥 빠진다)
   box.innerHTML = rows.map(function(r){
     var cls = _tkClass(r.lbl, r.chg), pct = _tkPct(r.chg);
     return '<div class="tk"><span class="tk-lbl">'+r.lbl+'</span>'+
            '<span class="tk-val">'+(r.val==null?'—':r.val)+'</span>'+
-           (pct ? '<span class="tk-chg '+cls+'">'+pct+'</span>' : '')+'</div>';
+           (pct ? '<span class="tk-chg '+cls+'">'+pct+'</span>' : '')+
+           (r.day ? '<span class="tk-day">'+r.day+'</span>' : '')+'</div>';
   }).join('');
 }
 async function appendTickerCopper(){
@@ -907,9 +912,12 @@ async function appendTickerCopper(){
     var pctTxt=(pct>=0?'+':'')+pct.toFixed(2)+'%';
     var cls=_tkClass('구리', pctTxt);
     var el=document.createElement('div'); el.className='tk';
+    // 구리는 LME 일봉이 하루 늦다 — 다른 칩과 기준일이 다르므로 날짜를 함께 찍는다
+    var cuDay=String(h[h.length-1][0]||'').slice(5).replace('-','/').replace(/^0/,'');
     el.innerHTML='<span class="tk-lbl">구리</span>'+
       '<span class="tk-val">'+(window.Scorecard ? Scorecard.formatValue(last, cu.unit||'') : Number(last).toFixed(2))+'</span>'+
-      '<span class="tk-chg '+cls+'">'+pctTxt+'</span>';
+      '<span class="tk-chg '+cls+'">'+pctTxt+'</span>'+
+      (cuDay ? '<span class="tk-day">'+cuDay+'</span>' : '');
     box.appendChild(el);
   }catch(e){ /* 티커는 보조 정보다 — 실패해도 본문에 영향 주지 않는다 */ }
 }
@@ -922,7 +930,7 @@ async function appendTickerCopper(){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609161000 로 옮겼다.
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609220900 로 옮겼다.
    index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
 function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 

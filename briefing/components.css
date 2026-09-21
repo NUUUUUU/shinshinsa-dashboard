@@ -409,3 +409,8 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
 .ms-guide .gj-i{font-size:13px;color:var(--txt-body);line-height:1.65;margin-bottom:0;}
 .ms-guide .gj-i::before{color:var(--sand-8);}
 .ms-compact .ms-guide .gj-i{font-size:12.5px;}
+
+/* 티커 칩의 기준일 — **칩마다 확정일이 다르다.** 원/달러·KOSPI·LG전자는 당일 확정인데
+   WTI·구리는 Yahoo·LME 일봉이 하루 늦다. 날짜 없이 늘어놓으면 같은 시점으로 읽힌다
+   (2026-09-22 실측: 본문은 「유가가 100달러선 아래로 밀렸다」인데 티커는 9/18 값을 날짜 없이 찍고 있었다). */
+.tk-day{font-size:9.5px;color:var(--ticker-lbl);opacity:.75;font-variant-numeric:tabular-nums;}

@@ -188,7 +188,18 @@
       ? '<div class="trip-asof">' + esc(md(t.as_of)) + ' 기준</div>' : '');
   }
 
+  /* 티커 칩에 붙일 기준일 — **칩마다 날짜가 다르다.**
+     실측(2026-09-22): 원/달러·KOSPI·LG전자는 9/21 확정인데 WTI·구리는 Yahoo·LME 일봉이
+     하루 늦어 9/18 이다. 날짜 없이 한 줄에 늘어놓으면 전부 같은 시점으로 읽힌다.
+     그날 본문이 「유가가 100달러선 아래로 밀렸다」인데 티커가 날짜 없이 100.30 을 찍고 있었다.
+     `change` 문구 안의 `(9/18 …)` 을 그대로 쓴다 — 없으면 빈 문자열이라 칩이 예전처럼 나온다. */
+  function tickerDate(txt) {
+    var m = String(txt == null ? '' : txt).match(/\((\d{1,2})[\/.](\d{1,2})/);
+    return m ? m[1] + '/' + m[2] : '';
+  }
+
   return { MINI_IDS: MINI_IDS, classifyNews: classifyNews, filterNews: filterNews, stars: stars,
+           tickerDate: tickerDate,
            kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
            discBadge: discBadge, FX_KO: FX_KO, fxPairLabel: fxPairLabel,
            fmtReason: fmtReason, isGaejo: isGaejo,
