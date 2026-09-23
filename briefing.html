@@ -7,8 +7,8 @@
 <title>신신사 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609220900">
-<link rel="stylesheet" href="briefing/components.css?v=202609220900">
+<link rel="stylesheet" href="briefing/tokens.css?v=202609231000">
+<link rel="stylesheet" href="briefing/components.css?v=202609231000">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -19,14 +19,14 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609220900"></script>
-<script src="briefing/annotate.js?v=202609220900"></script>
-<script src="briefing/charts.js?v=202609220900"></script>
+<script src="briefing/render.js?v=202609231000"></script>
+<script src="briefing/annotate.js?v=202609231000"></script>
+<script src="briefing/charts.js?v=202609231000"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=202609220900"></script>
-<script src="scorecard/view.js?v=202609220900"></script>
+<script src="scorecard/render.js?v=202609231000"></script>
+<script src="scorecard/view.js?v=202609231000"></script>
 <style>
-/* ⚠ 색은 briefing/tokens.css?v=202609220900 한 곳에서만 정의한다.
+/* ⚠ 색은 briefing/tokens.css?v=202609231000 한 곳에서만 정의한다.
    여기서 --red 를 다시 선언하면 토큰을 덮어 다크모드가 어긋난다 (2026-09-03 실제로 그랬다). */
 :root{
   --safe-top:env(safe-area-inset-top,0px);
@@ -169,7 +169,7 @@ a.tr-btn:hover{color:var(--txt);border-color:var(--sand-8);background:var(--card
 .gl-desc{font-size:13px;color:var(--txt-body);line-height:1.7;margin-top:5px;}
 .gl-empty{font-size:12px;color:var(--txt-lbl);}
 /* ── 용어 툴팁 (2026-09-02) ── 데이터는 순수 텍스트로 두고 화면에서만 감싼다 */
-/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609220900 로 옮겼다 (공용) */
+/* 용어 툴팁·수치 하이라이트 스타일은 briefing/tokens.css?v=202609231000 로 옮겼다 (공용) */
 /* Accordion */
 .acc-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;
   user-select:none;padding:2px 0;}
@@ -300,6 +300,7 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
   <button class="chip" data-sec="fx-section"><i data-lucide="arrow-left-right" class="ic-sm"></i>환율</button>
   <button class="chip" data-sec="overseas-section"><i data-lucide="globe" class="ic-sm"></i>해외</button>
   <button class="chip" data-sec="news-section"><i data-lucide="newspaper" class="ic-sm"></i>뉴스</button>
+  <button class="chip" id="chip-disc" data-sec="disc-section"><i data-lucide="file-text" class="ic-sm"></i>공시</button>
   <button class="chip" data-sec="indicators-section"><i data-lucide="layout-grid" class="ic-sm"></i>지표</button>
   <button class="chip" id="chip-glossary" data-sec="glossary-section"><i data-lucide="book-open" class="ic-sm"></i>용어</button>
 </nav>
@@ -409,6 +410,14 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
   <div class="card" id="monitoring-section">
     <div class="sec-label"><span class="sec-dot"></span>단기 모니터링 포인트</div>
     <div id="mpt-list"></div>
+  </div>
+
+  <!-- ── DART 공시 (2026-09-23 신설) ──
+       data.json.disclosures 는 오래전부터 만들어졌는데 그리는 곳이 없었다.
+       연속 0건이라 드러나지 않다가 LG씨엔에스↔LG전자 계약이 잡히며 발견됐다. -->
+  <div class="card" id="disc-section">
+    <div class="sec-label"><span class="sec-dot"></span>DART 공시</div>
+    <div id="disc-list"></div>
   </div>
 
   <!-- ── 용어집 (2026-09-02 신설) ── -->
@@ -524,7 +533,8 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
   if(rail){
     var ICON = {'exec-section':'star','fx-section':'arrow-left-right','overseas-section':'globe',
                 'news-section':'newspaper','market-section':'chart-line',
-                'indicators-section':'layout-grid','glossary-section':'book-open'};
+                'indicators-section':'layout-grid','glossary-section':'book-open',
+                       'disc-section':'file-text'};
     rail.innerHTML = '<div class="rail-hd">목차</div>' + Array.from(chips).map(function(c){
       var label = c.textContent.trim();
       return '<a href="#'+c.dataset.sec+'" data-sec="'+c.dataset.sec+'">'+
@@ -578,7 +588,7 @@ function fmtDateKr(yyyymmdd){
 }
 
 /* ── TOP3 reason: 요약/INSIGHT/ACTION/추세 라벨 카드 분리 ── */
-// TOP3 reason 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202609231000 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -643,7 +653,7 @@ function renderSched(sched){
 }
 
 /* ── 출장자 현황 ── */
-// 출장자 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-15).
+// 출장자 렌더는 briefing/render.js?v=202609231000 로 옮겼다 (2026-09-15).
 // 옛 판본은 목록이 비면 섹션을 숨겨 「0명」과 「수집 실패」가 같아 보였다.
 function renderTrips(t){
   const box=document.getElementById('trip-section'); if(!box) return;
@@ -746,7 +756,7 @@ function renderOverseas(items){
 
 /* ── 시장 ── */
 /* 섹션을 뺐으므로 대상이 없으면 조용히 통과한다. 데이터는 계속 들어온다. */
-// 모니터링 렌더는 briefing/render.js?v=202609220900 로 옮겼다 (2026-09-10).
+// 모니터링 렌더는 briefing/render.js?v=202609231000 로 옮겼다 (2026-09-10).
 // 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
 function renderMonitoring(pts){
   var el = document.getElementById('mpt-list'); if(!el) return;
@@ -776,7 +786,7 @@ function fxMockHistory(baseStr, changeStr, currency){
   });
 }
 
-/* 구현은 briefing/charts.js?v=202609220900 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202609231000 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -930,7 +940,7 @@ async function appendTickerCopper(){
    카카오톡으로 그대로 나가고, summary_line 은 textContent 라 태그가 글자로 보인다.
    그래서 렌더가 끝난 뒤 **화면의 텍스트 노드만** 훑어 용어를 감싼다.
 ══════════════════════════════════════════════ */
-/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609220900 로 옮겼다.
+/* 용어 툴팁·수치 하이라이트 구현은 briefing/annotate.js?v=202609231000 로 옮겼다.
    index·translated 가 같은 코드를 쓴다 — 두 벌로 갈라지면 한쪽만 고쳐진다. */
 function annotateTerms(root){ if(window.Annotate) Annotate.terms(root); }
 
@@ -942,6 +952,25 @@ window.__redrawCharts = function(){
 
 /* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
    glossary.json 레지스트리에서 골라 넣는다. 비어 있으면 섹션을 숨긴다. */
+/* 공시 — 0건이면 섹션·칩을 함께 숨긴다(용어집과 같은 패턴).
+   섹션만 숨기면 칩이 빈 곳으로 점프한다. */
+function renderDisclosures(items){
+  var sec = document.getElementById('disc-section');
+  var el  = document.getElementById('disc-list');
+  if(!sec || !el) return;
+  var chip = document.getElementById('chip-disc');
+  var list = Array.isArray(items) ? items : [];
+  var failed = items && !Array.isArray(items) && items.error;
+  if(!list.length && !failed){
+    sec.style.display='none';
+    if(chip) chip.style.display='none';
+    return;
+  }
+  sec.style.display='';
+  if(chip) chip.style.display='';
+  el.innerHTML = Briefing.disclosuresHtml(items, {bold:true});
+}
+
 function renderGlossary(items){
   // 긴 용어부터 찾아야 「가이드 포스트」가 「가이드」에 먼저 먹히지 않는다
   const _G = window.Annotate ? Annotate.setGlossary(items) : [];
@@ -1065,6 +1094,7 @@ async function load(){
     renderFX(d.fx || []);
     renderMarkets(d.markets || []);
     renderMonitoring(d.monitoring || []);
+    renderDisclosures(d.disclosures);
     renderGlossary(d.glossary || []);
     renderTicker(d);
     appendTickerCopper();

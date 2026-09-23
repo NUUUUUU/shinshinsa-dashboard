@@ -414,3 +414,20 @@ body{line-height:1.6;padding-bottom:calc(20px + var(--safe-bottom));}
    WTI·구리는 Yahoo·LME 일봉이 하루 늦다. 날짜 없이 늘어놓으면 같은 시점으로 읽힌다
    (2026-09-22 실측: 본문은 「유가가 100달러선 아래로 밀렸다」인데 티커는 9/18 값을 날짜 없이 찍고 있었다). */
 .tk-day{font-size:9.5px;color:var(--ticker-lbl);opacity:.75;font-variant-numeric:tabular-nums;}
+
+/* ── DART 공시 (2026-09-23 신설) ──────────────────────────────────────────
+   data.json.disclosures 는 오래전부터 생성됐는데 그리는 코드가 없었다.
+   연속 0건이라 드러나지 않다가 LG씨엔에스↔LG전자 계약이 잡히며 발견됐다.
+   「0건」과 「수집 실패」를 다른 글로 내므로 색도 다르게 둔다. */
+.disc-row{padding:10px 0;border-bottom:1px solid var(--bdr);}
+.disc-row:last-child{border-bottom:0;}
+.disc-meta{display:flex;align-items:center;gap:8px;margin-bottom:4px;
+  font-size:11.5px;color:var(--txt-lbl);}
+.disc-co{font-weight:700;color:var(--txt);}
+.disc-date{font-variant-numeric:tabular-nums;}
+.disc-title{display:block;font-size:13.5px;font-weight:600;line-height:1.45;
+  color:var(--txt);text-decoration:none;}
+a.disc-title:hover{text-decoration:underline;}
+.disc-impact{margin-top:5px;font-size:12.5px;line-height:1.6;color:var(--txt-lbl);}
+.disc-empty{padding:10px 0;font-size:12.5px;color:var(--txt-lbl);}
+.disc-empty.disc-fail{color:#c0392b;font-weight:600;}

@@ -39,6 +39,46 @@
   }
   function discBadge(importance) { return stars(importance); }
 
+  /* 공시 카드 — **2026-09-23 까지 어느 화면에도 그려지지 않았다.**
+     `data.json.disclosures` 는 계속 만들어지고 있었는데 `briefing.html`·`index.html`
+     어디에도 호출부가 없었다. 최근 회차가 연속 0건이라 아무도 눈치채지 못했고,
+     9/23 에 LG씨엔에스↔LG전자 5년 2,578억 계약이 잡히면서 드러났다.
+
+     빈 배열과 수집 실패를 구분한다 — 0건이면 「접수 없음」을 적고, 수집이 실패했으면
+     그 사유를 적는다. 둘을 같은 화면으로 만들면 「없다」와 「못 봤다」가 섞인다. */
+  function disclosuresHtml(items, opts) {
+    var o = opts || {}, bold = !!o.bold;
+    var esc = function (t) {
+      return String(t == null ? '' : t)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    };
+    var fmt = function (t) {
+      var s = esc(t);
+      return bold ? s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') : s;
+    };
+    if (items && !Array.isArray(items) && items.error) {
+      return '<div class="disc-empty disc-fail">공시 수집 실패 — ' + esc(items.error) + '</div>';
+    }
+    var list = Array.isArray(items) ? items : [];
+    if (!list.length) {
+      return '<div class="disc-empty">오늘 접수된 중대 공시가 없습니다.</div>';
+    }
+    return list.map(function (x) {
+      var co = esc(x.company || ''), dt = esc(x.date || '');
+      var title = fmt(x.title || ''), impact = x.impact ? fmt(x.impact) : '';
+      var head = x.url
+        ? '<a class="disc-title" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + title + '</a>'
+        : '<span class="disc-title">' + title + '</span>';
+      return '<div class="disc-row">'
+        + '<div class="disc-meta">' + stars(x.importance)
+        + (co ? '<span class="disc-co">' + co + '</span>' : '')
+        + (dt ? '<span class="disc-date">' + dt + '</span>' : '') + '</div>'
+        + head
+        + (impact ? '<div class="disc-impact">' + impact + '</div>' : '')
+        + '</div>';
+    }).join('');
+  }
+
   /* 환율 라벨 — 'KRW' 와 '한국' 을 나란히 두면 같은 말이 두 번이다.
      임원이 읽는 건 통화쌍이므로 「원/달러」처럼 한 줄로 만든다 (2026-09-03). */
   var FX_KO = {KRW:'원', CNY:'위안', THB:'바트', EGP:'이집트파운드', JPY:'엔', EUR:'유로'};
@@ -201,7 +241,8 @@
   return { MINI_IDS: MINI_IDS, classifyNews: classifyNews, filterNews: filterNews, stars: stars,
            tickerDate: tickerDate,
            kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
-           discBadge: discBadge, FX_KO: FX_KO, fxPairLabel: fxPairLabel,
+           discBadge: discBadge, disclosuresHtml: disclosuresHtml,
+           FX_KO: FX_KO, fxPairLabel: fxPairLabel,
            fmtReason: fmtReason, isGaejo: isGaejo,
            monitoringHtml: monitoringHtml, MON_DUE: MON_DUE,
            travelersHtml: travelersHtml };
