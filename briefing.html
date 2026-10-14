@@ -418,6 +418,9 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
   <div class="card" id="disc-section">
     <div class="sec-label"><span class="sec-dot"></span>DART 공시</div>
     <div id="disc-list"></div>
+    <!-- 재무 베이스라인 (2026-10-13 신설) — financials 가 data.json 에 있는데
+         어느 렌더러도 읽지 않아 화면에 한 번도 안 나왔다. -->
+    <div id="fin-list"></div>
   </div>
 
   <!-- ── 용어집 (2026-09-02 신설) ── -->
@@ -952,16 +955,23 @@ window.__redrawCharts = function(){
 
 /* 용어집 — data.glossary 는 generate_data_json.py 가 **본문에 실제 등장한 용어만**
    glossary.json 레지스트리에서 골라 넣는다. 비어 있으면 섹션을 숨긴다. */
-/* 공시 — 0건이면 섹션·칩을 함께 숨긴다(용어집과 같은 패턴).
-   섹션만 숨기면 칩이 빈 곳으로 점프한다. */
-function renderDisclosures(items){
+/* 공시 — 셋 다 없으면 섹션·칩을 함께 숨긴다(용어집과 같은 패턴).
+   섹션만 숨기면 칩이 빈 곳으로 점프한다.
+
+   ⚠ **공시 0건이어도 재무 베이스라인이 있으면 섹션을 살린다 (2026-10-13).**
+   0건은 「아직 안 봤다」가 아니라 「전수 판정 결과 없다」일 수 있는데, 섹션이
+   통째로 사라지면 그 둘이 화면에서 구분되지 않는다. 10-13 회차가 10/12 접수분
+   554건을 전수 판정해 0건을 확인한 날이었고, 그 사실이 화면에서 지워졌다. */
+function renderDisclosures(items, fin){
   var sec = document.getElementById('disc-section');
   var el  = document.getElementById('disc-list');
+  var finEl = document.getElementById('fin-list');
   if(!sec || !el) return;
   var chip = document.getElementById('chip-disc');
   var list = Array.isArray(items) ? items : [];
   var failed = items && !Array.isArray(items) && items.error;
-  if(!list.length && !failed){
+  var finHtml = Briefing.financialsHtml ? Briefing.financialsHtml(fin, {bold:true}) : '';
+  if(!list.length && !failed && !finHtml){
     sec.style.display='none';
     if(chip) chip.style.display='none';
     return;
@@ -969,6 +979,7 @@ function renderDisclosures(items){
   sec.style.display='';
   if(chip) chip.style.display='';
   el.innerHTML = Briefing.disclosuresHtml(items, {bold:true});
+  if(finEl) finEl.innerHTML = finHtml;
 }
 
 function renderGlossary(items){
@@ -1094,7 +1105,7 @@ async function load(){
     renderFX(d.fx || []);
     renderMarkets(d.markets || []);
     renderMonitoring(d.monitoring || []);
-    renderDisclosures(d.disclosures);
+    renderDisclosures(d.disclosures, d.financials);
     renderGlossary(d.glossary || []);
     renderTicker(d);
     appendTickerCopper();

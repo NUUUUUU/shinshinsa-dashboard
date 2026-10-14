@@ -431,3 +431,18 @@ a.disc-title:hover{text-decoration:underline;}
 .disc-impact{margin-top:5px;font-size:12.5px;line-height:1.6;color:var(--txt-lbl);}
 .disc-empty{padding:10px 0;font-size:12.5px;color:var(--txt-lbl);}
 .disc-empty.disc-fail{color:#c0392b;font-weight:600;}
+
+/* ── 재무 베이스라인 (2026-10-13 신설) ─────────────────────────────────
+   DART 공시 섹션 안에 붙는다. 회사마다 기준일이 달라 행마다 날짜를 적는다. */
+#fin-list:not(:empty){ margin-top:14px; padding-top:12px; border-top:1px solid var(--line, #e5e7eb); }
+.fin-label{ font-size:12px; font-weight:700; color:var(--muted, #6b7280); letter-spacing:.02em; margin-bottom:8px; }
+.fin-row{ padding:8px 0; }
+.fin-row + .fin-row{ border-top:1px dashed var(--line, #e5e7eb); }
+.fin-head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.fin-co{ font-size:14px; font-weight:700; }
+.fin-date{ font-size:11px; color:var(--muted, #6b7280); }
+.fin-kvs{ display:flex; gap:16px; flex-wrap:wrap; margin-top:4px; }
+.fin-kv{ display:flex; align-items:baseline; gap:6px; }
+.fin-k{ font-size:11px; color:var(--muted, #6b7280); }
+.fin-v{ font-size:14px; font-weight:700; font-variant-numeric:tabular-nums; }
+.fin-note{ font-size:11px; line-height:1.5; color:var(--muted, #6b7280); margin-top:5px; }

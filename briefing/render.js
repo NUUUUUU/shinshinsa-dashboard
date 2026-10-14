@@ -79,6 +79,61 @@
     }).join('');
   }
 
+
+  /* 재무 베이스라인 — 2026-10-13 신설.
+     `data.json.financials` 는 DART 에서 공들여 검증해 넣는데 **어느 렌더러도
+     읽지 않았다.** 신신사 683%·LG 131% 가 화면에 한 번도 나오지 않았고,
+     09-23 의 「공시 카드가 어느 화면에도 없었다」와 같은 구조다.
+
+     ⚠ 회사마다 기준일이 다르다(신신사 2025-12-31 비상장 연1회 감사보고서 /
+     LG전자 2026-06-30 반기). **공통 `as_of` 는 빈 문자열이 정상이고** 각 행이
+     자기 `date` 를 들고 나온다 — 단일 날짜로 덮으면 서로 다른 기준일이 섞인다. */
+  function financialsHtml(fin, opts) {
+    var o = opts || {}, bold = !!o.bold;
+    var esc = function (t) {
+      return String(t == null ? '' : t)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    };
+    var fmt = function (t) {
+      var s = esc(t);
+      return bold ? s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') : s;
+    };
+    var items = (fin && Array.isArray(fin.items)) ? fin.items : [];
+    if (!items.length) return '';
+    var rows = items.map(function (x) {
+      /* `as_of_note` 에는 파이프라인 내부 지시(「단일 as_of 로 덮지 말 것」 같은
+         것)가 섞여 있다 — 임원 화면에 기술 메모가 나가면 보고서가 지저분해진다.
+         **첫 문장만** 쓰고, 머리에 이미 날짜를 보여주므로 「기준일 YYYY-MM-DD — 」
+         접두는 뗀다. 남는 것은 「비상장 연1회 감사보고서다」처럼 읽는 사람에게
+         왜 기준일이 다른지 알려주는 한 줄이다. */
+      var note = '';
+      if (x.as_of_note) {
+        var first = String(x.as_of_note).split(/\.\s/)[0] || '';
+        first = first.replace(/^기준일\s*\d{4}-\d{2}-\d{2}\s*[\u2014\-]\s*/, '');
+        if (first) {
+          if (!/[.!?]$/.test(first)) first += '.';
+          note = '<div class="fin-note">' + fmt(first) + '</div>';
+        }
+      }
+      var cells = [
+        ['부채비율', x.debt_ratio],
+        ['영업이익률', x.operating_margin]
+      ].filter(function (c) { return c[1]; }).map(function (c) {
+        return '<span class="fin-kv"><span class="fin-k">' + c[0] + '</span>'
+             + '<span class="fin-v">' + esc(c[1]) + '</span></span>';
+      }).join('');
+      return '<div class="fin-row">'
+        + '<div class="fin-head">'
+        + '<span class="fin-co">' + esc(x.company || '') + '</span>'
+        + (x.date ? '<span class="fin-date">' + esc(x.date) + ' 기준</span>' : '')
+        + '</div>'
+        + '<div class="fin-kvs">' + cells + '</div>'
+        + note
+        + '</div>';
+    }).join('');
+    return '<div class="fin-label">재무 베이스라인</div>' + rows;
+  }
+
   /* 환율 라벨 — 'KRW' 와 '한국' 을 나란히 두면 같은 말이 두 번이다.
      임원이 읽는 건 통화쌍이므로 「원/달러」처럼 한 줄로 만든다 (2026-09-03). */
   var FX_KO = {KRW:'원', CNY:'위안', THB:'바트', EGP:'이집트파운드', JPY:'엔', EUR:'유로'};
@@ -242,6 +297,7 @@
            tickerDate: tickerDate,
            kpiClass: kpiClass, pickMiniIndicators: pickMiniIndicators, sparkPath: sparkPath,
            discBadge: discBadge, disclosuresHtml: disclosuresHtml,
+           financialsHtml: financialsHtml,
            FX_KO: FX_KO, fxPairLabel: fxPairLabel,
            fmtReason: fmtReason, isGaejo: isGaejo,
            monitoringHtml: monitoringHtml, MON_DUE: MON_DUE,
