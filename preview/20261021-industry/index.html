@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[시안] 신신사 일일 경영 브리핑</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
+<link rel="stylesheet" href="briefing/tokens.css?v=202610211100">
+<link rel="stylesheet" href="briefing/components.css?v=202610211100">
+<script>
+/* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
+(function(){
+  var saved = localStorage.getItem('theme');
+  if(saved){ document.documentElement.dataset.theme = saved; }
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches){
+    document.documentElement.dataset.theme = 'dark';
+  }
+})();
+</script>
+<script src="briefing/render.js?v=202610211100"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="scorecard/render.js?v=202610211100"></script>
+<script src="scorecard/view.js?v=202610211100"></script>
+<style>
+html,body{height:100%;margin:0;overflow:hidden;}
+.byline{font-size:11.5px;color:var(--txt-lbl);}
+.exec-hero-inline{font-size:13px;color:var(--txt-sub);padding-left:12px;border-left:1px solid var(--bdr);
+  max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.exec-hero-inline b{color:var(--txt);font-weight:700;}
+.hero-oneline{flex-shrink:0;background:linear-gradient(90deg,rgba(255,56,92,.09),rgba(255,56,92,.02));
+  border-bottom:1px solid var(--bdr);padding:12px 22px;font-size:15px;font-weight:600;color:var(--txt-body);line-height:1.5;letter-spacing:-.1px;}
+.hero-oneline b{color:var(--accent);font-weight:800;margin-right:6px;font-size:15.5px;}
+/* 분홍 그라데이션 상자를 걷어낸다 — 리드문은 배경이 아니라 크기로 구분한다 */
+.oneline-box{background:var(--card);border:1px solid var(--bdr);}
+.oneline-label{font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:9px;
+  letter-spacing:.09em;display:flex;align-items:center;}
+.oneline-label::after{content:'';flex:1;height:1px;background:var(--bdr);margin-left:8px;}
+.oneline-text{font-size:14.5px;font-weight:500;color:var(--txt);line-height:1.75;
+  letter-spacing:-.01em;white-space:pre-line;}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;min-height:36px;
+  border-radius:7px;font-size:13px;font-weight:600;background:var(--card);color:var(--txt);
+  text-decoration:none;border:1px solid var(--sand-8);white-space:nowrap;
+  transition:background .18s ease,border-color .18s ease;}
+.nav-btn:hover{background:var(--fill);border-color:var(--txt-sub);}
+.nav-btn svg{width:14px;height:14px;}
+.nav-btn.score{background:rgba(37,99,235,.1);color:var(--info);border-color:rgba(37,99,235,.25);}
+
+/* 전체화면 메인 그리드: 헤더(auto) + 메인(1fr) */
+.app-grid{display:grid;grid-template-rows:auto 1fr;height:100%;min-height:0;flex:1;overflow:hidden;}
+.main-row{display:grid;grid-template-columns:1fr 1.1fr 1.3fr;gap:10px;height:100%;min-height:0;
+  padding:10px;overflow:hidden;}
+.col{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden;}
+.col-scroll{overflow-y:auto;min-height:0;}
+.card{margin-bottom:0;padding:14px 15px;display:flex;flex-direction:column;min-height:0;}
+.card-fixed{flex-shrink:0;}
+.card-grow{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;}
+
+/* ★ Executive TOP3 card */
+.top3-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0;}
+.r1{background:rgba(220,38,38,.12);color:var(--neg);}
+.r2{background:rgba(245,158,11,.15);color:var(--accent);}
+.r3{background:rgba(37,99,235,.1);color:var(--info);} .kc.neg{color:var(--neg);} .kc.neu,.kc.gld{color:var(--accent);} .mkt-val.neg{color:var(--neg);} .mkt-val.gld{color:var(--accent);} .fx-chg.neg{color:var(--neg);} .fx-chg.neu{color:var(--txt-lbl);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+ .dn{color:var(--info);} .fl{color:var(--txt-sub);}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   대시보드 전용 레이아웃 override
+   3칸이 각각 스크롤되는 구조라 이 속성들만 컴포넌트와 달라야 한다.
+   ⛔ 여기에 글자 크기·색·여백을 추가하지 마라 — components.css 를 고쳐라.
+   ═══════════════════════════════════════════════════════════════════ */
+.fb{min-height:38px;}
+.fbar{flex-shrink:0;}
+.fx-spark svg{height:44px;}
+.kpi-row{grid-template-columns:repeat(3,1fr);flex-shrink:0;}
+.mkt-grid{flex-shrink:0;}
+.mpt-dot{height:5px;}
+.news-hdr-row{flex-shrink:0;}
+.news-list{overflow-y:auto;min-height:0;flex:1;}
+.ov-flag{flex-shrink:0;}
+.rank-badge{height:22px;display:flex;}
+.sc-body{overflow-y:auto;min-height:0;flex:1;}
+.sec-label{flex-shrink:0;}
+.top-bar{flex-shrink:0;}
+.top3-item{flex-shrink:0;}
+body{display:flex;flex-direction:column;}
+/* 가운데 칸 — TOP3 와 경제지표가 높이를 나눠 갖는다 (2026-09-15).
+   TOP3 가 card-fixed 라 줄어들지 않았고, 9/10 문체 개편으로 본문이 길어진 뒤
+   **지표 카드가 30px 로 눌려 사실상 안 보였다.** 둘 다 칸 안에서 각자 스크롤한다. */
+#exec-section{flex:1.35 1 0;}
+#indicators-section{flex:1 1 0;min-height:260px;}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
+<script src="briefing/annotate.js?v=202610211100"></script>
+<script src="briefing/charts.js?v=202610211100"></script>
+<script>
+/* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
+document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
+</script>
+</head>
+<body>
+<div style="position:sticky;top:0;z-index:9999;background:#fff4d6;color:#7a4b00;font:600 13px/1.5 -apple-system,'Apple SD Gothic Neo',sans-serif;padding:8px 14px;border-bottom:1px solid #f0d58a;text-align:center;">시안 — 「가전업계 동향」 섹션 미리보기 (2026-10-21 브리핑 기준) · 실제 배포본이 아닙니다 · 가전업계 기사는 채점 전이라 ★★ 로 임시 표시</div>
+
+<!-- ── Theme Toggle ── -->
+<button class="theme-toggle" id="theme-btn" aria-label="다크/라이트 전환" title="다크/라이트 전환"><i data-lucide="moon"></i></button>
+
+<!-- ── Top Bar (헤더: 고정, 오늘의 한 줄 인라인 포함) ── -->
+<div id="gl-pop" role="tooltip" aria-hidden="true"></div>
+<div class="top-bar" id="top-bar">
+  <!-- 1행: 문서 제목 ←→ 회사 로고 (briefing.html 과 같은 규칙) -->
+  <div class="bar-row bar-row-1">
+    <div class="bar-left">
+      <span class="bar-title">일일 경영 브리핑</span>
+      <span class="bar-date" id="bar-date">—</span>
+    </div>
+    <span class="bar-logo-wrap"><img class="bar-logo" src="assets/logo-lockup.png"
+      alt="(주)신신사" width="550" height="83" decoding="async"></span>
+  </div>
+  <div class="bar-row bar-row-2">
+    <div class="bar-right">
+      <a class="nav-btn" href="briefing.html" target="_blank" rel="noopener" title="전체 경영 보고서"><i data-lucide="file-text" class="ic-sm"></i>전체보고서</a>
+      <a class="nav-btn" href="archive.html" target="_blank" rel="noopener" title="날짜별 브리핑 아카이브"><i data-lucide="calendar-days" class="ic-sm"></i>아카이브</a>
+      <a class="nav-btn score" href="scorecard.html" target="_blank" rel="noopener" title="경영지표 스코어보드"><i data-lucide="trending-up" class="ic-sm"></i>경영지표</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;">
+      <span class="byline">검수: 이승환 선임</span>
+      <span class="conf">CONFIDENTIAL</span>
+    </div>
+  </div>
+</div>
+
+<div class="app-grid">
+  <div class="main-row">
+
+    <!-- ── 열A(좌): 🔍한줄 → 📌핵심지표 → 🌐환율 → 🌏해외 → 🎯모니터링 ── -->
+    <div class="col">
+      <div class="card card-fixed oneline-box" id="oneline-section">
+        <div class="oneline-label">오늘의 한 줄</div>
+        <div class="oneline-text" id="summary-text" title="">로딩 중…</div>
+      </div>
+      <div class="card card-fixed" id="kpi-section">
+        <div class="sec-label"><span class="sec-dot"></span>핵심 지표</div>
+        <div class="kpi-row" id="exec-kpi-row">
+          <div class="skeleton" style="height:60px"></div>
+          <div class="skeleton" style="height:60px"></div>
+          <div class="skeleton" style="height:60px"></div>
+        </div>
+      </div>
+      <div class="card card-fixed" id="fx-section">
+        <div class="sec-label"><span class="sec-dot"></span>환율 · 달러 대비</div>
+        <div class="fx-asof">전일 종가 기준 · 최근 2주</div>
+        <div id="fx-list"></div>
+      </div>
+      <div class="card card-fixed" id="overseas-section">
+        <div class="sec-label"><span class="sec-dot"></span>해외 모니터링</div>
+        <div class="col-scroll" style="min-height:0;display:flex;flex-direction:column;">
+          <div id="ov-list"></div>
+        </div>
+      </div>
+      <!-- 가전업계 동향 (2026-10-21) — 카드가 없으면 renderIndustry 가 숨긴다 -->
+      <div class="card card-fixed" id="industry-section">
+        <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
+        <div class="col-scroll" style="min-height:0;display:flex;flex-direction:column;">
+          <div id="ind-list"></div>
+        </div>
+      </div>
+      <div class="card card-grow" id="monitoring-section">
+        <div class="sec-label"><span class="sec-dot"></span>단기 모니터링 포인트</div>
+        <div class="col-scroll" id="mpt-list" style="min-height:0;"></div>
+      </div>
+    </div>
+
+    <!-- ── 열B(중): TOP3(요약/INSIGHT/ACTION) + KPI + 📊지표(스코어카드) ── -->
+    <div class="col">
+      <div class="card card-grow" id="exec-section">
+        <div class="sec-label"><span class="sec-dot"></span>주목 이슈 TOP 3</div>
+        <div class="top3-list" id="top3-list">
+          <div class="skeleton" style="height:60px"></div>
+          <div class="skeleton" style="height:60px"></div>
+          <div class="skeleton" style="height:60px"></div>
+        </div>
+      </div>
+      <div class="card card-grow" id="indicators-section">
+        <div class="sec-label"><span class="sec-dot"></span>주요 경제 지표<a class="sc-more" href="scorecard.html" target="_blank" rel="noopener">전체 보기</a></div>
+        <div class="sc-body col-scroll" id="sc-body">
+          <div class="empty-msg">지표 로딩 중…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 열C(우): 뉴스 헤더+필터바(고정) + 뉴스리스트(내부 스크롤) ── -->
+    <div class="card" id="news-section">
+      <div class="news-hdr-row" id="news-hdr-row">
+        <div class="sec-label" style="margin-bottom:0;"><span class="sec-dot"></span><span id="news-hdr-lbl">주요 뉴스</span></div>
+        <div class="lg-links" id="lg-links">
+          <a class="lg-lnk" href="https://live.lge.co.kr/" target="_blank" rel="noopener">LG 뉴스룸 ↗</a>
+          <a class="lg-lnk" href="https://www.lge.co.kr/company/investor/IREvents" target="_blank" rel="noopener">IR ↗</a>
+        </div>
+      </div>
+      <div class="fbar" id="fbar">
+        <!-- 순서: LG > 가전업계 > 한국 > 중국 > 태국 > 이집트 > 전체 (2026-10-21 사용자 지정). 기본 선택은 전체 -->
+        <button class="fb" data-f="lg">LG <span class="fbdg" id="b-lg">—</span></button>
+        <button class="fb" data-f="ind">가전업계 <span class="fbdg" id="b-ind">—</span></button>
+        <button class="fb" data-f="한국">한국 <span class="fbdg" id="b-kr">—</span></button>
+        <button class="fb" data-f="중국">중국 <span class="fbdg" id="b-cn">—</span></button>
+        <button class="fb" data-f="태국">태국 <span class="fbdg" id="b-th">—</span></button>
+        <button class="fb" data-f="이집트">이집트 <span class="fbdg" id="b-eg">—</span></button>
+        <button class="fb active" data-f="all">전체 <span class="fbdg" id="b-all">—</span></button>
+      </div>
+      <div class="news-list" id="news-list">
+        <div class="skeleton" style="height:100px"></div>
+        <div class="skeleton" style="height:100px"></div>
+      </div>
+    </div>
+
+  </div><!-- .main-row -->
+</div><!-- .app-grid -->
+
+<script>
+/* ══════════════════════════════════════════════
+   §4-5 다크 토글 — 런타임 핸들러
+══════════════════════════════════════════════ */
+(function(){
+  var btn = document.getElementById('theme-btn');
+  function updateIcon(){
+    if(!btn) return;
+    btn.innerHTML = '<i data-lucide="'+(document.documentElement.dataset.theme==='dark'?'sun':'moon')+'"></i>';
+    if(window.lucide) lucide.createIcons();
+  }
+  updateIcon();
+  btn.addEventListener('click', function(){
+    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateIcon();
+    /* 그래프는 그릴 때 CSS 변수를 읽어 색을 굳힌다 → 테마가 바뀌면 다시 그려야 한다.
+       안 그러면 다크에서 선만 라이트 색으로 남는다 (2026-09-04 실측). */
+    if(window.__redrawCharts) window.__redrawCharts();
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   데이터 & 렌더링 (Briefing.* 순수 헬퍼 재사용)
+   ※ 전체화면 고정 레이아웃이라 페이지 스크롤이 없음 — 칩내비/스크롤스파이 제거(§6).
+══════════════════════════════════════════════ */
+let _allNews = [], _cur = 'all', _fxSeries = [];
+
+/* ── 임원 요약 카드: 요약/INSIGHT/ACTION/추세 라벨 뱃지 분리 (§1) ──
+   reason 형식: "…요약. 💡신신사 시사점 — … ➡️그래서 무엇을 — … 추세 — …" */
+function shortBody(s){
+  s = (s||'').trim(); if(s.length<=110) return s;
+  var cut = s.slice(0,110);
+  var p = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('다. '), cut.lastIndexOf('음. '), cut.lastIndexOf('요. '));
+  if(p>55) return s.slice(0,p+1);
+  return cut.replace(/\s+\S*$/,'') + '…';
+}
+// TOP3 reason 렌더는 briefing/render.js?v=202610211100 로 옮겼다 (2026-09-10).
+// 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
+function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
+
+function renderExec(d){
+  const summaryEl = document.getElementById('summary-text');
+  const summaryText = d.summary_line || (() => {
+    const inf = (d.kpis||[]).find(k=>k.type==='inf');
+    return inf ? inf.summary || '—' : '—';
+  })();
+  summaryEl.textContent = summaryText;
+  summaryEl.title = summaryText;
+
+  const rc = ['r1','r2','r3'];
+  document.getElementById('top3-list').innerHTML = (d.top3||[]).map((t,i)=>`
+    <div class="top3-item">
+      <div class="rank-badge ${rc[i]||'r3'}">${t.rank}</div>
+      <div>
+        <div class="top3-title">${t.title}</div>
+        <div class="top3-reason">${fmtReason(t.reason)}</div>
+      </div>
+    </div>`).join('');
+
+  const kpis = (d.kpis||[]).filter(k=>k.type!=='inf').slice(0,3);
+  document.getElementById('exec-kpi-row').innerHTML = kpis.map(k=>{
+    const cls = Briefing.kpiClass(k.type);
+    return `
+      <div class="kpi-cell ${cls}">
+        <div class="kl">${k.label}</div>
+        <div class="kv">${k.value||'—'}${k.unit?`<sup>${k.unit}</sup>`:''}</div>
+        <div class="kc ${cls}">${k.change||''}</div>
+        ${k.note?`<div class="ki">${k.note}</div>`:''}
+      </div>`;
+  }).join('');
+}
+
+/* ── CEO 일정 ── */
+function renderSched(sched){
+  if(!sched || !sched.length){
+    document.getElementById('sched-list').innerHTML =
+      '<div style="font-size:13px;color:var(--txt-lbl);padding:8px 0;">금일 등록된 일정이 없습니다.</div>';
+    return;
+  }
+  document.getElementById('sched-list').innerHTML = sched.map(s=>`
+    <div class="sched-row">
+      <div class="sched-time">${s.time || (s.start ? s.start+(s.end?'~'+s.end:'') : '')}</div>
+      <div>
+        <div class="sched-title">${s.title}</div>
+        ${s.location ? `<div class="sched-loc">${s.location}</div>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+/* ── 뉴스 (Briefing.filterNews + Briefing.stars) ── */
+/* 테마 전환 시 그래프 다시 그리기 — 색을 CSS 변수에서 읽기 때문이다. */
+window.__redrawCharts = function(){
+  try{ if(window.__lastFX && window.__lastFX.length) renderFX(window.__lastFX); }catch(e){}
+  try{ if(SC_VIEW) SC_VIEW.redraw(); }catch(e){}
+};
+function _annotateNews(){
+  if(window.Annotate) Annotate.run(['news-list'], {cap:2});
+}
+function renderNews(f){
+  _cur = f;
+  document.querySelectorAll('.fb').forEach(b => b.classList.toggle('active', b.dataset.f === f));
+  const newsHdr = document.getElementById('news-hdr-row');
+  newsHdr.classList.toggle('lg-active', f==='lg');
+
+  const cs = {3:'s3',2:'s2',1:'s1'};
+  const byImp = (a,b)=>(b.importance||0)-(a.importance||0);
+  const region = n => Briefing.classifyNews(n);
+  const lbl = document.getElementById('news-hdr-lbl');
+  let items;
+  if(f==='all'){
+    lbl.textContent = `주요 뉴스 · 전체 ${_allNews.length}건 (국가별)`;
+    const order = {'한국':0,'중국':1,'태국':2,'이집트':3};
+    items = _allNews.slice().sort((a,b)=>{
+      const ra=order[region(a)], rb=order[region(b)];
+      return ra!==rb ? ra-rb : byImp(a,b);
+    });
+  } else {
+    items = Briefing.filterNews(_allNews, f).slice().sort(byImp);
+    lbl.textContent = `주요 뉴스 · ${items.length}건`;
+  }
+
+  if(!items.length){
+    document.getElementById('news-list').innerHTML =
+      '<div class="empty-msg" style="grid-column:1/-1;">해당 카테고리 뉴스가 없습니다.</div>';
+    return;
+  }
+  let _lastR = null;
+  document.getElementById('news-list').innerHTML = items.map(n=>{
+    let _hdr = '';
+    if(f==='all'){ const r=region(n); if(r!==_lastR){ _lastR=r; _hdr=`<div class="news-region-hdr">${r} · ${items.filter(x=>region(x)===r).length}건</div>`; } }
+    return _hdr + `
+    <div class="nc ${cs[n.importance]||'s1'}">
+      <div class="nc-hd">
+        <span class="star ${cs[n.importance]||'s1'}">${Briefing.stars(n.importance)}</span>
+        <div class="nc-title">${n.title}${n.translated&&n.id
+          ?` <a href="translated.html?id=${encodeURIComponent(n.id)}&from=index.html" target="_blank" rel="noopener"
+              style="font-size:10px;font-weight:700;color:var(--accent);border:1px solid var(--accent);
+              border-radius:4px;padding:0 4px;margin-left:4px;white-space:nowrap;text-decoration:none;">번역</a>`
+          :(n.translated?` <span style="font-size:10px;font-weight:700;color:var(--accent);
+              border:1px solid var(--accent);border-radius:4px;padding:0 4px;margin-left:4px;">번역</span>`:'')}
+        </div>
+      </div>
+      ${n.translated&&n.title_orig
+        ?`<div style="font-size:11px;color:var(--txt-lbl);margin:-2px 0 2px 0;">원제: ${n.title_orig}</div>`:''}
+      <div class="nc-meta">
+        <span class="nc-src">${n.source} · ${n.pubDate}</span>
+        ${n.url?`<a class="nc-link" href="${n.url}" target="_blank" rel="noopener">원문 ↗</a>`:''}
+      </div>
+      <div class="nc-body">${shortBody(n.body)}</div>
+      ${n.impact?`<div class="nc-impact"><span class="nc-ins-lbl">INSIGHT</span>${mdBold(n.impact)}</div>`:''}
+      <div class="tags">${(n.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+  _annotateNews();
+}
+
+function updateBadges(news){
+  const idMap = {all:'b-all',lg:'b-lg','한국':'b-kr','중국':'b-cn','태국':'b-th','이집트':'b-eg',ind:'b-ind'};
+  Object.keys(idMap).forEach(f=>{
+    const count = Briefing.filterNews(news, f).length;
+    const el = document.getElementById(idMap[f]);
+    if(el) el.textContent = f==='all' ? String(news.length) : count;
+    const btn = document.querySelector(`.fb[data-f="${f}"]`);
+    if(btn) btn.classList.toggle('empty', count===0 && f!=='all');
+  });
+}
+
+/* ── 해외 ── */
+function mdBold(t){
+  return String(t==null?'':t)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+}
+function renderOverseas(items){
+  const sm = {u:'g',w:'w',d:'d',g:'g',r:'d','양호':'g','주시':'w','경고':'d','위험':'d','주의':'w'};
+  document.getElementById('ov-list').innerHTML = (items||[]).map(o=>`
+    <div class="ov-card">
+      <div class="ov-head"><span class="ov-name">${o.country}</span>
+        <span class="os ${sm[o.statusType]||sm[o.status]||'w'}">${o.status||''}</span></div>
+      ${o.indicators?`<div class="ov-inds">${mdBold(o.indicators)}</div>`:''}
+      <div class="ov-sum">${mdBold(o.summary||'')}</div>
+    </div>`).join('');
+}
+
+/* ── 가전업계 동향 (2026-10-21) — 카드가 없으면 섹션과 칩을 함께 숨긴다 ── */
+function renderIndustry(cards){
+  var sec = document.getElementById('industry-section');
+  var el  = document.getElementById('ind-list');
+  if(!sec || !el) return;
+  var chip = document.getElementById('chip-ind');
+  var html = Briefing.industryHtml ? Briefing.industryHtml(cards, mdBold) : '';
+  sec.style.display = html ? '' : 'none';
+  if(chip) chip.style.display = html ? '' : 'none';
+  el.innerHTML = html;
+}
+
+/* ── 단기 모니터링 포인트 (data.monitoring 문자열 배열) ── */
+
+
+/* ── 시장 ── */
+// 모니터링 렌더는 briefing/render.js?v=202610211100 로 옮겼다 (2026-09-10).
+// 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
+function renderMonitoring(pts){
+  var el = document.getElementById('mpt-list'); if(!el) return;
+  el.innerHTML = Briefing.monitoringHtml(pts, mdBold);
+}
+
+function renderMarkets(items){
+  document.getElementById('mkt-grid').innerHTML = (items||[]).map(m=>`
+    <div class="mkt-cell">
+      <div class="mkt-lbl">${m.label}</div>
+      <div class="mkt-val ${m.color==='pos'?'pos':m.color==='neg'?'neg':'gld'}">${m.value}</div>
+    </div>`).join('');
+}
+
+/* ── 환율 (sparkline) ── */
+function fxMockHistory(baseStr, changeStr, currency){
+  const n=7, base=parseFloat(String(baseStr||0).replace(/,/g,''))||1;
+  const match = changeStr ? changeStr.match(/([\d.]+)%/) : null;
+  const pct = match ? parseFloat(match[1])/100 : 0.002;
+  const isUp = changeStr && changeStr.includes('▲');
+  const start = base*(isUp?1-pct*6:1+pct*6);
+  const seed=(currency||'X').charCodeAt(0);
+  return Array.from({length:n},(_,i)=>{
+    const t=i/(n-1), main=start+(base-start)*t;
+    return main + Math.sin(i*1.4+seed*0.07)*base*0.003;
+  });
+}
+/* 구현은 briefing/charts.js?v=202610211100 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+function fxSparklineSVG(values, isNeg, idx){
+  return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
+}
+
+function renderFX(items){
+  window.__lastFX = items || [];   // 테마 전환 시 다시 그리려면 원본이 필요하다
+  _fxSeries=[];
+  document.getElementById('fx-list').innerHTML=(items||[]).map((f,i)=>{
+    const _h=f.history;
+    const hist=(_h&&_h.values&&_h.values.length>=2)?_h.values
+      :(Array.isArray(_h)&&_h.length>=2)?_h
+      :fxMockHistory(f.rate_usd||f.value, f.change, f.currency);
+    let labels=(_h&&_h.labels&&_h.labels.length===hist.length)?_h.labels:null;
+    if(!labels) labels=hist.map((_,k)=>k===hist.length-1?'오늘':`D-${hist.length-1-k}`);
+    _fxSeries[i]={values:hist,labels:labels};
+    const spark=fxSparklineSVG(hist, f.dir==='neg', i);
+    return `<div class="fx-row">
+      <div class="fx-left">
+        <div class="fx-name">${Briefing.fxPairLabel ? Briefing.fxPairLabel(f) : (f.country||f.currency||'')}</div>
+      </div>
+      <div class="fx-spark">${spark}<div class="fx-tooltip" id="fxtt-${i}"></div></div>
+      <div class="fx-right">
+        <div class="fx-val">${f.rate_usd||f.value||'—'}</div>
+        <div class="fx-chg ${f.dir||'neu'}">${f.change}</div>
+      </div>
+    </div>`;
+  }).join('');
+  (items||[]).forEach((_,i)=>bindFXTip(i));
+}
+function bindFXTip(i){
+  const svg=document.getElementById('fxsp-'+i),tip=document.getElementById('fxtt-'+i),s=_fxSeries[i];
+  if(!svg||!tip||!s)return;
+  const values=s.values,labels=s.labels,n=values.length,W=130,PX=5;
+  const pxOf=k=>PX+k/(n-1)*(W-PX*2);
+  let hideT;
+  function fmt(v){const num=parseFloat(v);if(isNaN(num))return v;return num>=100?num.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:2}):num.toFixed(2);}
+  function show(clientX){
+    const rect=svg.getBoundingClientRect(),sparkRect=svg.parentElement.getBoundingClientRect();
+    const sw=rect.width||W,svgX=(clientX-rect.left)/sw*W;
+    let best=0,bd=Infinity;
+    for(let k=0;k<n;k++){const dd=Math.abs(pxOf(k)-svgX);if(dd<bd){bd=dd;best=k;}}
+    tip.textContent=(labels[best]!=null?labels[best]:('D'+best))+' · '+fmt(values[best]);
+    tip.style.left=((rect.left-sparkRect.left)+pxOf(best)/W*sw)+'px';
+    tip.style.display='block';
+  }
+  function hide(){tip.style.display='none';}
+  svg.addEventListener('pointerdown',e=>{clearTimeout(hideT);show(e.clientX);});
+  svg.addEventListener('pointermove',e=>{clearTimeout(hideT);show(e.clientX);});
+  svg.addEventListener('pointerup',e=>{if(e.pointerType==='mouse')return;hideT=setTimeout(hide,1800);});
+  svg.addEventListener('pointercancel',()=>{hideT=setTimeout(hide,1200);});
+  svg.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide();});
+}
+
+/* ── 모니터링 ── */
+
+
+/* ══════════════════════════════════════════════
+   §5 주요 경제 지표 — scorecard/view.js 공용 시세표 (2026-09-15)
+   여기 있던 카드 렌더 복사본(분류 순서·색표 포함)은 지웠다. 세 화면이 같은 코드를 쓴다.
+══════════════════════════════════════════════ */
+var SC_VIEW = null;
+async function loadScorecard(){
+  try{
+    const r = await fetch(`indicators.json?t=${Date.now()}`);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const guides = await fetch(`indicator_guide.json?t=${Date.now()}`)
+      .then(r => r.ok ? r.json() : {guides:{}}).catch(() => ({guides:{}}));
+    SC_VIEW = ScorecardView.mount(document.getElementById('sc-body'), await r.json(), {compact:true, guides: guides.guides});
+  }catch(e){
+    console.warn('indicators.json 로드 실패:', e);
+    document.getElementById('sc-body').innerHTML = '<div class="empty-msg">지표 로딩 실패</div>';
+  }
+}
+
+/* ══════════════════════════════════════════════
+   메인 데이터 로드 (5분 폴링)
+══════════════════════════════════════════════ */
+async function load(){
+  try{
+    const r = await fetch(`data.json?t=${Date.now()}`);
+    const d = await r.json();
+    document.getElementById('bar-date').textContent = d.date_kr || d.date || '—';
+    document.getElementById('bar-date').title = '발행: ' + (d.generated_at || '—');
+
+    renderExec(d);
+    _allNews = d.news || [];
+    updateBadges(_allNews);
+    renderNews(_cur);
+    renderOverseas(d.overseas || []);
+    renderIndustry(d.industry || []);
+    renderMonitoring(d.monitoring || []);
+    renderFX(d.fx || []);
+
+    /* 용어 툴팁 + 수치 하이라이트 — briefing.html 과 같은 briefing/annotate.js?v=202610211100 를 쓴다.
+       용어집은 data.glossary(본문에 실제 등장한 것만)에서 온다. */
+    if(window.Annotate){
+      Annotate.setGlossary(d.glossary || []);
+      Annotate.run(['summary-text'], {cap:4});
+      Annotate.run(['top3-list'],    {cap:3});
+      Annotate.run(['mpt-list'],     {cap:2});
+      Annotate.run(['exec-kpi-row','ov-list','ind-list'], {termsOnly:true});
+      Annotate.run(['news-list'], {cap:2});
+    }
+    if(window.lucide) lucide.createIcons();
+  }catch(e){
+    console.error('data.json 로드 실패:', e);
+    document.getElementById('bar-date').textContent = '데이터 로드 실패';
+  }
+}
+
+document.getElementById('fbar').addEventListener('click', e=>{
+  const b = e.target.closest('.fb');
+  if(b && !b.classList.contains('empty')) renderNews(b.dataset.f);
+});
+
+load();
+loadScorecard();
+setInterval(load, 300000);
+</script>
+</body>
+</html>
