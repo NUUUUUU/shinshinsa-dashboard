@@ -6,8 +6,8 @@
 <title>신신사 일일 경영 브리핑</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
-<link rel="stylesheet" href="briefing/tokens.css?v=202609301000">
-<link rel="stylesheet" href="briefing/components.css?v=202609301000">
+<link rel="stylesheet" href="briefing/tokens.css?v=202610211100">
+<link rel="stylesheet" href="briefing/components.css?v=202610211100">
 <script>
 /* §4-5 다크 토글 IIFE — DOM 렌더 전 적용 */
 (function(){
@@ -18,10 +18,10 @@
   }
 })();
 </script>
-<script src="briefing/render.js?v=202609301000"></script>
+<script src="briefing/render.js?v=202610211100"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
-<script src="scorecard/render.js?v=202609301000"></script>
-<script src="scorecard/view.js?v=202609301000"></script>
+<script src="scorecard/render.js?v=202610211100"></script>
+<script src="scorecard/view.js?v=202610211100"></script>
 <style>
 html,body{height:100%;margin:0;overflow:hidden;}
 .byline{font-size:11.5px;color:var(--txt-lbl);}
@@ -92,8 +92,8 @@ body{display:flex;flex-direction:column;}
 #indicators-section{flex:1 1 0;min-height:260px;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.454.0/dist/umd/lucide.min.js" defer></script>
-<script src="briefing/annotate.js?v=202609301000"></script>
-<script src="briefing/charts.js?v=202609301000"></script>
+<script src="briefing/annotate.js?v=202610211100"></script>
+<script src="briefing/charts.js?v=202610211100"></script>
 <script>
 /* lucide 는 defer 라 인라인 스크립트보다 늦게 실행된다. DOM 준비 시점에 아이콘을 그린다. */
 document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucide.createIcons(); });
@@ -173,6 +173,13 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
           <div class="skeleton" style="height:60px"></div>
         </div>
       </div>
+      <!-- 가전업계 동향 (2026-10-21) — 주목 이슈 바로 다음(사용자 지정). 카드가 없으면 renderIndustry 가 숨긴다 -->
+      <div class="card card-grow" id="industry-section">
+        <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
+        <div class="col-scroll" id="ind-scroll" style="min-height:0;">
+          <div id="ind-list"></div>
+        </div>
+      </div>
       <div class="card card-grow" id="indicators-section">
         <div class="sec-label"><span class="sec-dot"></span>주요 경제 지표<a class="sc-more" href="scorecard.html" target="_blank" rel="noopener">전체 보기</a></div>
         <div class="sc-body col-scroll" id="sc-body">
@@ -191,12 +198,14 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
         </div>
       </div>
       <div class="fbar" id="fbar">
-        <button class="fb active" data-f="all">전체 <span class="fbdg" id="b-all">—</span></button>
+        <!-- 순서: LG > 가전업계 > 한국 > 중국 > 태국 > 이집트 > 전체 (2026-10-21 사용자 지정). 기본 선택은 전체 -->
         <button class="fb" data-f="lg">LG <span class="fbdg" id="b-lg">—</span></button>
+        <button class="fb" data-f="ind">가전업계 <span class="fbdg" id="b-ind">—</span></button>
         <button class="fb" data-f="한국">한국 <span class="fbdg" id="b-kr">—</span></button>
         <button class="fb" data-f="중국">중국 <span class="fbdg" id="b-cn">—</span></button>
         <button class="fb" data-f="태국">태국 <span class="fbdg" id="b-th">—</span></button>
         <button class="fb" data-f="이집트">이집트 <span class="fbdg" id="b-eg">—</span></button>
+        <button class="fb active" data-f="all">전체 <span class="fbdg" id="b-all">—</span></button>
       </div>
       <div class="news-list" id="news-list">
         <div class="skeleton" style="height:100px"></div>
@@ -245,7 +254,7 @@ function shortBody(s){
   if(p>55) return s.slice(0,p+1);
   return cut.replace(/\s+\S*$/,'') + '…';
 }
-// TOP3 reason 렌더는 briefing/render.js?v=202609301000 로 옮겼다 (2026-09-10).
+// TOP3 reason 렌더는 briefing/render.js?v=202610211100 로 옮겼다 (2026-09-10).
 // 두 페이지에 서로 다른 두 벌이 있어서 한쪽만 고쳐지는 사고를 막는다.
 function fmtReason(reason){ return Briefing.fmtReason(reason, mdBold); }
 
@@ -366,7 +375,7 @@ function renderNews(f){
 }
 
 function updateBadges(news){
-  const idMap = {all:'b-all',lg:'b-lg','한국':'b-kr','중국':'b-cn','태국':'b-th','이집트':'b-eg'};
+  const idMap = {all:'b-all',lg:'b-lg','한국':'b-kr','중국':'b-cn','태국':'b-th','이집트':'b-eg',ind:'b-ind'};
   Object.keys(idMap).forEach(f=>{
     const count = Briefing.filterNews(news, f).length;
     const el = document.getElementById(idMap[f]);
@@ -393,11 +402,23 @@ function renderOverseas(items){
     </div>`).join('');
 }
 
+/* ── 가전업계 동향 (2026-10-21) — 카드가 없으면 섹션과 칩을 함께 숨긴다 ── */
+function renderIndustry(cards){
+  var sec = document.getElementById('industry-section');
+  var el  = document.getElementById('ind-list');
+  if(!sec || !el) return;
+  var chip = document.getElementById('chip-ind');
+  var html = Briefing.industryHtml ? Briefing.industryHtml(cards, mdBold) : '';
+  sec.style.display = html ? '' : 'none';
+  if(chip) chip.style.display = html ? '' : 'none';
+  el.innerHTML = html;
+}
+
 /* ── 단기 모니터링 포인트 (data.monitoring 문자열 배열) ── */
 
 
 /* ── 시장 ── */
-// 모니터링 렌더는 briefing/render.js?v=202609301000 로 옮겼다 (2026-09-10).
+// 모니터링 렌더는 briefing/render.js?v=202610211100 로 옮겼다 (2026-09-10).
 // 이 함수가 briefing 1벌 · index **2벌**로 갈라져 있었다(뒤엣것이 앞엣것을 덮었다).
 function renderMonitoring(pts){
   var el = document.getElementById('mpt-list'); if(!el) return;
@@ -425,7 +446,7 @@ function fxMockHistory(baseStr, changeStr, currency){
     return main + Math.sin(i*1.4+seed*0.07)*base*0.003;
   });
 }
-/* 구현은 briefing/charts.js?v=202609301000 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
+/* 구현은 briefing/charts.js?v=202610211100 로 옮겼다 — 두 화면이 같은 그래프를 쓴다. */
 function fxSparklineSVG(values, isNeg, idx){
   return window.BriefingCharts ? BriefingCharts.fxSparkline(values, isNeg, idx) : '';
 }
@@ -515,17 +536,18 @@ async function load(){
     updateBadges(_allNews);
     renderNews(_cur);
     renderOverseas(d.overseas || []);
+    renderIndustry(d.industry || []);
     renderMonitoring(d.monitoring || []);
     renderFX(d.fx || []);
 
-    /* 용어 툴팁 + 수치 하이라이트 — briefing.html 과 같은 briefing/annotate.js?v=202609301000 를 쓴다.
+    /* 용어 툴팁 + 수치 하이라이트 — briefing.html 과 같은 briefing/annotate.js?v=202610211100 를 쓴다.
        용어집은 data.glossary(본문에 실제 등장한 것만)에서 온다. */
     if(window.Annotate){
       Annotate.setGlossary(d.glossary || []);
       Annotate.run(['summary-text'], {cap:4});
       Annotate.run(['top3-list'],    {cap:3});
       Annotate.run(['mpt-list'],     {cap:2});
-      Annotate.run(['exec-kpi-row','ov-list'], {termsOnly:true});
+      Annotate.run(['exec-kpi-row','ov-list','ind-list'], {termsOnly:true});
       Annotate.run(['news-list'], {cap:2});
     }
     if(window.lucide) lucide.createIcons();

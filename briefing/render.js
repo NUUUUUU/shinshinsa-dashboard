@@ -11,12 +11,16 @@
   // 지역 분류: 해외는 country 우선, 국내/미상은 '한국'. (LG는 filterNews에서 교차필터)
   function classifyNews(item) {
     var c = (item && (item.country || item.category)) || '';
-    return ['중국', '태국', '이집트'].indexOf(c) >= 0 ? c : '한국';
+    return ['중국', '태국', '이집트', '글로벌'].indexOf(c) >= 0 ? c : '한국';
   }
+  // 가전업계 기사 (2026-10-21) — 지역과 무관하게 category 로 묶는다. 삼성 기사는 한국,
+  // 월풀·일렉트로룩스는 글로벌이지만 임원이 보려는 것은 「업계」 한 묶음이다.
+  function _isIndustry(item) { return !!item && item.category === '가전업계'; }
   function filterNews(news, cat) {
     var arr = news || [];
     if (cat === 'all') return arr.slice();
     if (cat === 'lg') return arr.filter(_hasLG);            // LG 교차필터(지역 무관)
+    if (cat === 'ind') return arr.filter(_isIndustry);      // 가전업계 교차필터(지역 무관)
     return arr.filter(function (i) { return classifyNews(i) === cat; });
   }
   function stars(importance) {
@@ -250,6 +254,28 @@
   }
 
 
+  /* ── 가전업계 동향 (2026-10-21 신설) ──────────────────────────────────────
+     카드는 「국내」「글로벌」 두 장이다. 해외 국가 카드(ov-card)와 같은 모양을 쓴다.
+     요약 아래 「방향」「기회」 두 줄을 따로 그린다 — 가전업계 수집의 목적이 ① 우리가 나아갈 방향
+     ② 신규시장 기회 포착이다(2026-10-21 사용자 지정). 요약 안에 묻으면 두 답이 안 보인다.
+     카드가 하나도 없으면 빈 문자열을 돌려준다 — 화면은 섹션과 칩을 함께 숨긴다
+     (공시·용어집과 같은 처리). 「없음」 문구를 찍으면 수집 실패와 구분이 안 된다. */
+  function industryHtml(cards, bold) {
+    bold = bold || esc;
+    var arr = (cards || []).filter(function (c) { return c && (c.summary || '').trim(); });
+    if (!arr.length) return '';
+    return arr.map(function (c) {
+      var name = esc(c.group || '') + (c.companies ? ' — ' + esc(c.companies) : '');
+      return '<div class="ov-card">'
+           + '<div class="ov-head"><span class="ov-name">' + name + '</span></div>'
+           + (c.indicators ? '<div class="ov-inds">' + bold(c.indicators) + '</div>' : '')
+           + '<div class="ov-sum">' + bold(c.summary) + '</div>'
+           + (c.direction ? '<div class="ind-row"><span class="ind-tag dir">방향</span><span>' + bold(c.direction) + '</span></div>' : '')
+           + (c.opportunity ? '<div class="ind-row"><span class="ind-tag opp">기회</span><span>' + bold(c.opportunity) + '</span></div>' : '')
+           + '</div>';
+    }).join('');
+  }
+
   /* ── 출장자 현황 ─────────────────────────────────────────────────────────
      2026-09-15 — 옛 `renderTrips` 는 목록이 비면 **섹션을 통째로 숨겼다.**
      그래서 「오늘 출장자가 0명」과 「수집이 실패했다」가 화면에서 완전히 같았다.
@@ -301,5 +327,6 @@
            FX_KO: FX_KO, fxPairLabel: fxPairLabel,
            fmtReason: fmtReason, isGaejo: isGaejo,
            monitoringHtml: monitoringHtml, MON_DUE: MON_DUE,
+           industryHtml: industryHtml,
            travelersHtml: travelersHtml };
 });
