@@ -158,13 +158,6 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
           <div id="ov-list"></div>
         </div>
       </div>
-      <!-- 가전업계 동향 (2026-10-21) — 카드가 없으면 renderIndustry 가 숨긴다 -->
-      <div class="card card-fixed" id="industry-section">
-        <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
-        <div class="col-scroll" style="min-height:0;display:flex;flex-direction:column;">
-          <div id="ind-list"></div>
-        </div>
-      </div>
       <div class="card card-grow" id="monitoring-section">
         <div class="sec-label"><span class="sec-dot"></span>단기 모니터링 포인트</div>
         <div class="col-scroll" id="mpt-list" style="min-height:0;"></div>
@@ -179,6 +172,13 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
           <div class="skeleton" style="height:60px"></div>
           <div class="skeleton" style="height:60px"></div>
           <div class="skeleton" style="height:60px"></div>
+        </div>
+      </div>
+      <!-- 가전업계 동향 (2026-10-21) — 주목 이슈 바로 다음(사용자 지정). 카드가 없으면 renderIndustry 가 숨긴다 -->
+      <div class="card card-grow" id="industry-section">
+        <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
+        <div class="col-scroll" id="ind-scroll" style="min-height:0;">
+          <div id="ind-list"></div>
         </div>
       </div>
       <div class="card card-grow" id="indicators-section">

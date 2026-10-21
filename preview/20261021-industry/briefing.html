@@ -298,9 +298,9 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
 <div id="gl-pop" role="tooltip" aria-hidden="true"></div>
 <nav class="chipbar" id="chipbar" aria-label="섹션 이동">
   <button class="chip active" data-sec="exec-section"><i data-lucide="star" class="ic-sm"></i>요약</button>
+  <button class="chip" id="chip-ind" data-sec="industry-section"><i data-lucide="factory" class="ic-sm"></i>업계</button>
   <button class="chip" data-sec="fx-section"><i data-lucide="arrow-left-right" class="ic-sm"></i>환율</button>
   <button class="chip" data-sec="overseas-section"><i data-lucide="globe" class="ic-sm"></i>해외</button>
-  <button class="chip" id="chip-ind" data-sec="industry-section"><i data-lucide="factory" class="ic-sm"></i>업계</button>
   <button class="chip" data-sec="news-section"><i data-lucide="newspaper" class="ic-sm"></i>뉴스</button>
   <button class="chip" id="chip-disc" data-sec="disc-section"><i data-lucide="file-text" class="ic-sm"></i>공시</button>
   <button class="chip" data-sec="indicators-section"><i data-lucide="layout-grid" class="ic-sm"></i>지표</button>
@@ -351,6 +351,12 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
 
   </div>
 
+
+  <!-- ── 가전업계 동향 (2026-10-21) — 주목 이슈 바로 다음(사용자 지정) · 삼성·LG + 글로벌 가전업체 ── -->
+  <div class="card" id="industry-section">
+    <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
+    <div id="ind-list"></div>
+  </div>
   <!-- ── 환율 ── -->
   <div class="card" id="fx-section">
     <div class="sec-label"><span class="sec-dot"></span>환율 · 달러 대비</div>
@@ -362,12 +368,6 @@ document.addEventListener("DOMContentLoaded",function(){ if(window.lucide) lucid
   <div class="card" id="overseas-section">
     <div class="sec-label"><span class="sec-dot"></span>해외 모니터링</div>
     <div id="ov-list"></div>
-  </div>
-
-  <!-- ── 가전업계 동향 (2026-10-21) — 삼성·LG + 글로벌 가전업체 ── -->
-  <div class="card" id="industry-section">
-    <div class="sec-label"><span class="sec-dot"></span>가전업계 동향</div>
-    <div id="ind-list"></div>
   </div>
 
   <!-- ── CEO 일정 ── -->
